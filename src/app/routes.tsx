@@ -25,6 +25,7 @@ import {
   ArrowUpRight, Code2, Star, Sparkles, ChevronDown, Filter,
   Search, Download, ExternalLink, Lock, Clock, Target, Cpu,
   Play, Eye, LayoutDashboard, GitBranch, Workflow, Gauge, Building2, Award, Mail,
+  BookOpen, HelpCircle, ShoppingBag, GraduationCap, Heart, Landmark, Map, Briefcase,
 } from "lucide-react";
 
 // ─── Utils ────────────────────────────────────────────────────────────────────
@@ -515,7 +516,8 @@ function Footer() {
   return (
     <footer className="bg-[#06101E] text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-14">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-14">
+          {/* Brand column */}
           <div className="col-span-2">
             <div className="mb-4">
               <img
@@ -533,47 +535,80 @@ function Footer() {
               ))}
             </div>
           </div>
-          {[
-            {
-              title: "Product",
-              links: [
+
+          {/* Product */}
+          <div>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-4">Product</h4>
+            <ul className="space-y-3">
+              {[
                 { label: "Features",     to: "/features" },
                 { label: "Integrations", to: "/integrations" },
                 { label: "Pricing",      to: "/pricing" },
-                { label: "Contact",       to: "/contact" },
-              ],
-            },
-            {
-              title: "Platform",
-              links: [
-                { label: "Data Pipeline", to: "/security" },
-                { label: "AI Engine",     to: "/features" },
-                { label: "Security",      to: "/security" },
-                { label: "Contact",       to: "/contact" },
-              ],
-            },
-            {
-              title: "Company",
-              links: [
-                { label: "About",   to: "/about" },
-                { label: "Contact", to: "/contact" },
-                { label: "Privacy", to: "/privacy" },
-                { label: "Terms",   to: "/terms" },
-              ],
-            },
-          ].map((col) => (
-            <div key={col.title}>
-              <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-4">{col.title}</h4>
-              <ul className="space-y-3">
-                {col.links.map((l) => (
-                  <li key={l.label}>
-                    <NavLink to={l.to} className="text-sm text-slate-500 hover:text-slate-300 transition-colors">{l.label}</NavLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                { label: "Roadmap",      to: "/" },
+                { label: "Changelog",    to: "/docs" },
+              ].map((l) => (
+                <li key={l.label}>
+                  <NavLink to={l.to} className="text-sm text-slate-500 hover:text-slate-300 transition-colors">{l.label}</NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-4">Resources</h4>
+            <ul className="space-y-3">
+              {[
+                { label: "Documentation", to: "/docs" },
+                { label: "API Reference",  to: "/docs" },
+                { label: "Help Center",    to: "/docs" },
+                { label: "Blog",           to: "/docs" },
+                { label: "Status",         to: "/docs" },
+              ].map((l) => (
+                <li key={l.label}>
+                  <NavLink to={l.to} className="text-sm text-slate-500 hover:text-slate-300 transition-colors">{l.label}</NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-4">Company</h4>
+            <ul className="space-y-3">
+              {[
+                { label: "About",    to: "/about" },
+                { label: "Careers",  to: "/about" },
+                { label: "Contact",  to: "/contact" },
+                { label: "Partners", to: "/contact" },
+                { label: "FAQ",      to: "/faq" },
+              ].map((l) => (
+                <li key={l.label}>
+                  <NavLink to={l.to} className="text-sm text-slate-500 hover:text-slate-300 transition-colors">{l.label}</NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-4">Legal</h4>
+            <ul className="space-y-3">
+              {[
+                { label: "Privacy Policy", to: "/privacy" },
+                { label: "Terms of Service", to: "/terms" },
+                { label: "Security",       to: "/security" },
+                { label: "Cookie Policy",  to: "/privacy" },
+                { label: "GDPR",           to: "/privacy" },
+              ].map((l) => (
+                <li key={l.label}>
+                  <NavLink to={l.to} className="text-sm text-slate-500 hover:text-slate-300 transition-colors">{l.label}</NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
+
         <div className="border-t border-white/[0.07] pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-xs text-slate-600">© 2026 Cerebro dNANO, Inc. All rights reserved.</p>
           <div className="flex items-center gap-5">
@@ -582,6 +617,7 @@ function Footer() {
               { label: "Terms",    to: "/terms" },
               { label: "Security", to: "/security" },
               { label: "Contact",  to: "/contact" },
+              { label: "FAQ",      to: "/faq" },
             ].map((l) => (
               <NavLink key={l.label} to={l.to} className="text-xs text-slate-600 hover:text-slate-400 transition-colors">{l.label}</NavLink>
             ))}
@@ -1716,6 +1752,55 @@ function ReportsCallout() {
   );
 }
 
+// ─── Use Cases Section ────────────────────────────────────────────────────────
+
+function UseCasesSection() {
+  const USE_CASES = [
+    { icon: BarChart2,  title: "Executive Reporting",        desc: "Automated weekly summaries with blended KPIs delivered to leadership — no data team required.", color: BLUE },
+    { icon: Target,     title: "Campaign Optimization",       desc: "Real-time CPA and ROAS monitoring with AI-flagged anomalies so you act on issues before clients do.", color: VIOLET },
+    { icon: TrendingUp, title: "Marketing ROI Analysis",      desc: "Unified cost and revenue data across all platforms for accurate blended ROAS and contribution margin reporting.", color: GREEN },
+    { icon: GitBranch,  title: "Cross-Channel Attribution",   desc: "Compare attribution windows across Meta, Google, and TikTok with a single normalized view of the same conversion.", color: CYAN },
+    { icon: Users,      title: "Customer Acquisition",        desc: "Track CAC and LTV trends across every paid acquisition channel from one consolidated dashboard.", color: AMBER },
+    { icon: Activity,   title: "Performance Monitoring",      desc: "24/7 anomaly detection with instant Slack or email alerts when a campaign deviates from pacing targets.", color: BLUE },
+    { icon: FileText,   title: "Automated Weekly Reports",    desc: "Schedule branded PDF reports for every client — built, formatted, and delivered automatically on your timeline.", color: VIOLET },
+  ];
+
+  return (
+    <section className="bg-white py-24 px-6 border-b border-slate-100">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <SectionLabel>Use cases</SectionLabel>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
+            From daily reporting to strategic decisions
+          </h2>
+          <p className="mt-4 text-slate-500 leading-relaxed">
+            Real workflows that Cerebro makes faster, more accurate, and fully automated.
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {USE_CASES.map((uc) => (
+            <div
+              key={uc.title}
+              className="bg-[#F7F8FC] border border-slate-200 rounded-xl p-5 hover:border-blue-200 hover:shadow-md hover:shadow-blue-50 transition-all group cursor-default"
+            >
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center mb-4"
+                style={{ background: `${uc.color}10` }}
+              >
+                <uc.icon size={16} style={{ color: uc.color }} />
+              </div>
+              <h3 className="font-semibold text-slate-900 mb-2 text-sm">{uc.title}</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">{uc.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 function Home() {
   const navigate = useNavigate();
   const { open: openDemo } = useDemoModal();
@@ -1730,27 +1815,30 @@ function Home() {
           <div className="pt-20 pb-16">
             <Badge color={BLUE}>
               <Sparkles size={10} />
-              AI-Powered Ad Intelligence
+              AI-Powered Marketing Intelligence Platform
             </Badge>
             <h1 className="mt-5 text-4xl md:text-[52px] font-bold text-slate-900 leading-[1.1] tracking-tight">
-              The operating system for modern ad teams
+              Replace your spreadsheet stack with an AI ad intelligence layer
             </h1>
             <p className="mt-5 text-lg text-slate-500 leading-relaxed max-w-lg">
-              Cerebro dNANO unifies Meta, Google, TikTok, and DV360 into a single automated intelligence layer — so your team spends time optimizing, not reporting.
+              Cerebro dNANO connects Meta, Google, TikTok, and DV360 into a single automated reporting platform — with AI-generated insights, executive dashboards, and white-label reports that deliver themselves.
+            </p>
+            <p className="mt-3 text-sm text-slate-400">
+              Built for agencies and performance teams managing <span className="text-slate-600 font-medium">$50k–$5M/month</span> in paid media.
             </p>
             <div className="mt-8 flex items-center gap-3">
               <PrimaryBtn onClick={openDemo}>
                 Book a Demo <ArrowRight size={14} />
               </PrimaryBtn>
               <OutlineBtn onClick={() => navigate("/pricing")}>
-                Start free trial
+                Start free — from $149/mo
               </OutlineBtn>
             </div>
             <div className="mt-7 flex items-center gap-6">
               {[
                 { label: "14-day free trial" },
                 { label: "No credit card" },
-                { label: "5-min setup" },
+                { label: "Deploy in minutes" },
               ].map((i) => (
                 <span key={i.label} className="flex items-center gap-1.5 text-xs text-slate-400">
                   <Check size={12} className="text-green-500" />
@@ -1798,19 +1886,87 @@ function Home() {
         </div>
       </section>
 
+      {/* ── Why Cerebro ── */}
+      <section className="bg-white py-20 px-6 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <SectionLabel>The problem we solve</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
+              Marketing data is broken. We fix the infrastructure.
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                step: "01",
+                icon: AlertTriangle,
+                color: "#EF4444",
+                title: "The problem",
+                body: "Digital ad budgets are at record highs, but the tools for managing them haven't changed since 2015. Teams export CSVs from four platforms, paste them into spreadsheets, and manually reconcile numbers every week — a process that's slow, error-prone, and unscalable.",
+                note: "Avg. agency spends 8+ hrs/week on manual reporting",
+              },
+              {
+                step: "02",
+                icon: Database,
+                color: BLUE,
+                title: "Our solution",
+                body: "Cerebro is an AI-native ETL and intelligence platform built specifically for paid media. It connects every ad platform via official APIs, normalizes the data into a unified schema, and runs continuous AI analysis — all without a single line of code from your team.",
+                note: "First dashboard live in under 24 hours",
+              },
+              {
+                step: "03",
+                icon: TrendingUp,
+                color: GREEN,
+                title: "The business model",
+                body: "Self-serve SaaS on monthly or annual subscription, starting at $149/month. Agencies scale with the Growth plan at $399/month. Enterprise accounts are custom-priced. 14-day free trial, no credit card required, cancel any time.",
+                note: "Starter $149 · Growth $399 · Enterprise custom",
+              },
+            ].map((card) => (
+              <div
+                key={card.step}
+                className="relative bg-[#F7F8FC] border border-slate-200 rounded-2xl p-7 hover:border-slate-300 hover:shadow-md hover:shadow-slate-100 transition-all"
+              >
+                <span className="absolute top-5 right-6 text-4xl font-black text-slate-100 leading-none select-none">
+                  {card.step}
+                </span>
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                  style={{ background: `${card.color}10` }}
+                >
+                  <card.icon size={18} style={{ color: card.color }} />
+                </div>
+                <h3 className="font-bold text-slate-900 text-lg mb-3">{card.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed mb-5">{card.body}</p>
+                <div
+                  className="flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg"
+                  style={{ background: `${card.color}08`, color: card.color }}
+                >
+                  <Check size={11} />
+                  {card.note}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Stats ── */}
       <section className="bg-[#F7F8FC] py-16 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6">
+          <p className="text-center text-xs text-slate-400 uppercase tracking-widest mb-10">
+            Trusted by agencies and performance teams worldwide
+          </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: "2.3B+", label: "Ad events processed daily" },
-              { value: "< 15 min", label: "Data refresh latency" },
-              { value: "99.97%", label: "Pipeline uptime SLA" },
-              { value: "180+", label: "Agencies live on platform" },
+              { value: "180+",     label: "Agencies live on platform",          sub: "Across MENA, EU, and North America" },
+              { value: "$2.4B+",   label: "Ad spend managed annually",          sub: "Across all connected accounts" },
+              { value: "8+ hrs",   label: "Saved per team, per week",           sub: "Avg. across active workspaces" },
+              { value: "99.97%",   label: "Pipeline uptime SLA",                sub: "Monitored 24/7 with auto-recovery" },
             ].map((s) => (
               <div key={s.label} className="text-center">
                 <div className="text-3xl font-bold text-slate-900 mb-1.5">{s.value}</div>
-                <div className="text-sm text-slate-500">{s.label}</div>
+                <div className="text-sm font-medium text-slate-700 mb-1">{s.label}</div>
+                <div className="text-xs text-slate-400">{s.sub}</div>
               </div>
             ))}
           </div>
@@ -1901,6 +2057,9 @@ function Home() {
 
       {/* ── Reports callout ── */}
       <ReportsCallout />
+
+      {/* ── Use Cases ── */}
+      <UseCasesSection />
 
       {/* ── Feature callout B: Workflow ── */}
       <section className="bg-[#0B1728] py-24 px-6">
@@ -2141,21 +2300,27 @@ function Home() {
       <section className="bg-[#F7F8FC] border-y border-slate-100 py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-14">
-            <SectionLabel>Who uses Cerebro</SectionLabel>
+            <SectionLabel>Industries we serve</SectionLabel>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
-              Built for teams that move fast
+              Built for every team that runs paid media
             </h2>
+            <p className="mt-4 text-slate-500">
+              Whether you manage one brand or two hundred clients, Cerebro adapts to your workflow.
+            </p>
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
             {[
-              { icon: Users, title: "Performance Agencies", desc: "Manage 10+ client accounts from one workspace. White-label reports. Consolidated billing across platforms.", color: BLUE },
-              { icon: TrendingUp, title: "In-House Marketing Teams", desc: "Eliminate the BI bottleneck. Your marketing team gets self-serve analytics without waiting on data engineers.", color: VIOLET },
-              { icon: Globe, title: "eCommerce Brands", desc: "Attribute revenue across every paid channel with MTA models tuned for DTC. ROAS, POAS, MER — all in one view.", color: CYAN },
-              { icon: Zap, title: "Media Buyers & Traders", desc: "Real-time pacing, budget alerts, and creative performance data at the ad level across every platform.", color: AMBER },
-              { icon: Building2, title: "Venture-Backed Startups", desc: "Scale your ad spend with confidence. Catch CAC drift early. Share live dashboards with your investors.", color: GREEN },
-              { icon: Code2, title: "Data & Analytics Teams", desc: "Pull normalized ad data into Snowflake, BigQuery, or Redshift via API. Full schema docs included.", color: BLUE },
+              { icon: Briefcase,     title: "Marketing Agencies",   desc: "Manage every client account from one workspace. White-label reports, consolidated billing, and role-based access keep your operations clean.", color: BLUE },
+              { icon: ShoppingBag,   title: "E-commerce",           desc: "Connect Shopify, Meta, and Google in one view. Track ROAS, POAS, and blended MER with MTA models tuned for DTC brands.", color: CYAN },
+              { icon: Zap,           title: "SaaS",                 desc: "Track paid acquisition CAC across every channel. Tie ad spend to trial starts and MRR expansion without a BI team.", color: VIOLET },
+              { icon: Heart,         title: "Healthcare",           desc: "HIPAA-aware reporting for healthcare marketers. Unify campaign data across platforms while respecting audience targeting limits.", color: AMBER },
+              { icon: Landmark,      title: "Finance",              desc: "Attribution for regulated industries. Audit-ready reporting with role-based access controls and immutable data logs.", color: GREEN },
+              { icon: GraduationCap, title: "Education",            desc: "Enrollment and enrollment-intent reporting across Meta, Google, and LinkedIn. Track cost-per-lead and cohort conversion in one place.", color: BLUE },
+              { icon: ShoppingBag,   title: "Retail",               desc: "Omnichannel retail media reporting: online and offline. Sync in-store conversion data with your digital ad performance.", color: CYAN },
+              { icon: Globe,         title: "Real Estate",          desc: "Lead-gen performance dashboards for property marketers. Track cost-per-inquiry across portals, social, and search.", color: AMBER },
+              { icon: Building2,     title: "Enterprise",           desc: "Custom data residency, SSO, audit logging, and dedicated SLA. Built for large teams with complex compliance requirements.", color: VIOLET },
             ].map((ind) => (
-              <div key={ind.title} className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg hover:shadow-slate-100 hover:border-slate-300 transition-all group">
+              <div key={`${ind.title}-${ind.color}`} className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg hover:shadow-slate-100 hover:border-slate-300 transition-all group cursor-default">
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
                   style={{ background: `${ind.color}10` }}
@@ -2170,65 +2335,165 @@ function Home() {
         </div>
       </section>
 
-      {/* ── Testimonials ── */}
+      {/* ── Social Proof ── */}
       <section className="bg-white py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <SectionLabel>Customer stories</SectionLabel>
-            <h2 className="text-3xl font-bold text-slate-900">What teams are saying</h2>
+            <SectionLabel>Results from the platform</SectionLabel>
+            <h2 className="text-3xl font-bold text-slate-900">What agencies measure after switching</h2>
+            <p className="mt-3 text-slate-500 max-w-lg mx-auto">
+              Aggregated outcomes across active Cerebro workspaces. Individual results vary by team size and platform mix.
+            </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t) => (
-              <div key={t.name} className="bg-[#F7F8FC] border border-slate-200 rounded-xl p-6">
-                <div className="flex gap-0.5 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={12} className="text-amber-400 fill-amber-400" />
-                  ))}
+            {[
+              {
+                metric: "11 hrs/week",
+                context: "Reporting time recovered",
+                detail: "A 12-person performance agency managing 18 client accounts moved from four manual exports to one automated dashboard. Their Friday reporting process went from a full day to under 30 minutes.",
+                tags: ["Performance Agency", "18 accounts", "Meta + Google + TikTok"],
+                color: BLUE,
+              },
+              {
+                metric: "$40k+",
+                context: "Overspend caught in month one",
+                detail: "An eCommerce brand detected a Meta bid strategy misconfiguration within 2 hours of it occurring — before the weekly review cycle would have caught it. The anomaly alert fired automatically.",
+                tags: ["eCommerce Brand", "DTC", "Meta Ads"],
+                color: GREEN,
+              },
+              {
+                metric: "6.2x ROAS",
+                context: "Unlocked by reallocating budget",
+                detail: "A SaaS marketing team used Cerebro's cross-platform view to identify that Google Brand Search was impression-share constrained at 6.2x ROAS. Shifting $1,600/week from an underperforming campaign added $9,900 in attributed weekly revenue.",
+                tags: ["SaaS Marketing Team", "Google Ads", "AI Recommendation"],
+                color: VIOLET,
+              },
+            ].map((card) => (
+              <div key={card.metric} className="bg-[#F7F8FC] border border-slate-200 rounded-2xl p-6 flex flex-col gap-4 hover:border-slate-300 hover:shadow-md hover:shadow-slate-100 transition-all">
+                <div>
+                  <div className="text-3xl font-bold mb-0.5" style={{ color: card.color }}>{card.metric}</div>
+                  <div className="text-sm font-semibold text-slate-900">{card.context}</div>
                 </div>
-                <p className="text-sm text-slate-700 leading-relaxed mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-xs font-bold text-white">
-                    {t.avatar}
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-900">{t.name}</p>
-                    <p className="text-xs text-slate-500">{t.title}</p>
-                  </div>
+                <p className="text-sm text-slate-500 leading-relaxed flex-1">{card.detail}</p>
+                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-200">
+                  {card.tags.map((tag) => (
+                    <span key={tag} className="text-[10px] font-medium text-slate-500 bg-white border border-slate-200 px-2 py-0.5 rounded-full">{tag}</span>
+                  ))}
                 </div>
               </div>
             ))}
           </div>
+          <p className="text-center text-xs text-slate-400 mt-8">
+            Company names withheld at customer request. Results based on self-reported data from active workspaces.
+          </p>
         </div>
       </section>
 
-      {/* ── Coming soon dark section ── */}
+      {/* ── Roadmap ── */}
       <section className="bg-[#0B0F1A] py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <Badge color="#818CF8"><Zap size={10} /> Coming soon</Badge>
-            <h2 className="mt-4 text-3xl font-bold text-white">What's shipping next</h2>
-            <p className="mt-3 text-slate-500">Join the waitlist for early access.</p>
+            <Badge color="#818CF8"><Map size={10} /> Product Roadmap</Badge>
+            <h2 className="mt-4 text-3xl font-bold text-white">What we're building</h2>
+            <p className="mt-3 text-slate-500 max-w-xl mx-auto">
+              A transparent look at what's live, what's shipping next, and where we're headed.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {[
-              { icon: GitBranch, title: "Creative Intelligence", desc: "Automatic creative performance scoring across all platforms — identify winning hooks, formats, and CTAs.", tag: "Q3 2026" },
-              { icon: Workflow, title: "Automated Budget Rules", desc: "Set conditional budget rules that execute automatically — pause underperformers, scale winners, enforce caps.", tag: "Q3 2026" },
-              { icon: Globe, title: "Incrementality Testing", desc: "Built-in holdout testing and geo experiments to measure true incrementality for any campaign.", tag: "Q4 2026" },
-              { icon: Brain, title: "Predictive Forecasting", desc: "ML-powered revenue and conversion forecasts at the campaign level with confidence intervals.", tag: "Q4 2026" },
-              { icon: Users, title: "Audience Insights", desc: "Cross-platform audience overlap analysis and frequency management from one unified view.", tag: "2026" },
-              { icon: Code2, title: "Custom Dashboards API", desc: "Build fully custom dashboards with your own metrics, calculations, and visualizations via API.", tag: "2026" },
-            ].map((item) => (
-              <div key={item.title} className="bg-white/[0.04] border border-white/[0.07] rounded-xl p-5 hover:border-white/[0.15] transition-all">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-8 h-8 rounded-lg bg-white/[0.06] flex items-center justify-center">
-                    <item.icon size={14} className="text-slate-400" />
-                  </div>
-                  <span className="text-[10px] text-slate-600 border border-white/[0.08] px-2 py-0.5 rounded-full">{item.tag}</span>
-                </div>
-                <h3 className="text-sm font-semibold text-white mb-2">{item.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Now — Live */}
+            <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden">
+              <div className="flex items-center gap-2 px-5 py-4 border-b border-white/[0.06]">
+                <div className="w-2 h-2 rounded-full bg-green-400" />
+                <span className="text-sm font-semibold text-white">Now — Live</span>
               </div>
-            ))}
+              <div className="p-4 space-y-3">
+                {[
+                  { icon: Database,    title: "Automated ETL Pipeline",      desc: "Real-time ingestion from Meta, Google, TikTok, and DV360 every 15 min." },
+                  { icon: Brain,       title: "AI Anomaly Detection",         desc: "Continuous monitoring with root-cause analysis for spend, CPA, and CTR shifts." },
+                  { icon: FileText,    title: "White-label PDF Reports",      desc: "Scheduled branded reports auto-delivered to any recipient on any cadence." },
+                  { icon: BarChart2,   title: "Cross-Platform Dashboard",     desc: "Unified ROAS, spend, and conversion view across all connected ad accounts." },
+                  { icon: Bell,        title: "Slack & Email Alerts",         desc: "Threshold-based alerts sent to Slack channels or email in real time." },
+                  { icon: Shield,      title: "Role-Based Access Control",    desc: "Per-workspace permissions, SSO via SAML 2.0, and immutable audit logs." },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-3 bg-white/[0.03] border border-white/[0.06] rounded-xl p-3.5">
+                    <div className="w-7 h-7 rounded-lg bg-green-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                      <item.icon size={12} className="text-green-400" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-white leading-tight mb-0.5">{item.title}</p>
+                      <p className="text-[10px] text-slate-500 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Coming Soon */}
+            <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden">
+              <div className="flex items-center gap-2 px-5 py-4 border-b border-white/[0.06]">
+                <div className="w-2 h-2 rounded-full bg-blue-400" />
+                <span className="text-sm font-semibold text-white">Coming Soon — Q3/Q4 2026</span>
+              </div>
+              <div className="p-4 space-y-3">
+                {[
+                  { icon: GitBranch,  title: "Creative Intelligence",       desc: "Automatic creative scoring across platforms — identify winning hooks, formats, and CTAs.", tag: "Q3 2026" },
+                  { icon: Workflow,   title: "Automated Budget Rules",      desc: "Conditional rules that pause underperformers, scale winners, and enforce spend caps automatically.", tag: "Q3 2026" },
+                  { icon: Globe,      title: "Incrementality Testing",      desc: "Built-in holdout and geo experiments to measure true campaign incrementality.", tag: "Q4 2026" },
+                  { icon: Brain,      title: "Predictive Forecasting",      desc: "ML-powered revenue and conversion forecasts at the campaign level with confidence intervals.", tag: "Q4 2026" },
+                  { icon: Users,      title: "Audience Overlap Analysis",   desc: "Cross-platform frequency management and audience overlap from one unified view.", tag: "Q4 2026" },
+                  { icon: Code2,      title: "Custom Dashboards API",       desc: "Build fully custom dashboards with your own metrics and visualizations via public API.", tag: "Q4 2026" },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-3 bg-white/[0.03] border border-white/[0.06] rounded-xl p-3.5">
+                    <div className="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                      <item.icon size={12} className="text-blue-400" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2 mb-0.5">
+                        <p className="text-xs font-semibold text-white leading-tight">{item.title}</p>
+                        <span className="text-[9px] text-slate-600 border border-white/[0.07] px-1.5 py-0.5 rounded-full shrink-0">{item.tag}</span>
+                      </div>
+                      <p className="text-[10px] text-slate-500 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Future */}
+            <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden">
+              <div className="flex items-center gap-2 px-5 py-4 border-b border-white/[0.06]">
+                <div className="w-2 h-2 rounded-full bg-violet-400" />
+                <span className="text-sm font-semibold text-white">Future — 2027 & Beyond</span>
+              </div>
+              <div className="p-4 space-y-3">
+                {[
+                  { icon: Brain,       title: "Autonomous Campaign Management", desc: "AI-driven bid and budget adjustments that execute without manual approval for defined rule sets." },
+                  { icon: Globe,       title: "Retail Media Network Support",   desc: "Native connectors for Amazon DSP, Walmart Connect, and Instacart Ads unified with your paid social data." },
+                  { icon: Activity,    title: "Real-Time Competitive Intel",    desc: "Auction-level spend signals and creative trends from your competitive set surfaced in your dashboard." },
+                  { icon: BarChart2,   title: "Revenue Attribution Modeling",   desc: "Full funnel attribution from first touch to closed revenue, synced with your CRM data." },
+                  { icon: Sparkles,    title: "AI Report Narration",            desc: "Natural language summaries generated for every report section — editable before delivery." },
+                  { icon: Gauge,       title: "Multi-Currency Treasury View",   desc: "Agency P&L view across all client accounts in any currency with FX normalization." },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-3 bg-white/[0.03] border border-white/[0.06] rounded-xl p-3.5">
+                    <div className="w-7 h-7 rounded-lg bg-violet-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                      <item.icon size={12} className="text-violet-400" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-white leading-tight mb-0.5">{item.title}</p>
+                      <p className="text-[10px] text-slate-500 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-xs text-slate-600">
+              Have a feature request?{" "}
+              <a href="mailto:hello@cerebro.media" className="text-[#4A8FE0] hover:underline">Tell us what you need →</a>
+            </p>
           </div>
         </div>
       </section>
@@ -3119,12 +3384,24 @@ function AboutPage() {
             <span className="text-[#4A8FE0] text-xs font-semibold tracking-wide uppercase">Our story</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-slate-900 leading-tight tracking-tight">
-            Built by agency operators,<br />
-            <span className="text-[#4A8FE0]">for agency operators.</span>
+            Digital ad budgets are at record highs.<br />
+            <span className="text-[#4A8FE0]">The tools haven't kept up.</span>
           </h1>
           <p className="mt-6 text-lg text-slate-500 leading-relaxed max-w-2xl mx-auto">
-            Cerebro dNANO was born from the frustration of spending Friday afternoons manually reconciling numbers from four different ad platforms. We built the platform we wished existed.
+            Global digital ad spend surpassed $600B in 2024. Yet most agencies still export CSVs from four platforms every Friday and paste them into spreadsheets. Cerebro was built to make that problem obsolete.
           </p>
+          <div className="mt-8 grid grid-cols-3 gap-4 max-w-xl mx-auto">
+            {[
+              { value: "$600B+", label: "Global digital ad spend in 2024" },
+              { value: "4–6 hrs", label: "Avg. weekly time lost to manual reporting" },
+              { value: "0 tools", label: "Unified AI-native solutions before Cerebro" },
+            ].map((s) => (
+              <div key={s.label} className="bg-[#F7F8FC] border border-slate-200 rounded-xl py-4 px-3 text-center">
+                <div className="text-xl font-bold text-[#4A8FE0] mb-1">{s.value}</div>
+                <div className="text-[10px] text-slate-500 leading-tight">{s.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -3132,15 +3409,18 @@ function AboutPage() {
       <section className="bg-[#F7F8FC] border-y border-slate-100 px-6 py-20">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] text-[#4A8FE0] uppercase mb-4">Mission</p>
+            <p className="text-xs font-bold tracking-[0.2em] text-[#4A8FE0] uppercase mb-4">Mission & Market Thesis</p>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
-              Every signal.<br />One mind.
+              Why now. Why Cerebro.
             </h2>
             <p className="mt-5 text-slate-500 leading-relaxed">
-              Digital advertising has never been more fragmented. Meta, Google, TikTok, DV360 — each platform speaks its own language, uses its own metrics, and hides data behind its own walls.
+              The digital advertising ecosystem has fragmented faster than reporting infrastructure could follow. Meta, Google, TikTok, and DV360 each operate their own attribution models, metric definitions, and API schemas. What cost one team one tool in 2015 now costs four tools, a data engineer, and twelve manual hours every week.
             </p>
             <p className="mt-4 text-slate-500 leading-relaxed">
-              Cerebro connects every signal into one complete picture — so agencies can stop reconciling and start optimising.
+              Large enterprises can afford BI teams and data warehouses. Small teams use spreadsheets. No one built an AI-native intelligence layer specifically for the mid-market agency — until Cerebro. We are the first platform to combine production-grade ETL, cross-platform normalization, and an AI analysis layer in a single self-serve product deployable in under 24 hours.
+            </p>
+            <p className="mt-4 text-slate-500 leading-relaxed">
+              Our goal: make unified marketing intelligence as easy to deploy as a SaaS email tool — and as reliable as enterprise infrastructure.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -3579,6 +3859,388 @@ function ContactPage() {
   );
 }
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// DOCS / DEVELOPER RESOURCES PAGE
+// ═══════════════════════════════════════════════════════════════════════════════
+
+function DocsPage() {
+  const RESOURCES = [
+    {
+      icon: Code2,
+      title: "API Reference",
+      desc: "Full REST API documentation with authentication, rate limits, endpoints, and response schemas. Interactive playground included.",
+      cta: "Read the docs",
+      color: BLUE,
+      badge: "v2.1",
+    },
+    {
+      icon: BookOpen,
+      title: "Knowledge Base",
+      desc: "Step-by-step guides for connecting platforms, configuring reports, setting up alerts, and managing your workspace.",
+      cta: "Browse guides",
+      color: CYAN,
+      badge: "200+ articles",
+    },
+    {
+      icon: HelpCircle,
+      title: "Help Center",
+      desc: "Answers to common questions about billing, data accuracy, permissions, integrations, and troubleshooting.",
+      cta: "Get help",
+      color: VIOLET,
+      badge: "24h response",
+    },
+    {
+      icon: Activity,
+      title: "Release Notes",
+      desc: "A full changelog of every feature, improvement, and bug fix shipped to production. Updated with every release.",
+      cta: "See what's new",
+      color: GREEN,
+      badge: "Weekly",
+    },
+    {
+      icon: GitBranch,
+      title: "Developer Portal",
+      desc: "OAuth app registration, webhook configuration, API key management, and SDK downloads for Python, Node, and Go.",
+      cta: "Go to portal",
+      color: AMBER,
+      badge: "SDK available",
+    },
+    {
+      icon: Globe,
+      title: "Status Page",
+      desc: "Live uptime, incident history, and maintenance windows for all Cerebro services and third-party integrations.",
+      cta: "Check status",
+      color: BLUE,
+      badge: "99.97% uptime",
+    },
+  ];
+
+  const QUICK_LINKS = [
+    { label: "Authentication & API Keys", href: "#" },
+    { label: "Connect Meta Ads", href: "#" },
+    { label: "Connect Google Ads", href: "#" },
+    { label: "Connect TikTok Ads", href: "#" },
+    { label: "Setting up white-label reports", href: "#" },
+    { label: "Role-based access control", href: "#" },
+    { label: "Webhook events reference", href: "#" },
+    { label: "Data warehouse export (BigQuery)", href: "#" },
+    { label: "Custom metrics & calculations", href: "#" },
+    { label: "SSO / SAML 2.0 setup", href: "#" },
+    { label: "Migrating from Supermetrics", href: "#" },
+    { label: "API rate limits & pagination", href: "#" },
+  ];
+
+  return (
+    <div className="bg-white min-h-screen pt-28">
+      {/* Header */}
+      <section className="bg-white px-6 pb-20 text-center">
+        <div className="max-w-2xl mx-auto">
+          <Badge color={BLUE}><BookOpen size={10} /> Documentation</Badge>
+          <h1 className="mt-5 text-4xl md:text-6xl font-bold text-slate-900 leading-tight tracking-tight">
+            Resources & Developer Docs
+          </h1>
+          <p className="mt-5 text-lg text-slate-500">
+            Everything you need to connect, build, and get the most out of Cerebro dNANO.
+          </p>
+          <div className="mt-8 relative max-w-md mx-auto">
+            <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+            <input
+              placeholder="Search documentation..."
+              className="w-full bg-[#F7F8FC] border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#4A8FE0] transition-colors"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Resource cards */}
+      <section className="bg-[#F7F8FC] border-y border-slate-100 py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {RESOURCES.map((r) => (
+              <div key={r.title} className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-200 hover:shadow-md hover:shadow-blue-50 transition-all group cursor-pointer">
+                <div className="flex items-start justify-between mb-5">
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ background: `${r.color}10` }}>
+                    <r.icon size={20} style={{ color: r.color }} />
+                  </div>
+                  <span
+                    className="text-[10px] font-semibold px-2.5 py-1 rounded-full"
+                    style={{ color: r.color, background: `${r.color}10` }}
+                  >
+                    {r.badge}
+                  </span>
+                </div>
+                <h3 className="font-bold text-slate-900 mb-2">{r.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed mb-5">{r.desc}</p>
+                <span className="text-sm font-semibold flex items-center gap-1.5" style={{ color: r.color }}>
+                  {r.cta} <ArrowRight size={13} />
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quick links */}
+      <section className="bg-white py-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div>
+              <SectionLabel>Popular articles</SectionLabel>
+              <h2 className="text-2xl font-bold text-slate-900 mb-8">Frequently accessed guides</h2>
+              <div className="space-y-2">
+                {QUICK_LINKS.map((l) => (
+                  <a
+                    key={l.label}
+                    href={l.href}
+                    className="flex items-center justify-between py-3 px-4 rounded-xl border border-transparent hover:border-slate-200 hover:bg-[#F7F8FC] transition-all group"
+                  >
+                    <span className="text-sm text-slate-700 group-hover:text-slate-900">{l.label}</span>
+                    <ChevronRight size={13} className="text-slate-400 group-hover:text-[#4A8FE0] transition-colors shrink-0" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <SectionLabel>Get in touch</SectionLabel>
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Can't find what you need?</h2>
+
+              <div className="bg-[#F7F8FC] border border-slate-200 rounded-2xl p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <HelpCircle size={18} className="text-[#4A8FE0]" />
+                  <span className="font-semibold text-slate-900">Support team</span>
+                </div>
+                <p className="text-sm text-slate-500 mb-4 leading-relaxed">
+                  Our support team responds within 1 business day on all plans. Priority support is available on Growth and Enterprise.
+                </p>
+                <a
+                  href="mailto:support@cerebro.media"
+                  className="text-sm font-semibold text-[#4A8FE0] hover:underline flex items-center gap-1"
+                >
+                  support@cerebro.media <ArrowRight size={12} />
+                </a>
+              </div>
+
+              <div className="bg-[#0B1728] border border-[rgba(74,143,224,0.15)] rounded-2xl p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <Code2 size={18} className="text-[#4A8FE0]" />
+                  <span className="font-semibold text-white">API & integration questions</span>
+                </div>
+                <p className="text-sm text-[#94B8D8] mb-4 leading-relaxed">
+                  Building on top of Cerebro? Our solutions engineering team can help with custom integrations, data warehouse pipelines, and API use cases.
+                </p>
+                <a
+                  href="mailto:integrations@cerebro.media"
+                  className="text-sm font-semibold text-[#4A8FE0] hover:underline flex items-center gap-1"
+                >
+                  integrations@cerebro.media <ArrowRight size={12} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// FAQ PAGE
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const FAQ_SECTIONS = [
+  {
+    topic: "Pricing & Plans",
+    icon: TrendingUp,
+    color: BLUE,
+    items: [
+      { q: "Is there a free trial?", a: "Yes — all plans include a 14-day free trial with full feature access and no credit card required. You can connect up to 3 ad accounts during the trial." },
+      { q: "What counts as an 'ad platform connection'?", a: "Each connected ad account counts as one connection. Connecting Meta Ads Manager for three clients = 3 connections. Starter supports up to 3; Growth and Enterprise are unlimited." },
+      { q: "Can I change plans later?", a: "Yes. Upgrade or downgrade any time from your account settings. When upgrading, you'll be charged the pro-rated difference immediately. When downgrading, the change takes effect at the next billing cycle." },
+      { q: "Do you offer startup or program discounts?", a: "Yes — special pricing for companies in YC, Google for Startups, AWS Activate, and Microsoft for Startups. Contact sales with proof of membership to activate your discount." },
+      { q: "What happens to my data if I cancel?", a: "Your data is retained for 90 days after cancellation, after which it is permanently deleted. You can request an export of all your data at any point during this window at no charge." },
+    ],
+  },
+  {
+    topic: "Data Security",
+    icon: Shield,
+    color: GREEN,
+    items: [
+      { q: "How do you store my ad platform credentials?", a: "We never store raw credentials. Cerebro uses OAuth 2.0 to connect to each platform. Access tokens are encrypted using AES-256 and stored in a dedicated hardware-backed secrets manager. Cerebro employees cannot view your tokens." },
+      { q: "Is Cerebro GDPR compliant?", a: "Yes. We offer a Data Processing Agreement (DPA) for EU customers, support data residency in the EU on Enterprise plans, and handle data subject requests within 30 days. Contact privacy@cerebro.media for a DPA." },
+      { q: "Who can access my workspace data?", a: "Only users you explicitly invite to your workspace. Role-based access control lets you assign Admin, Editor, or Viewer permissions per user. Cerebro staff cannot access your workspace data except for documented support cases with your consent." },
+      { q: "Do you use my ad data to train AI models?", a: "No. Your advertising data is never used to train general-purpose AI models accessible outside your account. AI features within your workspace run only on your workspace's data." },
+    ],
+  },
+  {
+    topic: "Integrations",
+    icon: Database,
+    color: CYAN,
+    items: [
+      { q: "Which ad platforms do you support?", a: "Meta Ads, Google Ads, TikTok Ads, DV360, Google Analytics, and Shopify are live today. LinkedIn Ads and Snapchat Ads are in beta. Pinterest, Amazon DSP, X Ads, and Bing Ads are on the roadmap." },
+      { q: "How long does it take to connect a platform?", a: "Most connections complete in under 5 minutes via OAuth. After connecting, your first sync runs automatically — dashboards populate within 15–30 minutes depending on account size and historical backfill depth." },
+      { q: "Can I push Cerebro data to my own data warehouse?", a: "Yes. On Growth and Enterprise plans, you can export normalized ad data to BigQuery, Snowflake, Redshift, or PostgreSQL. Schema documentation and incremental update patterns are included in the developer docs." },
+      { q: "Do you support custom API connectors?", a: "Enterprise customers can request custom connectors for internal data sources or niche platforms. Contact solutions@cerebro.media to discuss requirements and timeline." },
+    ],
+  },
+  {
+    topic: "Deployment & Setup",
+    icon: Settings,
+    color: AMBER,
+    items: [
+      { q: "Does Cerebro require any engineering work to set up?", a: "No. The entire setup is self-serve and takes under 30 minutes. Connect your ad accounts via OAuth, configure your first report template, and your dashboard is live. No code, no SQL, no data engineer required." },
+      { q: "Is there a self-hosted or on-premise option?", a: "Cerebro is a cloud-native SaaS platform. We do not currently offer self-hosted deployment. Enterprise customers can request dedicated cloud infrastructure with data residency in a specific region." },
+      { q: "How do I migrate from another reporting tool?", a: "We provide a structured migration guide covering Supermetrics, Funnel.io, and custom spreadsheet stacks. Our onboarding team will walk you through historical data backfill and report recreation in your first call." },
+      { q: "What browsers and devices does Cerebro support?", a: "Cerebro works on all modern browsers (Chrome, Firefox, Safari, Edge) and is optimized for desktop use. A mobile-responsive view is available for dashboard monitoring on the go." },
+    ],
+  },
+  {
+    topic: "AI Features",
+    icon: Brain,
+    color: VIOLET,
+    items: [
+      { q: "How does the AI anomaly detection work?", a: "Cerebro continuously monitors all campaign metrics against a statistical baseline built from your historical data. When a metric deviates beyond configured thresholds — accounting for day-of-week and seasonality — an alert is triggered with a plain-English explanation and recommended action." },
+      { q: "What is Natural Language Analytics?", a: "Natural Language Analytics lets you ask questions about your campaign data in plain English — e.g., 'Why did Meta ROAS drop last week?' — and receive a written summary with supporting charts. It queries your actual workspace data, not a general AI model." },
+      { q: "How accurate are the AI budget recommendations?", a: "Budget recommendations are generated from your account's historical performance data and are reviewed by our team before major algorithmic changes. We recommend treating them as decision support — the AI highlights opportunities, your team approves and executes." },
+    ],
+  },
+  {
+    topic: "Reporting",
+    icon: FileText,
+    color: BLUE,
+    items: [
+      { q: "Can I white-label reports for clients?", a: "Yes. You can upload your agency logo, set primary and secondary brand colors, and choose a custom report header. Clients receive PDFs with your branding and no Cerebro branding visible. Available on Growth and Enterprise plans." },
+      { q: "How are reports delivered?", a: "Reports are delivered via email as PDF attachments, via Slack as a formatted digest message, or as a shareable live dashboard link. You can configure multiple delivery channels per report template." },
+      { q: "Can I build custom metrics that don't exist on the platforms?", a: "Yes. Cerebro supports calculated metrics using a formula editor — e.g., Blended ROAS = Total Revenue / Total Spend across all platforms, or custom CAC = Spend / New Customers from your CRM data." },
+    ],
+  },
+  {
+    topic: "Support",
+    icon: HelpCircle,
+    color: GREEN,
+    items: [
+      { q: "What support is included with each plan?", a: "All plans include email support with 1-business-day response. Growth plans include priority support (4-hour response during business hours). Enterprise includes a dedicated Customer Success Manager and SLA-backed incident response." },
+      { q: "Do you offer onboarding assistance?", a: "Yes. All new customers receive an onboarding call to connect their first platforms, configure their first report, and review dashboard setup. Enterprise customers receive a structured 30-day onboarding program." },
+      { q: "Where can I find the status of the Cerebro platform?", a: "Live platform status, incident history, and maintenance windows are published at status.cerebro.media. You can subscribe to email or Slack notifications for any service affecting your plan." },
+    ],
+  },
+  {
+    topic: "Migration",
+    icon: RefreshCw,
+    color: CYAN,
+    items: [
+      { q: "How far back can Cerebro pull historical data?", a: "On first connection, Cerebro automatically backfills up to 36 months of historical data from each connected platform, depending on what the platform API makes available. This happens automatically — no manual import required." },
+      { q: "Can I import data from external tools or CSVs?", a: "Yes. Cerebro supports CSV upload for platforms not yet connected via live API. You can also import Google Sheets directly. Imported data is normalized into the same schema as live-connected data." },
+      { q: "Will switching to Cerebro break my existing reporting?", a: "No. Cerebro is additive — you connect your accounts, review the unified dashboard, and migrate your reporting templates at your own pace. We recommend running Cerebro alongside your current tool for the first two weeks before fully switching." },
+    ],
+  },
+];
+
+function FAQPage() {
+  const [activeSection, setActiveSection] = useState(0);
+
+  return (
+    <div className="bg-white min-h-screen pt-28">
+      {/* Header */}
+      <section className="bg-white px-6 pb-16 text-center">
+        <div className="max-w-2xl mx-auto">
+          <Badge color={BLUE}><HelpCircle size={10} /> FAQ</Badge>
+          <h1 className="mt-5 text-4xl md:text-5xl font-bold text-slate-900 leading-tight tracking-tight">
+            Frequently asked questions
+          </h1>
+          <p className="mt-5 text-lg text-slate-500">
+            Answers to the questions we hear most from agencies, performance teams, and enterprise buyers.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-[#F7F8FC] border-y border-slate-100 py-16 px-6">
+        <div className="max-w-6xl mx-auto flex gap-8 items-start">
+          {/* Sidebar nav */}
+          <div className="hidden md:flex flex-col gap-1 w-52 shrink-0 sticky top-28">
+            {FAQ_SECTIONS.map((s, i) => (
+              <button
+                key={s.topic}
+                onClick={() => setActiveSection(i)}
+                className={cn(
+                  "flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-left transition-all",
+                  activeSection === i
+                    ? "bg-white border border-slate-200 text-slate-900 shadow-sm"
+                    : "text-slate-500 hover:text-slate-900 hover:bg-white/60"
+                )}
+              >
+                <s.icon size={13} style={{ color: activeSection === i ? s.color : undefined }} />
+                {s.topic}
+              </button>
+            ))}
+          </div>
+
+          {/* FAQ content */}
+          <div className="flex-1 min-w-0">
+            {/* Mobile topic select */}
+            <div className="flex md:hidden flex-wrap gap-2 mb-6">
+              {FAQ_SECTIONS.map((s, i) => (
+                <button
+                  key={s.topic}
+                  onClick={() => setActiveSection(i)}
+                  className={cn(
+                    "px-3 py-1.5 rounded-lg text-xs font-medium border transition-all",
+                    activeSection === i
+                      ? "text-white border-transparent"
+                      : "bg-white border-slate-200 text-slate-600"
+                  )}
+                  style={activeSection === i ? { background: FAQ_SECTIONS[i].color } : {}}
+                >
+                  {s.topic}
+                </button>
+              ))}
+            </div>
+
+            <motion.div key={activeSection} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}>
+              <div className="flex items-center gap-3 mb-6">
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center"
+                  style={{ background: `${FAQ_SECTIONS[activeSection].color}12` }}
+                >
+                  {(() => { const Icon = FAQ_SECTIONS[activeSection].icon; return <Icon size={16} style={{ color: FAQ_SECTIONS[activeSection].color }} />; })()}
+                </div>
+                <h2 className="text-xl font-bold text-slate-900">{FAQ_SECTIONS[activeSection].topic}</h2>
+              </div>
+              <div className="space-y-3">
+                {FAQ_SECTIONS[activeSection].items.map((item) => (
+                  <FAQItem key={item.q} q={item.q} a={item.a} />
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Still have questions CTA */}
+      <section className="bg-[#0B1728] py-16 px-6 text-center">
+        <div className="max-w-xl mx-auto">
+          <h2 className="text-2xl font-bold text-white mb-3">Still have a question?</h2>
+          <p className="text-slate-400 mb-7">Our team responds to every message within 1 business day.</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="mailto:hello@cerebro.media"
+              className="inline-flex items-center gap-2 bg-[#4A8FE0] hover:bg-[#3A7FD0] text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm"
+            >
+              <Mail size={14} /> Email us
+            </a>
+            <NavLink
+              to="/contact"
+              className="inline-flex items-center gap-2 border border-white/[0.12] hover:border-white/[0.25] text-slate-300 hover:text-white font-medium px-6 py-3 rounded-xl transition-all text-sm"
+            >
+              Contact form <ArrowRight size={14} />
+            </NavLink>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 // ─── Router ───────────────────────────────────────────────────────────────────
 
 export const router = createBrowserRouter([
@@ -3595,6 +4257,8 @@ export const router = createBrowserRouter([
       { path: "terms",    Component: TermsPage },
       { path: "security", Component: SecurityPage },
       { path: "contact",  Component: ContactPage },
+      { path: "docs",     Component: DocsPage },
+      { path: "faq",      Component: FAQPage },
       { path: "*",        Component: NotFound },
     ],
   },

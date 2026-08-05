@@ -1,7 +1,7 @@
 
-  # Complete due diligence
+  # Complete due diligence (Copy)
 
-  This is a code bundle for Complete due diligence. The original project is available at https://www.figma.com/design/v4l52Pp2Zp22LUZqcqNFgh/Complete-due-diligence.
+  This is a code bundle for Complete due diligence (Copy). The original project is available at https://www.figma.com/design/JX3rPYe5HpkBuRsvqkDsxb/Complete-due-diligence--Copy-.
 
   ## Running the code
 
