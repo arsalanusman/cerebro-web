@@ -529,6 +529,20 @@ function Footer() {
             <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
               AI-powered advertising intelligence that unifies your paid media into one automated reporting layer.
             </p>
+            <div className="mt-5 space-y-2">
+              <a href="mailto:connect@activ8.digital" className="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-300 transition-colors">
+                <Mail size={11} className="text-slate-600 shrink-0" />
+                connect@activ8.digital
+              </a>
+              <a href="tel:+923422732873" className="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-300 transition-colors">
+                <Activity size={11} className="text-slate-600 shrink-0" />
+                +92 342 2732873
+              </a>
+              <p className="flex items-start gap-2 text-xs text-slate-500">
+                <Globe size={11} className="text-slate-600 shrink-0 mt-0.5" />
+                The Forum, Block 9 Clifton, Karachi
+              </p>
+            </div>
             <div className="flex items-center gap-3 mt-5">
               {["SOC 2", "GDPR", "CCPA"].map((b) => (
                 <span key={b} className="text-[10px] text-slate-600 border border-slate-700 rounded px-2 py-0.5">{b}</span>
@@ -544,7 +558,7 @@ function Footer() {
                 { label: "Features",     to: "/features" },
                 { label: "Integrations", to: "/integrations" },
                 { label: "Pricing",      to: "/pricing" },
-                { label: "Roadmap",      to: "/" },
+                { label: "Roadmap",      to: "/roadmap" },
                 { label: "Changelog",    to: "/docs" },
               ].map((l) => (
                 <li key={l.label}>
@@ -560,10 +574,9 @@ function Footer() {
             <ul className="space-y-3">
               {[
                 { label: "Documentation", to: "/docs" },
-                { label: "API Reference",  to: "/docs" },
-                { label: "Help Center",    to: "/docs" },
-                { label: "Blog",           to: "/docs" },
-                { label: "Status",         to: "/docs" },
+                { label: "Help Center",   to: "/help" },
+                { label: "Blog",          to: "/blog" },
+                { label: "FAQ",           to: "/faq" },
               ].map((l) => (
                 <li key={l.label}>
                   <NavLink to={l.to} className="text-sm text-slate-500 hover:text-slate-300 transition-colors">{l.label}</NavLink>
@@ -578,10 +591,10 @@ function Footer() {
             <ul className="space-y-3">
               {[
                 { label: "About",    to: "/about" },
+                { label: "Blog",     to: "/blog" },
                 { label: "Careers",  to: "/about" },
                 { label: "Contact",  to: "/contact" },
                 { label: "Partners", to: "/contact" },
-                { label: "FAQ",      to: "/faq" },
               ].map((l) => (
                 <li key={l.label}>
                   <NavLink to={l.to} className="text-sm text-slate-500 hover:text-slate-300 transition-colors">{l.label}</NavLink>
@@ -616,8 +629,8 @@ function Footer() {
               { label: "Privacy",  to: "/privacy" },
               { label: "Terms",    to: "/terms" },
               { label: "Security", to: "/security" },
+              { label: "Help",     to: "/help" },
               { label: "Contact",  to: "/contact" },
-              { label: "FAQ",      to: "/faq" },
             ].map((l) => (
               <NavLink key={l.label} to={l.to} className="text-xs text-slate-600 hover:text-slate-400 transition-colors">{l.label}</NavLink>
             ))}
@@ -2492,7 +2505,7 @@ function Home() {
           <div className="mt-8 text-center">
             <p className="text-xs text-slate-600">
               Have a feature request?{" "}
-              <a href="mailto:hello@cerebro.media" className="text-[#4A8FE0] hover:underline">Tell us what you need →</a>
+              <a href="mailto:connect@activ8.digital" className="text-[#4A8FE0] hover:underline">Tell us what you need →</a>
             </p>
           </div>
         </div>
@@ -3571,7 +3584,7 @@ function PrivacyPage() {
     >
       <LegalSection title="1. Who we are">
         <p>Cerebro dNANO is an advertising intelligence platform operated by Cerebro Media, Inc. ("Cerebro", "we", "us"). Our platform connects digital advertising data from Meta, Google Ads, TikTok, and DV360 into a single automated reporting layer for marketing agencies and advertisers.</p>
-        <p>If you have questions about this policy, contact us at <a href="mailto:privacy@cerebro.media" className="text-[#4A8FE0] hover:underline">privacy@cerebro.media</a>.</p>
+        <p>If you have questions about this policy, contact us at <a href="mailto:connect@activ8.digital" className="text-[#4A8FE0] hover:underline">connect@activ8.digital</a>.</p>
       </LegalSection>
 
       <LegalSection title="2. Information we collect">
@@ -3588,7 +3601,7 @@ function PrivacyPage() {
 
       <LegalSection title="4. Data sharing">
         <p>We share data only with: sub-processors necessary to operate the platform (cloud infrastructure, payment processors, email delivery); your team members as configured in your workspace; and legal authorities when required by law.</p>
-        <p>A full list of sub-processors is available on request at <a href="mailto:privacy@cerebro.media" className="text-[#4A8FE0] hover:underline">privacy@cerebro.media</a>.</p>
+        <p>A full list of sub-processors is available on request at <a href="mailto:connect@activ8.digital" className="text-[#4A8FE0] hover:underline">connect@activ8.digital</a>.</p>
       </LegalSection>
 
       <LegalSection title="5. Data retention">
@@ -3597,7 +3610,7 @@ function PrivacyPage() {
 
       <LegalSection title="6. Your rights (GDPR & CCPA)">
         <p>Depending on your jurisdiction, you have the right to: access, correct, or delete your personal data; restrict or object to processing; receive a machine-readable copy of your data; and withdraw consent at any time.</p>
-        <p>To exercise any of these rights, email <a href="mailto:privacy@cerebro.media" className="text-[#4A8FE0] hover:underline">privacy@cerebro.media</a>. We will respond within 30 days.</p>
+        <p>To exercise any of these rights, email <a href="mailto:connect@activ8.digital" className="text-[#4A8FE0] hover:underline">connect@activ8.digital</a>. We will respond within 30 days.</p>
       </LegalSection>
 
       <LegalSection title="7. Cookies">
@@ -3661,7 +3674,7 @@ function TermsPage() {
       </LegalSection>
 
       <LegalSection title="9. Contact">
-        <p>For legal enquiries: <a href="mailto:legal@cerebro.media" className="text-[#4A8FE0] hover:underline">legal@cerebro.media</a></p>
+        <p>For legal enquiries: <a href="mailto:connect@activ8.digital" className="text-[#4A8FE0] hover:underline">connect@activ8.digital</a></p>
       </LegalSection>
     </LegalLayout>
   );
@@ -3742,11 +3755,11 @@ function SecurityPage() {
           <h2 className="text-xl font-bold text-white mb-3">Security enquiries</h2>
           <p className="text-slate-400 text-sm mb-5">Found a vulnerability? Have a security question? We respond to security reports within 24 hours.</p>
           <a
-            href="mailto:security@cerebro.media"
+            href="mailto:connect@activ8.digital"
             className="inline-flex items-center gap-2 bg-[#4A8FE0] hover:bg-[#3A7FD0] text-white font-semibold px-6 py-3 rounded-xl transition-colors"
           >
             <Lock size={15} />
-            security@cerebro.media
+            connect@activ8.digital
           </a>
         </div>
       </div>
@@ -3777,22 +3790,49 @@ function ContactPage() {
 
           {/* Contact info */}
           <div className="space-y-4">
-            {[
-              { icon: Mail,       label: "General enquiries", value: "hello@cerebro.media",   href: "mailto:hello@cerebro.media" },
-              { icon: Shield,     label: "Security",          value: "security@cerebro.media", href: "mailto:security@cerebro.media" },
-              { icon: FileText,   label: "Legal & privacy",   value: "legal@cerebro.media",   href: "mailto:legal@cerebro.media" },
-              { icon: Users,      label: "Partnerships",      value: "partners@cerebro.media", href: "mailto:partners@cerebro.media" },
-            ].map((c) => (
-              <div key={c.label} className="flex items-center gap-4 bg-[#F7F8FC] border border-slate-200 rounded-2xl p-5">
-                <div className="w-10 h-10 rounded-xl bg-[#4A8FE0]/10 flex items-center justify-center shrink-0">
-                  <c.icon size={18} className="text-[#4A8FE0]" />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-400 mb-0.5">{c.label}</p>
-                  <a href={c.href} className="text-slate-900 text-sm font-medium hover:text-[#4A8FE0] transition-colors">{c.value}</a>
-                </div>
+            {/* Email */}
+            <div className="flex items-center gap-4 bg-[#F7F8FC] border border-slate-200 rounded-2xl p-5">
+              <div className="w-10 h-10 rounded-xl bg-[#4A8FE0]/10 flex items-center justify-center shrink-0">
+                <Mail size={18} className="text-[#4A8FE0]" />
               </div>
-            ))}
+              <div>
+                <p className="text-xs text-slate-400 mb-0.5">Email</p>
+                <a href="mailto:connect@activ8.digital" className="text-slate-900 text-sm font-medium hover:text-[#4A8FE0] transition-colors">connect@activ8.digital</a>
+              </div>
+            </div>
+
+            {/* Phone */}
+            <div className="flex items-center gap-4 bg-[#F7F8FC] border border-slate-200 rounded-2xl p-5">
+              <div className="w-10 h-10 rounded-xl bg-[#4A8FE0]/10 flex items-center justify-center shrink-0">
+                <Activity size={18} className="text-[#4A8FE0]" />
+              </div>
+              <div>
+                <p className="text-xs text-slate-400 mb-0.5">Phone</p>
+                <a href="tel:+923422732873" className="text-slate-900 text-sm font-medium hover:text-[#4A8FE0] transition-colors">+92 342 2732873</a>
+              </div>
+            </div>
+
+            {/* Address */}
+            <div className="flex items-start gap-4 bg-[#F7F8FC] border border-slate-200 rounded-2xl p-5">
+              <div className="w-10 h-10 rounded-xl bg-[#4A8FE0]/10 flex items-center justify-center shrink-0 mt-0.5">
+                <Globe size={18} className="text-[#4A8FE0]" />
+              </div>
+              <div>
+                <p className="text-xs text-slate-400 mb-0.5">Office</p>
+                <p className="text-slate-900 text-sm font-medium leading-relaxed">The Forum, Block 9 Clifton<br />Karachi, Pakistan</p>
+              </div>
+            </div>
+
+            {/* Partnerships */}
+            <div className="flex items-center gap-4 bg-[#F7F8FC] border border-slate-200 rounded-2xl p-5">
+              <div className="w-10 h-10 rounded-xl bg-[#4A8FE0]/10 flex items-center justify-center shrink-0">
+                <Users size={18} className="text-[#4A8FE0]" />
+              </div>
+              <div>
+                <p className="text-xs text-slate-400 mb-0.5">Partnerships & enterprise sales</p>
+                <a href="mailto:partners@cerebro.media" className="text-slate-900 text-sm font-medium hover:text-[#4A8FE0] transition-colors">partners@cerebro.media</a>
+              </div>
+            </div>
 
             <div className="bg-[#F7F8FC] border border-slate-200 rounded-2xl p-5">
               <p className="text-xs text-slate-400 mb-2">Response time</p>
@@ -4014,10 +4054,10 @@ function DocsPage() {
                   Our support team responds within 1 business day on all plans. Priority support is available on Growth and Enterprise.
                 </p>
                 <a
-                  href="mailto:support@cerebro.media"
+                  href="mailto:connect@activ8.digital"
                   className="text-sm font-semibold text-[#4A8FE0] hover:underline flex items-center gap-1"
                 >
-                  support@cerebro.media <ArrowRight size={12} />
+                  connect@activ8.digital <ArrowRight size={12} />
                 </a>
               </div>
 
@@ -4030,10 +4070,10 @@ function DocsPage() {
                   Building on top of Cerebro? Our solutions engineering team can help with custom integrations, data warehouse pipelines, and API use cases.
                 </p>
                 <a
-                  href="mailto:integrations@cerebro.media"
+                  href="mailto:connect@activ8.digital"
                   className="text-sm font-semibold text-[#4A8FE0] hover:underline flex items-center gap-1"
                 >
-                  integrations@cerebro.media <ArrowRight size={12} />
+                  connect@activ8.digital <ArrowRight size={12} />
                 </a>
               </div>
             </div>
@@ -4067,7 +4107,7 @@ const FAQ_SECTIONS = [
     color: GREEN,
     items: [
       { q: "How do you store my ad platform credentials?", a: "We never store raw credentials. Cerebro uses OAuth 2.0 to connect to each platform. Access tokens are encrypted using AES-256 and stored in a dedicated hardware-backed secrets manager. Cerebro employees cannot view your tokens." },
-      { q: "Is Cerebro GDPR compliant?", a: "Yes. We offer a Data Processing Agreement (DPA) for EU customers, support data residency in the EU on Enterprise plans, and handle data subject requests within 30 days. Contact privacy@cerebro.media for a DPA." },
+      { q: "Is Cerebro GDPR compliant?", a: "Yes. We offer a Data Processing Agreement (DPA) for EU customers, support data residency in the EU on Enterprise plans, and handle data subject requests within 30 days. Contact connect@activ8.digital for a DPA." },
       { q: "Who can access my workspace data?", a: "Only users you explicitly invite to your workspace. Role-based access control lets you assign Admin, Editor, or Viewer permissions per user. Cerebro staff cannot access your workspace data except for documented support cases with your consent." },
       { q: "Do you use my ad data to train AI models?", a: "No. Your advertising data is never used to train general-purpose AI models accessible outside your account. AI features within your workspace run only on your workspace's data." },
     ],
@@ -4080,7 +4120,7 @@ const FAQ_SECTIONS = [
       { q: "Which ad platforms do you support?", a: "Meta Ads, Google Ads, TikTok Ads, DV360, Google Analytics, and Shopify are live today. LinkedIn Ads and Snapchat Ads are in beta. Pinterest, Amazon DSP, X Ads, and Bing Ads are on the roadmap." },
       { q: "How long does it take to connect a platform?", a: "Most connections complete in under 5 minutes via OAuth. After connecting, your first sync runs automatically — dashboards populate within 15–30 minutes depending on account size and historical backfill depth." },
       { q: "Can I push Cerebro data to my own data warehouse?", a: "Yes. On Growth and Enterprise plans, you can export normalized ad data to BigQuery, Snowflake, Redshift, or PostgreSQL. Schema documentation and incremental update patterns are included in the developer docs." },
-      { q: "Do you support custom API connectors?", a: "Enterprise customers can request custom connectors for internal data sources or niche platforms. Contact solutions@cerebro.media to discuss requirements and timeline." },
+      { q: "Do you support custom API connectors?", a: "Enterprise customers can request custom connectors for internal data sources or niche platforms. Contact connect@activ8.digital to discuss requirements and timeline." },
     ],
   },
   {
@@ -4223,7 +4263,7 @@ function FAQPage() {
           <p className="text-slate-400 mb-7">Our team responds to every message within 1 business day.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              href="mailto:hello@cerebro.media"
+              href="mailto:connect@activ8.digital"
               className="inline-flex items-center gap-2 bg-[#4A8FE0] hover:bg-[#3A7FD0] text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm"
             >
               <Mail size={14} /> Email us
@@ -4234,6 +4274,613 @@ function FAQPage() {
             >
               Contact form <ArrowRight size={14} />
             </NavLink>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// HELP CENTER PAGE
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const HELP_CATEGORIES = [
+  {
+    icon: Zap,
+    title: "Getting Started",
+    desc: "Connect your first platform, configure your workspace, and get your initial dashboard live in under 30 minutes.",
+    color: BLUE,
+    articles: ["How to connect Meta Ads", "Setting up your first dashboard", "Inviting your team", "Understanding data refresh cycles", "Navigating the workspace"],
+  },
+  {
+    icon: Database,
+    title: "Integrations",
+    desc: "Step-by-step guides for every supported ad platform, data warehouse, and third-party connection.",
+    color: CYAN,
+    articles: ["Connect Google Ads", "Connect TikTok Ads", "Connect DV360", "Export to BigQuery", "CSV import guide"],
+  },
+  {
+    icon: FileText,
+    title: "Reports & Dashboards",
+    desc: "Build, schedule, and deliver branded reports. Customize metrics, layouts, and delivery settings.",
+    color: VIOLET,
+    articles: ["Creating a report template", "White-label branding setup", "Scheduling automated delivery", "Shareable dashboard links", "Custom metric formulas"],
+  },
+  {
+    icon: TrendingUp,
+    title: "Billing & Plans",
+    desc: "Manage your subscription, understand your invoice, upgrade or downgrade, and request refunds.",
+    color: GREEN,
+    articles: ["How billing works", "Upgrading your plan", "Annual vs. monthly pricing", "Startup program discounts", "Cancellation and data export"],
+  },
+  {
+    icon: Shield,
+    title: "Security & Permissions",
+    desc: "Role-based access, SSO configuration, audit logs, and data security practices explained.",
+    color: AMBER,
+    articles: ["Setting up role-based access", "Configuring SSO / SAML 2.0", "Reading your audit log", "OAuth token management", "GDPR data requests"],
+  },
+  {
+    icon: Brain,
+    title: "AI Features",
+    desc: "How anomaly detection, natural language analytics, and AI recommendations work under the hood.",
+    color: VIOLET,
+    articles: ["How anomaly detection works", "Asking questions in plain English", "Understanding AI budget alerts", "Setting custom alert thresholds", "AI insight confidence scores"],
+  },
+];
+
+function HelpCenterPage() {
+  const [search, setSearch] = useState("");
+  const [activeCategory, setActiveCategory] = useState<number | null>(null);
+
+  const allArticles = HELP_CATEGORIES.flatMap((c) => c.articles.map((a) => ({ article: a, category: c.title, color: c.color })));
+  const filtered = search.length > 1
+    ? allArticles.filter((a) => a.article.toLowerCase().includes(search.toLowerCase()) || a.category.toLowerCase().includes(search.toLowerCase()))
+    : [];
+
+  return (
+    <div className="bg-white min-h-screen pt-28">
+      {/* Header */}
+      <section className="bg-[#0B1728] px-6 pt-10 pb-20 text-center">
+        <div className="max-w-2xl mx-auto">
+          <Badge color={BLUE}><HelpCircle size={10} /> Help Center</Badge>
+          <h1 className="mt-5 text-4xl md:text-5xl font-bold text-white leading-tight">
+            How can we help you?
+          </h1>
+          <p className="mt-4 text-[#94B8D8]">
+            Search our documentation, or browse by category below.
+          </p>
+          <div className="mt-8 relative max-w-lg mx-auto">
+            <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6B8DAE]" />
+            <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search articles — e.g. 'connect Google Ads', 'white-label reports'..."
+              className="w-full bg-[#0F2038] border border-[rgba(74,143,224,0.25)] rounded-xl pl-11 pr-4 py-3.5 text-sm text-[#E8F0FA] placeholder-[#4A6B8A] focus:outline-none focus:border-[#4A8FE0] transition-colors"
+            />
+          </div>
+          {filtered.length > 0 && (
+            <div className="mt-3 bg-[#0F2038] border border-[rgba(74,143,224,0.2)] rounded-xl text-left max-w-lg mx-auto overflow-hidden">
+              {filtered.slice(0, 6).map((r) => (
+                <div key={r.article} className="flex items-center gap-3 px-4 py-3 hover:bg-[#162235] cursor-pointer border-b border-[rgba(74,143,224,0.08)] last:border-0 transition-colors">
+                  <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: r.color }} />
+                  <span className="text-sm text-[#E8F0FA]">{r.article}</span>
+                  <span className="ml-auto text-[10px] text-[#4A6B8A] shrink-0">{r.category}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Category grid */}
+      <section className="bg-white py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {HELP_CATEGORIES.map((cat, i) => (
+              <div
+                key={cat.title}
+                className={cn(
+                  "border rounded-2xl overflow-hidden transition-all cursor-pointer",
+                  activeCategory === i
+                    ? "border-blue-200 shadow-lg shadow-blue-50"
+                    : "border-slate-200 hover:border-slate-300 hover:shadow-md hover:shadow-slate-100"
+                )}
+                onClick={() => setActiveCategory(activeCategory === i ? null : i)}
+              >
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ background: `${cat.color}10` }}>
+                      <cat.icon size={20} style={{ color: cat.color }} />
+                    </div>
+                    <ChevronDown
+                      size={14}
+                      className={cn("text-slate-400 transition-transform mt-1", activeCategory === i && "rotate-180")}
+                    />
+                  </div>
+                  <h3 className="font-bold text-slate-900 mb-2">{cat.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">{cat.desc}</p>
+                </div>
+                <AnimatePresence>
+                  {activeCategory === i && (
+                    <motion.div
+                      initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="bg-[#F7F8FC] border-t border-slate-100 px-5 py-3 space-y-0.5">
+                        {cat.articles.map((a) => (
+                          <div key={a} className="flex items-center gap-2.5 py-2 hover:text-[#4A8FE0] cursor-pointer group transition-colors">
+                            <ChevronRight size={11} className="text-slate-300 group-hover:text-[#4A8FE0] transition-colors shrink-0" />
+                            <span className="text-sm text-slate-600 group-hover:text-[#4A8FE0] transition-colors">{a}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Popular articles */}
+      <section className="bg-[#F7F8FC] border-y border-slate-100 py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <SectionLabel>Most read</SectionLabel>
+            <h2 className="text-2xl font-bold text-slate-900">Popular articles</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {[
+              { title: "How to connect Meta Ads in 5 minutes",         cat: "Getting Started",  time: "3 min read" },
+              { title: "Setting up white-label reports for clients",    cat: "Reports",          time: "5 min read" },
+              { title: "Understanding cross-platform attribution",      cat: "AI Features",      time: "7 min read" },
+              { title: "Exporting normalized data to BigQuery",         cat: "Integrations",     time: "6 min read" },
+              { title: "How anomaly detection thresholds work",         cat: "AI Features",      time: "4 min read" },
+              { title: "Configuring SSO with Okta or Azure AD",        cat: "Security",         time: "5 min read" },
+              { title: "Building a custom blended ROAS metric",        cat: "Reports",          time: "4 min read" },
+              { title: "Migrating from Supermetrics to Cerebro",       cat: "Getting Started",  time: "8 min read" },
+            ].map((a) => (
+              <div
+                key={a.title}
+                className="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-4 py-3.5 hover:border-blue-200 hover:shadow-sm transition-all cursor-pointer group"
+              >
+                <BookOpen size={13} className="text-[#4A8FE0] shrink-0" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm text-slate-800 group-hover:text-[#4A8FE0] transition-colors leading-tight">{a.title}</p>
+                  <p className="text-[10px] text-slate-400 mt-0.5">{a.cat} · {a.time}</p>
+                </div>
+                <ArrowRight size={12} className="text-slate-300 group-hover:text-[#4A8FE0] transition-colors shrink-0" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact support */}
+      <section className="bg-[#0B1728] py-16 px-6">
+        <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-4">
+          {[
+            { icon: Mail,       title: "Email support",       desc: "Respond within 1 business day on all plans.", action: "connect@activ8.digital", href: "mailto:connect@activ8.digital" },
+            { icon: HelpCircle, title: "Priority support",    desc: "4-hour response for Growth and Enterprise plans.", action: "Included in your plan", href: "/pricing" },
+            { icon: Users,      title: "Onboarding call",     desc: "Book a setup session with our solutions team.", action: "Book a session", href: "/contact" },
+          ].map((c) => (
+            <div key={c.title} className="bg-[#0F2038] border border-[rgba(74,143,224,0.15)] rounded-2xl p-5">
+              <div className="w-9 h-9 rounded-xl bg-[#4A8FE0]/10 flex items-center justify-center mb-4">
+                <c.icon size={16} className="text-[#4A8FE0]" />
+              </div>
+              <h3 className="font-semibold text-white mb-1.5 text-sm">{c.title}</h3>
+              <p className="text-xs text-[#6B8DAE] leading-relaxed mb-4">{c.desc}</p>
+              {c.href.startsWith("mailto") ? (
+                <a href={c.href} className="text-xs font-semibold text-[#4A8FE0] hover:underline">{c.action}</a>
+              ) : (
+                <NavLink to={c.href} className="text-xs font-semibold text-[#4A8FE0] hover:underline">{c.action}</NavLink>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// BLOG PAGE
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const BLOG_POSTS = [
+  {
+    slug: "ai-anomaly-detection-ad-spend",
+    category: "Product",
+    categoryColor: BLUE,
+    title: "How AI anomaly detection saved one agency $40k in a single month",
+    excerpt: "A performance agency running 18 client accounts detected a Meta bid strategy misconfiguration within 2 hours using Cerebro's anomaly alerts — before the weekly review cycle would have caught it.",
+    readTime: "5 min read",
+    date: "Jul 28, 2026",
+    featured: true,
+  },
+  {
+    slug: "cross-platform-attribution-guide",
+    category: "Data & Analytics",
+    categoryColor: CYAN,
+    title: "The definitive guide to cross-platform attribution in 2026",
+    excerpt: "Meta, Google, and TikTok all claim credit for the same conversion. Here's how to build an attribution model that actually reflects reality — and why the platform numbers will never match.",
+    readTime: "9 min read",
+    date: "Jul 21, 2026",
+    featured: false,
+  },
+  {
+    slug: "white-label-reporting-agencies",
+    category: "Agency Tips",
+    categoryColor: VIOLET,
+    title: "White-label reporting: how to deliver client reports that build trust",
+    excerpt: "The difference between a report that retains a client and one that loses them isn't the data — it's the presentation. A playbook for agencies building automated, branded reporting.",
+    readTime: "6 min read",
+    date: "Jul 14, 2026",
+    featured: false,
+  },
+  {
+    slug: "etl-pipeline-marketing-teams",
+    category: "Data & Analytics",
+    categoryColor: CYAN,
+    title: "Why marketing teams need an ETL pipeline — and how to get one without an engineer",
+    excerpt: "ETL (Extract, Transform, Load) used to require a dedicated data engineer. In 2026, marketing-specific ETL is self-serve. Here's what it is, why it matters, and how Cerebro implements it.",
+    readTime: "7 min read",
+    date: "Jul 7, 2026",
+    featured: false,
+  },
+  {
+    slug: "tiktok-roas-benchmarks-2026",
+    category: "Data & Analytics",
+    categoryColor: CYAN,
+    title: "TikTok Ads ROAS benchmarks for 2026: what good looks like by industry",
+    excerpt: "Aggregated from Cerebro workspaces managing over $400M in TikTok spend. ROAS benchmarks by vertical, objective, and creative format — with context on why TikTok attribution differs from Meta.",
+    readTime: "8 min read",
+    date: "Jun 30, 2026",
+    featured: false,
+  },
+  {
+    slug: "saas-marketing-attribution",
+    category: "Customer Stories",
+    categoryColor: GREEN,
+    title: "How a SaaS team used Cerebro to attribute $9,900 in recovered weekly revenue",
+    excerpt: "By identifying that Google Brand Search was impression-share constrained at 6.2x ROAS, one team reallocated $1,600/week and unlocked nearly $10k in attributed revenue — in a single optimization cycle.",
+    readTime: "4 min read",
+    date: "Jun 23, 2026",
+    featured: false,
+  },
+  {
+    slug: "google-for-startups-application",
+    category: "Company",
+    categoryColor: AMBER,
+    title: "Cerebro dNANO joins the Google for Startups Cloud Program",
+    excerpt: "We are proud to announce that Cerebro dNANO has been accepted into the Google for Startups Cloud Program. What it means for our infrastructure roadmap, and what's next.",
+    readTime: "3 min read",
+    date: "Jun 16, 2026",
+    featured: false,
+  },
+];
+
+const BLOG_CATEGORIES = ["All", "Product", "Data & Analytics", "Agency Tips", "Customer Stories", "Company"];
+
+function BlogPage() {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const featured = BLOG_POSTS.find((p) => p.featured)!;
+  const rest = BLOG_POSTS.filter((p) => !p.featured && (activeCategory === "All" || p.category === activeCategory));
+
+  return (
+    <div className="bg-white min-h-screen pt-28">
+      {/* Header */}
+      <section className="bg-white px-6 pb-14 text-center">
+        <div className="max-w-2xl mx-auto">
+          <Badge color={BLUE}><BookOpen size={10} /> Blog</Badge>
+          <h1 className="mt-5 text-4xl md:text-5xl font-bold text-slate-900 leading-tight tracking-tight">
+            Marketing intelligence, explained
+          </h1>
+          <p className="mt-5 text-lg text-slate-500">
+            Guides, benchmarks, and product updates from the Cerebro team.
+          </p>
+        </div>
+      </section>
+
+      {/* Featured post */}
+      <section className="bg-[#F7F8FC] border-y border-slate-100 py-12 px-6">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-5">Featured</p>
+          <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-slate-100 transition-all cursor-pointer group">
+            <div className="grid md:grid-cols-5">
+              {/* Left — color block */}
+              <div
+                className="md:col-span-2 min-h-[180px] flex items-center justify-center p-8"
+                style={{ background: `linear-gradient(135deg, ${BLUE}18, ${VIOLET}18)` }}
+              >
+                <div className="w-16 h-16 rounded-2xl bg-[#4A8FE0]/15 border border-[#4A8FE0]/20 flex items-center justify-center">
+                  <Brain size={28} className="text-[#4A8FE0]" />
+                </div>
+              </div>
+              {/* Right — content */}
+              <div className="md:col-span-3 p-8 flex flex-col justify-center">
+                <div className="flex items-center gap-2 mb-3">
+                  <span
+                    className="text-[10px] font-semibold px-2.5 py-1 rounded-full"
+                    style={{ color: featured.categoryColor, background: `${featured.categoryColor}10` }}
+                  >
+                    {featured.category}
+                  </span>
+                  <span className="text-xs text-slate-400">{featured.date} · {featured.readTime}</span>
+                </div>
+                <h2 className="text-xl font-bold text-slate-900 leading-snug mb-3 group-hover:text-[#4A8FE0] transition-colors">
+                  {featured.title}
+                </h2>
+                <p className="text-sm text-slate-500 leading-relaxed mb-5">{featured.excerpt}</p>
+                <span className="flex items-center gap-1.5 text-sm font-semibold text-[#4A8FE0]">
+                  Read article <ArrowRight size={13} />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Category filter + post grid */}
+      <section className="bg-white py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-wrap gap-2 mb-10">
+            {BLOG_CATEGORIES.map((c) => (
+              <button
+                key={c}
+                onClick={() => setActiveCategory(c)}
+                className={cn(
+                  "px-3.5 py-1.5 rounded-lg text-sm font-medium border transition-all",
+                  activeCategory === c
+                    ? "text-white border-transparent"
+                    : "bg-white border-slate-200 text-slate-600 hover:border-slate-300"
+                )}
+                style={activeCategory === c ? { background: BLUE } : {}}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {rest.map((post) => (
+              <div
+                key={post.slug}
+                className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-lg hover:shadow-slate-100 hover:border-slate-300 transition-all cursor-pointer group flex flex-col"
+              >
+                <div
+                  className="h-32 flex items-center justify-center"
+                  style={{ background: `linear-gradient(135deg, ${post.categoryColor}10, ${post.categoryColor}06)` }}
+                >
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center"
+                    style={{ background: `${post.categoryColor}15`, border: `1px solid ${post.categoryColor}20` }}
+                  >
+                    <BookOpen size={18} style={{ color: post.categoryColor }} />
+                  </div>
+                </div>
+                <div className="p-5 flex flex-col flex-1">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span
+                      className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
+                      style={{ color: post.categoryColor, background: `${post.categoryColor}10` }}
+                    >
+                      {post.category}
+                    </span>
+                    <span className="text-[10px] text-slate-400">{post.readTime}</span>
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-[#4A8FE0] transition-colors flex-1">
+                    {post.title}
+                  </h3>
+                  <p className="text-xs text-slate-500 leading-relaxed mb-4 line-clamp-3">{post.excerpt}</p>
+                  <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+                    <span className="text-[10px] text-slate-400">{post.date}</span>
+                    <span className="flex items-center gap-1 text-xs font-semibold text-[#4A8FE0]">
+                      Read <ArrowRight size={11} />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+            {rest.length === 0 && (
+              <div className="col-span-3 text-center py-16 text-slate-400 text-sm">
+                No posts in this category yet.
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="bg-[#0B1728] py-16 px-6">
+        <div className="max-w-xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-white mb-3">Stay current on ad intelligence</h2>
+          <p className="text-slate-400 mb-7 text-sm">New benchmarks, product updates, and agency guides — once or twice a month. No spam.</p>
+          <div className="flex gap-2 max-w-sm mx-auto">
+            <input
+              placeholder="your@agency.com"
+              className="flex-1 bg-[#0F2038] border border-[rgba(74,143,224,0.2)] rounded-xl px-4 py-2.5 text-sm text-[#E8F0FA] placeholder-[#4A6B8A] focus:outline-none focus:border-[#4A8FE0] transition-colors"
+            />
+            <button className="bg-[#4A8FE0] hover:bg-[#3A7FD0] text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm shrink-0">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// ROADMAP PAGE
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const ROADMAP_COLUMNS = [
+  {
+    status: "live",
+    label: "Now — Live",
+    dotColor: "#22C55E",
+    cardBg: "bg-white",
+    cardBorder: "border-slate-200",
+    iconBg: "#22C55E",
+    items: [
+      { icon: Database,    title: "Automated ETL Pipeline",       desc: "Real-time ingestion from Meta, Google, TikTok, and DV360 with 15-minute refresh cycles and 36-month backfill on first connect.", tag: "Core" },
+      { icon: Brain,       title: "AI Anomaly Detection",          desc: "Statistical baseline models that flag CPA spikes, budget bleeds, and CTR drops the moment they occur — with plain-English root cause.", tag: "AI" },
+      { icon: FileText,    title: "White-label PDF Reports",       desc: "Fully branded reports auto-generated on any schedule and delivered to any recipient via email or Slack.", tag: "Reporting" },
+      { icon: BarChart2,   title: "Cross-Platform Dashboard",      desc: "Unified ROAS, spend, impressions, and conversion view across all connected accounts with drill-down to campaign and ad level.", tag: "Analytics" },
+      { icon: Bell,        title: "Slack & Email Alerts",          desc: "Configurable threshold-based alerts with custom conditions delivered to Slack channels or any email address in real time.", tag: "Alerting" },
+      { icon: Shield,      title: "Role-Based Access Control",     desc: "Per-workspace, per-account permissions with SSO via SAML 2.0 and immutable audit logs for every action.", tag: "Security" },
+      { icon: Globe,       title: "Multi-Platform Normalization",  desc: "Automatic schema unification across platforms — same metric names, same attribution definitions, same currency.", tag: "Core" },
+      { icon: Users,       title: "Team Workspaces",              desc: "Isolated client workspaces with configurable branding, separate user management, and independent data access.", tag: "Collaboration" },
+    ],
+  },
+  {
+    status: "soon",
+    label: "Coming Soon — Q3/Q4 2026",
+    dotColor: BLUE,
+    cardBg: "bg-[#F7F8FC]",
+    cardBorder: "border-slate-200",
+    iconBg: BLUE,
+    items: [
+      { icon: GitBranch,  title: "Creative Intelligence",          desc: "Automatic creative performance scoring across platforms — identify winning hooks, formats, and CTAs before fatigue sets in.", tag: "AI", quarter: "Q3 2026" },
+      { icon: Workflow,   title: "Automated Budget Rules",         desc: "Conditional rules that pause underperformers, scale winners, and enforce spend caps — executed automatically on your schedule.", tag: "Automation", quarter: "Q3 2026" },
+      { icon: Globe,      title: "Incrementality Testing",         desc: "Built-in holdout and geo experiments to measure true campaign incrementality — not just modeled attribution.", tag: "Analytics", quarter: "Q4 2026" },
+      { icon: Brain,      title: "Predictive Forecasting",         desc: "ML-powered revenue and conversion forecasts at the campaign level with confidence intervals and scenario modeling.", tag: "AI", quarter: "Q4 2026" },
+      { icon: Users,      title: "Audience Overlap Analysis",      desc: "Cross-platform frequency management and audience overlap visualization from one unified view.", tag: "Analytics", quarter: "Q4 2026" },
+      { icon: Code2,      title: "Custom Dashboards API",          desc: "Build fully custom dashboards with your own metrics, calculations, and visualizations via a public GraphQL API.", tag: "Developer", quarter: "Q4 2026" },
+    ],
+  },
+  {
+    status: "future",
+    label: "Future — 2027 & Beyond",
+    dotColor: VIOLET,
+    cardBg: "bg-[#F7F8FC]",
+    cardBorder: "border-slate-200",
+    iconBg: VIOLET,
+    items: [
+      { icon: Brain,       title: "Autonomous Campaign Management", desc: "AI-driven bid and budget adjustments executed without manual approval for pre-defined rule sets — a full co-pilot mode.", tag: "AI" },
+      { icon: Globe,       title: "Retail Media Network Support",   desc: "Native connectors for Amazon DSP, Walmart Connect, and Instacart Ads unified with your paid social and search data.", tag: "Integrations" },
+      { icon: Activity,    title: "Real-Time Competitive Intel",    desc: "Auction-level spend signals and creative trends from your competitive set surfaced directly in your workspace.", tag: "Analytics" },
+      { icon: BarChart2,   title: "Full-Funnel Revenue Attribution",desc: "Closed-loop attribution from first ad impression to CRM-confirmed revenue with Salesforce and HubSpot sync.", tag: "Analytics" },
+      { icon: Sparkles,    title: "AI Report Narration",            desc: "Natural language summaries generated automatically for every report section — editable before delivery.", tag: "AI" },
+      { icon: Gauge,       title: "Multi-Currency Treasury View",   desc: "Agency P&L across all client accounts in any currency with real-time FX normalization and margin reporting.", tag: "Finance" },
+    ],
+  },
+];
+
+function RoadmapPage() {
+  const { open: openDemo } = useDemoModal();
+
+  return (
+    <div className="bg-white min-h-screen pt-28">
+      {/* Header */}
+      <section className="bg-white px-6 pb-16 text-center">
+        <div className="max-w-2xl mx-auto">
+          <Badge color={BLUE}><Map size={10} /> Product Roadmap</Badge>
+          <h1 className="mt-5 text-4xl md:text-5xl font-bold text-slate-900 leading-tight tracking-tight">
+            What we're building and when
+          </h1>
+          <p className="mt-5 text-lg text-slate-500">
+            A transparent view of what's live, what's shipping next, and the longer-term vision for Cerebro dNANO.
+          </p>
+          <div className="mt-4 flex items-center justify-center gap-6">
+            {ROADMAP_COLUMNS.map((col) => (
+              <div key={col.status} className="flex items-center gap-2 text-sm text-slate-500">
+                <div className="w-2 h-2 rounded-full" style={{ background: col.dotColor }} />
+                {col.label.split(" — ")[0]}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Roadmap columns */}
+      <section className="bg-[#F7F8FC] border-y border-slate-100 py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-6 items-start">
+            {ROADMAP_COLUMNS.map((col) => (
+              <div key={col.status}>
+                <div className="flex items-center gap-2 mb-5 px-1">
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: col.dotColor }} />
+                  <span className="text-sm font-semibold text-slate-900">{col.label}</span>
+                </div>
+                <div className="space-y-3">
+                  {col.items.map((item) => (
+                    <div
+                      key={item.title}
+                      className={cn("border rounded-xl p-4 transition-all hover:shadow-sm", col.cardBg, col.cardBorder)}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div
+                          className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                          style={{ background: `${col.iconBg}12` }}
+                        >
+                          <item.icon size={14} style={{ color: col.iconBg }} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-2 mb-1">
+                            <p className="text-sm font-semibold text-slate-900 leading-tight">{item.title}</p>
+                            <span
+                              className="text-[9px] font-semibold px-1.5 py-0.5 rounded-full shrink-0"
+                              style={{ color: col.iconBg, background: `${col.iconBg}10` }}
+                            >
+                              {item.tag}
+                            </span>
+                          </div>
+                          <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
+                          {"quarter" in item && item.quarter && (
+                            <p className="mt-1.5 text-[10px] font-medium" style={{ color: col.iconBg }}>
+                              Target: {item.quarter}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Feature request CTA */}
+      <section className="bg-white py-16 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-[#F7F8FC] border border-slate-200 rounded-2xl p-7">
+              <div className="w-10 h-10 rounded-xl bg-[#4A8FE0]/10 flex items-center justify-center mb-4">
+                <Sparkles size={18} className="text-[#4A8FE0]" />
+              </div>
+              <h3 className="font-bold text-slate-900 text-lg mb-2">Request a feature</h3>
+              <p className="text-sm text-slate-500 leading-relaxed mb-5">
+                Every item on this roadmap started as a customer request. If you need something specific, tell us — we prioritize based on real demand.
+              </p>
+              <a
+                href="mailto:connect@activ8.digital"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#4A8FE0] hover:underline"
+              >
+                connect@activ8.digital <ArrowRight size={13} />
+              </a>
+            </div>
+            <div className="bg-[#0B1728] border border-[rgba(74,143,224,0.15)] rounded-2xl p-7">
+              <div className="w-10 h-10 rounded-xl bg-[#4A8FE0]/10 flex items-center justify-center mb-4">
+                <Play size={18} className="text-[#4A8FE0]" />
+              </div>
+              <h3 className="font-bold text-white text-lg mb-2">See what's already live</h3>
+              <p className="text-sm text-[#94B8D8] leading-relaxed mb-5">
+                Every feature in the "Now" column is live and available in your trial. Book a 30-minute walkthrough to see the full platform.
+              </p>
+              <button
+                onClick={openDemo}
+                className="inline-flex items-center gap-2 bg-[#4A8FE0] hover:bg-[#3A7FD0] text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm"
+              >
+                Book a demo <ArrowRight size={13} />
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -4259,6 +4906,9 @@ export const router = createBrowserRouter([
       { path: "contact",  Component: ContactPage },
       { path: "docs",     Component: DocsPage },
       { path: "faq",      Component: FAQPage },
+      { path: "help",     Component: HelpCenterPage },
+      { path: "blog",     Component: BlogPage },
+      { path: "roadmap",  Component: RoadmapPage },
       { path: "*",        Component: NotFound },
     ],
   },

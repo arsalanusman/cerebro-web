@@ -1,7 +1,7 @@
 
-  # Complete due diligence (Copy)
+  # Cerebro Media
 
-  This is a code bundle for Complete due diligence (Copy). The original project is available at https://www.figma.com/design/JX3rPYe5HpkBuRsvqkDsxb/Complete-due-diligence--Copy-.
+  This is a code bundle for Cerebro Media. The original project is available at https://www.figma.com/design/JX3rPYe5HpkBuRsvqkDsxb/Cerebro-Media.
 
   ## Running the code
 
