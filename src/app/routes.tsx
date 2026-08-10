@@ -12,6 +12,12 @@ import hierarchyTabImg from "@/imports/image-10.png";
 import aiInsightsTabImg from "@/imports/image-11.png";
 import reportsTabImg from "@/imports/image-12.png";
 import hierarchyReportImg from "@/imports/image-13.png";
+import logoMeta from "@/imports/meta_icon.png";
+import logoGoogle from "@/imports/google_png.png";
+import logoTikTok from "@/imports/tiktok_logo_png.png";
+import logoDV360 from "@/imports/dv360_logo.png";
+import logoLinkedIn from "@/imports/linkedin_ong.png";
+import logoSnapchat from "@/imports/snapchat_png.png";
 import { useState, useEffect, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -668,13 +674,52 @@ function Root() {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 const PLATFORM_LOGOS = [
-  { name: "Meta Ads", color: "#1877F2", letter: "f" },
-  { name: "Google Ads", color: "#4285F4", letter: "G" },
-  { name: "TikTok Ads", color: "#010101", letter: "T" },
-  { name: "DV360", color: "#34A853", letter: "D" },
-  { name: "LinkedIn", color: "#0A66C2", letter: "in" },
-  { name: "Snapchat", color: "#FFFC00", letter: "S", dark: true },
+  { name: "Meta Ads",   img: logoMeta,     color: "#1877F2", bg: "#fff" },
+  { name: "Google Ads", img: logoGoogle,   color: "#4285F4", bg: "#fff" },
+  { name: "TikTok Ads", img: logoTikTok,   color: "#010101", bg: "#fff" },
+  { name: "DV360",      img: logoDV360,    color: "#34A853", bg: "#fff" },
+  { name: "LinkedIn",   img: logoLinkedIn, color: "#0A66C2", bg: "#fff" },
+  { name: "Snapchat",   img: logoSnapchat, color: "#FFFC00", bg: "#FFFC00" },
 ];
+
+const PLATFORM_LOGO_MAP: Record<string, string> = {
+  "Meta":          logoMeta,
+  "Meta Ads":      logoMeta,
+  "Google":        logoGoogle,
+  "Google Ads":    logoGoogle,
+  "TikTok":        logoTikTok,
+  "TikTok Ads":    logoTikTok,
+  "DV360":         logoDV360,
+  "LinkedIn":      logoLinkedIn,
+  "LinkedIn Ads":  logoLinkedIn,
+  "Snapchat":      logoSnapchat,
+  "Snapchat Ads":  logoSnapchat,
+};
+
+function PlatformIcon({ name, size = 28, bg = "#fff", color = "#888", letter = "?" }: {
+  name: string; size?: number; bg?: string; color?: string; letter?: string;
+}) {
+  const logo = PLATFORM_LOGO_MAP[name];
+  const radius = Math.round(size * 0.3);
+  if (logo) {
+    return (
+      <div
+        className="shrink-0 flex items-center justify-center overflow-hidden"
+        style={{ width: size, height: size, borderRadius: radius, background: bg }}
+      >
+        <img src={logo} alt={name} style={{ width: size * 0.7, height: size * 0.7, objectFit: "contain" }} />
+      </div>
+    );
+  }
+  return (
+    <div
+      className="shrink-0 flex items-center justify-center text-white font-bold"
+      style={{ width: size, height: size, borderRadius: radius, background: color, fontSize: size * 0.32 }}
+    >
+      {letter}
+    </div>
+  );
+}
 
 const MODULE_CARDS = [
   { icon: BarChart2, label: "Unified Reporting", color: BLUE },
@@ -752,12 +797,12 @@ const ETL_STAGES = [
 ];
 
 const ETL_PLATFORMS = [
-  { name: "Meta", color: "#1877F2", letter: "f" },
-  { name: "Google", color: "#4285F4", letter: "G" },
-  { name: "TikTok", color: "#FF0050", letter: "T" },
-  { name: "DV360", color: "#34A853", letter: "D" },
-  { name: "LinkedIn", color: "#0A66C2", letter: "in" },
-  { name: "Snapchat", color: "#FFFC00", letter: "S", dark: true },
+  { name: "Meta",     color: "#1877F2", bg: "#fff" },
+  { name: "Google",   color: "#4285F4", bg: "#fff" },
+  { name: "TikTok",   color: "#FF0050", bg: "#fff" },
+  { name: "DV360",    color: "#34A853", bg: "#fff" },
+  { name: "LinkedIn", color: "#0A66C2", bg: "#fff" },
+  { name: "Snapchat", color: "#FFFC00", bg: "#FFFC00" },
 ];
 
 const ETL_OUTPUTS = [
@@ -832,12 +877,7 @@ function EtlDiagram() {
             <p className="text-[9px] font-semibold text-[#4A8FE0]/60 uppercase tracking-widest mb-0.5">Sources</p>
             {ETL_PLATFORMS.map((p) => (
               <div key={p.name} className="flex items-center gap-2 bg-[#0B1728] border border-[rgba(74,143,224,0.1)] rounded-lg px-2.5 py-1.5">
-                <div
-                  className="w-4 h-4 rounded flex items-center justify-center text-[7px] font-black shrink-0"
-                  style={{ background: p.color, color: p.dark ? "#000" : "#fff" }}
-                >
-                  {p.letter}
-                </div>
+                <PlatformIcon name={p.name} size={16} bg={p.bg} color={p.color} />
                 <span className="text-[11px] text-[#94B8D8]">{p.name}</span>
               </div>
             ))}
@@ -995,15 +1035,15 @@ function PlatformTableMock() {
           </thead>
           <tbody>
             {[
-              { platform: "Meta Ads", color: "#1877F2", letter: "f", spend: "$58,400", imp: "4.2M", roas: "4.8x", cpa: "$14.20", conv: "4,113", good: true },
-              { platform: "Google Ads", color: "#4285F4", letter: "G", spend: "$41,200", imp: "2.8M", roas: "6.2x", cpa: "$8.40", conv: "4,905", good: true },
-              { platform: "TikTok Ads", color: "#010101", letter: "T", spend: "$22,100", imp: "8.1M", roas: "3.1x", cpa: "$22.80", conv: "969", good: false },
-              { platform: "DV360", color: "#34A853", letter: "D", spend: "$21,100", imp: "12.4M", roas: "2.4x", cpa: "$31.50", conv: "670", good: false },
+              { platform: "Meta Ads",   color: "#1877F2", spend: "$58,400", imp: "4.2M", roas: "4.8x", cpa: "$14.20", conv: "4,113", good: true },
+              { platform: "Google Ads", color: "#4285F4", spend: "$41,200", imp: "2.8M", roas: "6.2x", cpa: "$8.40",  conv: "4,905", good: true },
+              { platform: "TikTok Ads", color: "#010101", spend: "$22,100", imp: "8.1M", roas: "3.1x", cpa: "$22.80", conv: "969",   good: false },
+              { platform: "DV360",      color: "#34A853", spend: "$21,100", imp: "12.4M",roas: "2.4x", cpa: "$31.50", conv: "670",   good: false },
             ].map((r) => (
               <tr key={r.platform} className="border-b border-slate-50 hover:bg-slate-50 transition-colors">
                 <td className="py-2.5 pr-3">
                   <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 rounded flex items-center justify-center text-[9px] font-bold text-white" style={{ background: r.color }}>{r.letter}</div>
+                    <PlatformIcon name={r.platform} size={20} bg="#fff" color={r.color} />
                     <span className="text-slate-700 font-medium">{r.platform}</span>
                   </div>
                 </td>
@@ -1212,7 +1252,7 @@ function ShowcaseCampaigns() {
               <td className="px-4 py-2.5 text-[10px] font-medium text-slate-800">{r.name}</td>
               <td className="px-4 py-2.5">
                 <span className="flex items-center gap-1.5 text-[10px] text-slate-500">
-                  <span className="w-3 h-3 rounded flex items-center justify-center text-[7px] font-bold text-white" style={{ background: r.plc }}>{r.plat[0]}</span>
+                  <PlatformIcon name={r.plat} size={12} bg="#fff" color={r.plc} />
                   {r.plat}
                 </span>
               </td>
@@ -1482,7 +1522,7 @@ const darkShowcaseAreaData = [
 
 function DarkPlatformShowcase() {
   return (
-    <section className="bg-[#0B0F1A] py-24 px-6">
+    <section className="bg-[#0B1728] py-24 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
@@ -1518,21 +1558,16 @@ function DarkPlatformShowcase() {
 
           {/* Platform logos column */}
           <div className="absolute top-1/2 -translate-y-1/2" style={{ left: 0, width: 158 }}>
-            <div className="bg-[#0D1117] border border-white/[0.08] rounded-2xl p-4 flex flex-col gap-3">
+            <div className="bg-[#0F2038] border border-white/[0.08] rounded-2xl p-4 flex flex-col gap-3">
               {[
-                { name: "Meta", color: "#1877F2", letter: "f" },
-                { name: "Google", color: "#4285F4", letter: "G" },
-                { name: "TikTok", color: "#FF0050", letter: "T" },
-                { name: "DV360", color: "#34A853", letter: "D" },
-                { name: "LinkedIn", color: "#0A66C2", letter: "in" },
+                { name: "Meta",     color: "#1877F2" },
+                { name: "Google",   color: "#4285F4" },
+                { name: "TikTok",   color: "#FF0050" },
+                { name: "DV360",    color: "#34A853" },
+                { name: "LinkedIn", color: "#0A66C2" },
               ].map((p) => (
                 <div key={p.name} className="flex items-center gap-2.5">
-                  <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold text-white shrink-0"
-                    style={{ background: p.color }}
-                  >
-                    {p.letter}
-                  </div>
+                  <PlatformIcon name={p.name} size={32} bg="#fff" color={p.color} />
                   <span className="text-xs text-slate-400">{p.name}</span>
                 </div>
               ))}
@@ -1544,7 +1579,7 @@ function DarkPlatformShowcase() {
             className="absolute top-1/2 flex flex-col items-center gap-2"
             style={{ left: "40%", transform: "translate(-50%, -50%)" }}
           >
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-2xl shadow-blue-500/40 ring-4 ring-[#0B0F1A]">
+            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-2xl shadow-blue-500/40 ring-4 ring-[#0B1728]">
               <Sparkles size={30} className="text-white" />
             </div>
             <span className="text-[10px] font-semibold text-white/40 text-center leading-tight">
@@ -1558,7 +1593,7 @@ function DarkPlatformShowcase() {
             style={{ left: "52%", right: 0 }}
           >
             {/* Card 1: Performance Report */}
-            <div className="bg-[#0D1117] border border-white/[0.08] rounded-2xl p-4 flex flex-col">
+            <div className="bg-[#0F2038] border border-white/[0.08] rounded-2xl p-4 flex flex-col">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-1.5">
                   <BarChart2 size={12} className="text-blue-400" />
@@ -1593,7 +1628,7 @@ function DarkPlatformShowcase() {
             </div>
 
             {/* Card 2: Data Pipeline */}
-            <div className="bg-[#0D1117] border border-white/[0.08] rounded-2xl p-4 flex flex-col">
+            <div className="bg-[#0F2038] border border-white/[0.08] rounded-2xl p-4 flex flex-col">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-1.5">
                   <Database size={12} className="text-cyan-400" />
@@ -1625,7 +1660,7 @@ function DarkPlatformShowcase() {
             </div>
 
             {/* Card 3: Cerebro AI */}
-            <div className="bg-[#0D1117] border border-white/[0.08] rounded-2xl p-4 flex flex-col">
+            <div className="bg-[#0F2038] border border-white/[0.08] rounded-2xl p-4 flex flex-col">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-1.5">
                   <Brain size={12} className="text-violet-400" />
@@ -1646,7 +1681,7 @@ function DarkPlatformShowcase() {
             </div>
 
             {/* Card 4: Budget Pacing */}
-            <div className="bg-[#0D1117] border border-white/[0.08] rounded-2xl p-4 flex flex-col">
+            <div className="bg-[#0F2038] border border-white/[0.08] rounded-2xl p-4 flex flex-col">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-1.5">
                   <Gauge size={12} className="text-green-400" />
@@ -1692,14 +1727,14 @@ function DarkPlatformShowcase() {
           {/* Platform pills */}
           <div className="flex flex-wrap gap-2">
             {[
-              { name: "Meta", color: "#1877F2", letter: "f" },
-              { name: "Google", color: "#4285F4", letter: "G" },
-              { name: "TikTok", color: "#FF0050", letter: "T" },
-              { name: "DV360", color: "#34A853", letter: "D" },
-              { name: "LinkedIn", color: "#0A66C2", letter: "in" },
+              { name: "Meta",     color: "#1877F2" },
+              { name: "Google",   color: "#4285F4" },
+              { name: "TikTok",   color: "#FF0050" },
+              { name: "DV360",    color: "#34A853" },
+              { name: "LinkedIn", color: "#0A66C2" },
             ].map((p) => (
-              <div key={p.name} className="flex items-center gap-2 bg-[#0D1117] border border-white/[0.08] rounded-full px-3 py-1.5">
-                <div className="w-5 h-5 rounded flex items-center justify-center text-[9px] font-bold text-white" style={{ background: p.color }}>{p.letter}</div>
+              <div key={p.name} className="flex items-center gap-2 bg-[#0F2038] border border-white/[0.08] rounded-full px-3 py-1.5">
+                <PlatformIcon name={p.name} size={20} bg="#fff" color={p.color} />
                 <span className="text-xs text-slate-400">{p.name}</span>
               </div>
             ))}
@@ -1711,7 +1746,7 @@ function DarkPlatformShowcase() {
               { icon: Brain, color: VIOLET, title: "Cerebro AI", desc: "Plain-English summaries and root cause analysis on demand." },
               { icon: Gauge, color: GREEN, title: "Budget Pacing", desc: "$85,200 of $150,000 spent · On track · 14 days left." },
             ].map((c) => (
-              <div key={c.title} className="bg-[#0D1117] border border-white/[0.08] rounded-xl p-4">
+              <div key={c.title} className="bg-[#0F2038] border border-white/[0.08] rounded-xl p-4">
                 <div className="w-7 h-7 rounded-lg flex items-center justify-center mb-3" style={{ background: `${c.color}20` }}>
                   <c.icon size={13} style={{ color: c.color }} />
                 </div>
@@ -1882,17 +1917,9 @@ function Home() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-8">
             {PLATFORM_LOGOS.map((p) => (
-              <div key={p.name} className="flex items-center gap-2.5 opacity-40 hover:opacity-80 transition-opacity">
-                <div
-                  className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold"
-                  style={{
-                    background: p.color,
-                    color: p.dark ? "#000" : "#fff",
-                  }}
-                >
-                  {p.letter}
-                </div>
-                <span className="text-sm font-medium text-slate-700">{p.name}</span>
+              <div key={p.name} className="flex items-center gap-3 opacity-50 hover:opacity-90 transition-opacity">
+                <PlatformIcon name={p.name} size={44} bg={p.bg} color={p.color} />
+                <span className="text-base font-medium text-slate-700">{p.name}</span>
               </div>
             ))}
           </div>
@@ -1900,65 +1927,82 @@ function Home() {
       </section>
 
       {/* ── Why Cerebro ── */}
-      <section className="bg-white py-20 px-6 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <SectionLabel>The problem we solve</SectionLabel>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
-              Marketing data is broken. We fix the infrastructure.
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                step: "01",
-                icon: AlertTriangle,
-                color: "#EF4444",
-                title: "The problem",
-                body: "Digital ad budgets are at record highs, but the tools for managing them haven't changed since 2015. Teams export CSVs from four platforms, paste them into spreadsheets, and manually reconcile numbers every week — a process that's slow, error-prone, and unscalable.",
-                note: "Avg. agency spends 8+ hrs/week on manual reporting",
-              },
-              {
-                step: "02",
-                icon: Database,
-                color: BLUE,
-                title: "Our solution",
-                body: "Cerebro is an AI-native ETL and intelligence platform built specifically for paid media. It connects every ad platform via official APIs, normalizes the data into a unified schema, and runs continuous AI analysis — all without a single line of code from your team.",
-                note: "First dashboard live in under 24 hours",
-              },
-              {
-                step: "03",
-                icon: TrendingUp,
-                color: GREEN,
-                title: "The business model",
-                body: "Self-serve SaaS on monthly or annual subscription, starting at $149/month. Agencies scale with the Growth plan at $399/month. Enterprise accounts are custom-priced. 14-day free trial, no credit card required, cancel any time.",
-                note: "Starter $149 · Growth $399 · Enterprise custom",
-              },
-            ].map((card) => (
-              <div
-                key={card.step}
-                className="relative bg-[#F7F8FC] border border-slate-200 rounded-2xl p-7 hover:border-slate-300 hover:shadow-md hover:shadow-slate-100 transition-all"
-              >
-                <span className="absolute top-5 right-6 text-4xl font-black text-slate-100 leading-none select-none">
-                  {card.step}
-                </span>
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
-                  style={{ background: `${card.color}10` }}
-                >
-                  <card.icon size={18} style={{ color: card.color }} />
-                </div>
-                <h3 className="font-bold text-slate-900 text-lg mb-3">{card.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed mb-5">{card.body}</p>
-                <div
-                  className="flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg"
-                  style={{ background: `${card.color}08`, color: card.color }}
-                >
-                  <Check size={11} />
-                  {card.note}
-                </div>
+      <section className="bg-white py-24 px-6 border-b border-slate-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+
+            {/* Left — bold problem statement */}
+            <div className="md:sticky md:top-28">
+              <SectionLabel>The problem we solve</SectionLabel>
+              <h2 className="mt-4 text-4xl md:text-5xl font-bold text-slate-900 leading-tight tracking-tight">
+                Marketing data is broken. <span className="text-[#4A8FE0]">We fix it.</span>
+              </h2>
+              <p className="mt-5 text-slate-500 text-base leading-relaxed">
+                Digital ad budgets are at record highs, but the tools haven't kept up. Teams still export CSVs, paste into spreadsheets, and manually reconcile numbers across four platforms every week.
+              </p>
+              <div className="mt-8 flex flex-col gap-4">
+                {[
+                  { value: "8+ hrs", label: "wasted per team, per week on manual reporting" },
+                  { value: "$40k+",  label: "average overspend caught per account in year one" },
+                  { value: "4–6",    label: "platforms with incompatible schemas to reconcile" },
+                ].map((s) => (
+                  <div key={s.label} className="flex items-center gap-4">
+                    <span className="text-2xl font-black text-slate-900 w-20 shrink-0">{s.value}</span>
+                    <span className="text-sm text-slate-500 leading-snug">{s.label}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Right — solution list */}
+            <div className="flex flex-col gap-4">
+              {[
+                {
+                  icon: RefreshCw,
+                  color: "#4A8FE0",
+                  title: "Automated ETL Pipeline",
+                  body: "Connect your ad accounts once via OAuth. Cerebro ingests, normalizes, and refreshes data from every platform every 15 minutes — no engineers, no manual exports.",
+                },
+                {
+                  icon: Database,
+                  color: "#22C55E",
+                  title: "Unified Cross-Platform Schema",
+                  body: "Meta, Google, TikTok, and DV360 speak different languages. Cerebro normalizes every metric, currency, and attribution window into one consistent dataset.",
+                },
+                {
+                  icon: Brain,
+                  color: "#818CF8",
+                  title: "AI Anomaly Detection",
+                  body: "Continuous statistical monitoring fires alerts the moment a CPA spikes, a budget bleeds, or CTR drops — with root-cause reasoning, not just a notification.",
+                },
+                {
+                  icon: FileText,
+                  color: "#F59E0B",
+                  title: "White-Label Automated Reports",
+                  body: "Branded PDF reports auto-generated on any schedule and delivered to any client — zero manual effort, fully customizable per workspace.",
+                },
+              ].map((item, i) => (
+                <div
+                  key={item.title}
+                  className="flex items-start gap-5 bg-[#F7F8FC] border border-slate-200 rounded-2xl p-6 hover:border-slate-300 hover:shadow-sm transition-all"
+                >
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5"
+                    style={{ background: `${item.color}12` }}
+                  >
+                    <item.icon size={17} style={{ color: item.color }} />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="text-[10px] font-bold text-slate-400 font-mono">0{i + 1}</span>
+                      <h3 className="text-[15px] font-bold text-slate-900">{item.title}</h3>
+                    </div>
+                    <p className="text-sm text-slate-500 leading-relaxed">{item.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
       </section>
@@ -2089,7 +2133,7 @@ function Home() {
           <div className="flex items-center justify-between h-[440px] w-full relative">
 
             {/* LEFT — Data Sources panel */}
-            <div className="bg-[#0c0e1e] flex flex-col gap-5 p-6 relative rounded-[20px] shrink-0 w-[220px] self-stretch border border-[rgba(74,143,224,0.12)]">
+            <div className="bg-[#0F2038] flex flex-col gap-5 p-6 relative rounded-[20px] shrink-0 w-[220px] self-stretch border border-[rgba(74,143,224,0.12)]">
               <div>
                 <p className="font-extrabold text-[14px] text-white uppercase tracking-wide">Data Sources</p>
                 <p className="font-medium text-[#64748b] text-[11px] mt-1">Social & Digital Platforms</p>
@@ -2097,18 +2141,23 @@ function Home() {
               <div className="h-px w-full bg-[rgba(74,143,224,0.12)]" />
               <div className="flex flex-col gap-3.5 w-full">
                 {[
-                  { label: "LinkedIn",        bg: "#0077b5" },
-                  { label: "Facebook",        bg: "#1877f2" },
-                  { label: "Instagram",       bg: "#e1306c" },
-                  { label: "X (Twitter)",     bg: "#000000" },
-                  { label: "YouTube",         bg: "#ff0000" },
-                  { label: "Websites / Blogs",bg: "#1E3A6B" },
-                  { label: "APIs & News",     bg: "#2D5090" },
+                  { label: "Google Ads",      name: "Google Ads",  color: "#4285F4" },
+                  { label: "Meta Ads",        name: "Meta Ads",    color: "#1877F2" },
+                  { label: "TikTok Ads",      name: "TikTok Ads",  color: "#010101" },
+                  { label: "DV360 Ads",       name: "DV360",       color: "#34A853" },
+                  { label: "LinkedIn Ads",    name: "LinkedIn Ads",color: "#0A66C2" },
+                  { label: "Snapchat Ads",    name: "Snapchat Ads",color: "#FFFC00" },
+                  { label: "Website Blogs",   name: "",            color: "#1E3A6B" },
+                  { label: "APIs & News",     name: "",            color: "#2D5090" },
                 ].map((s) => (
                   <div key={s.label} className="flex items-center gap-3">
-                    <div className="rounded-[6px] shrink-0 w-7 h-7 flex items-center justify-center" style={{ background: s.bg }}>
-                      <div className="w-2 h-2 rounded-sm bg-white/70" />
-                    </div>
+                    {s.name ? (
+                      <PlatformIcon name={s.name} size={28} bg="#fff" color={s.color} />
+                    ) : (
+                      <div className="rounded-[6px] shrink-0 w-7 h-7 flex items-center justify-center" style={{ background: s.color }}>
+                        <div className="w-2 h-2 rounded-sm bg-white/70" />
+                      </div>
+                    )}
                     <span className="font-medium text-[13px] text-white">{s.label}</span>
                   </div>
                 ))}
@@ -2158,7 +2207,7 @@ function Home() {
               <div className="flex items-center gap-3 w-full">
 
                 {/* EXTRACT */}
-                <div className="bg-[#0c0e1e] flex flex-col gap-5 h-[250px] px-5 py-6 rounded-[16px] flex-1 border border-[rgba(74,143,224,0.2)]"
+                <div className="bg-[#0F2038] flex flex-col gap-5 h-[250px] px-5 py-6 rounded-[16px] flex-1 border border-[rgba(74,143,224,0.2)]"
                   style={{ boxShadow: "0 8px 12px rgba(74,143,224,0.08)" }}>
                   <div className="flex flex-col gap-3 items-center w-full">
                     <p className="font-bold text-[14px] text-[#4A8FE0] text-center uppercase tracking-widest">EXTRACT</p>
@@ -2180,7 +2229,7 @@ function Home() {
                 <ChevronRight size={20} className="text-[#64748b] shrink-0" strokeWidth={2} />
 
                 {/* TRANSFORM */}
-                <div className="bg-[#0c0e1e] flex flex-col gap-5 h-[250px] px-5 py-6 rounded-[16px] flex-1 border border-[rgba(74,143,224,0.2)]"
+                <div className="bg-[#0F2038] flex flex-col gap-5 h-[250px] px-5 py-6 rounded-[16px] flex-1 border border-[rgba(74,143,224,0.2)]"
                   style={{ boxShadow: "0 8px 12px rgba(74,143,224,0.08)" }}>
                   <div className="flex flex-col gap-3 items-center w-full">
                     <p className="font-bold text-[14px] text-[#4A8FE0] text-center uppercase tracking-widest">TRANSFORM</p>
@@ -2202,7 +2251,7 @@ function Home() {
                 <ChevronRight size={20} className="text-[#64748b] shrink-0" strokeWidth={2} />
 
                 {/* LOAD */}
-                <div className="bg-[#0c0e1e] flex flex-col gap-5 h-[250px] px-5 py-6 rounded-[16px] flex-1 border border-[rgba(74,143,224,0.2)]"
+                <div className="bg-[#0F2038] flex flex-col gap-5 h-[250px] px-5 py-6 rounded-[16px] flex-1 border border-[rgba(74,143,224,0.2)]"
                   style={{ boxShadow: "0 8px 12px rgba(74,143,224,0.08)" }}>
                   <div className="flex flex-col gap-3 items-center w-full">
                     <p className="font-bold text-[14px] text-[#4A8FE0] text-center uppercase tracking-widest">LOAD</p>
@@ -2222,7 +2271,7 @@ function Home() {
               </div>
 
               {/* AI pill */}
-              <div className="bg-[#0c0e1e] flex items-center gap-2 px-6 py-2.5 rounded-full border border-[rgba(74,143,224,0.33)]"
+              <div className="bg-[#0F2038] flex items-center gap-2 px-6 py-2.5 rounded-full border border-[rgba(74,143,224,0.33)]"
                 style={{ boxShadow: "0 4px 8px rgba(74,143,224,0.13)" }}>
                 <Sparkles size={16} className="text-[#4A8FE0]" strokeWidth={2} />
                 <span className="font-semibold text-[13px] text-white whitespace-nowrap">AI Processing & Intelligence</span>
@@ -2258,7 +2307,7 @@ function Home() {
             </div>
 
             {/* RIGHT — Unified Intelligence panel */}
-            <div className="bg-[#0c0e1e] flex flex-col gap-5 p-6 relative rounded-[20px] shrink-0 w-[220px] self-stretch border border-[rgba(74,143,224,0.12)]">
+            <div className="bg-[#0F2038] flex flex-col gap-5 p-6 relative rounded-[20px] shrink-0 w-[220px] self-stretch border border-[rgba(74,143,224,0.12)]">
               <div>
                 <p className="font-extrabold text-[14px] text-white uppercase tracking-wide">Unified Intelligence</p>
                 <p className="font-medium text-[#64748b] text-[11px] mt-1">Insights That Drive Growth</p>
@@ -2284,7 +2333,7 @@ function Home() {
           </div>
 
           {/* ── Benefits panel ── */}
-          <div className="mt-5 bg-[#0c0e1e] rounded-[16px] border border-[rgba(74,143,224,0.12)]">
+          <div className="mt-5 bg-[#0F2038] rounded-[16px] border border-[rgba(74,143,224,0.12)]">
             <div className="flex items-center px-6 py-4 gap-6">
               {[
                 { icon: Zap,        title: "Real-time Data",   sub: "Instant streaming & ingestion" },
@@ -2349,164 +2398,102 @@ function Home() {
       </section>
 
       {/* ── Social Proof ── */}
-      <section className="bg-white py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <SectionLabel>Results from the platform</SectionLabel>
-            <h2 className="text-3xl font-bold text-slate-900">What agencies measure after switching</h2>
-            <p className="mt-3 text-slate-500 max-w-lg mx-auto">
-              Aggregated outcomes across active Cerebro workspaces. Individual results vary by team size and platform mix.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                metric: "11 hrs/week",
-                context: "Reporting time recovered",
-                detail: "A 12-person performance agency managing 18 client accounts moved from four manual exports to one automated dashboard. Their Friday reporting process went from a full day to under 30 minutes.",
-                tags: ["Performance Agency", "18 accounts", "Meta + Google + TikTok"],
-                color: BLUE,
-              },
-              {
-                metric: "$40k+",
-                context: "Overspend caught in month one",
-                detail: "An eCommerce brand detected a Meta bid strategy misconfiguration within 2 hours of it occurring — before the weekly review cycle would have caught it. The anomaly alert fired automatically.",
-                tags: ["eCommerce Brand", "DTC", "Meta Ads"],
-                color: GREEN,
-              },
-              {
-                metric: "6.2x ROAS",
-                context: "Unlocked by reallocating budget",
-                detail: "A SaaS marketing team used Cerebro's cross-platform view to identify that Google Brand Search was impression-share constrained at 6.2x ROAS. Shifting $1,600/week from an underperforming campaign added $9,900 in attributed weekly revenue.",
-                tags: ["SaaS Marketing Team", "Google Ads", "AI Recommendation"],
-                color: VIOLET,
-              },
-            ].map((card) => (
-              <div key={card.metric} className="bg-[#F7F8FC] border border-slate-200 rounded-2xl p-6 flex flex-col gap-4 hover:border-slate-300 hover:shadow-md hover:shadow-slate-100 transition-all">
-                <div>
-                  <div className="text-3xl font-bold mb-0.5" style={{ color: card.color }}>{card.metric}</div>
-                  <div className="text-sm font-semibold text-slate-900">{card.context}</div>
-                </div>
-                <p className="text-sm text-slate-500 leading-relaxed flex-1">{card.detail}</p>
-                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-200">
-                  {card.tags.map((tag) => (
-                    <span key={tag} className="text-[10px] font-medium text-slate-500 bg-white border border-slate-200 px-2 py-0.5 rounded-full">{tag}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-xs text-slate-400 mt-8">
-            Company names withheld at customer request. Results based on self-reported data from active workspaces.
-          </p>
-        </div>
-      </section>
 
       {/* ── Roadmap ── */}
-      <section className="bg-[#0B0F1A] py-24 px-6">
+      <section className="bg-[#0B1728] py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <Badge color="#818CF8"><Map size={10} /> Product Roadmap</Badge>
-            <h2 className="mt-4 text-3xl font-bold text-white">What we're building</h2>
-            <p className="mt-3 text-slate-500 max-w-xl mx-auto">
-              A transparent look at what's live, what's shipping next, and where we're headed.
-            </p>
-          </div>
+          {/* Title — left-aligned, editorial style like the reference */}
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-16 tracking-tight">
+            Product Roadmap
+          </h2>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Now — Live */}
-            <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden">
-              <div className="flex items-center gap-2 px-5 py-4 border-b border-white/[0.06]">
-                <div className="w-2 h-2 rounded-full bg-green-400" />
-                <span className="text-sm font-semibold text-white">Now — Live</span>
-              </div>
-              <div className="p-4 space-y-3">
-                {[
-                  { icon: Database,    title: "Automated ETL Pipeline",      desc: "Real-time ingestion from Meta, Google, TikTok, and DV360 every 15 min." },
-                  { icon: Brain,       title: "AI Anomaly Detection",         desc: "Continuous monitoring with root-cause analysis for spend, CPA, and CTR shifts." },
-                  { icon: FileText,    title: "White-label PDF Reports",      desc: "Scheduled branded reports auto-delivered to any recipient on any cadence." },
-                  { icon: BarChart2,   title: "Cross-Platform Dashboard",     desc: "Unified ROAS, spend, and conversion view across all connected ad accounts." },
-                  { icon: Bell,        title: "Slack & Email Alerts",         desc: "Threshold-based alerts sent to Slack channels or email in real time." },
-                  { icon: Shield,      title: "Role-Based Access Control",    desc: "Per-workspace permissions, SSO via SAML 2.0, and immutable audit logs." },
-                ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-3 bg-white/[0.03] border border-white/[0.06] rounded-xl p-3.5">
-                    <div className="w-7 h-7 rounded-lg bg-green-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                      <item.icon size={12} className="text-green-400" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-white leading-tight mb-0.5">{item.title}</p>
-                      <p className="text-[10px] text-slate-500 leading-relaxed">{item.desc}</p>
-                    </div>
+          {/* Horizontal timeline */}
+          <div className="relative">
+            {/* Connecting line */}
+            <div className="hidden md:block absolute top-[7px] left-0 right-0 h-px bg-white/[0.1]" />
+
+            <div className="grid md:grid-cols-3 gap-12">
+              {[
+                {
+                  dot: "#22C55E",
+                  phase: "Now — Live",
+                  tag: "RELEASED",
+                  items: [
+                    { title: "Automated ETL Pipeline",    desc: "Real-time ingestion from Meta, Google, TikTok, and DV360 every 15 minutes with 36-month historical backfill on first connect." },
+                    { title: "AI Anomaly Detection",       desc: "Statistical baseline models that surface CPA spikes, budget bleeds, and CTR drops the moment they occur — with root-cause reasoning." },
+                    { title: "White-label PDF Reports",    desc: "Fully branded reports auto-generated on any schedule and delivered to any recipient via email or Slack digest." },
+                    { title: "Cross-Platform Dashboard",   desc: "Unified ROAS, spend, impressions, and conversion view across all connected accounts with drill-down to campaign and ad level." },
+                    { title: "Slack & Email Alerts",       desc: "Configurable threshold-based alerts with custom conditions delivered to Slack or any email address in real time." },
+                    { title: "Role-Based Access Control",  desc: "Per-workspace permissions with SSO via SAML 2.0 and immutable audit logs covering every user action." },
+                  ],
+                },
+                {
+                  dot: "#4A8FE0",
+                  phase: "Coming Soon",
+                  tag: "Q3 / Q4 2026",
+                  items: [
+                    { title: "Creative Intelligence",      desc: "Automatic creative performance scoring — identify winning hooks, formats, and CTAs before fatigue sets in." },
+                    { title: "Automated Budget Rules",     desc: "Conditional rules that pause underperformers, scale winners, and enforce spend caps on your schedule." },
+                    { title: "Incrementality Testing",     desc: "Built-in holdout and geo experiments to measure true campaign incrementality without third-party tools." },
+                    { title: "Predictive Forecasting",     desc: "ML-powered revenue and conversion forecasts at the campaign level with confidence intervals." },
+                    { title: "Audience Overlap Analysis",  desc: "Cross-platform frequency management and audience overlap visualization from one unified view." },
+                    { title: "Custom Dashboards API",      desc: "Build fully custom dashboards with your own metrics and visualizations via a public API." },
+                  ],
+                },
+                {
+                  dot: "#818CF8",
+                  phase: "Future",
+                  tag: "2027 & BEYOND",
+                  items: [
+                    { title: "Autonomous Campaign Mgmt",   desc: "AI-driven bid and budget adjustments executed without manual approval for pre-defined rule sets." },
+                    { title: "Retail Media Networks",      desc: "Native connectors for Amazon DSP, Walmart Connect, and Instacart Ads unified with paid social data." },
+                    { title: "Competitive Intelligence",   desc: "Auction-level spend signals and creative trends from your competitive set surfaced in your dashboard." },
+                    { title: "Full-Funnel Attribution",    desc: "Closed-loop attribution from first impression to CRM-confirmed revenue with Salesforce and HubSpot sync." },
+                    { title: "AI Report Narration",        desc: "Natural language summaries auto-generated for every report section — editable before delivery." },
+                    { title: "Multi-Currency P&L View",    desc: "Agency P&L across all client accounts in any currency with real-time FX normalization." },
+                  ],
+                },
+              ].map((col) => (
+                <div key={col.phase}>
+                  {/* Dot on timeline */}
+                  <div className="flex items-center gap-3 mb-8">
+                    <div
+                      className="w-3.5 h-3.5 rounded-full shrink-0 ring-4 ring-[#0B1728]"
+                      style={{ background: col.dot }}
+                    />
+                    <span
+                      className="text-[10px] font-bold tracking-[0.18em] uppercase font-mono"
+                      style={{ color: col.dot }}
+                    >
+                      {col.tag}
+                    </span>
                   </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Coming Soon */}
-            <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden">
-              <div className="flex items-center gap-2 px-5 py-4 border-b border-white/[0.06]">
-                <div className="w-2 h-2 rounded-full bg-blue-400" />
-                <span className="text-sm font-semibold text-white">Coming Soon — Q3/Q4 2026</span>
-              </div>
-              <div className="p-4 space-y-3">
-                {[
-                  { icon: GitBranch,  title: "Creative Intelligence",       desc: "Automatic creative scoring across platforms — identify winning hooks, formats, and CTAs.", tag: "Q3 2026" },
-                  { icon: Workflow,   title: "Automated Budget Rules",      desc: "Conditional rules that pause underperformers, scale winners, and enforce spend caps automatically.", tag: "Q3 2026" },
-                  { icon: Globe,      title: "Incrementality Testing",      desc: "Built-in holdout and geo experiments to measure true campaign incrementality.", tag: "Q4 2026" },
-                  { icon: Brain,      title: "Predictive Forecasting",      desc: "ML-powered revenue and conversion forecasts at the campaign level with confidence intervals.", tag: "Q4 2026" },
-                  { icon: Users,      title: "Audience Overlap Analysis",   desc: "Cross-platform frequency management and audience overlap from one unified view.", tag: "Q4 2026" },
-                  { icon: Code2,      title: "Custom Dashboards API",       desc: "Build fully custom dashboards with your own metrics and visualizations via public API.", tag: "Q4 2026" },
-                ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-3 bg-white/[0.03] border border-white/[0.06] rounded-xl p-3.5">
-                    <div className="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                      <item.icon size={12} className="text-blue-400" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between gap-2 mb-0.5">
-                        <p className="text-xs font-semibold text-white leading-tight">{item.title}</p>
-                        <span className="text-[9px] text-slate-600 border border-white/[0.07] px-1.5 py-0.5 rounded-full shrink-0">{item.tag}</span>
+                  {/* Phase label */}
+                  <h3 className="text-xl font-bold text-white mb-6">{col.phase}</h3>
+
+                  {/* Items */}
+                  <div className="space-y-6">
+                    {col.items.map((item) => (
+                      <div key={item.title} className="border-b border-white/[0.06] pb-6 last:border-0 last:pb-0">
+                        <p className="text-sm font-semibold text-white mb-1.5 leading-snug">{item.title}</p>
+                        <p className="text-[13px] text-slate-500 leading-relaxed line-clamp-2">{item.desc}</p>
                       </div>
-                      <p className="text-[10px] text-slate-500 leading-relaxed">{item.desc}</p>
-                    </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Future */}
-            <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden">
-              <div className="flex items-center gap-2 px-5 py-4 border-b border-white/[0.06]">
-                <div className="w-2 h-2 rounded-full bg-violet-400" />
-                <span className="text-sm font-semibold text-white">Future — 2027 & Beyond</span>
-              </div>
-              <div className="p-4 space-y-3">
-                {[
-                  { icon: Brain,       title: "Autonomous Campaign Management", desc: "AI-driven bid and budget adjustments that execute without manual approval for defined rule sets." },
-                  { icon: Globe,       title: "Retail Media Network Support",   desc: "Native connectors for Amazon DSP, Walmart Connect, and Instacart Ads unified with your paid social data." },
-                  { icon: Activity,    title: "Real-Time Competitive Intel",    desc: "Auction-level spend signals and creative trends from your competitive set surfaced in your dashboard." },
-                  { icon: BarChart2,   title: "Revenue Attribution Modeling",   desc: "Full funnel attribution from first touch to closed revenue, synced with your CRM data." },
-                  { icon: Sparkles,    title: "AI Report Narration",            desc: "Natural language summaries generated for every report section — editable before delivery." },
-                  { icon: Gauge,       title: "Multi-Currency Treasury View",   desc: "Agency P&L view across all client accounts in any currency with FX normalization." },
-                ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-3 bg-white/[0.03] border border-white/[0.06] rounded-xl p-3.5">
-                    <div className="w-7 h-7 rounded-lg bg-violet-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                      <item.icon size={12} className="text-violet-400" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-white leading-tight mb-0.5">{item.title}</p>
-                      <p className="text-[10px] text-slate-500 leading-relaxed">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="mt-8 text-center">
-            <p className="text-xs text-slate-600">
-              Have a feature request?{" "}
-              <a href="mailto:connect@activ8.digital" className="text-[#4A8FE0] hover:underline">Tell us what you need →</a>
-            </p>
+          {/* Footer link */}
+          <div className="mt-14">
+            <a
+              href="mailto:connect@activ8.digital"
+              className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
+            >
+              Have a feature request? Tell us what you need <ArrowRight size={13} />
+            </a>
           </div>
         </div>
       </section>
@@ -2724,18 +2711,18 @@ function FeaturesPage() {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 const INTEGRATIONS = [
-  { name: "Meta Ads", cat: "Paid Social", letter: "f", color: "#1877F2", status: "live", events: "8 event types", latency: "15 min" },
-  { name: "Google Ads", cat: "Search", letter: "G", color: "#4285F4", status: "live", events: "12 event types", latency: "15 min" },
-  { name: "TikTok Ads", cat: "Paid Social", letter: "T", color: "#010101", status: "live", events: "6 event types", latency: "15 min" },
-  { name: "DV360", cat: "Programmatic", letter: "D", color: "#34A853", status: "live", events: "9 event types", latency: "30 min" },
-  { name: "Google Analytics", cat: "Analytics", letter: "GA", color: "#F9AB00", status: "live", events: "14 event types", latency: "15 min" },
-  { name: "Shopify", cat: "eCommerce", letter: "S", color: "#96BF48", status: "live", events: "10 event types", latency: "15 min" },
-  { name: "LinkedIn Ads", cat: "Paid Social", letter: "in", color: "#0A66C2", status: "beta", events: "5 event types", latency: "1 hr" },
-  { name: "Snapchat Ads", cat: "Paid Social", letter: "S", color: "#FFFC00", status: "beta", events: "4 event types", latency: "1 hr" },
-  { name: "Pinterest Ads", cat: "Paid Social", letter: "P", color: "#E60023", status: "soon" },
-  { name: "X Ads", cat: "Paid Social", letter: "X", color: "#1D9BF0", status: "soon" },
-  { name: "Amazon DSP", cat: "Programmatic", letter: "A", color: "#FF9900", status: "soon" },
-  { name: "Bing Ads", cat: "Search", letter: "B", color: "#008272", status: "soon" },
+  { name: "Meta Ads",        cat: "Paid Social",  color: "#1877F2", bg: "#fff",    letter: "f",  status: "live", events: "8 event types",  latency: "15 min" },
+  { name: "Google Ads",      cat: "Search",       color: "#4285F4", bg: "#fff",    letter: "G",  status: "live", events: "12 event types", latency: "15 min" },
+  { name: "TikTok Ads",      cat: "Paid Social",  color: "#010101", bg: "#fff",    letter: "T",  status: "live", events: "6 event types",  latency: "15 min" },
+  { name: "DV360",           cat: "Programmatic", color: "#34A853", bg: "#fff",    letter: "D",  status: "live", events: "9 event types",  latency: "30 min" },
+  { name: "Google Analytics",cat: "Analytics",    color: "#F9AB00", bg: "#fff",    letter: "GA", status: "live", events: "14 event types", latency: "15 min" },
+  { name: "Shopify",         cat: "eCommerce",    color: "#96BF48", bg: "#fff",    letter: "S",  status: "live", events: "10 event types", latency: "15 min" },
+  { name: "LinkedIn Ads",    cat: "Paid Social",  color: "#0A66C2", bg: "#fff",    letter: "in", status: "beta", events: "5 event types",  latency: "1 hr" },
+  { name: "Snapchat Ads",    cat: "Paid Social",  color: "#FFFC00", bg: "#FFFC00", letter: "S",  status: "beta", events: "4 event types",  latency: "1 hr" },
+  { name: "Pinterest Ads",   cat: "Paid Social",  color: "#E60023", bg: "#fff",    letter: "P",  status: "soon" },
+  { name: "X Ads",           cat: "Paid Social",  color: "#1D9BF0", bg: "#fff",    letter: "X",  status: "soon" },
+  { name: "Amazon DSP",      cat: "Programmatic", color: "#FF9900", bg: "#fff",    letter: "A",  status: "soon" },
+  { name: "Bing Ads",        cat: "Search",       color: "#008272", bg: "#fff",    letter: "B",  status: "soon" },
 ];
 
 const CATS = ["All", "Paid Social", "Search", "Programmatic", "Analytics", "eCommerce"];
@@ -2806,12 +2793,7 @@ function IntegrationsPage() {
                 )}
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold"
-                    style={{ background: int.color + (int.status === "soon" ? "30" : ""), color: int.color === "#FFFC00" || int.color === "#96BF48" ? "#000" : "#fff" }}
-                  >
-                    {int.letter}
-                  </div>
+                  <PlatformIcon name={int.name} size={40} bg={int.bg} color={int.color} letter={int.letter} />
                   <span
                     className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
                     style={{
