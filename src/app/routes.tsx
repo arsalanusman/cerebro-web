@@ -19,6 +19,9 @@ import logoDV360 from "@/imports/dv360_logo.png";
 import logoLinkedIn from "@/imports/linkedin_ong.png";
 import logoSnapchat from "@/imports/snapchat_png.png";
 import cerebroLogoIcon from "@/imports/cerebro_logo_icon.png";
+import officeExteriorImg from "@/imports/office_exterior.jpg";
+import officeInteriorImg from "@/imports/office_interior.jpg";
+import teamWorkspaceImg from "@/imports/team_workspace.jpg";
 import { useState, useEffect, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -316,7 +319,8 @@ const NAV_LINKS = [
   { label: "Integrations", to: "/integrations" },
   { label: "Pricing",      to: "/pricing" },
   { label: "Resources",    to: "/docs" },
-  { label: "Company",      to: "/about" },
+  { label: "About Us",     to: "/about" },
+  { label: "Contact",      to: "/contact" },
 ];
 
 // ── Demo lead form modal ──────────────────────────────────────────────────────
@@ -364,7 +368,7 @@ function DemoModal({ onClose }: { onClose: () => void }) {
               <Check size={28} className="text-[#4A8FE0]" />
             </div>
             <h3 className="font-bold text-slate-900 text-xl">You're on the list!</h3>
-            <p className="text-slate-500 text-sm max-w-xs">We'll be in touch within 1 business day to schedule your personalised walkthrough of Cerebro dNANO.</p>
+            <p className="text-slate-500 text-sm max-w-xs">We'll be in touch within 1 business day to schedule your personalised walkthrough of Cerebro Media.</p>
             <button onClick={onClose} className="mt-2 text-sm text-[#4A8FE0] font-medium hover:underline">Close</button>
           </div>
         ) : (
@@ -507,7 +511,7 @@ function TopNav() {
         <NavLink to="/" className="flex items-center shrink-0">
           <img
             src={cerebroLogo}
-            alt="Cerebro dNANO"
+            alt="Cerebro Media"
             className="h-12 w-auto object-contain"
           />
         </NavLink>
@@ -603,25 +607,29 @@ function Footer() {
               />
             </div>
             <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
-              AI-powered advertising intelligence that unifies your paid media into one automated reporting layer.
+              Cerebro dNANO is an AI-powered paid media intelligence platform unifying advertising metrics across Meta, Google, TikTok, DV360, LinkedIn & Snapchat into one automated reporting layer.
             </p>
             <div className="mt-5 space-y-2">
-              <a href="mailto:connect@activ8.digital" className="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-300 transition-colors">
-                <Mail size={11} className="text-slate-600 shrink-0" />
-                connect@activ8.digital
+              <a href="mailto:hello@cerebro.media" className="flex items-center gap-2 text-xs text-slate-400 hover:text-slate-200 transition-colors">
+                <Mail size={12} className="text-[#4A8FE0] shrink-0" />
+                hello@cerebro.media
               </a>
-              <a href="tel:+923422732873" className="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-300 transition-colors">
-                <Activity size={11} className="text-slate-600 shrink-0" />
+              <a href="tel:+923422732873" className="flex items-center gap-2 text-xs text-slate-400 hover:text-slate-200 transition-colors">
+                <Activity size={12} className="text-[#4A8FE0] shrink-0" />
                 +92 342 2732873
               </a>
-              <p className="flex items-start gap-2 text-xs text-slate-500">
-                <Globe size={11} className="text-slate-600 shrink-0 mt-0.5" />
-                The Forum, Block 9 Clifton, Karachi
+              <p className="flex items-start gap-2 text-xs text-slate-400">
+                <Globe size={12} className="text-[#4A8FE0] shrink-0 mt-0.5" />
+                The Forum, Block 9 Clifton, Karachi 75600, Pakistan
+              </p>
+              <p className="flex items-center gap-2 text-xs text-slate-400">
+                <Clock size={12} className="text-[#4A8FE0] shrink-0" />
+                Mon – Fri: 9:00 AM – 6:00 PM PKT
               </p>
             </div>
-            <div className="flex items-center gap-3 mt-5">
-              {["SOC 2", "GDPR", "CCPA"].map((b) => (
-                <span key={b} className="text-[10px] text-slate-600 border border-slate-700 rounded px-2 py-0.5">{b}</span>
+            <div className="flex items-center gap-2 mt-5">
+              {["SOC 2 Ready", "GDPR Compliant", "CCPA Compliant"].map((b) => (
+                <span key={b} className="text-[10px] text-slate-400 border border-slate-700/80 bg-slate-800/40 rounded px-2 py-0.5">{b}</span>
               ))}
             </div>
           </div>
@@ -666,9 +674,8 @@ function Footer() {
             <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-4">Company</h4>
             <ul className="space-y-3">
               {[
-                { label: "About",    to: "/about" },
+                { label: "About Us", to: "/about" },
                 { label: "Blog",     to: "/blog" },
-                { label: "Careers",  to: "/about" },
                 { label: "Contact",  to: "/contact" },
                 { label: "Partners", to: "/contact" },
               ].map((l) => (
@@ -681,14 +688,13 @@ function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-4">Legal</h4>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-4">Legal & Trust</h4>
             <ul className="space-y-3">
               {[
-                { label: "Privacy Policy", to: "/privacy" },
-                { label: "Terms of Service", to: "/terms" },
-                { label: "Security",       to: "/security" },
-                { label: "Cookie Policy",  to: "/privacy" },
-                { label: "GDPR",           to: "/privacy" },
+                { label: "Privacy Policy",   to: "/privacy-policy" },
+                { label: "Terms of Service", to: "/terms-of-service" },
+                { label: "Security",         to: "/security" },
+                { label: "Cookie Policy",    to: "/privacy-policy" },
               ].map((l) => (
                 <li key={l.label}>
                   <NavLink to={l.to} className="text-sm text-slate-500 hover:text-slate-300 transition-colors">{l.label}</NavLink>
@@ -699,16 +705,16 @@ function Footer() {
         </div>
 
         <div className="border-t border-white/[0.07] pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-slate-600">© 2026 Cerebro dNANO, Inc. All rights reserved.</p>
+          <p className="text-xs text-slate-500">© 2026 Cerebro dNANO. All rights reserved. · The Forum, Block 9 Clifton, Karachi 75600, Pakistan</p>
           <div className="flex items-center gap-5">
             {[
-              { label: "Privacy",  to: "/privacy" },
-              { label: "Terms",    to: "/terms" },
-              { label: "Security", to: "/security" },
-              { label: "Help",     to: "/help" },
-              { label: "Contact",  to: "/contact" },
+              { label: "Privacy Policy",   to: "/privacy-policy" },
+              { label: "Terms of Service", to: "/terms-of-service" },
+              { label: "Security",         to: "/security" },
+              { label: "Help Center",      to: "/help" },
+              { label: "Contact",          to: "/contact" },
             ].map((l) => (
-              <NavLink key={l.label} to={l.to} className="text-xs text-slate-600 hover:text-slate-400 transition-colors">{l.label}</NavLink>
+              <NavLink key={l.label} to={l.to} className="text-xs text-slate-500 hover:text-slate-300 transition-colors">{l.label}</NavLink>
             ))}
           </div>
         </div>
@@ -1198,7 +1204,7 @@ function ReportMockup() {
     <BrowserFrame>
       <img
         src={reportMockupImg}
-        alt="Cerebro dNANO marketing report template showing performance tracker and summary tabs"
+        alt="Cerebro Media marketing report template showing performance tracker and summary tabs"
         className="w-full h-auto object-cover object-top"
         style={{ maxHeight: 420 }}
       />
@@ -1548,11 +1554,11 @@ function ProductShowcaseSection() {
         {/* Product frame */}
         {(() => {
           const tabImages: Record<string, { src: string; alt: string }> = {
-            overview:   { src: clientDashImg,    alt: "Cerebro dNANO client dashboard showing spend, impressions, daily trend, platform breakdown, and top campaigns" },
-            campaigns:  { src: campaignsTabImg,  alt: "Cerebro dNANO campaign details showing spend, impressions, CTR, CPC and performance over time" },
-            insights:   { src: aiInsightsTabImg,  alt: "Cerebro dNANO AI insights view" },
-            reports:    { src: reportsTabImg,     alt: "Cerebro dNANO reports — campaign performance, spend summary and scheduled deliveries" },
-            hierarchy:  { src: hierarchyReportImg, alt: "Cerebro dNANO hierarchy report showing platform spend, impressions and conversions" },
+            overview:   { src: clientDashImg,    alt: "Cerebro Media client dashboard showing spend, impressions, daily trend, platform breakdown, and top campaigns" },
+            campaigns:  { src: campaignsTabImg,  alt: "Cerebro Media campaign details showing spend, impressions, CTR, CPC and performance over time" },
+            insights:   { src: aiInsightsTabImg,  alt: "Cerebro Media AI insights view" },
+            reports:    { src: reportsTabImg,     alt: "Cerebro Media reports — campaign performance, spend summary and scheduled deliveries" },
+            hierarchy:  { src: hierarchyReportImg, alt: "Cerebro Media hierarchy report showing platform spend, impressions and conversions" },
           };
           const current = tabImages[activeTab] ?? tabImages.overview;
           return (
@@ -1669,7 +1675,7 @@ function DarkPlatformShowcase() {
               <img src={cerebroLogoIcon} alt="Cerebro" className="w-[52px] h-[52px] object-contain" />
             </div>
             <span className="text-[10px] font-semibold text-white/40 text-center leading-tight">
-              Cerebro<br />dNANO
+              Cerebro<br />Media
             </span>
           </div>
 
@@ -2008,7 +2014,7 @@ function Home() {
             <BrowserFrame>
               <img
                 src={heroDashImg}
-                alt="Cerebro dNANO client dashboard showing spend, impressions, ROAS, and campaign breakdowns"
+                alt="Cerebro Media client dashboard showing spend, impressions, ROAS, and campaign breakdowns"
                 className="w-full object-cover object-top"
                 style={{ maxHeight: 480 }}
               />
@@ -2251,7 +2257,7 @@ function Home() {
                 <div className="relative overflow-hidden">
                   <img
                     src={explorerImg}
-                    alt="Cerebro dNANO campaign explorer showing multi-channel performance data"
+                    alt="Cerebro Media campaign explorer showing multi-channel performance data"
                     className="w-full object-cover object-top"
                     style={{ maxHeight: 420 }}
                   />
@@ -2761,7 +2767,7 @@ function Home() {
           {/* Footer link */}
           <div className="mt-14">
             <a
-              href="mailto:connect@activ8.digital"
+              href="mailto:hello@cerebro.media"
               className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
             >
               Have a feature request? Tell us what you need <ArrowRight size={13} />
@@ -2970,7 +2976,7 @@ function FeaturesPage() {
             <div className="grid grid-cols-3 bg-slate-50 border-b border-slate-200 px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">
               <span>Capability</span>
               <span className="text-center">Manual Stack</span>
-              <span className="text-center text-[#4A8FE0]">Cerebro dNANO</span>
+              <span className="text-center text-[#4A8FE0]">Cerebro Media</span>
             </div>
             {[
               ["Cross-platform unified view", false, true],
@@ -3659,7 +3665,7 @@ const MILESTONES = [
   { year: "2022", label: "Problem identified", desc: "Founders spent hours every week manually pulling numbers from four ad platforms into spreadsheets." },
   { year: "2023", label: "First version shipped", desc: "Internal tool turned product. First three agency clients onboarded." },
   { year: "2024", label: "ETL pipeline launched", desc: "AI-powered extraction, transformation, and load layer goes live. Latency drops to under 60 seconds." },
-  { year: "2025", label: "Scale", desc: "Cerebro dNANO processes billions of data points monthly across enterprise agency accounts." },
+  { year: "2025", label: "Scale", desc: "Cerebro Media processes billions of data points monthly across enterprise agency accounts." },
 ];
 
 const VALUES = [
@@ -3821,6 +3827,79 @@ function AboutPage() {
         </div>
       </section>
 
+      {/* ── Office & Location Showcase for GBP Trust ── */}
+      <section className="bg-[#F7F8FC] px-6 py-20 border-t border-slate-200/80">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-xs font-bold tracking-[0.2em] text-[#4A8FE0] uppercase mb-2">Physical Location & Team</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900">Our Karachi Headquarters</h2>
+            <p className="text-slate-500 text-sm mt-2 max-w-xl mx-auto">Operating out of The Forum in Clifton, Karachi — housing our core product, engineering, and partner support teams.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col">
+              <div className="h-48 overflow-hidden bg-slate-100">
+                <img src={officeExteriorImg} alt="Cerebro dNANO Office Exterior - The Forum Clifton" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-[#4A8FE0] bg-[#4A8FE0]/10 px-2.5 py-1 rounded-full mb-2">Building Exterior</span>
+                  <h3 className="font-bold text-slate-900 text-base mb-1">The Forum, Clifton</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">Our physical headquarters located in Block 9, Clifton, Karachi.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col">
+              <div className="h-48 overflow-hidden bg-slate-100">
+                <img src={officeInteriorImg} alt="Cerebro dNANO Interior Workspace" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-[#4A8FE0] bg-[#4A8FE0]/10 px-2.5 py-1 rounded-full mb-2">Engineering & Support</span>
+                  <h3 className="font-bold text-slate-900 text-base mb-1">Product & Analytics Hub</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">Dedicated workspace for product development and client data onboarding.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col">
+              <div className="h-48 overflow-hidden bg-slate-100">
+                <img src={teamWorkspaceImg} alt="Cerebro dNANO Team Collaboration" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-[#4A8FE0] bg-[#4A8FE0]/10 px-2.5 py-1 rounded-full mb-2">In-Person Operations</span>
+                  <h3 className="font-bold text-slate-900 text-base mb-1">Team & Onboarding</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">Onsite client consultation, team meetings, and customer support staff.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Company Info — for GBP / trust signal ── */}
+      <section className="bg-white px-6 py-16 border-t border-slate-100">
+        <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
+          <div className="bg-[#F7F8FC] border border-slate-200 rounded-2xl p-6">
+            <p className="text-xs font-semibold text-[#4A8FE0] uppercase tracking-widest mb-3">Legal & Business Name</p>
+            <p className="text-slate-900 font-semibold text-sm">Cerebro dNANO</p>
+            <p className="text-slate-500 text-xs mt-1">Official trading name used across platform and services</p>
+          </div>
+          <div className="bg-[#F7F8FC] border border-slate-200 rounded-2xl p-6">
+            <p className="text-xs font-semibold text-[#4A8FE0] uppercase tracking-widest mb-3">Registered Office</p>
+            <p className="text-slate-900 font-semibold text-sm leading-relaxed">The Forum, Block 9 Clifton<br />Karachi 75600, Pakistan</p>
+          </div>
+          <div className="bg-[#F7F8FC] border border-slate-200 rounded-2xl p-6">
+            <p className="text-xs font-semibold text-[#4A8FE0] uppercase tracking-widest mb-3">Contact</p>
+            <a href="mailto:hello@cerebro.media" className="text-slate-900 font-semibold text-sm hover:text-[#4A8FE0] transition-colors block">hello@cerebro.media</a>
+            <a href="tel:+923422732873" className="text-slate-500 text-xs mt-1 hover:text-[#4A8FE0] transition-colors block">+92 342 2732873</a>
+            <p className="text-slate-400 text-xs mt-1">Mon–Fri, 9am–6pm PKT</p>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA — dark impact block ── */}
       <section className="bg-[#0B1728] px-6 py-20">
         <div className="max-w-2xl mx-auto text-center">
@@ -3882,12 +3961,12 @@ function PrivacyPage() {
   return (
     <LegalLayout
       title="Privacy Policy"
-      subtitle="How Cerebro dNANO collects, uses, and protects your information."
+      subtitle="How Cerebro Media collects, uses, and protects your information."
       updated="1 July 2026"
     >
       <LegalSection title="1. Who we are">
-        <p>Cerebro dNANO is an advertising intelligence platform operated by Cerebro Media, Inc. ("Cerebro", "we", "us"). Our platform connects digital advertising data from Meta, Google Ads, TikTok, and DV360 into a single automated reporting layer for marketing agencies and advertisers.</p>
-        <p>If you have questions about this policy, contact us at <a href="mailto:connect@activ8.digital" className="text-[#4A8FE0] hover:underline">connect@activ8.digital</a>.</p>
+        <p>Cerebro Media is an advertising intelligence platform operated by Cerebro Media ("Cerebro", "we", "us"). Our platform connects digital advertising data from Meta, Google Ads, TikTok, and DV360 into a single automated reporting layer for marketing agencies and advertisers.</p>
+        <p>If you have questions about this policy, contact us at <a href="mailto:hello@cerebro.media" className="text-[#4A8FE0] hover:underline">hello@cerebro.media</a>.</p>
       </LegalSection>
 
       <LegalSection title="2. Information we collect">
@@ -3904,7 +3983,7 @@ function PrivacyPage() {
 
       <LegalSection title="4. Data sharing">
         <p>We share data only with: sub-processors necessary to operate the platform (cloud infrastructure, payment processors, email delivery); your team members as configured in your workspace; and legal authorities when required by law.</p>
-        <p>A full list of sub-processors is available on request at <a href="mailto:connect@activ8.digital" className="text-[#4A8FE0] hover:underline">connect@activ8.digital</a>.</p>
+        <p>A full list of sub-processors is available on request at <a href="mailto:hello@cerebro.media" className="text-[#4A8FE0] hover:underline">hello@cerebro.media</a>.</p>
       </LegalSection>
 
       <LegalSection title="5. Data retention">
@@ -3913,7 +3992,7 @@ function PrivacyPage() {
 
       <LegalSection title="6. Your rights (GDPR & CCPA)">
         <p>Depending on your jurisdiction, you have the right to: access, correct, or delete your personal data; restrict or object to processing; receive a machine-readable copy of your data; and withdraw consent at any time.</p>
-        <p>To exercise any of these rights, email <a href="mailto:connect@activ8.digital" className="text-[#4A8FE0] hover:underline">connect@activ8.digital</a>. We will respond within 30 days.</p>
+        <p>To exercise any of these rights, email <a href="mailto:hello@cerebro.media" className="text-[#4A8FE0] hover:underline">hello@cerebro.media</a>. We will respond within 30 days.</p>
       </LegalSection>
 
       <LegalSection title="7. Cookies">
@@ -3939,15 +4018,15 @@ function TermsPage() {
   return (
     <LegalLayout
       title="Terms of Service"
-      subtitle="The agreement between you and Cerebro dNANO governing your use of the platform."
+      subtitle="The agreement between you and Cerebro Media governing your use of the platform."
       updated="1 July 2026"
     >
       <LegalSection title="1. Acceptance">
-        <p>By accessing or using Cerebro dNANO ("the Service"), you agree to be bound by these Terms of Service. If you are using the Service on behalf of a company, you represent that you have authority to bind that company.</p>
+        <p>By accessing or using Cerebro Media ("the Service"), you agree to be bound by these Terms of Service. If you are using the Service on behalf of a company, you represent that you have authority to bind that company.</p>
       </LegalSection>
 
       <LegalSection title="2. The Service">
-        <p>Cerebro dNANO provides an advertising data aggregation and intelligence platform. We connect to your authorised ad platform accounts, extract campaign data, and present unified reporting and AI-generated insights.</p>
+        <p>Cerebro Media provides an advertising data aggregation and intelligence platform. We connect to your authorised ad platform accounts, extract campaign data, and present unified reporting and AI-generated insights.</p>
         <p>We reserve the right to modify or discontinue features with reasonable notice. We will not reduce core functionality during an active paid subscription period without offering a pro-rated refund.</p>
       </LegalSection>
 
@@ -3973,11 +4052,11 @@ function TermsPage() {
       </LegalSection>
 
       <LegalSection title="8. Governing law">
-        <p>These Terms are governed by the laws of the jurisdiction in which Cerebro Media, Inc. is registered. Any disputes will be resolved through binding arbitration, except where prohibited by law.</p>
+        <p>These Terms are governed by the laws of the jurisdiction in which Cerebro Media is registered. Any disputes will be resolved through binding arbitration, except where prohibited by law.</p>
       </LegalSection>
 
       <LegalSection title="9. Contact">
-        <p>For legal enquiries: <a href="mailto:connect@activ8.digital" className="text-[#4A8FE0] hover:underline">connect@activ8.digital</a></p>
+        <p><strong className="text-slate-800">Cerebro dNANO</strong><br />The Forum, Block 9 Clifton, Karachi 75600, Pakistan<br />Phone: <a href="tel:+923422732873" className="text-[#4A8FE0] hover:underline">+92 342 2732873</a><br />For legal enquiries: <a href="mailto:hello@cerebro.media" className="text-[#4A8FE0] hover:underline">hello@cerebro.media</a></p>
       </LegalSection>
     </LegalLayout>
   );
@@ -4058,11 +4137,11 @@ function SecurityPage() {
           <h2 className="text-xl font-bold text-white mb-3">Security enquiries</h2>
           <p className="text-slate-400 text-sm mb-5">Found a vulnerability? Have a security question? We respond to security reports within 24 hours.</p>
           <a
-            href="mailto:connect@activ8.digital"
+            href="mailto:hello@cerebro.media"
             className="inline-flex items-center gap-2 bg-[#4A8FE0] hover:bg-[#3A7FD0] text-white font-semibold px-6 py-3 rounded-xl transition-colors"
           >
             <Lock size={15} />
-            connect@activ8.digital
+            hello@cerebro.media
           </a>
         </div>
       </div>
@@ -4100,7 +4179,7 @@ function ContactPage() {
               </div>
               <div>
                 <p className="text-xs text-slate-400 mb-0.5">Email</p>
-                <a href="mailto:connect@activ8.digital" className="text-slate-900 text-sm font-medium hover:text-[#4A8FE0] transition-colors">connect@activ8.digital</a>
+                <a href="mailto:hello@cerebro.media" className="text-slate-900 text-sm font-medium hover:text-[#4A8FE0] transition-colors">hello@cerebro.media</a>
               </div>
             </div>
 
@@ -4122,7 +4201,19 @@ function ContactPage() {
               </div>
               <div>
                 <p className="text-xs text-slate-400 mb-0.5">Office</p>
-                <p className="text-slate-900 text-sm font-medium leading-relaxed">The Forum, Block 9 Clifton<br />Karachi, Pakistan</p>
+                <p className="text-slate-900 text-sm font-medium leading-relaxed">The Forum, Block 9 Clifton<br />Karachi 75600, Pakistan</p>
+              </div>
+            </div>
+
+            {/* Business Hours */}
+            <div className="flex items-start gap-4 bg-[#F7F8FC] border border-slate-200 rounded-2xl p-5">
+              <div className="w-10 h-10 rounded-xl bg-[#4A8FE0]/10 flex items-center justify-center shrink-0 mt-0.5">
+                <Clock size={18} className="text-[#4A8FE0]" />
+              </div>
+              <div>
+                <p className="text-xs text-slate-400 mb-1">Business Hours</p>
+                <p className="text-slate-900 text-sm font-medium">Mon – Fri: 9:00 AM – 6:00 PM PKT</p>
+                <p className="text-slate-500 text-xs mt-0.5">Closed on Saturday, Sunday & public holidays</p>
               </div>
             </div>
 
@@ -4195,6 +4286,50 @@ function ContactPage() {
                 </button>
               </form>
             )}
+          </div>
+        </div>
+
+        {/* Google Map & Office Photos */}
+        <div className="mt-14 space-y-8">
+          <div>
+            <h2 className="text-sm font-semibold text-slate-700 mb-4 flex items-center gap-2">
+              <Map size={15} className="text-[#4A8FE0]" />
+              Find us on Google Maps
+            </h2>
+            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm" style={{ height: 340 }}>
+              <iframe
+                title="Cerebro dNANO office location"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=The+Forum+Block+9+Clifton+Karachi+Pakistan&output=embed"
+              />
+            </div>
+            <p className="mt-2 text-xs text-slate-500 font-medium">The Forum, Block 9 Clifton, Karachi 75600, Pakistan</p>
+          </div>
+
+          {/* Office Photos */}
+          <div className="bg-[#F7F8FC] border border-slate-200 rounded-2xl p-6">
+            <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <Globe size={15} className="text-[#4A8FE0]" />
+              Physical Office Verification Photos
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="rounded-xl overflow-hidden border border-slate-200 bg-white">
+                <img src={officeExteriorImg} alt="Office Exterior - The Forum Clifton" className="w-full h-36 object-cover" />
+                <p className="p-2.5 text-[11px] font-semibold text-slate-700 text-center bg-white">Exterior Signage & Building</p>
+              </div>
+              <div className="rounded-xl overflow-hidden border border-slate-200 bg-white">
+                <img src={officeInteriorImg} alt="Office Interior - Analytics Desk" className="w-full h-36 object-cover" />
+                <p className="p-2.5 text-[11px] font-semibold text-slate-700 text-center bg-white">Workspace & Analytics Desk</p>
+              </div>
+              <div className="rounded-xl overflow-hidden border border-slate-200 bg-white">
+                <img src={teamWorkspaceImg} alt="Cerebro Team Workspace" className="w-full h-36 object-cover" />
+                <p className="p-2.5 text-[11px] font-semibold text-slate-700 text-center bg-white">Client Onboarding & Operations</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -4283,7 +4418,7 @@ function DocsPage() {
             Resources & Developer Docs
           </h1>
           <p className="mt-5 text-lg text-slate-500">
-            Everything you need to connect, build, and get the most out of Cerebro dNANO.
+            Everything you need to connect, build, and get the most out of Cerebro Media.
           </p>
           <div className="mt-8 relative max-w-md mx-auto">
             <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -4357,10 +4492,10 @@ function DocsPage() {
                   Our support team responds within 1 business day on all plans. Priority support is available on Growth and Enterprise.
                 </p>
                 <a
-                  href="mailto:connect@activ8.digital"
+                  href="mailto:hello@cerebro.media"
                   className="text-sm font-semibold text-[#4A8FE0] hover:underline flex items-center gap-1"
                 >
-                  connect@activ8.digital <ArrowRight size={12} />
+                  hello@cerebro.media <ArrowRight size={12} />
                 </a>
               </div>
 
@@ -4373,10 +4508,10 @@ function DocsPage() {
                   Building on top of Cerebro? Our solutions engineering team can help with custom integrations, data warehouse pipelines, and API use cases.
                 </p>
                 <a
-                  href="mailto:connect@activ8.digital"
+                  href="mailto:hello@cerebro.media"
                   className="text-sm font-semibold text-[#4A8FE0] hover:underline flex items-center gap-1"
                 >
-                  connect@activ8.digital <ArrowRight size={12} />
+                  hello@cerebro.media <ArrowRight size={12} />
                 </a>
               </div>
             </div>
@@ -4410,7 +4545,7 @@ const FAQ_SECTIONS = [
     color: GREEN,
     items: [
       { q: "How do you store my ad platform credentials?", a: "We never store raw credentials. Cerebro uses OAuth 2.0 to connect to each platform. Access tokens are encrypted using AES-256 and stored in a dedicated hardware-backed secrets manager. Cerebro employees cannot view your tokens." },
-      { q: "Is Cerebro GDPR compliant?", a: "Yes. We offer a Data Processing Agreement (DPA) for EU customers, support data residency in the EU on Enterprise plans, and handle data subject requests within 30 days. Contact connect@activ8.digital for a DPA." },
+      { q: "Is Cerebro GDPR compliant?", a: "Yes. We offer a Data Processing Agreement (DPA) for EU customers, support data residency in the EU on Enterprise plans, and handle data subject requests within 30 days. Contact hello@cerebro.media for a DPA." },
       { q: "Who can access my workspace data?", a: "Only users you explicitly invite to your workspace. Role-based access control lets you assign Admin, Editor, or Viewer permissions per user. Cerebro staff cannot access your workspace data except for documented support cases with your consent." },
       { q: "Do you use my ad data to train AI models?", a: "No. Your advertising data is never used to train general-purpose AI models accessible outside your account. AI features within your workspace run only on your workspace's data." },
     ],
@@ -4423,7 +4558,7 @@ const FAQ_SECTIONS = [
       { q: "Which ad platforms do you support?", a: "Meta Ads, Google Ads, TikTok Ads, DV360, Google Analytics, and Shopify are live today. LinkedIn Ads and Snapchat Ads are in beta. Pinterest, Amazon DSP, X Ads, and Bing Ads are on the roadmap." },
       { q: "How long does it take to connect a platform?", a: "Most connections complete in under 5 minutes via OAuth. After connecting, your first sync runs automatically — dashboards populate within 15–30 minutes depending on account size and historical backfill depth." },
       { q: "Can I push Cerebro data to my own data warehouse?", a: "Yes. On Growth and Enterprise plans, you can export normalized ad data to BigQuery, Snowflake, Redshift, or PostgreSQL. Schema documentation and incremental update patterns are included in the developer docs." },
-      { q: "Do you support custom API connectors?", a: "Enterprise customers can request custom connectors for internal data sources or niche platforms. Contact connect@activ8.digital to discuss requirements and timeline." },
+      { q: "Do you support custom API connectors?", a: "Enterprise customers can request custom connectors for internal data sources or niche platforms. Contact hello@cerebro.media to discuss requirements and timeline." },
     ],
   },
   {
@@ -4566,7 +4701,7 @@ function FAQPage() {
           <p className="text-slate-400 mb-7">Our team responds to every message within 1 business day.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              href="mailto:connect@activ8.digital"
+              href="mailto:hello@cerebro.media"
               className="inline-flex items-center gap-2 bg-[#4A8FE0] hover:bg-[#3A7FD0] text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm"
             >
               <Mail size={14} /> Email us
@@ -4766,7 +4901,7 @@ function HelpCenterPage() {
       <section className="bg-[#0B1728] py-16 px-6">
         <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-4">
           {[
-            { icon: Mail,       title: "Email support",       desc: "Respond within 1 business day on all plans.", action: "connect@activ8.digital", href: "mailto:connect@activ8.digital" },
+            { icon: Mail,       title: "Email support",       desc: "Respond within 1 business day on all plans.", action: "hello@cerebro.media", href: "mailto:hello@cerebro.media" },
             { icon: HelpCircle, title: "Priority support",    desc: "4-hour response for Growth and Enterprise plans.", action: "Included in your plan", href: "/pricing" },
             { icon: Users,      title: "Onboarding call",     desc: "Book a setup session with our solutions team.", action: "Book a session", href: "/contact" },
           ].map((c) => (
@@ -4858,8 +4993,8 @@ const BLOG_POSTS = [
     slug: "google-for-startups-application",
     category: "Company",
     categoryColor: AMBER,
-    title: "Cerebro dNANO joins the Google for Startups Cloud Program",
-    excerpt: "We are proud to announce that Cerebro dNANO has been accepted into the Google for Startups Cloud Program. What it means for our infrastructure roadmap, and what's next.",
+    title: "Cerebro Media joins the Google for Startups Cloud Program",
+    excerpt: "We are proud to announce that Cerebro Media has been accepted into the Google for Startups Cloud Program. What it means for our infrastructure roadmap, and what's next.",
     readTime: "3 min read",
     date: "Jun 16, 2026",
     featured: false,
@@ -5087,7 +5222,7 @@ function RoadmapPage() {
             What we're building and when
           </h1>
           <p className="mt-5 text-lg text-slate-500">
-            A transparent view of what's live, what's shipping next, and the longer-term vision for Cerebro dNANO.
+            A transparent view of what's live, what's shipping next, and the longer-term vision for Cerebro Media.
           </p>
           <div className="mt-4 flex items-center justify-center gap-6">
             {ROADMAP_COLUMNS.map((col) => (
@@ -5163,10 +5298,10 @@ function RoadmapPage() {
                 Every item on this roadmap started as a customer request. If you need something specific, tell us — we prioritize based on real demand.
               </p>
               <a
-                href="mailto:connect@activ8.digital"
+                href="mailto:hello@cerebro.media"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[#4A8FE0] hover:underline"
               >
-                connect@activ8.digital <ArrowRight size={13} />
+                hello@cerebro.media <ArrowRight size={13} />
               </a>
             </div>
             <div className="bg-[#0B1728] border border-[rgba(74,143,224,0.15)] rounded-2xl p-7">
@@ -5204,7 +5339,9 @@ export const router = createBrowserRouter([
       { path: "pricing", Component: PricingPage },
       { path: "about",    Component: AboutPage },
       { path: "privacy",  Component: PrivacyPage },
+      { path: "privacy-policy", Component: PrivacyPage },
       { path: "terms",    Component: TermsPage },
+      { path: "terms-of-service", Component: TermsPage },
       { path: "security", Component: SecurityPage },
       { path: "contact",  Component: ContactPage },
       { path: "docs",     Component: DocsPage },
