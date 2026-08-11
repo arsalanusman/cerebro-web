@@ -18,6 +18,7 @@ import logoTikTok from "@/imports/tiktok_logo_png.png";
 import logoDV360 from "@/imports/dv360_logo.png";
 import logoLinkedIn from "@/imports/linkedin_ong.png";
 import logoSnapchat from "@/imports/snapchat_png.png";
+import cerebroLogoIcon from "@/imports/cerebro_logo_icon.png";
 import { useState, useEffect, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -1662,10 +1663,10 @@ function DarkPlatformShowcase() {
           {/* Cerebro center circle — at x=480 (40% of 1200) */}
           <div
             className="absolute top-1/2 flex flex-col items-center gap-2"
-            style={{ left: "40%", transform: "translate(-50%, -50%)" }}
+            style={{ left: "calc(79px + 26%)", transform: "translate(-50%, -50%)" }}
           >
             <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-2xl shadow-blue-500/40 ring-4 ring-[#0B1728]">
-              <Sparkles size={30} className="text-white" />
+              <img src={cerebroLogoIcon} alt="Cerebro" className="w-[52px] h-[52px] object-contain" />
             </div>
             <span className="text-[10px] font-semibold text-white/40 text-center leading-tight">
               Cerebro<br />dNANO
