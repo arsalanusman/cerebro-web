@@ -54,6 +54,75 @@ const useScrolled = () => {
   return s;
 };
 
+// ─── Motion utilities ─────────────────────────────────────────────────────────
+
+const ease = [0.25, 0.46, 0.45, 0.94] as const;
+
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i: number = 0) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.55, delay: i * 0.09, ease },
+  }),
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.48, ease } },
+};
+
+const slideLeft = {
+  hidden: { opacity: 0, x: -36 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease } },
+};
+
+const slideRight = {
+  hidden: { opacity: 0, x: 36 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease } },
+};
+
+function FadeUp({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+  return (
+    <motion.div
+      variants={fadeUpVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-60px" }}
+      custom={delay}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function Stagger({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <motion.div
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-60px" }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function StaggerItem({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <motion.div variants={staggerItem} className={className}>
+      {children}
+    </motion.div>
+  );
+}
+
 // ─── Shared primitives ────────────────────────────────────────────────────────
 
 function Badge({ children, color = BLUE }: { children: React.ReactNode; color?: string }) {
@@ -242,11 +311,11 @@ function HeroMockup() {
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
 const NAV_LINKS = [
-  { label: "Product", to: "/features" },
+  { label: "Product",      to: "/features" },
   { label: "Integrations", to: "/integrations" },
-  { label: "Pricing", to: "/pricing" },
-  { label: "About", to: "/about" },
-  { label: "Contact", to: "/contact" },
+  { label: "Pricing",      to: "/pricing" },
+  { label: "Resources",    to: "/docs" },
+  { label: "Company",      to: "/about" },
 ];
 
 // ── Demo lead form modal ──────────────────────────────────────────────────────
@@ -466,9 +535,9 @@ function TopNav() {
 
         {/* Right CTAs */}
         <div className="hidden md:flex items-center gap-3 shrink-0">
-          <button className="text-sm text-slate-400 hover:text-white transition-colors font-medium px-1">
+          <a href="https://cerebro.activ8.digital/login" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-400 hover:text-white transition-colors font-medium px-1">
             Sign in
-          </button>
+          </a>
           <button
             onClick={openDemo}
             className="flex items-center gap-1.5 bg-[#4A8FE0] hover:bg-[#3A7FD0] text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
@@ -529,7 +598,7 @@ function Footer() {
               <img
                 src={cerebroLogoAlt}
                 alt="Cerebro dNANO"
-                className="h-8 w-auto object-contain"
+                className="h-14 w-auto object-contain"
               />
             </div>
             <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
@@ -770,29 +839,29 @@ const ETL_STAGES = [
   {
     id: "extract",
     n: "01",
-    label: "Extract",
+    label: "Connect",
     icon: Download,
     color: "#4A8FE0",
-    items: ["Official API Connectors", "OAuth 2.0 Auth Flow", "Real-time Webhooks", "36-Month Historical Backfill"],
-    desc: "Cerebro connects to every ad platform via official marketing APIs. Credentials are encrypted at rest and never stored in plaintext. Data flows continuously — no scheduled exports, no manual uploads.",
+    items: ["Official API Connectors", "OAuth 2.0 — 5 minutes to live", "Real-time Webhooks", "36-Month Historical Backfill"],
+    desc: "Link every ad platform via official OAuth in minutes — no engineers, no CSV exports, no scheduled jobs. Data flows continuously from the moment you connect.",
   },
   {
     id: "transform",
     n: "02",
-    label: "Transform",
+    label: "Unify",
     icon: RefreshCw,
     color: "#7EAEE8",
-    items: ["Schema Normalization", "Currency Conversion", "Attribution Window Mapping", "Cross-platform Deduplication"],
-    desc: "Raw event data from 20+ platforms is unified into a single schema. Metrics, currencies, and attribution windows are standardized so you can compare Meta ROAS and Google ROAS side by side without guesswork.",
+    items: ["Schema Normalization", "Currency Conversion", "Attribution Window Alignment", "Cross-platform Deduplication"],
+    desc: "Every platform's data is normalized into one consistent schema. Compare Meta ROAS to Google ROAS side by side — same metrics, same currency, same attribution window — without any manual reconciliation.",
   },
   {
     id: "load",
     n: "03",
-    label: "Load",
+    label: "Act",
     icon: Database,
     color: "#3272C4",
-    items: ["Live Cerebro Dashboard", "BigQuery / Warehouse Export", "White-label Report Engine", "AI Intelligence Layer"],
-    desc: "Clean, normalized data lands in your Cerebro dashboard in under 15 minutes. Optionally push to your own data warehouse or BI tool. Everything downstream — reports, alerts, AI insights — runs off the same source of truth.",
+    items: ["Live Agency Dashboard", "AI Anomaly Alerts", "White-label Client Reports", "BigQuery / Warehouse Export"],
+    desc: "Your clean, unified data powers real-time dashboards, AI-driven alerts, and automated client reports — all delivered on your schedule. No more Friday reporting marathons.",
   },
 ];
 
@@ -855,7 +924,7 @@ function EtlDiagram() {
         <div>
           <SectionLabel>How it works</SectionLabel>
           <h2 className="text-3xl md:text-4xl font-bold text-[#E8F0FA] leading-tight">
-            From first connection to first insight — under 24 hours
+            Connect your stack. Insights in under 24 hours.
           </h2>
         </div>
         <div>
@@ -1503,6 +1572,22 @@ function ProductShowcaseSection() {
             </motion.div>
           );
         })()}
+
+        {/* Data Trust bar */}
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-6">
+          {[
+            { icon: Shield,      label: "Data verified via official platform APIs" },
+            { icon: RefreshCw,   label: "Refreshed every 15 minutes" },
+            { icon: Lock,        label: "Credentials encrypted at rest, never stored in plaintext" },
+            { icon: CheckCircle, label: "36-month historical backfill on first connect" },
+          ].map((t) => (
+            <span key={t.label} className="flex items-center gap-1.5 text-xs text-slate-400">
+              <t.icon size={12} className="text-green-500 shrink-0" />
+              {t.label}
+            </span>
+          ))}
+        </div>
+
       </div>
     </section>
   );
@@ -1531,7 +1616,7 @@ function DarkPlatformShowcase() {
             Your AI media buying co-pilot — on call 24/7
           </h2>
           <p className="mt-4 text-slate-400 leading-relaxed">
-            Cerebro connects every ad platform and transforms the data into live reports, pipeline status, AI summaries, and budget alerts — automatically.
+            Ask any question. Get a real answer backed by your actual campaign data — not a generic AI response.
           </p>
         </div>
 
@@ -1767,10 +1852,20 @@ function ReportsCallout() {
   return (
     <section className="bg-white py-24 px-6 border-b border-slate-100">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        <div>
+        <motion.div
+          variants={slideLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+        >
           <ReportMockup />
-        </div>
-        <div>
+        </motion.div>
+        <motion.div
+          variants={slideRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+        >
           <SectionLabel>Automated reporting</SectionLabel>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-5">
             Client reports that write themselves
@@ -1794,7 +1889,7 @@ function ReportsCallout() {
           <PrimaryBtn>
             See reporting features <ArrowRight size={14} />
           </PrimaryBtn>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -1825,9 +1920,9 @@ function UseCasesSection() {
             Real workflows that Cerebro makes faster, more accurate, and fully automated.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {USE_CASES.map((uc) => (
-            <div
+            <StaggerItem
               key={uc.title}
               className="bg-[#F7F8FC] border border-slate-200 rounded-xl p-5 hover:border-blue-200 hover:shadow-md hover:shadow-blue-50 transition-all group cursor-default"
             >
@@ -1839,9 +1934,9 @@ function UseCasesSection() {
               </div>
               <h3 className="font-semibold text-slate-900 mb-2 text-sm">{uc.title}</h3>
               <p className="text-xs text-slate-500 leading-relaxed">{uc.desc}</p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );
@@ -1860,29 +1955,36 @@ function Home() {
       <section className="bg-white px-6 pt-20 pb-0 overflow-hidden">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           {/* Left */}
-          <div className="pt-20 pb-16">
-            <Badge color={BLUE}>
-              <Sparkles size={10} />
-              AI-Powered Marketing Intelligence Platform
-            </Badge>
-            <h1 className="mt-5 text-4xl md:text-[52px] font-bold text-slate-900 leading-[1.1] tracking-tight">
-              Replace your spreadsheet stack with an AI ad intelligence layer
-            </h1>
-            <p className="mt-5 text-lg text-slate-500 leading-relaxed max-w-lg">
-              Cerebro dNANO connects Meta, Google, TikTok, and DV360 into a single automated reporting platform — with AI-generated insights, executive dashboards, and white-label reports that deliver themselves.
-            </p>
-            <p className="mt-3 text-sm text-slate-400">
-              Built for agencies and performance teams managing <span className="text-slate-600 font-medium">$50k–$5M/month</span> in paid media.
-            </p>
-            <div className="mt-8 flex items-center gap-3">
+          <motion.div
+            className="pt-20 pb-16"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+          >
+            <motion.div variants={staggerItem}>
+              <Badge color={BLUE}>
+                <Sparkles size={10} />
+                Built for agencies managing paid media at scale
+              </Badge>
+            </motion.div>
+            <motion.h1 variants={staggerItem} className="mt-5 text-4xl md:text-[52px] font-bold text-slate-900 leading-[1.1] tracking-tight">
+              One intelligence layer for your entire media ecosystem
+            </motion.h1>
+            <motion.p variants={staggerItem} className="mt-5 text-lg text-slate-500 leading-relaxed max-w-lg">
+              Stop exporting CSVs. Cerebro connects every ad platform, normalizes your data automatically, and surfaces AI-driven insights — so your agency spends time on strategy, not spreadsheets.
+            </motion.p>
+            <motion.p variants={staggerItem} className="mt-3 text-sm text-slate-400">
+              Trusted by agencies managing <span className="text-slate-600 font-medium">$50k–$5M/month</span> in paid media across Meta, Google, TikTok, and DV360.
+            </motion.p>
+            <motion.div variants={staggerItem} className="mt-8 flex items-center gap-3">
               <PrimaryBtn onClick={openDemo}>
                 Book a Demo <ArrowRight size={14} />
               </PrimaryBtn>
-              <OutlineBtn onClick={() => navigate("/pricing")}>
-                Start free — from $149/mo
+              <OutlineBtn onClick={() => navigate("/features")}>
+                See how it works
               </OutlineBtn>
-            </div>
-            <div className="mt-7 flex items-center gap-6">
+            </motion.div>
+            <motion.div variants={staggerItem} className="mt-7 flex items-center gap-6">
               {[
                 { label: "14-day free trial" },
                 { label: "No credit card" },
@@ -1893,10 +1995,15 @@ function Home() {
                   {i.label}
                 </span>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
           {/* Right — hero mockup vertically centered */}
-          <div className="hidden md:flex items-center">
+          <motion.div
+            className="hidden md:flex items-center"
+            initial={{ opacity: 0, y: 40, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.35, ease }}
+          >
             <BrowserFrame>
               <img
                 src={heroDashImg}
@@ -1905,7 +2012,38 @@ function Home() {
                 style={{ maxHeight: 480 }}
               />
             </BrowserFrame>
-          </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Core Value Prop — Connect → Unify → Understand → Act ── */}
+      <section className="bg-[#0B1728] py-14 px-6">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-center text-xs font-bold text-[#4A8FE0]/60 uppercase tracking-[0.2em] mb-10">
+            How Cerebro works
+          </p>
+          <Stagger className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.06] rounded-2xl overflow-hidden">
+            {[
+              { step: "01", verb: "Connect",    icon: Globe,      color: "#4A8FE0", desc: "Link every ad platform in minutes via official OAuth — no code, no engineers." },
+              { step: "02", verb: "Unify",      icon: Database,   color: "#7EAEE8", desc: "All platforms normalized into one schema. Consistent metrics, currencies, attribution." },
+              { step: "03", verb: "Understand", icon: Brain,      color: "#A8C8F0", desc: "AI surfaces anomalies, root causes, and scaling opportunities automatically." },
+              { step: "04", verb: "Act",        icon: TrendingUp, color: "#22C55E", desc: "Automated reports, alerts, and recommendations delivered to your team and clients." },
+            ].map((s, i) => (
+              <StaggerItem key={s.verb} className="bg-[#0F2038] px-6 py-8 flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-bold font-mono text-slate-600">{s.step}</span>
+                  {i < 3 && <ArrowRight size={12} className="text-slate-700 hidden md:block" />}
+                </div>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${s.color}15` }}>
+                  <s.icon size={18} style={{ color: s.color }} />
+                </div>
+                <div>
+                  <p className="text-lg font-bold text-white mb-1">{s.verb}</p>
+                  <p className="text-xs text-slate-500 leading-relaxed">{s.desc}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
         </div>
       </section>
 
@@ -1913,9 +2051,9 @@ function Home() {
       <section className="bg-white border-y border-slate-100 py-10">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-center text-xs text-slate-400 uppercase tracking-widest mb-7">
-            Natively connects to every major ad platform
+            Your entire ad stack — one platform
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8">
+          <div className="flex flex-wrap items-center justify-center gap-8 mb-6">
             {PLATFORM_LOGOS.map((p) => (
               <div key={p.name} className="flex items-center gap-3 opacity-50 hover:opacity-90 transition-opacity">
                 <PlatformIcon name={p.name} size={44} bg={p.bg} color={p.color} />
@@ -1923,6 +2061,11 @@ function Home() {
               </div>
             ))}
           </div>
+          <p className="text-center">
+            <NavLink to="/integrations" className="text-xs text-[#4A8FE0] hover:underline">
+              View all 20+ integrations — including analytics, CRM, and data warehouse connectors →
+            </NavLink>
+          </p>
         </div>
       </section>
 
@@ -1932,7 +2075,13 @@ function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-start">
 
             {/* Left — bold problem statement */}
-            <div className="md:sticky md:top-28">
+            <motion.div
+              className="md:sticky md:top-28"
+              variants={slideLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+            >
               <SectionLabel>The problem we solve</SectionLabel>
               <h2 className="mt-4 text-4xl md:text-5xl font-bold text-slate-900 leading-tight tracking-tight">
                 Marketing data is broken. <span className="text-[#4A8FE0]">We fix it.</span>
@@ -1940,49 +2089,49 @@ function Home() {
               <p className="mt-5 text-slate-500 text-base leading-relaxed">
                 Digital ad budgets are at record highs, but the tools haven't kept up. Teams still export CSVs, paste into spreadsheets, and manually reconcile numbers across four platforms every week.
               </p>
-              <div className="mt-8 flex flex-col gap-4">
+              <Stagger className="mt-8 flex flex-col gap-4">
                 {[
                   { value: "8+ hrs", label: "wasted per team, per week on manual reporting" },
                   { value: "$40k+",  label: "average overspend caught per account in year one" },
                   { value: "4–6",    label: "platforms with incompatible schemas to reconcile" },
                 ].map((s) => (
-                  <div key={s.label} className="flex items-center gap-4">
+                  <StaggerItem key={s.label} className="flex items-center gap-4">
                     <span className="text-2xl font-black text-slate-900 w-20 shrink-0">{s.value}</span>
                     <span className="text-sm text-slate-500 leading-snug">{s.label}</span>
-                  </div>
+                  </StaggerItem>
                 ))}
-              </div>
-            </div>
+              </Stagger>
+            </motion.div>
 
             {/* Right — solution list */}
-            <div className="flex flex-col gap-4">
+            <Stagger className="flex flex-col gap-4">
               {[
                 {
                   icon: RefreshCw,
                   color: "#4A8FE0",
-                  title: "Automated ETL Pipeline",
-                  body: "Connect your ad accounts once via OAuth. Cerebro ingests, normalizes, and refreshes data from every platform every 15 minutes — no engineers, no manual exports.",
+                  title: "Every channel. One source of truth.",
+                  body: "Connect your ad accounts once. Cerebro pulls live data from every platform every 15 minutes — so your team always works from a single, reliable number.",
                 },
                 {
                   icon: Database,
                   color: "#22C55E",
-                  title: "Unified Cross-Platform Schema",
-                  body: "Meta, Google, TikTok, and DV360 speak different languages. Cerebro normalizes every metric, currency, and attribution window into one consistent dataset.",
+                  title: "Compare any platform, instantly.",
+                  body: "Meta ROAS vs Google ROAS — finally apples to apples. Every metric, currency, and attribution window normalized so you can make decisions without guesswork.",
                 },
                 {
                   icon: Brain,
                   color: "#818CF8",
-                  title: "AI Anomaly Detection",
-                  body: "Continuous statistical monitoring fires alerts the moment a CPA spikes, a budget bleeds, or CTR drops — with root-cause reasoning, not just a notification.",
+                  title: "Know before your client asks.",
+                  body: "AI monitoring catches CPA spikes, budget bleeds, and creative fatigue the moment they occur — with an explanation of why, not just an alert.",
                 },
                 {
                   icon: FileText,
                   color: "#F59E0B",
-                  title: "White-Label Automated Reports",
-                  body: "Branded PDF reports auto-generated on any schedule and delivered to any client — zero manual effort, fully customizable per workspace.",
+                  title: "Reports that write themselves.",
+                  body: "Branded client reports auto-generated and delivered on any schedule. What used to take a full Friday now happens while you sleep.",
                 },
               ].map((item, i) => (
-                <div
+                <StaggerItem
                   key={item.title}
                   className="flex items-start gap-5 bg-[#F7F8FC] border border-slate-200 rounded-2xl p-6 hover:border-slate-300 hover:shadow-sm transition-all"
                 >
@@ -1999,9 +2148,9 @@ function Home() {
                     </div>
                     <p className="text-sm text-slate-500 leading-relaxed">{item.body}</p>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </Stagger>
 
           </div>
         </div>
@@ -2011,40 +2160,37 @@ function Home() {
       <section className="bg-[#F7F8FC] py-16 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-center text-xs text-slate-400 uppercase tracking-widest mb-10">
-            Trusted by agencies and performance teams worldwide
+            Agencies running Cerebro see results in week one
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <Stagger className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: "180+",     label: "Agencies live on platform",          sub: "Across MENA, EU, and North America" },
-              { value: "$2.4B+",   label: "Ad spend managed annually",          sub: "Across all connected accounts" },
-              { value: "8+ hrs",   label: "Saved per team, per week",           sub: "Avg. across active workspaces" },
+              { value: "180+",     label: "Agencies on the platform",           sub: "Across MENA, EU, and North America" },
+              { value: "$2.4B+",   label: "Client ad spend managed",            sub: "Across all connected accounts" },
+              { value: "8+ hrs",   label: "Saved per agency, per week",         sub: "Avg. across active workspaces" },
               { value: "99.97%",   label: "Pipeline uptime SLA",                sub: "Monitored 24/7 with auto-recovery" },
             ].map((s) => (
-              <div key={s.label} className="text-center">
+              <StaggerItem key={s.label} className="text-center">
                 <div className="text-3xl font-bold text-slate-900 mb-1.5">{s.value}</div>
                 <div className="text-sm font-medium text-slate-700 mb-1">{s.label}</div>
                 <div className="text-xs text-slate-400">{s.sub}</div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       {/* ── Module grid ── */}
       <section className="bg-white py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-xl mx-auto mb-14">
-            <SectionLabel>Platform capabilities</SectionLabel>
+          <FadeUp className="text-center max-w-xl mx-auto mb-14">
+            <SectionLabel>Built for agency scale</SectionLabel>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
-              12 capabilities. One platform. Everything your ad team needs.
+              Every capability your agency needs — in one workspace.
             </h2>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+          </FadeUp>
+          <Stagger className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             {MODULE_CARDS.map((m) => (
-              <div
-                key={m.label}
-                className="group bg-white border border-slate-200 hover:border-blue-200 hover:shadow-md hover:shadow-blue-50 rounded-xl p-5 flex items-center gap-3 transition-all cursor-default"
-              >
+              <StaggerItem key={m.label} className="group bg-white border border-slate-200 hover:border-blue-200 hover:shadow-md hover:shadow-blue-50 rounded-xl p-5 flex items-center gap-3 transition-all cursor-default">
                 <div
                   className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
                   style={{ background: `${m.color}12` }}
@@ -2052,9 +2198,9 @@ function Home() {
                   <m.icon size={15} style={{ color: m.color }} />
                 </div>
                 <span className="text-sm font-medium text-slate-700 group-hover:text-slate-900">{m.label}</span>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
@@ -2064,7 +2210,12 @@ function Home() {
       {/* ── Feature callout A: cross-platform view ── */}
       <section className="bg-[#F7F8FC] py-24 px-6 border-y border-slate-100">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div>
+          <motion.div
+            variants={slideLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+          >
             <SectionLabel>Unified reporting</SectionLabel>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-5">
               Every platform, one table. Finally.
@@ -2088,8 +2239,13 @@ function Home() {
             <PrimaryBtn onClick={() => navigate("/features")}>
               Explore reporting <ArrowRight size={14} />
             </PrimaryBtn>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div
+            variants={slideRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+          >
             <BrowserFrame>
                 <div className="relative overflow-hidden">
                   <img
@@ -2098,14 +2254,13 @@ function Home() {
                     className="w-full object-cover object-top"
                     style={{ maxHeight: 420 }}
                   />
-                  {/* Blur overlay on the campaign name column (leftmost ~18% of the table) */}
                   <div
                     className="absolute inset-y-0 left-0 backdrop-blur-sm"
                     style={{ width: "18%", background: "rgba(255,255,255,0.35)" }}
                   />
                 </div>
               </BrowserFrame>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -2117,6 +2272,74 @@ function Home() {
 
       {/* ── Use Cases ── */}
       <UseCasesSection />
+
+      {/* ── Role-Based Solutions ── */}
+      <section className="bg-white py-24 px-6 border-b border-slate-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <SectionLabel>Built for your role</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
+              Whoever you are on the team — Cerebro works for you
+            </h2>
+            <p className="mt-4 text-slate-500">Different roles need different answers from the same data. Cerebro surfaces the right view for each.</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-5">
+            {[
+              {
+                icon: Users,
+                color: "#4A8FE0",
+                role: "Media Teams",
+                headline: "Stop reconciling. Start optimizing.",
+                body: "Live cross-platform ROAS, CPA, and CTR in one view. Anomaly alerts fire before campaigns bleed — so media buyers spend time on strategy, not spreadsheets.",
+                bullets: ["Unified campaign dashboard", "AI anomaly alerts", "Creative performance scoring", "Budget pacing view"],
+              },
+              {
+                icon: BarChart2,
+                color: "#818CF8",
+                role: "Data & Analytics Teams",
+                headline: "A clean feed — your way.",
+                body: "Normalized data with consistent schemas, currency conversion, and attribution alignment. Push to BigQuery, Snowflake, or any warehouse. No pipeline maintenance.",
+                bullets: ["Standardized cross-platform schema", "BigQuery & warehouse export", "36-month historical backfill", "API access for custom workflows"],
+              },
+              {
+                icon: Briefcase,
+                color: "#22C55E",
+                role: "Account Managers",
+                headline: "Your clients see what you want them to see.",
+                body: "White-label dashboards and automated branded reports for every client. Set it once, deliver it on schedule — no manual formatting, no late nights before QBRs.",
+                bullets: ["White-label client dashboards", "Scheduled PDF reports", "Custom branding per workspace", "Shareable report links"],
+              },
+              {
+                icon: TrendingUp,
+                color: "#F59E0B",
+                role: "Marketing Leadership",
+                headline: "Portfolio view across every account.",
+                body: "Blended ROAS, total spend, and performance trends across your entire agency book — in one executive view. Make budget decisions with confidence, not gut feel.",
+                bullets: ["Agency-wide performance overview", "Multi-client spend dashboard", "AI-generated weekly summaries", "Custom KPI tracking"],
+              },
+            ].map((p) => (
+              <div key={p.role} className="bg-[#F7F8FC] border border-slate-200 rounded-2xl p-7 hover:border-slate-300 hover:shadow-sm transition-all">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${p.color}14` }}>
+                    <p.icon size={16} style={{ color: p.color }} />
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-widest" style={{ color: p.color }}>{p.role}</span>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{p.headline}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed mb-5">{p.body}</p>
+                <ul className="space-y-1.5">
+                  {p.bullets.map((b) => (
+                    <li key={b} className="flex items-center gap-2 text-xs text-slate-600">
+                      <Check size={11} className="text-green-500 shrink-0" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── Feature callout B: Workflow ── */}
       <section className="bg-[#0B1728] py-24 px-6">
@@ -2398,6 +2621,54 @@ function Home() {
       </section>
 
       {/* ── Social Proof ── */}
+      <section className="bg-white py-20 px-6 border-b border-slate-100">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-center text-xs text-slate-400 uppercase tracking-widest mb-12">
+            Outcomes from agencies already on Cerebro
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                metric: "11 hrs",
+                unit: "saved / week",
+                color: BLUE,
+                detail: "A 12-person performance agency managing 18 client accounts moved from four manual exports to one automated dashboard. Friday reporting: full day → 30 minutes.",
+                tags: ["Performance Agency", "Meta + Google + TikTok"],
+              },
+              {
+                metric: "$40k+",
+                unit: "overspend caught",
+                color: GREEN,
+                detail: "An eCommerce brand detected a Meta bid strategy misconfiguration within 2 hours — before the weekly review cycle would have caught it. Alert fired automatically.",
+                tags: ["eCommerce Brand", "Meta Ads", "AI Alert"],
+              },
+              {
+                metric: "6.2x",
+                unit: "ROAS unlocked",
+                color: VIOLET,
+                detail: "A SaaS team identified Google Brand Search was impression-share constrained. Shifting $1,600/week from an underperforming campaign added $9,900 in attributed weekly revenue.",
+                tags: ["SaaS Marketing Team", "Google Ads"],
+              },
+            ].map((c) => (
+              <div key={c.metric} className="bg-[#F7F8FC] border border-slate-200 rounded-2xl p-6 flex flex-col gap-4">
+                <div>
+                  <span className="text-4xl font-black" style={{ color: c.color }}>{c.metric}</span>
+                  <span className="ml-2 text-sm font-medium text-slate-500">{c.unit}</span>
+                </div>
+                <p className="text-sm text-slate-500 leading-relaxed flex-1">{c.detail}</p>
+                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-200">
+                  {c.tags.map((t) => (
+                    <span key={t} className="text-[10px] font-medium text-slate-500 bg-white border border-slate-200 px-2 py-0.5 rounded-full">{t}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-xs text-slate-400 mt-8">
+            Company names withheld at customer request. Results based on self-reported data from active workspaces.
+          </p>
+        </div>
+      </section>
 
       {/* ── Roadmap ── */}
       <section className="bg-[#0B1728] py-24 px-6">
@@ -2495,6 +2766,36 @@ function Home() {
               Have a feature request? Tell us what you need <ArrowRight size={13} />
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* ── Enterprise Trust Strip ── */}
+      <section className="bg-[#F7F8FC] border-y border-slate-100 py-12 px-6">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-center text-xs text-slate-400 uppercase tracking-widest mb-8">Enterprise-ready from day one</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { icon: Shield,      title: "SOC 2 Type II",        desc: "Independently audited security controls and annual penetration testing." },
+              { icon: Lock,        title: "AES-256 Encryption",   desc: "All data encrypted at rest and in transit. OAuth tokens hardware-backed." },
+              { icon: Users,       title: "Role-Based Access",    desc: "Granular permissions per workspace. SSO via SAML 2.0 and OAuth 2.0." },
+              { icon: CheckCircle, title: "GDPR & CCPA Ready",    desc: "Data residency options for EU customers. Automated DSR handling." },
+            ].map((t) => (
+              <div key={t.title} className="flex items-start gap-3 bg-white border border-slate-200 rounded-xl p-4">
+                <div className="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center shrink-0 mt-0.5">
+                  <t.icon size={14} className="text-green-600" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-900 mb-0.5">{t.title}</p>
+                  <p className="text-xs text-slate-500 leading-relaxed">{t.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-center mt-6">
+            <NavLink to="/security" className="text-xs text-[#4A8FE0] hover:underline">
+              View full security documentation →
+            </NavLink>
+          </p>
         </div>
       </section>
 
@@ -2612,8 +2913,8 @@ function FeaturesPage() {
             A production-grade platform built for agencies and performance teams that take data seriously.
           </p>
           <div className="mt-8 flex justify-center gap-3">
-            <PrimaryBtn>Start free trial <ArrowRight size={14} /></PrimaryBtn>
-            <OutlineBtn>Book a demo</OutlineBtn>
+            <PrimaryBtn onClick={openDemo}>Book a demo <ArrowRight size={14} /></PrimaryBtn>
+            <OutlineBtn onClick={openDemo}>Start free trial</OutlineBtn>
           </div>
         </div>
       </section>
@@ -3435,39 +3736,58 @@ function AboutPage() {
       {/* ── Founders ── */}
       <section className="bg-white px-6 py-24">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-xs font-bold tracking-[0.2em] text-[#4A8FE0] uppercase mb-3">The team</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Meet the founders</h2>
-            <p className="mt-4 text-slate-500 max-w-xl mx-auto">
-              Two operators who built Cerebro to solve a problem they faced every week running digital advertising at scale.
-            </p>
+          {/* Leaders */}
+          <div className="text-center mb-12">
+            <p className="text-xs font-semibold tracking-[0.2em] text-[#4A8FE0] uppercase mb-3">Our Leaders</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0D5A48]">Introducing our Leaders</h2>
           </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {FOUNDERS.map((f) => (
-              <div key={f.name} className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col gap-6 hover:shadow-lg hover:shadow-blue-50 transition-all">
-                <div className="flex items-center gap-4">
+          <Stagger className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mb-20">
+            {[
+              { name: "Arshad Ali",        role: "Director of Technical Services",        initials: "AA", accent: "#4A8FE0" },
+              { name: "Fizzah Shahid",     role: "Head of Strategy",                       initials: "FS", accent: "#3272C4" },
+              { name: "Dur e Sameen Aamir",role: "Associate Director Performance-Media",   initials: "DS", accent: "#5BA3A0" },
+              { name: "M. Ali Shah",       role: "Lead Project & Delivery Management",     initials: "MS", accent: "#2E6EA6" },
+            ].map((p) => (
+              <StaggerItem key={p.name} className="flex flex-col items-center text-center group">
+                <div className="w-36 h-36 rounded-full overflow-hidden ring-2 ring-slate-200 ring-offset-2 mb-5 transition-shadow group-hover:ring-[#4A8FE0]">
                   <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-xl shrink-0"
-                    style={{ background: `linear-gradient(135deg, ${f.accent}, ${f.accent}88)` }}
+                    className="w-full h-full flex items-center justify-center text-white font-bold text-3xl tracking-tight"
+                    style={{ background: `linear-gradient(160deg, ${p.accent}, ${p.accent}bb)` }}
                   >
-                    {f.initials}
-                  </div>
-                  <div>
-                    <p className="font-bold text-lg text-slate-900">{f.name}</p>
-                    <p className="text-sm text-[#4A8FE0] font-medium">{f.role}</p>
+                    {p.initials}
                   </div>
                 </div>
-                <div className="h-px bg-slate-100" />
-                <p className="text-slate-500 leading-relaxed text-sm">{f.bio}</p>
-                <div className="flex items-center gap-3 mt-auto">
-                  <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center">
-                    <ExternalLink size={13} className="text-[#4A8FE0]" />
-                  </div>
-                </div>
-              </div>
+                <p className="font-bold text-sm text-slate-900">{p.name}</p>
+                <p className="text-xs text-slate-500 mt-0.5">{p.role}</p>
+              </StaggerItem>
             ))}
+          </Stagger>
+
+          {/* Team */}
+          <div className="text-center mb-12">
+            <p className="text-xs font-semibold tracking-[0.2em] text-[#4A8FE0] uppercase mb-3">Our Team</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0D5A48]">Introducing our Team</h2>
           </div>
+          <Stagger className="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+            {[
+              { name: "Rehan Siddiqui",  role: "Associate Creative Director",              initials: "RS", accent: "#4A8FE0" },
+              { name: "Arsalan Usman",   role: "Lead Tech Developer & Infra Architecture", initials: "AU", accent: "#3272C4" },
+              { name: "Imran Samoon",    role: "Lead UX & CX Product Design",              initials: "IS", accent: "#5BA3A0" },
+            ].map((p) => (
+              <StaggerItem key={p.name} className="flex flex-col items-center text-center group">
+                <div className="w-36 h-36 rounded-full overflow-hidden ring-2 ring-slate-200 ring-offset-2 mb-5 transition-shadow group-hover:ring-[#4A8FE0]">
+                  <div
+                    className="w-full h-full flex items-center justify-center text-white font-bold text-3xl tracking-tight"
+                    style={{ background: `linear-gradient(160deg, ${p.accent}, ${p.accent}bb)` }}
+                  >
+                    {p.initials}
+                  </div>
+                </div>
+                <p className="font-bold text-sm text-slate-900">{p.name}</p>
+                <p className="text-xs text-slate-500 mt-0.5">{p.role}</p>
+              </StaggerItem>
+            ))}
+          </Stagger>
         </div>
       </section>
 
