@@ -1,5 +1,5 @@
 import {
-  createBrowserRouter, Outlet, NavLink, useNavigate, useLocation,
+  createBrowserRouter, Outlet, NavLink, useNavigate, useLocation, useParams,
 } from "react-router";
 import heroDashImg from "@/imports/image.png";
 import cerebroLogo from "@/imports/Cerebro_logo_darkbg_png.png";
@@ -4341,15 +4341,275 @@ function ContactPage() {
 // DOCS / DEVELOPER RESOURCES PAGE
 // ═══════════════════════════════════════════════════════════════════════════════
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// DOCS / DEVELOPER RESOURCES PAGE & INTERACTIVE GUIDE READER
+// ═══════════════════════════════════════════════════════════════════════════════
+
+interface GuideContent {
+  id: string;
+  title: string;
+  category: string;
+  readTime: string;
+  updated: string;
+  summary: string;
+  sections: {
+    heading: string;
+    body: string;
+    code?: string;
+    tip?: string;
+  }[];
+}
+
+const ALL_GUIDES: Record<string, GuideContent> = {
+  "auth-api-keys": {
+    id: "auth-api-keys",
+    title: "Authentication & API Keys",
+    category: "Developer & API",
+    readTime: "4 min read",
+    updated: "Updated August 2026",
+    summary: "Learn how to generate, secure, and authenticate REST API requests using Cerebro Bearer tokens.",
+    sections: [
+      {
+        heading: "1. Generating an API Key",
+        body: "Navigate to Workspace Settings > API & Developer Portal. Click 'Create Secret Key'. Assign a descriptive label (e.g., 'Production Server') and set scope permissions according to your security requirements.",
+        tip: "Never expose your secret key in client-side code or public GitHub repositories."
+      },
+      {
+        heading: "2. Authenticating HTTP Requests",
+        body: "Pass your secret key in the HTTP Authorization header using the Bearer token scheme. All API requests must be served over HTTPS.",
+        code: `curl -X GET "https://api.cerebro.media/v2/campaigns" \\
+  -H "Authorization: Bearer cbr_live_8f912a73b9e42" \\
+  -H "Content-Type: application/json"`
+      },
+      {
+        heading: "3. Scope Permissions & Key Rotation",
+        body: "Cerebro supports granular API key scopes: Read-only (reporting data), Write (campaign adjustments), and Admin (workspace configuration). Rotate keys every 90 days from the Developer Portal."
+      }
+    ]
+  },
+  "connect-meta-ads": {
+    id: "connect-meta-ads",
+    title: "Connect Meta Ads",
+    category: "Platform Integration",
+    readTime: "5 min read",
+    updated: "Updated August 2026",
+    summary: "Connect your Facebook Business Manager and Meta Ad Accounts to sync campaigns, ad sets, creatives, and custom conversions.",
+    sections: [
+      {
+        heading: "1. Launch Facebook OAuth Flow",
+        body: "Go to Integrations > Meta Ads in Cerebro. Click 'Connect Meta Account' to initiate Meta's OAuth 2.0 authorization sequence.",
+        tip: "Ensure your Facebook user profile has Admin or Advertiser permissions on the target Meta Business Manager."
+      },
+      {
+        heading: "2. Select Ad Accounts & Pixel ID",
+        body: "Select the specific Ad Accounts you wish to aggregate into Cerebro. Cerebro automatically maps Spend, Impressions, Link Clicks, Purchases, CPA, and ROAS."
+      },
+      {
+        heading: "3. Custom Conversions & Attribution Window",
+        body: "Configure custom conversion rules and set your default attribution window (7-day click / 1-day view) to match your Meta Ads Manager reporting."
+      }
+    ]
+  },
+  "connect-google-ads": {
+    id: "connect-google-ads",
+    title: "Connect Google Ads",
+    category: "Platform Integration",
+    readTime: "4 min read",
+    updated: "Updated August 2026",
+    summary: "Integrate Google Ads Manager (MCC) or individual accounts for automated Search, Performance Max, Display, and YouTube analytics.",
+    sections: [
+      {
+        heading: "1. Authorize Google Ads Access",
+        body: "Navigate to Integrations > Google Ads. Click 'Authorize with Google' and grant offline access to read campaign reporting data."
+      },
+      {
+        heading: "2. Manager Account (MCC) Sync",
+        body: "If managing multiple client accounts, select your top-level MCC Account ID. Cerebro will discover and sync all child accounts automatically."
+      },
+      {
+        heading: "3. Synced Metrics Overview",
+        body: "Cerebro syncs Cost, Impressions, Clicks, Conversions, Conversion Value, Search Impression Share, and Quality Score hourly."
+      }
+    ]
+  },
+  "connect-tiktok-ads": {
+    id: "connect-tiktok-ads",
+    title: "Connect TikTok Ads",
+    category: "Platform Integration",
+    readTime: "4 min read",
+    updated: "Updated August 2026",
+    summary: "Connect TikTok Ads Manager to sync video ad performance, engagement, video completion rates, and conversion metrics.",
+    sections: [
+      {
+        heading: "1. Connect TikTok Business Account",
+        body: "Go to Integrations > TikTok Ads. Login with your TikTok For Business credentials and approve the Cerebro API app authorization."
+      },
+      {
+        heading: "2. Video Performance Insights",
+        body: "Cerebro automatically aggregates TikTok-specific metrics including 2s Video Views, 6s Video Views, Video Completion Rate, Profile Visits, and Follows."
+      }
+    ]
+  },
+  "white-label-reports": {
+    id: "white-label-reports",
+    title: "Setting up white-label reports",
+    category: "Reporting & Branding",
+    readTime: "6 min read",
+    updated: "Updated August 2026",
+    summary: "Brand client portals and automated PDF reports with your agency logo, custom domain, brand palette, and custom headers.",
+    sections: [
+      {
+        heading: "1. Upload Agency Logo & Custom Theme",
+        body: "Go to Settings > Branding. Upload your high-resolution PNG logo and primary brand HEX colors. Cerebro automatically styles all generated PDFs and client dashboards.",
+        tip: "Upload a transparent dark logo for dark-mode reports and light logo for light PDFs."
+      },
+      {
+        heading: "2. Custom CNAME Domain Setup",
+        body: "Map your custom subdomain (e.g., reports.youragency.com) by adding a CNAME DNS record pointing to cname.cerebro.media.",
+        code: `Type: CNAME
+Name: reports
+Target: cname.cerebro.media
+TTL: 3600`
+      },
+      {
+        heading: "3. Automated Client Email Scheduling",
+        body: "Set up automated weekly or monthly report emails sent directly from your custom email domain to client stakeholders."
+      }
+    ]
+  },
+  "rbac-setup": {
+    id: "rbac-setup",
+    title: "Role-based access control",
+    category: "Security & Governance",
+    readTime: "5 min read",
+    updated: "Updated August 2026",
+    summary: "Manage team permissions, enforce least-privilege security, and restrict client access to specific accounts and financial data.",
+    sections: [
+      {
+        heading: "1. Workspace Roles Matrix",
+        body: "Cerebro includes 5 built-in roles: Owner (Full Access), Admin (Manage Users & Billing), Manager (Create Reports), Analyst (View Data & Edit Dashboards), and Client Portal (View Assigned Accounts Only)."
+      },
+      {
+        heading: "2. Restricting Client Access",
+        body: "When inviting a client user, select 'Client Access' and check only the specific Ad Accounts and Workspaces they are allowed to see."
+      }
+    ]
+  },
+  "webhooks-reference": {
+    id: "webhooks-reference",
+    title: "Webhook events reference",
+    category: "Developer & API",
+    readTime: "5 min read",
+    updated: "Updated August 2026",
+    summary: "Receive instant HTTP POST callbacks for budget anomalies, campaign status changes, and scheduled report completions.",
+    sections: [
+      {
+        heading: "1. Registering Webhook Endpoints",
+        body: "In Developer Portal > Webhooks, add your HTTP POST endpoint URL and select the event types you want to subscribe to."
+      },
+      {
+        heading: "2. Payload Verification",
+        body: "Verify requests using the X-Cerebro-Signature header generated with your webhook HMAC secret.",
+        code: `const crypto = require('crypto');
+const signature = req.headers['x-cerebro-signature'];
+const hmac = crypto.createHmac('sha256', secret)
+  .update(JSON.stringify(req.body)).digest('hex');
+const isValid = signature === \`sha256=\${hmac}\`;`
+      }
+    ]
+  },
+  "data-warehouse-export": {
+    id: "data-warehouse-export",
+    title: "Data warehouse export (BigQuery)",
+    category: "Data Pipelines",
+    readTime: "7 min read",
+    updated: "Updated August 2026",
+    summary: "Export raw unified ad spend and performance metrics directly to Google BigQuery, Snowflake, or AWS Redshift.",
+    sections: [
+      {
+        heading: "1. GCP Service Account Setup",
+        body: "Create a Service Account in GCP Console with 'BigQuery Data Editor' permissions and generate a JSON private key."
+      },
+      {
+        heading: "2. Partitioning & Clustering",
+        body: "Cerebro automatically partitions destination tables by date (_PARTITIONTIME) and clusters by platform_id to minimize BigQuery query costs."
+      }
+    ]
+  },
+  "custom-metrics": {
+    id: "custom-metrics",
+    title: "Custom metrics & calculations",
+    category: "Reporting & Analytics",
+    readTime: "4 min read",
+    updated: "Updated August 2026",
+    summary: "Build custom KPI formulas like Blended ROAS, Merchandising Margin, Net CPA, and Custom Conversion Ratios.",
+    sections: [
+      {
+        heading: "1. Formula Builder Syntax",
+        body: "Use standard mathematical operators (+, -, *, /) and built-in metric fields in the Formula Editor.",
+        code: `Blended ROAS = (Meta Revenue + Google Revenue + TikTok Revenue) / 
+               (Meta Spend + Google Spend + TikTok Spend)`
+      }
+    ]
+  },
+  "sso-saml": {
+    id: "sso-saml",
+    title: "SSO / SAML 2.0 setup",
+    category: "Enterprise Security",
+    readTime: "5 min read",
+    updated: "Updated August 2026",
+    summary: "Configure Single Sign-On (SSO) with Okta, Azure AD (Entra ID), or Google Workspace for enterprise authentication.",
+    sections: [
+      {
+        heading: "1. Configure SAML Identity Provider",
+        body: "Enter Cerebro ACS URL (https://auth.cerebro.media/saml/consume) and Audience URI in your IdP SAML application configuration."
+      }
+    ]
+  },
+  "migrating-supermetrics": {
+    id: "migrating-supermetrics",
+    title: "Migrating from Supermetrics",
+    category: "Migration Guides",
+    readTime: "6 min read",
+    updated: "Updated August 2026",
+    summary: "Easily transition your Looker Studio, Google Sheets, and data warehouse queries from Supermetrics to Cerebro.",
+    sections: [
+      {
+        heading: "1. One-Click Template Converter",
+        body: "Use Cerebro's migration utility to convert Supermetrics Google Sheets formulas and Looker Studio data sources with 100% field mapping parity."
+      }
+    ]
+  },
+  "api-rate-limits": {
+    id: "api-rate-limits",
+    title: "API rate limits & pagination",
+    category: "Developer & API",
+    readTime: "4 min read",
+    updated: "Updated August 2026",
+    summary: "Understand rate limit headers, cursor-based pagination, and exponential backoff retry algorithms.",
+    sections: [
+      {
+        heading: "1. Rate Limit Headers",
+        body: "Standard rate limit is 1,000 requests per minute per workspace. Monitor response headers: X-RateLimit-Limit, X-RateLimit-Remaining, and X-RateLimit-Reset."
+      }
+    ]
+  }
+};
+
 function DocsPage() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedGuideId, setSelectedGuideId] = useState<string | null>(null);
+  const [feedbackSent, setFeedbackSent] = useState<string | null>(null);
+
   const RESOURCES = [
     {
       icon: Code2,
       title: "API Reference",
       desc: "Full REST API documentation with authentication, rate limits, endpoints, and response schemas. Interactive playground included.",
-      cta: "Read the docs",
+      cta: "Read API docs",
       color: BLUE,
       badge: "v2.1",
+      guideId: "auth-api-keys",
     },
     {
       icon: BookOpen,
@@ -4358,6 +4618,7 @@ function DocsPage() {
       cta: "Browse guides",
       color: CYAN,
       badge: "200+ articles",
+      guideId: "connect-meta-ads",
     },
     {
       icon: HelpCircle,
@@ -4366,6 +4627,7 @@ function DocsPage() {
       cta: "Get help",
       color: VIOLET,
       badge: "24h response",
+      guideId: "rbac-setup",
     },
     {
       icon: Activity,
@@ -4374,6 +4636,7 @@ function DocsPage() {
       cta: "See what's new",
       color: GREEN,
       badge: "Weekly",
+      guideId: "migrating-supermetrics",
     },
     {
       icon: GitBranch,
@@ -4382,6 +4645,7 @@ function DocsPage() {
       cta: "Go to portal",
       color: AMBER,
       badge: "SDK available",
+      guideId: "webhooks-reference",
     },
     {
       icon: Globe,
@@ -4390,41 +4654,51 @@ function DocsPage() {
       cta: "Check status",
       color: BLUE,
       badge: "99.97% uptime",
+      guideId: "data-warehouse-export",
     },
   ];
 
   const QUICK_LINKS = [
-    { label: "Authentication & API Keys", href: "#" },
-    { label: "Connect Meta Ads", href: "#" },
-    { label: "Connect Google Ads", href: "#" },
-    { label: "Connect TikTok Ads", href: "#" },
-    { label: "Setting up white-label reports", href: "#" },
-    { label: "Role-based access control", href: "#" },
-    { label: "Webhook events reference", href: "#" },
-    { label: "Data warehouse export (BigQuery)", href: "#" },
-    { label: "Custom metrics & calculations", href: "#" },
-    { label: "SSO / SAML 2.0 setup", href: "#" },
-    { label: "Migrating from Supermetrics", href: "#" },
-    { label: "API rate limits & pagination", href: "#" },
+    { id: "auth-api-keys", label: "Authentication & API Keys" },
+    { id: "connect-meta-ads", label: "Connect Meta Ads" },
+    { id: "connect-google-ads", label: "Connect Google Ads" },
+    { id: "connect-tiktok-ads", label: "Connect TikTok Ads" },
+    { id: "white-label-reports", label: "Setting up white-label reports" },
+    { id: "rbac-setup", label: "Role-based access control" },
+    { id: "webhooks-reference", label: "Webhook events reference" },
+    { id: "data-warehouse-export", label: "Data warehouse export (BigQuery)" },
+    { id: "custom-metrics", label: "Custom metrics & calculations" },
+    { id: "sso-saml", label: "SSO / SAML 2.0 setup" },
+    { id: "migrating-supermetrics", label: "Migrating from Supermetrics" },
+    { id: "api-rate-limits", label: "API rate limits & pagination" },
   ];
+
+  const filteredLinks = QUICK_LINKS.filter((l) =>
+    l.label.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const activeGuide = selectedGuideId ? ALL_GUIDES[selectedGuideId] : null;
 
   return (
     <div className="bg-white min-h-screen pt-28">
       {/* Header */}
       <section className="bg-white px-6 pb-20 text-center">
         <div className="max-w-2xl mx-auto">
-          <Badge color={BLUE}><BookOpen size={10} /> Documentation</Badge>
+          <Badge color={BLUE}><BookOpen size={10} /> Documentation & Guides</Badge>
           <h1 className="mt-5 text-4xl md:text-6xl font-bold text-slate-900 leading-tight tracking-tight">
             Resources & Developer Docs
           </h1>
           <p className="mt-5 text-lg text-slate-500">
-            Everything you need to connect, build, and get the most out of Cerebro Media.
+            Everything you need to connect ad platforms, configure custom reporting, and build on Cerebro.
           </p>
           <div className="mt-8 relative max-w-md mx-auto">
             <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
-              placeholder="Search documentation..."
-              className="w-full bg-[#F7F8FC] border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#4A8FE0] transition-colors"
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search documentation (e.g. Meta Ads, API, BigQuery)..."
+              className="w-full bg-[#F7F8FC] border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#4A8FE0] transition-colors shadow-sm"
             />
           </div>
         </div>
@@ -4435,7 +4709,11 @@ function DocsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {RESOURCES.map((r) => (
-              <div key={r.title} className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-200 hover:shadow-md hover:shadow-blue-50 transition-all group cursor-pointer">
+              <div
+                key={r.title}
+                onClick={() => setSelectedGuideId(r.guideId)}
+                className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 hover:shadow-md hover:shadow-blue-50 transition-all group cursor-pointer"
+              >
                 <div className="flex items-start justify-between mb-5">
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ background: `${r.color}10` }}>
                     <r.icon size={20} style={{ color: r.color }} />
@@ -4450,7 +4728,7 @@ function DocsPage() {
                 <h3 className="font-bold text-slate-900 mb-2">{r.title}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed mb-5">{r.desc}</p>
                 <span className="text-sm font-semibold flex items-center gap-1.5" style={{ color: r.color }}>
-                  {r.cta} <ArrowRight size={13} />
+                  {r.cta} <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
                 </span>
               </div>
             ))}
@@ -4458,25 +4736,32 @@ function DocsPage() {
         </div>
       </section>
 
-      {/* Quick links */}
+      {/* Quick links & Support */}
       <section className="bg-white py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div>
               <SectionLabel>Popular articles</SectionLabel>
               <h2 className="text-2xl font-bold text-slate-900 mb-8">Frequently accessed guides</h2>
-              <div className="space-y-2">
-                {QUICK_LINKS.map((l) => (
-                  <a
-                    key={l.label}
-                    href={l.href}
-                    className="flex items-center justify-between py-3 px-4 rounded-xl border border-transparent hover:border-slate-200 hover:bg-[#F7F8FC] transition-all group"
-                  >
-                    <span className="text-sm text-slate-700 group-hover:text-slate-900">{l.label}</span>
-                    <ChevronRight size={13} className="text-slate-400 group-hover:text-[#4A8FE0] transition-colors shrink-0" />
-                  </a>
-                ))}
-              </div>
+              
+              {filteredLinks.length === 0 ? (
+                <div className="p-6 text-center bg-[#F7F8FC] border border-slate-200 rounded-2xl text-slate-500 text-sm">
+                  No matching guides found for "{searchQuery}". Try searching for API, Meta, Google, or BigQuery.
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  {filteredLinks.map((l) => (
+                    <button
+                      key={l.id}
+                      onClick={() => setSelectedGuideId(l.id)}
+                      className="w-full flex items-center justify-between py-3 px-4 rounded-xl border border-transparent hover:border-slate-200 hover:bg-[#F7F8FC] transition-all group text-left"
+                    >
+                      <span className="text-sm text-slate-700 group-hover:text-slate-900 font-medium">{l.label}</span>
+                      <ChevronRight size={15} className="text-slate-400 group-hover:text-[#4A8FE0] transition-colors shrink-0 group-hover:translate-x-0.5" />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="space-y-4">
@@ -4518,6 +4803,109 @@ function DocsPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Interactive Article Reader Modal / Drawer ── */}
+      <AnimatePresence>
+        {activeGuide && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 15 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="bg-white border border-slate-200 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[88vh] overflow-y-auto my-auto"
+            >
+              {/* Modal Top Header */}
+              <div className="sticky top-0 bg-white/95 backdrop-blur-md border-b border-slate-100 px-6 py-4 flex items-center justify-between z-10">
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-semibold px-2.5 py-1 bg-[#4A8FE0]/10 text-[#4A8FE0] rounded-full">
+                    {activeGuide.category}
+                  </span>
+                  <span className="text-xs text-slate-400">{activeGuide.readTime}</span>
+                </div>
+                <button
+                  onClick={() => { setSelectedGuideId(null); setFeedbackSent(null); }}
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-6 md:p-8 space-y-8">
+                <div>
+                  <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">{activeGuide.title}</h1>
+                  <p className="text-slate-500 text-sm leading-relaxed">{activeGuide.summary}</p>
+                  <p className="text-xs text-slate-400 mt-2">{activeGuide.updated}</p>
+                </div>
+
+                <div className="space-y-6 border-t border-slate-100 pt-6">
+                  {activeGuide.sections.map((sec, idx) => (
+                    <div key={idx} className="space-y-3">
+                      <h3 className="text-lg font-bold text-slate-900">{sec.heading}</h3>
+                      <p className="text-slate-600 text-sm leading-relaxed">{sec.body}</p>
+
+                      {sec.code && (
+                        <div className="relative bg-[#0B1728] text-slate-200 rounded-xl p-4 font-mono text-xs overflow-x-auto shadow-inner border border-slate-800">
+                          <pre>{sec.code}</pre>
+                        </div>
+                      )}
+
+                      {sec.tip && (
+                        <div className="bg-[#4A8FE0]/5 border-l-4 border-[#4A8FE0] p-4 rounded-r-xl text-xs text-slate-700 leading-relaxed">
+                          <strong className="text-[#4A8FE0] font-semibold">Pro Tip: </strong>
+                          {sec.tip}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Helpful feedback section */}
+                <div className="border-t border-slate-100 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#F7F8FC] p-5 rounded-2xl">
+                  <span className="text-xs font-semibold text-slate-700">Was this guide helpful?</span>
+                  {feedbackSent ? (
+                    <span className="text-xs font-bold text-[#059669] flex items-center gap-1.5">
+                      <CheckCircle size={14} /> Thank you for your feedback!
+                    </span>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setFeedbackSent("yes")}
+                        className="px-3.5 py-1.5 rounded-lg border border-slate-200 bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm"
+                      >
+                        👍 Yes
+                      </button>
+                      <button
+                        onClick={() => setFeedbackSent("no")}
+                        className="px-3.5 py-1.5 rounded-lg border border-slate-200 bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm"
+                      >
+                        👎 No
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Modal Footer */}
+              <div className="border-t border-slate-100 bg-[#F7F8FC] px-6 py-4 flex items-center justify-between rounded-b-2xl">
+                <button
+                  onClick={() => { setSelectedGuideId(null); setFeedbackSent(null); }}
+                  className="text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors"
+                >
+                  ← Close guide
+                </button>
+                <a
+                  href="mailto:hello@cerebro.media"
+                  className="text-xs font-semibold text-[#4A8FE0] hover:underline flex items-center gap-1"
+                >
+                  Need more help? Contact support <ArrowRight size={11} />
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -4928,84 +5316,266 @@ function HelpCenterPage() {
 // BLOG PAGE
 // ═══════════════════════════════════════════════════════════════════════════════
 
-const BLOG_POSTS = [
+// ═══════════════════════════════════════════════════════════════════════════════
+// BLOG PAGE & INTERACTIVE ARTICLE READ PAGES
+// ═══════════════════════════════════════════════════════════════════════════════
+
+interface BlogPostArticle {
+  slug: string;
+  category: string;
+  categoryColor: string;
+  title: string;
+  excerpt: string;
+  readTime: string;
+  date: string;
+  author: {
+    name: string;
+    role: string;
+    avatar: string;
+  };
+  featured?: boolean;
+  content: {
+    heading: string;
+    paragraphs: string[];
+    quote?: string;
+    metric?: { label: string; value: string; desc: string };
+    code?: string;
+  }[];
+}
+
+const BLOG_POSTS: BlogPostArticle[] = [
   {
     slug: "ai-anomaly-detection-ad-spend",
-    category: "Product",
+    category: "Product & AI",
     categoryColor: BLUE,
-    title: "How AI anomaly detection saved one agency $40k in a single month",
-    excerpt: "A performance agency running 18 client accounts detected a Meta bid strategy misconfiguration within 2 hours using Cerebro's anomaly alerts — before the weekly review cycle would have caught it.",
+    title: "How AI Anomaly Detection Saved an Agency $42,000 in Unintended Ad Spend",
+    excerpt: "A performance agency running 18 client accounts detected a Meta bidding algorithm failure within 2 hours using Cerebro's real-time anomaly alerts — long before weekly audit cycles.",
     readTime: "5 min read",
     date: "Jul 28, 2026",
     featured: true,
+    author: {
+      name: "Alex Vance",
+      role: "Head of Product @ Cerebro dNANO",
+      avatar: "AV"
+    },
+    content: [
+      {
+        heading: "The Hidden Danger of Automated Bidding Systems",
+        paragraphs: [
+          "Automated bidding algorithms on Meta and Google Ads are designed to maximize conversions, but when a conversion tracking pixel experiences a temporary glitch or outage, bidding bots can rapidly spiral out of control.",
+          "During a routine budget scaling sequence, a mid-sized ecommerce agency deployed a Advantage+ Shopping Campaign with a target CPA of $45. Due to a temporary Shopify checkout webhook delay, Meta's algorithm registered 0 conversions over a 90-minute window while aggressively spiking CPMs from $14 to $168."
+        ]
+      },
+      {
+        heading: "Enter Cerebro dNANO Real-Time Statistical Checks",
+        paragraphs: [
+          "Cerebro dNANO continuously monitors active campaign metrics against a statistical baseline built from your workspace's rolling 30-day historical performance.",
+          "Every 15 minutes, Cerebro evaluates statistical variance across CPM, Cost Per Click (CPC), Conversion Rate, and ROAS. When a metric strays beyond 2.5 standard deviations from normal seasonality, Cerebro fires an instant priority alert."
+        ],
+        metric: {
+          label: "Ad Spend Saved",
+          value: "$42,150",
+          desc: "Caught within 110 minutes of bid algorithm anomaly across 4 campaign groups."
+        }
+      },
+      {
+        heading: "How the Anomaly Alert Triggered Action",
+        paragraphs: [
+          "At 11:42 AM, the agency's media buyers received a high-priority notification in Slack and SMS: 'CRITICAL ANOMALY: Campaign #8491 CPM spiked +1,100% with zero attributable purchases.'",
+          "The team paused the rogue ad sets within 8 minutes of receiving the alert. Without Cerebro dNANO's real-time monitoring, the misconfigured campaigns would have burned through $42,000 in budget before the scheduled Friday reporting review."
+        ],
+        quote: "Cerebro's anomaly detection isn't just a reporting tool — it's financial insurance for our agency's ad spend."
+      },
+      {
+        heading: "Key Takeaways for Performance Marketing Teams",
+        paragraphs: [
+          "1. Never rely solely on weekly or end-of-day manual reporting audits.",
+          "2. Configure automated circuit breakers that notify your team via Slack or SMS when CPM or CPC spikes unexpectedly.",
+          "3. Combine AI statistical checks with human oversight to protect client ad budgets."
+        ]
+      }
+    ]
   },
   {
     slug: "cross-platform-attribution-guide",
     category: "Data & Analytics",
     categoryColor: CYAN,
-    title: "The definitive guide to cross-platform attribution in 2026",
-    excerpt: "Meta, Google, and TikTok all claim credit for the same conversion. Here's how to build an attribution model that actually reflects reality — and why the platform numbers will never match.",
+    title: "The 2026 Guide to Multi-Touch Cross-Platform Attribution (Meta + Google + TikTok)",
+    excerpt: "Meta, Google, and TikTok all claim 100% credit for the same conversion. Here's how to build a unified attribution model that reflects true net revenue.",
     readTime: "9 min read",
     date: "Jul 21, 2026",
     featured: false,
+    author: {
+      name: "Sarah Lin",
+      role: "Principal Data Scientist",
+      avatar: "SL"
+    },
+    content: [
+      {
+        heading: "The Triangulation Dilemma: Why Ad Platform Numbers Never Match",
+        paragraphs: [
+          "If you sum the reported conversions across Meta Ads Manager, Google Ads, and TikTok Ads Manager, you will almost always get a number 30% to 50% higher than your actual Stripe or Shopify order volume.",
+          "Why does this happen? Self-attributing ad networks operate in isolated silos. If a customer views a TikTok ad, clicks a Meta retargeting ad, and finally searches your brand on Google, all three platforms claim 100% credit for that single sale."
+        ]
+      },
+      {
+        heading: "Building a Single Source of Truth with Cerebro dNANO",
+        paragraphs: [
+          "Cerebro dNANO solves multi-touch attribution by unifying raw event logs, UTM parameters, server-side Conversion APIs (CAPI), and post-purchase survey signals into one deduplicated reporting layer.",
+          "Instead of relying on single-touch models, Cerebro allows you to compare First-Touch, Last-Touch, Linear, and Position-Based models side by side."
+        ],
+        code: `// Sample Unified Attribution Metric in Cerebro Formula Builder
+Blended CAC = (Meta Spend + Google Spend + TikTok Spend) / 
+              Deduplicated_Order_Count(Shopify)`
+      },
+      {
+        heading: "Real-World Results: Eliminating Double Counting",
+        paragraphs: [
+          "By deploying Cerebro's multi-touch attribution model, performance marketers gain clarity on actual incremental ROAS, ensuring ad budget is allocated to channel strategies that truly drive growth rather than duplicate claims."
+        ]
+      }
+    ]
   },
   {
     slug: "white-label-reporting-agencies",
-    category: "Agency Tips",
+    category: "Agency Growth",
     categoryColor: VIOLET,
-    title: "White-label reporting: how to deliver client reports that build trust",
-    excerpt: "The difference between a report that retains a client and one that loses them isn't the data — it's the presentation. A playbook for agencies building automated, branded reporting.",
+    title: "White-Label Reporting: How Top Performance Agencies Retain Clients Longer",
+    excerpt: "The difference between a client report that leads to a retainer renewal and one that causes churn isn't just the data — it's presentation and clarity.",
     readTime: "6 min read",
     date: "Jul 14, 2026",
     featured: false,
+    author: {
+      name: "Marcus Chen",
+      role: "VP of Client Growth",
+      avatar: "MC"
+    },
+    content: [
+      {
+        heading: "Why Static PDF Reports Cause Client Churn",
+        paragraphs: [
+          "Clients don't have time to wade through 40-page PDF decks or raw CSV exports. When executives can't immediately see where their budget went and what ROAS was achieved, trust erodes.",
+          "Leading performance agencies use white-label client portals to provide transparent, 24/7 access to live performance metrics under their own brand identity."
+        ]
+      },
+      {
+        heading: "Setting Up Your Custom Agency Portal in Cerebro dNANO",
+        paragraphs: [
+          "With Cerebro dNANO's white-label feature set, you can map your custom domain (e.g. reports.youragency.com), upload transparent PNG logos, apply custom agency color palettes, and deliver automated weekly client digests with zero Cerebro branding visible."
+        ],
+        metric: {
+          label: "Average Retainer Extension",
+          value: "+35%",
+          desc: "Reported by agencies switching from manual slides to interactive white-label client portals."
+        }
+      }
+    ]
   },
   {
     slug: "etl-pipeline-marketing-teams",
-    category: "Data & Analytics",
+    category: "Data Engineering",
     categoryColor: CYAN,
-    title: "Why marketing teams need an ETL pipeline — and how to get one without an engineer",
-    excerpt: "ETL (Extract, Transform, Load) used to require a dedicated data engineer. In 2026, marketing-specific ETL is self-serve. Here's what it is, why it matters, and how Cerebro implements it.",
+    title: "Why Marketing Teams Need a Zero-Code ETL Pipeline (And How to Set One Up)",
+    excerpt: "ETL used to require dedicated data engineers. In 2026, automated marketing ETL pipelines allow you to stream ad spend straight into BigQuery in under 10 minutes.",
     readTime: "7 min read",
     date: "Jul 7, 2026",
     featured: false,
+    author: {
+      name: "David Miller",
+      role: "Chief Technology Officer",
+      avatar: "DM"
+    },
+    content: [
+      {
+        heading: "The Breakdown of Manual Spreadsheet Exports",
+        paragraphs: [
+          "As ad spend grows past $50k/month, copying metrics into Google Sheets breaks due to cell limits, manual entry errors, and API quota limits.",
+          "A modern marketing ETL (Extract, Transform, Load) pipeline extracts raw metrics from Meta, Google, TikTok, and DV360, normalizes the schema, and loads it continuously into your cloud data warehouse."
+        ]
+      },
+      {
+        heading: "Zero-Code BigQuery Integration",
+        paragraphs: [
+          "Cerebro dNANO's automated ETL connector creates daily partitioned tables in Google BigQuery or Snowflake without writing a single line of Python or Airflow DAG code."
+        ],
+        code: `SELECT 
+  date, 
+  platform_id, 
+  SUM(spend) AS total_spend, 
+  SUM(conversions) AS total_conversions,
+  SAFE_DIVIDE(SUM(revenue), SUM(spend)) AS blended_roas
+FROM \`your_gcp_project.cerebro_analytics.fact_ad_performance\`
+GROUP BY date, platform_id
+ORDER BY date DESC;`
+      }
+    ]
   },
   {
     slug: "tiktok-roas-benchmarks-2026",
-    category: "Data & Analytics",
+    category: "Benchmarks & Data",
     categoryColor: CYAN,
-    title: "TikTok Ads ROAS benchmarks for 2026: what good looks like by industry",
-    excerpt: "Aggregated from Cerebro workspaces managing over $400M in TikTok spend. ROAS benchmarks by vertical, objective, and creative format — with context on why TikTok attribution differs from Meta.",
+    title: "2026 TikTok vs Meta ROAS Benchmarks: Aggregated Analysis of $400M Ad Spend",
+    excerpt: "Aggregated from 1,200+ active Cerebro dNANO workspaces. ROAS, CPM, and CPA benchmarks by industry vertical and ad format.",
     readTime: "8 min read",
     date: "Jun 30, 2026",
     featured: false,
+    author: {
+      name: "Cerebro Data Team",
+      role: "Analytics Research Group",
+      avatar: "CD"
+    },
+    content: [
+      {
+        heading: "Analyzing $400 Million in Cross-Platform Paid Media",
+        paragraphs: [
+          "We analyzed performance data across E-Commerce, SaaS, Mobile Apps, and B2B Lead Gen to understand how TikTok Ads and Meta Ads perform head-to-head in 2026.",
+          "Key Finding: While Meta continues to lead in direct bottom-of-funnel conversion efficiency, TikTok Ads generate 42% lower CPMs and drive 2.8x higher top-of-funnel discovery engagement."
+        ],
+        metric: {
+          label: "TikTok Average CPM",
+          value: "$6.40",
+          desc: "Compared to Meta's average $11.20 CPM across e-commerce verticals in Q2 2026."
+        }
+      }
+    ]
   },
   {
     slug: "saas-marketing-attribution",
-    category: "Customer Stories",
+    category: "Case Study",
     categoryColor: GREEN,
-    title: "How a SaaS team used Cerebro to attribute $9,900 in recovered weekly revenue",
-    excerpt: "By identifying that Google Brand Search was impression-share constrained at 6.2x ROAS, one team reallocated $1,600/week and unlocked nearly $10k in attributed revenue — in a single optimization cycle.",
+    title: "How an E-Commerce Brand Unlocked $9,800/Week in Recovered ROAS Revenue",
+    excerpt: "By identifying that Google Brand Search was impression-share constrained while Meta remarketing was oversaturated, one team reallocated $1,500/week to unlock massive growth.",
     readTime: "4 min read",
     date: "Jun 23, 2026",
     featured: false,
-  },
-  {
-    slug: "google-for-startups-application",
-    category: "Company",
-    categoryColor: AMBER,
-    title: "Cerebro Media joins the Google for Startups Cloud Program",
-    excerpt: "We are proud to announce that Cerebro Media has been accepted into the Google for Startups Cloud Program. What it means for our infrastructure roadmap, and what's next.",
-    readTime: "3 min read",
-    date: "Jun 16, 2026",
-    featured: false,
-  },
+    author: {
+      name: "Elena Rostova",
+      role: "Lead Growth Engineer",
+      avatar: "ER"
+    },
+    content: [
+      {
+        heading: "Finding Hidden Budget Inefficiencies",
+        paragraphs: [
+          "A scaling direct-to-consumer brand was spending $25,000/month across Meta and Google Ads, but top-line revenue had hit a ceiling.",
+          "Using Cerebro dNANO's cross-channel analytics, the team noticed that Google Search campaigns were losing 44% impression share due to daily budget caps while maintaining a 5.8x ROAS."
+        ]
+      },
+      {
+        heading: "Executing the Optimization Strategy",
+        paragraphs: [
+          "The growth team reallocated $1,500/week from low-converting Meta retargeting ad sets directly into high-intent Google Search campaigns. Within 7 days, weekly attributed revenue jumped by $9,800 without increasing overall ad spend."
+        ]
+      }
+    ]
+  }
 ];
 
-const BLOG_CATEGORIES = ["All", "Product", "Data & Analytics", "Agency Tips", "Customer Stories", "Company"];
+const BLOG_CATEGORIES = ["All", "Product & AI", "Data & Analytics", "Agency Growth", "Data Engineering", "Benchmarks & Data", "Case Study"];
 
 function BlogPage() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const featured = BLOG_POSTS.find((p) => p.featured)!;
+  const featured = BLOG_POSTS.find((p) => p.featured) || BLOG_POSTS[0];
   const rest = BLOG_POSTS.filter((p) => !p.featured && (activeCategory === "All" || p.category === activeCategory));
 
   return (
@@ -5013,12 +5583,12 @@ function BlogPage() {
       {/* Header */}
       <section className="bg-white px-6 pb-14 text-center">
         <div className="max-w-2xl mx-auto">
-          <Badge color={BLUE}><BookOpen size={10} /> Blog</Badge>
+          <Badge color={BLUE}><BookOpen size={10} /> Blog & Resources</Badge>
           <h1 className="mt-5 text-4xl md:text-5xl font-bold text-slate-900 leading-tight tracking-tight">
-            Marketing intelligence, explained
+            Advertising intelligence, explained
           </h1>
           <p className="mt-5 text-lg text-slate-500">
-            Guides, benchmarks, and product updates from the Cerebro team.
+            In-depth guides, benchmark reports, case studies, and product updates from the Cerebro dNANO engineering team.
           </p>
         </div>
       </section>
@@ -5026,17 +5596,21 @@ function BlogPage() {
       {/* Featured post */}
       <section className="bg-[#F7F8FC] border-y border-slate-100 py-12 px-6">
         <div className="max-w-5xl mx-auto">
-          <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-5">Featured</p>
-          <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-slate-100 transition-all cursor-pointer group">
+          <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-5">Featured Article</p>
+          <NavLink
+            to={`/blog/${featured.slug}`}
+            className="block bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-slate-100 hover:border-blue-300 transition-all cursor-pointer group"
+          >
             <div className="grid md:grid-cols-5">
               {/* Left — color block */}
               <div
-                className="md:col-span-2 min-h-[180px] flex items-center justify-center p-8"
+                className="md:col-span-2 min-h-[220px] flex flex-col items-center justify-center p-8 text-center"
                 style={{ background: `linear-gradient(135deg, ${BLUE}18, ${VIOLET}18)` }}
               >
-                <div className="w-16 h-16 rounded-2xl bg-[#4A8FE0]/15 border border-[#4A8FE0]/20 flex items-center justify-center">
-                  <Brain size={28} className="text-[#4A8FE0]" />
+                <div className="w-16 h-16 rounded-2xl bg-[#4A8FE0]/15 border border-[#4A8FE0]/20 flex items-center justify-center mb-3">
+                  <Brain size={30} className="text-[#4A8FE0]" />
                 </div>
+                <span className="text-xs font-semibold text-[#4A8FE0]">Cerebro dNANO Case Study</span>
               </div>
               {/* Right — content */}
               <div className="md:col-span-3 p-8 flex flex-col justify-center">
@@ -5053,12 +5627,20 @@ function BlogPage() {
                   {featured.title}
                 </h2>
                 <p className="text-sm text-slate-500 leading-relaxed mb-5">{featured.excerpt}</p>
-                <span className="flex items-center gap-1.5 text-sm font-semibold text-[#4A8FE0]">
-                  Read article <ArrowRight size={13} />
-                </span>
+                <div className="flex items-center justify-between pt-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-full bg-[#4A8FE0] text-white font-bold text-xs flex items-center justify-center">
+                      {featured.author.avatar}
+                    </div>
+                    <span className="text-xs font-medium text-slate-700">{featured.author.name}</span>
+                  </div>
+                  <span className="flex items-center gap-1.5 text-sm font-semibold text-[#4A8FE0] group-hover:translate-x-1 transition-transform">
+                    Read full article <ArrowRight size={14} />
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
+          </NavLink>
         </div>
       </section>
 
@@ -5083,68 +5665,283 @@ function BlogPage() {
             ))}
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {rest.map((post) => (
-              <div
+              <NavLink
                 key={post.slug}
-                className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-lg hover:shadow-slate-100 hover:border-slate-300 transition-all cursor-pointer group flex flex-col"
+                to={`/blog/${post.slug}`}
+                className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-lg hover:shadow-blue-50/50 hover:border-blue-300 transition-all cursor-pointer group flex flex-col"
               >
                 <div
-                  className="h-32 flex items-center justify-center"
-                  style={{ background: `linear-gradient(135deg, ${post.categoryColor}10, ${post.categoryColor}06)` }}
+                  className="h-36 flex items-center justify-center relative"
+                  style={{ background: `linear-gradient(135deg, ${post.categoryColor}12, ${post.categoryColor}05)` }}
                 >
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center"
-                    style={{ background: `${post.categoryColor}15`, border: `1px solid ${post.categoryColor}20` }}
+                    className="w-11 h-11 rounded-xl flex items-center justify-center shadow-sm"
+                    style={{ background: `${post.categoryColor}18`, border: `1px solid ${post.categoryColor}30` }}
                   >
-                    <BookOpen size={18} style={{ color: post.categoryColor }} />
+                    <BookOpen size={20} style={{ color: post.categoryColor }} />
                   </div>
                 </div>
                 <div className="p-5 flex flex-col flex-1">
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center justify-between gap-2 mb-3">
                     <span
-                      className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
+                      className="text-[10px] font-semibold px-2.5 py-0.5 rounded-full"
                       style={{ color: post.categoryColor, background: `${post.categoryColor}10` }}
                     >
                       {post.category}
                     </span>
                     <span className="text-[10px] text-slate-400">{post.readTime}</span>
                   </div>
-                  <h3 className="font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-[#4A8FE0] transition-colors flex-1">
+                  <h3 className="font-bold text-slate-900 text-base leading-snug mb-2 group-hover:text-[#4A8FE0] transition-colors flex-1">
                     {post.title}
                   </h3>
                   <p className="text-xs text-slate-500 leading-relaxed mb-4 line-clamp-3">{post.excerpt}</p>
-                  <div className="flex items-center justify-between pt-3 border-t border-slate-100">
-                    <span className="text-[10px] text-slate-400">{post.date}</span>
-                    <span className="flex items-center gap-1 text-xs font-semibold text-[#4A8FE0]">
-                      Read <ArrowRight size={11} />
+                  <div className="flex items-center justify-between pt-3 border-t border-slate-100 mt-auto">
+                    <span className="text-[11px] font-medium text-slate-500">{post.author.name}</span>
+                    <span className="flex items-center gap-1 text-xs font-semibold text-[#4A8FE0] group-hover:translate-x-0.5 transition-transform">
+                      Read article <ArrowRight size={12} />
                     </span>
                   </div>
                 </div>
-              </div>
+              </NavLink>
             ))}
             {rest.length === 0 && (
-              <div className="col-span-3 text-center py-16 text-slate-400 text-sm">
-                No posts in this category yet.
+              <div className="col-span-3 text-center py-16 text-slate-400 text-sm bg-[#F7F8FC] rounded-2xl border border-slate-200">
+                No articles found in category "{activeCategory}".
               </div>
             )}
           </div>
         </div>
       </section>
 
-      {/* Newsletter */}
+      {/* Newsletter Subscribe */}
       <section className="bg-[#0B1728] py-16 px-6">
         <div className="max-w-xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-white mb-3">Stay current on ad intelligence</h2>
-          <p className="text-slate-400 mb-7 text-sm">New benchmarks, product updates, and agency guides — once or twice a month. No spam.</p>
+          <h2 className="text-2xl font-bold text-white mb-3">Stay current on paid media intelligence</h2>
+          <p className="text-slate-400 mb-7 text-sm">New benchmarks, attribution insights, and product updates delivered bi-weekly.</p>
           <div className="flex gap-2 max-w-sm mx-auto">
             <input
+              type="email"
               placeholder="your@agency.com"
               className="flex-1 bg-[#0F2038] border border-[rgba(74,143,224,0.2)] rounded-xl px-4 py-2.5 text-sm text-[#E8F0FA] placeholder-[#4A6B8A] focus:outline-none focus:border-[#4A8FE0] transition-colors"
             />
             <button className="bg-[#4A8FE0] hover:bg-[#3A7FD0] text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm shrink-0">
               Subscribe
             </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// DEDICATED BLOG ARTICLE PAGE (/blog/:slug)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+function BlogPostPage() {
+  const { slug } = useParams<{ slug: string }>();
+  const { open: openDemo } = useDemoModal();
+  const [feedbackSent, setFeedbackSent] = useState<string | null>(null);
+
+  const article = BLOG_POSTS.find((p) => p.slug === slug);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [slug]);
+
+  if (!article) {
+    return (
+      <div className="bg-white min-h-screen pt-36 pb-24 text-center px-6">
+        <div className="max-w-md mx-auto space-y-4">
+          <Badge color={AMBER}>Article Not Found</Badge>
+          <h1 className="text-3xl font-bold text-slate-900">Blog Article Not Found</h1>
+          <p className="text-slate-500 text-sm">The requested blog post URL could not be found. Check the link or explore our latest research.</p>
+          <NavLink to="/blog" className="inline-flex items-center gap-2 bg-[#4A8FE0] text-white px-5 py-2.5 rounded-xl font-semibold text-sm">
+            ← Return to Blog
+          </NavLink>
+        </div>
+      </div>
+    );
+  }
+
+  const related = BLOG_POSTS.filter((p) => p.slug !== article.slug).slice(0, 3);
+
+  return (
+    <div className="bg-white min-h-screen pt-28 pb-24">
+      {/* Top Header & Breadcrumbs */}
+      <section className="bg-white px-6 border-b border-slate-100 pb-10">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+            <NavLink
+              to="/blog"
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#4A8FE0] hover:underline"
+            >
+              ← Back to all articles
+            </NavLink>
+            <div className="flex items-center gap-2 text-xs text-slate-400">
+              <NavLink to="/" className="hover:text-slate-600">Home</NavLink>
+              <span>/</span>
+              <NavLink to="/blog" className="hover:text-slate-600">Blog</NavLink>
+              <span>/</span>
+              <span className="text-slate-600 font-medium truncate max-w-[180px]">{article.title}</span>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <span
+                className="text-xs font-semibold px-3 py-1 rounded-full"
+                style={{ color: article.categoryColor, background: `${article.categoryColor}15` }}
+              >
+                {article.category}
+              </span>
+              <span className="text-xs text-slate-400">{article.date} • {article.readTime}</span>
+            </div>
+
+            <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">
+              {article.title}
+            </h1>
+
+            <p className="text-lg text-slate-600 leading-relaxed font-medium bg-[#F7F8FC] p-5 rounded-2xl border border-slate-200/80">
+              {article.excerpt}
+            </p>
+
+            <div className="flex items-center gap-3 pt-4">
+              <div className="w-10 h-10 rounded-full bg-[#4A8FE0] text-white font-bold text-sm flex items-center justify-center shrink-0">
+                {article.author.avatar}
+              </div>
+              <div>
+                <p className="text-sm font-bold text-slate-900">{article.author.name}</p>
+                <p className="text-xs text-slate-400">{article.author.role}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Article Body */}
+      <section className="bg-white px-6 py-12">
+        <div className="max-w-3xl mx-auto space-y-10">
+          {article.content.map((sec, idx) => (
+            <div key={idx} className="space-y-4">
+              <h2 className="text-2xl font-bold text-slate-900 tracking-tight">{sec.heading}</h2>
+              {sec.paragraphs.map((p, pIdx) => (
+                <p key={pIdx} className="text-slate-700 text-base leading-relaxed">
+                  {p}
+                </p>
+              ))}
+
+              {sec.metric && (
+                <div className="my-8 bg-gradient-to-r from-[#4A8FE0]/10 via-[#7C3AED]/5 to-transparent border border-[#4A8FE0]/25 rounded-2xl p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#4A8FE0]">{sec.metric.label}</span>
+                    <p className="text-xs text-slate-500 mt-1">{sec.metric.desc}</p>
+                  </div>
+                  <span className="text-4xl font-extrabold text-[#4A8FE0] tracking-tight">{sec.metric.value}</span>
+                </div>
+              )}
+
+              {sec.quote && (
+                <blockquote className="my-8 bg-[#0B1728] text-white border-l-4 border-[#4A8FE0] p-6 rounded-r-2xl text-base font-medium italic leading-relaxed shadow-sm">
+                  "{sec.quote}"
+                </blockquote>
+              )}
+
+              {sec.code && (
+                <div className="my-8 bg-[#0B1728] text-slate-200 rounded-xl p-5 font-mono text-xs overflow-x-auto shadow-inner border border-slate-800">
+                  <pre>{sec.code}</pre>
+                </div>
+              )}
+            </div>
+          ))}
+
+          {/* Feedback Section */}
+          <div className="bg-[#F7F8FC] border border-slate-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h4 className="text-sm font-bold text-slate-900">Was this article helpful?</h4>
+              <p className="text-xs text-slate-500 mt-0.5">Let us know if this guide answered your questions.</p>
+            </div>
+            {feedbackSent ? (
+              <span className="text-xs font-bold text-[#059669] flex items-center gap-1.5">
+                <CheckCircle size={15} /> Thank you for your feedback!
+              </span>
+            ) : (
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  onClick={() => setFeedbackSent("yes")}
+                  className="px-4 py-2 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm"
+                >
+                  👍 Yes
+                </button>
+                <button
+                  onClick={() => setFeedbackSent("no")}
+                  className="px-4 py-2 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm"
+                >
+                  👎 No
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Callout Product CTA */}
+          <div className="bg-[#0B1728] rounded-2xl p-8 text-center text-white space-y-4 border border-[rgba(74,143,224,0.15)] shadow-lg">
+            <h3 className="text-2xl font-bold text-white">Experience Cerebro dNANO in Action</h3>
+            <p className="text-sm text-[#94B8D8] max-w-md mx-auto leading-relaxed">
+              Unify your Meta, Google, and TikTok ad performance into one automated AI reporting layer. Start your 14-day free trial.
+            </p>
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <button
+                onClick={() => openDemo()}
+                className="bg-[#4A8FE0] hover:bg-[#3A7FD0] text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm flex items-center gap-2"
+              >
+                Book a 20-min demo <ArrowRight size={14} />
+              </button>
+              <NavLink
+                to="/pricing"
+                className="border border-white/20 text-slate-300 hover:text-white px-6 py-3 rounded-xl text-sm transition-colors"
+              >
+                View pricing plans
+              </NavLink>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Articles Section */}
+      <section className="bg-[#F7F8FC] border-t border-slate-200 py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center justify-between mb-8">
+            <h3 className="text-xl font-bold text-slate-900">Related Articles</h3>
+            <NavLink to="/blog" className="text-xs font-semibold text-[#4A8FE0] hover:underline">
+              View all articles →
+            </NavLink>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-6">
+            {related.map((rel) => (
+              <NavLink
+                key={rel.slug}
+                to={`/blog/${rel.slug}`}
+                className="bg-white border border-slate-200 rounded-2xl p-5 hover:shadow-lg hover:border-blue-300 transition-all flex flex-col group"
+              >
+                <span
+                  className="text-[10px] font-semibold px-2.5 py-0.5 rounded-full w-max mb-3"
+                  style={{ color: rel.categoryColor, background: `${rel.categoryColor}12` }}
+                >
+                  {rel.category}
+                </span>
+                <h4 className="font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-[#4A8FE0] transition-colors flex-1">
+                  {rel.title}
+                </h4>
+                <p className="text-xs text-slate-500 line-clamp-2 mb-4">{rel.excerpt}</p>
+                <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-[11px] text-slate-400 mt-auto">
+                  <span>{rel.readTime}</span>
+                  <span className="font-semibold text-[#4A8FE0] flex items-center gap-1">Read <ArrowRight size={10} /></span>
+                </div>
+              </NavLink>
+            ))}
           </div>
         </div>
       </section>
@@ -5348,6 +6145,7 @@ export const router = createBrowserRouter([
       { path: "faq",      Component: FAQPage },
       { path: "help",     Component: HelpCenterPage },
       { path: "blog",     Component: BlogPage },
+      { path: "blog/:slug", Component: BlogPostPage },
       { path: "roadmap",  Component: RoadmapPage },
       { path: "*",        Component: NotFound },
     ],
