@@ -2,7 +2,6 @@ import React from "react";
 import { SoftwareApplicationJsonLd } from "@/components/seo/SoftwareApplicationJsonLd";
 import { buildMetadata } from "@/lib/seo";
 import HeroSection from "@/components/home/HeroSection";
-import CustomersStrip from "@/components/home/CustomersStrip";
 import VideoExplainer from "@/components/home/VideoExplainer";
 import AiDataEngine from "@/components/home/AiDataEngine";
 import AskCerebroSection from "@/components/home/AskCerebroSection";
@@ -26,7 +25,6 @@ export default function Option1Page() {
       <SoftwareApplicationJsonLd />
       {/* Option 1 (Data-forward) */}
       <HeroSection variant="option-1" />
-      <CustomersStrip />
       {/* Video Explainer Showcase */}
       <VideoExplainer />
       <AiDataEngine variant="option-1" />

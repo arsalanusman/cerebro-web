@@ -2,7 +2,6 @@ import React from "react";
 import { SoftwareApplicationJsonLd } from "@/components/seo/SoftwareApplicationJsonLd";
 import { buildMetadata } from "@/lib/seo";
 import HeroSection from "@/components/home/HeroSection";
-import CustomersStrip from "@/components/home/CustomersStrip";
 import AiStepsGrid from "@/components/home/AiStepsGrid";
 import AiDataEngine from "@/components/home/AiDataEngine";
 import AskCerebroSection from "@/components/home/AskCerebroSection";
@@ -24,7 +23,6 @@ export default function HomePage() {
       <SoftwareApplicationJsonLd />
       {/* Option 2 (AI-forward Flagship) */}
       <HeroSection variant="option-2" />
-      <CustomersStrip />
       <AiStepsGrid />
       <AiDataEngine variant="option-2" />
       <AskCerebroSection />

@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import HeroSection from "@/components/home/HeroSection";
-import CustomersStrip from "@/components/home/CustomersStrip";
 import VideoExplainer from "@/components/home/VideoExplainer";
 import AiStepsGrid from "@/components/home/AiStepsGrid";
 import AiDataEngine from "@/components/home/AiDataEngine";
@@ -90,7 +89,6 @@ export default function HomePresentPage() {
       {option === "1" ? (
         <div key="option-1" className="animate-fadeIn">
           <HeroSection variant="option-1" />
-          <CustomersStrip />
           <VideoExplainer />
           <AiDataEngine variant="option-1" />
           <AskCerebroSection />
@@ -104,7 +102,6 @@ export default function HomePresentPage() {
       ) : (
         <div key="option-2" className="animate-fadeIn">
           <HeroSection variant="option-2" />
-          <CustomersStrip />
           <AiStepsGrid />
           <AiDataEngine variant="option-2" />
           <AskCerebroSection />
