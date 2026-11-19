@@ -7,6 +7,7 @@ import { RelatedLinks } from "@/components/ui/RelatedLinks";
 import { CTASection } from "@/components/ui/CTASection";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
+import InteractiveWidgetBuilder from "@/components/platform/InteractiveWidgetBuilder";
 
 export const metadata = buildMetadata({
   title: "Automated marketing report builder",
@@ -44,20 +45,20 @@ export default function ReportsPage() {
       <Section bg="white">
         <Container>
           <div className="space-y-24">
-            <FeatureRow
-              eyebrow="Modular Widget System"
-              title="Drag and drop charts, tables, and KPI summaries."
-              description="Construct bespoke reporting templates for different stakeholders. Combine high-level spend pacing for executives with detailed channel conversion matrices for media buyers."
-              points={[
-                "Reusable widget library across client workspaces",
-                "Custom metric calculations and formatted currency displays",
-                "Interactive web reports or print-ready PDF exports",
-              ]}
-              productShot={{
-                src: "/product/shared-widgets.png",
-                alt: "Shared reporting widget library for agency teams",
-              }}
-            />
+            <div>
+              <div className="max-w-2xl text-left mb-8">
+                <p className="text-small font-medium text-brand mb-2.5">
+                  Modular Widget System
+                </p>
+                <h3 className="text-h2-mobile lg:text-h2 font-heading font-semibold text-ink">
+                  Build custom widgets in four interactive steps.
+                </h3>
+                <p className="mt-3 text-body text-muted leading-relaxed">
+                  Select your visual chart format, bind advertising metrics across Meta, Google, and TikTok, define benchmark rules, and preview the live rendered card before adding it to your reporting deck.
+                </p>
+              </div>
+              <InteractiveWidgetBuilder />
+            </div>
 
             <FeatureRow
               reverse={true}
@@ -66,12 +67,12 @@ export default function ReportsPage() {
               description="Configure automated report dispatches weekly or monthly. Clients receive clean, secure report links or attachments directly in their inbox without your team having to log in and export files."
               points={[
                 "Scheduled recurring email deliveries to client distribution lists",
-                "Password-protected interactive client links",
-                "Historical report archive preserved automatically",
+                "Password-protected interactive client links with role access controls",
+                "Historical report archive preserved automatically for every workspace",
               ]}
               productShot={{
-                src: "/product/client-dashboard.png",
-                alt: "Client-facing report view showing clean formatted metrics",
+                src: "/product/cerebro-team-access.png",
+                alt: "Workspace role permissions, client access controls, and report distribution management",
               }}
             />
           </div>

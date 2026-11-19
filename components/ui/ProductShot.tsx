@@ -12,6 +12,8 @@ export interface ProductShotProps {
   crop?: string;
   className?: string;
   caption?: string;
+  aspectRatio?: string;
+  fit?: "cover" | "contain";
 }
 
 export function ProductShot({
@@ -23,6 +25,8 @@ export function ProductShot({
   crop,
   className = "",
   caption,
+  aspectRatio = "aspect-[16/10]",
+  fit = "cover",
 }: ProductShotProps) {
   const [error, setError] = useState(false);
 
@@ -30,7 +34,7 @@ export function ProductShot({
 
   return (
     <figure className={`w-full ${className}`}>
-      <div className="relative w-full rounded-product border border-border bg-surface shadow-product overflow-hidden aspect-[16/10]">
+      <div className={`relative w-full rounded-product border border-border bg-surface shadow-product overflow-hidden ${aspectRatio}`}>
         {error ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-surface-2 text-muted">
             <div className="w-12 h-12 rounded-card bg-surface border border-border flex items-center justify-center mb-3">
@@ -67,7 +71,7 @@ export function ProductShot({
             height={height}
             priority={priority}
             style={crop ? { objectPosition: crop } : undefined}
-            className="w-full h-auto object-cover object-top"
+            className={`w-full h-auto ${fit === "contain" ? "object-contain bg-[#FAFBFD]" : "object-cover object-top"}`}
             onError={() => setError(true)}
           />
         )}

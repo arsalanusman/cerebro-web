@@ -7,6 +7,7 @@ import { RelatedLinks } from "@/components/ui/RelatedLinks";
 import { CTASection } from "@/components/ui/CTASection";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
+import ObjectiveBenchmarkExplorer from "@/components/platform/ObjectiveBenchmarkExplorer";
 
 export const metadata = buildMetadata({
   title: "Objective-based campaign reporting",
@@ -35,8 +36,8 @@ export default function ObjectiveReportingPage() {
         title="Judge each campaign by its own goal."
         lead="Comparing a top-of-funnel reach campaign on CPA with a bottom-funnel e-commerce checkout campaign on CPM leads to bad decisions. Cerebro classifies campaigns by their intended objective so performance is measured fairly."
         productShot={{
-          src: "/product/objective-filter.png",
-          alt: "Objective-based reporting interface showing campaigns filtered by business goal",
+          src: "/product/cerebro-objective-filter.png",
+          alt: "Cerebro platform objective filter dropdown open showing campaign goals",
           priority: true,
         }}
       />
@@ -54,26 +55,25 @@ export default function ObjectiveReportingPage() {
                 "Conversion campaigns evaluated strictly on Cost Per Acquisition (CPA) and ROAS",
               ]}
               productShot={{
-                src: "/product/dashboard.png",
-                alt: "Dashboard breakdown comparing performance across campaign objectives",
+                src: "/product/dashboard-executive.jpg",
+                alt: "Dashboard breakdown comparing performance across campaign objectives and channels",
               }}
             />
 
-            <FeatureRow
-              reverse={true}
-              eyebrow="Cross-Channel Benchmarks"
-              title="Apples-to-apples channel evaluation."
-              description="When all three platforms run conversion campaigns simultaneously, Cerebro surfaces their true relative acquisition costs side by side. See where budget shifts will generate the highest marginal return."
-              points={[
-                "Normalized CPA comparisons without manual spreadsheet formulas",
-                "Identification of fatigued ad sets driving up blended acquisition costs",
-                "Clear separation of brand defense spend from new customer acquisition",
-              ]}
-              productShot={{
-                src: "/product/client-dashboard.png",
-                alt: "Client portfolio view with channel level objective breakdowns",
-              }}
-            />
+            <div>
+              <div className="max-w-2xl text-left mb-8">
+                <p className="text-small font-medium text-brand mb-2.5">
+                  Cross-Channel Benchmarks
+                </p>
+                <h3 className="text-h2-mobile lg:text-h2 font-heading font-semibold text-ink">
+                  Apples-to-apples channel and product evaluation.
+                </h3>
+                <p className="mt-3 text-body text-muted leading-relaxed">
+                  Evaluate cross-channel allocations side by side without distorted averages. Switch between product investment, normalized campaign efficiency lines, and 30-day delivery pacing.
+                </p>
+              </div>
+              <ObjectiveBenchmarkExplorer />
+            </div>
           </div>
 
           <RelatedLinks

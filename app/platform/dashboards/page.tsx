@@ -7,6 +7,7 @@ import { RelatedLinks } from "@/components/ui/RelatedLinks";
 import { CTASection } from "@/components/ui/CTASection";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
+import InteractiveHierarchyExplorer from "@/components/platform/InteractiveHierarchyExplorer";
 
 export const metadata = buildMetadata({
   title: "Cross-channel advertising dashboards",
@@ -35,7 +36,7 @@ export default function DashboardsPage() {
         title="From high-level overview to a single ad."
         lead="Navigate through all four levels of your advertising structure without switching browser tabs. Cerebro provides continuous drill-down from channel summaries to individual creative assets."
         productShot={{
-          src: "/product/dashboard.png",
+          src: "/product/dashboard-executive.jpg",
           alt: "Hierarchy drill-down dashboard starting at platform level",
           priority: true,
         }}
@@ -54,26 +55,25 @@ export default function DashboardsPage() {
                 "Time-period comparisons with previous 7, 30, and 90 days",
               ]}
               productShot={{
-                src: "/product/dashboard.png",
-                alt: "Executive dashboard showing high-level cross-channel metrics",
+                src: "/product/dashboard-executive.jpg",
+                alt: "Executive dashboard showing high-level cross-channel metrics and channel mix",
               }}
             />
 
-            <FeatureRow
-              reverse={true}
-              eyebrow="Granular Hierarchy Drill-Down"
-              title="Inspect campaigns, ad sets, and creative assets."
-              description="Click directly from a high-level channel card into underlying campaigns, then down to ad sets, and finally to specific creative variations. Discover exactly which headlines and videos are driving performance."
-              points={[
-                "Platform to Campaign level aggregation",
-                "Ad set audience and placement breakdown",
-                "Creative asset level metrics with direct CTR and conversion tracking",
-              ]}
-              productShot={{
-                src: "/product/hierarchy-ad.png",
-                alt: "Detailed creative-level ad performance inspection screen",
-              }}
-            />
+            <div>
+              <div className="max-w-2xl text-left mb-8">
+                <p className="text-small font-medium text-brand mb-2.5">
+                  Granular Hierarchy Drill-Down
+                </p>
+                <h3 className="text-h2-mobile lg:text-h2 font-heading font-semibold text-ink">
+                  Inspect campaigns, ad sets, and product-level spend.
+                </h3>
+                <p className="mt-3 text-body text-muted leading-relaxed">
+                  Switch between individual campaign trajectory lines, 30-day baseline spend pacing, commercial product allocations, and the executive portfolio view.
+                </p>
+              </div>
+              <InteractiveHierarchyExplorer />
+            </div>
           </div>
 
           <RelatedLinks

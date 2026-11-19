@@ -8,6 +8,7 @@ import { RelatedLinks } from "@/components/ui/RelatedLinks";
 import { CTASection } from "@/components/ui/CTASection";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
+import DataHealthInspector from "@/components/platform/DataHealthInspector";
 
 export const metadata = buildMetadata({
   title: "Data integration and ingestion",
@@ -54,20 +55,20 @@ export default function DataIntegrationPage() {
           </div>
 
           <div className="space-y-24">
-            <FeatureRow
-              eyebrow="Direct Authentication"
-              title="Official APIs with read-only OAuth."
-              description="Authenticate your advertising accounts in seconds. Cerebro requires only read-level permissions to inspect campaign data, spend figures, and engagement metrics without touching your active ads."
-              points={[
-                "Zero browser scraping or brittle password logins",
-                "Automated token refresh and expiration monitoring",
-                "Instant multi-account connection for agency portfolios",
-              ]}
-              productShot={{
-                src: "/product/data-health.png",
-                alt: "Data pipeline sync health and verification status screen",
-              }}
-            />
+            <div>
+              <div className="max-w-2xl text-left mb-8">
+                <p className="text-small font-medium text-brand mb-2.5">
+                  Direct Authentication & Sync Health
+                </p>
+                <h3 className="text-h2-mobile lg:text-h2 font-heading font-semibold text-ink">
+                  Official read-only APIs and proactive sync telemetry.
+                </h3>
+                <p className="mt-3 text-body text-muted leading-relaxed">
+                  Authenticate your advertising accounts in seconds. Scoped read-level tokens inspect campaign spend and performance while background monitors track token expiration and sync latency across every client account.
+                </p>
+              </div>
+              <DataHealthInspector />
+            </div>
 
             <FeatureRow
               reverse={true}
@@ -80,8 +81,8 @@ export default function DataIntegrationPage() {
                 "Elimination of duplicate records across recurring sync cycles",
               ]}
               productShot={{
-                src: "/product/dashboard.png",
-                alt: "Executive dashboard showing unified cross-channel totals",
+                src: "/product/dashboard-executive.jpg",
+                alt: "Executive dashboard showing unified cross-channel totals and consolidated metrics",
               }}
             />
           </div>

@@ -161,7 +161,7 @@ export default function SecurityPage() {
                     </div>
                     <div className="p-2 sm:p-4">
                       <Image
-                        src="/product/team-access.png"
+                        src="/product/cerebro-team-access.png"
                         alt="Cerebro Team & Access user creation and client role assignment interface"
                         width={1200}
                         height={675}
