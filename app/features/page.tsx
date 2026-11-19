@@ -7,10 +7,21 @@ import { CTASection } from "@/components/ui/CTASection";
 import { SoftwareApplicationJsonLd } from "@/components/seo/SoftwareApplicationJsonLd";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
-import { Database, Target, LayoutDashboard, FileText, Sparkles, Shield, RefreshCw, Filter, Layers } from "lucide-react";
+import FeaturesInteractive from "@/components/features/FeaturesInteractive";
+import {
+  Database,
+  Target,
+  LayoutDashboard,
+  FileText,
+  Sparkles,
+  Shield,
+  RefreshCw,
+  Filter,
+  Layers,
+} from "lucide-react";
 
 export const metadata = buildMetadata({
-  title: "Platform features overview",
+  title: "Platform features overview | Cerebro DNano",
   description:
     "Explore Cerebro DNano capabilities: automated data pipelines, objective-based evaluation, hierarchy drill-downs, and AI analysis.",
   path: "/features",
@@ -89,6 +100,8 @@ export default function FeaturesPage() {
           </div>
         </Container>
       </Section>
+
+      <FeaturesInteractive />
 
       <CTASection />
     </>

@@ -263,9 +263,25 @@ export const aboutData = {
 
   // Office Photos
   photos: [
-    "The Forum exterior in Clifton",
-    "Product engineering floor",
-    "Customer onboarding room",
-    "Analytics team workspace",
+    {
+      title: "The Forum exterior in Clifton",
+      subtitle: "Karachi, Pakistan",
+      src: "/brand/office/office_exterior.jpg",
+    },
+    {
+      title: "Product engineering floor",
+      subtitle: "Headquarters Clifton Block 9",
+      src: "/brand/office/office_interior.jpg",
+    },
+    {
+      title: "Team workspace & strategy",
+      subtitle: "Analytics & AI Operations",
+      src: "/brand/office/team_workspace.jpg",
+    },
+    {
+      title: "Customer onboarding room",
+      subtitle: "Client Delivery & Training",
+      src: "/brand/office/office_interior.jpg",
+    },
   ],
 };

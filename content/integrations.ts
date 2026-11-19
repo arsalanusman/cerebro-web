@@ -10,6 +10,7 @@ export interface NativeConnector {
   name: string;
   mark: string;
   color: string;
+  logo?: string;
   status: "Live" | "Coming soon";
   pillBg: string;
   pillFg: string;
@@ -58,6 +59,7 @@ export const integrationsData = {
     {
       name: "Meta Ads",
       mark: "M",
+      logo: "/brand/platforms/meta.png",
       color: "#1877F2",
       status: "Live",
       pillBg: "#DCFCE7",
@@ -72,6 +74,7 @@ export const integrationsData = {
     {
       name: "Google Ads",
       mark: "G",
+      logo: "/brand/platforms/google.png",
       color: "#15803D",
       status: "Live",
       pillBg: "#DCFCE7",
@@ -86,6 +89,7 @@ export const integrationsData = {
     {
       name: "TikTok Ads",
       mark: "T",
+      logo: "/brand/platforms/tiktok.png",
       color: "#111827",
       status: "Live",
       pillBg: "#DCFCE7",
@@ -100,7 +104,8 @@ export const integrationsData = {
     {
       name: "LinkedIn Ads",
       mark: "in",
-      color: "#7A8296",
+      logo: "/brand/platforms/linkedin.png",
+      color: "#0A66C2",
       status: "Coming soon",
       pillBg: "#F1F2F5",
       pillFg: "#4B5160",
@@ -112,7 +117,8 @@ export const integrationsData = {
     {
       name: "DV360",
       mark: "DV",
-      color: "#7A8296",
+      logo: "/brand/platforms/dv360.png",
+      color: "#4285F4",
       status: "Coming soon",
       pillBg: "#F1F2F5",
       pillFg: "#4B5160",

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { integrationsData } from "@/content/integrations";
 
 export default function IntegrationsClient() {
@@ -90,12 +91,24 @@ export default function IntegrationsClient() {
                 className="border border-[#E4E7EC] rounded-2xl p-6"
               >
                 <div className="flex items-center gap-3">
-                  <span
-                    style={{ background: n.color }}
-                    className="w-10 h-10 rounded-[10px] text-white text-[14px] font-bold inline-flex items-center justify-center shrink-0"
-                  >
-                    {n.mark}
-                  </span>
+                  {n.logo ? (
+                    <div className="w-10 h-10 rounded-[10px] bg-white border border-[#E4E7EC] flex items-center justify-center p-2 shrink-0 shadow-sm">
+                      <Image
+                        src={n.logo}
+                        alt={`${n.name} logo`}
+                        width={24}
+                        height={24}
+                        className="object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <span
+                      style={{ background: n.color }}
+                      className="w-10 h-10 rounded-[10px] text-white text-[14px] font-bold inline-flex items-center justify-center shrink-0"
+                    >
+                      {n.mark}
+                    </span>
+                  )}
                   <span className="flex-1 font-heading text-[18px] font-semibold text-[#101426]">
                     {n.name}
                   </span>

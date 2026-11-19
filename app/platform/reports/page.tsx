@@ -35,7 +35,7 @@ export default function ReportsPage() {
         title="Widgets, templates and exports."
         lead="Transform live campaign metrics into presentation-ready reports for clients and leadership. Schedule recurring delivery and eliminate manual slide building forever."
         productShot={{
-          src: "/product/widget-builder.png",
+          src: "/product/report-builder.png",
           alt: "Modular report widget builder and custom layout interface",
           priority: true,
         }}

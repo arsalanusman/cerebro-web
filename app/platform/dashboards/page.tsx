@@ -35,7 +35,7 @@ export default function DashboardsPage() {
         title="From high-level overview to a single ad."
         lead="Navigate through all four levels of your advertising structure without switching browser tabs. Cerebro provides continuous drill-down from channel summaries to individual creative assets."
         productShot={{
-          src: "/product/hierarchy-platform.png",
+          src: "/product/dashboard.png",
           alt: "Hierarchy drill-down dashboard starting at platform level",
           priority: true,
         }}

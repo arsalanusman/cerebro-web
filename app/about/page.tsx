@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { aboutData } from "@/content/about";
 import { buildMetadata } from "@/lib/seo";
@@ -161,26 +162,23 @@ export default function AboutPage() {
             {photos.map((p, idx) => (
               <div
                 key={idx}
-                className="h-[190px] rounded-2xl border border-dashed border-[#CDD1DA] bg-white flex flex-col items-center justify-center p-4 text-center shadow-[0_2px_8px_rgba(16,20,38,0.02)]"
+                className="group relative h-[210px] rounded-2xl border border-[#E4E7EC] overflow-hidden bg-[#101426] shadow-[0_4px_16px_rgba(16,20,38,0.06)]"
               >
-                <span className="w-9 h-9 rounded-full bg-[#F5F6FF] text-[#4F46E5] inline-flex items-center justify-center mb-2">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-                    <circle cx="12" cy="13" r="4" />
-                  </svg>
-                </span>
-                <span className="text-[14px] font-semibold text-[#101426]">{p}</span>
-                <span className="text-[12px] text-[#6B7180] mt-1">Karachi, Pakistan</span>
+                <Image
+                  src={p.src}
+                  alt={p.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                  sizes="(max-width: 640px) 100vw, 360px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                  <span className="text-[14.5px] font-semibold text-white leading-tight">
+                    {p.title}
+                  </span>
+                  <span className="text-[12px] text-white/70 mt-1">
+                    {p.subtitle}
+                  </span>
+                </div>
               </div>
             ))}
           </div>

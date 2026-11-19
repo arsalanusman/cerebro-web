@@ -31,12 +31,13 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
     {
       title: "Platform",
       links: [
-        { label: "Ask Cerebro", href: "/ask-cerebro" },
-        { label: "AI data engine", href: "/#engine" },
-        { label: "Dashboards", href: "/#dashboards" },
-        { label: "Report builder", href: "/#reports" },
-        { label: "Hierarchy reports", href: "/#hierarchy" },
-        { label: "Integrations", href: "/integrations" },
+        { label: "Data integration", href: "/platform/data-integration" },
+        { label: "Objective-based reporting", href: "/platform/objective-reporting" },
+        { label: "Dashboards & hierarchy", href: "/platform/dashboards" },
+        { label: "Reports & builder", href: "/platform/reports" },
+        { label: "Ask Cerebro AI", href: "/ask-cerebro" },
+        { label: "Integrations directory", href: "/integrations" },
+        { label: "All platform features", href: "/features" },
       ],
     },
     {
@@ -54,16 +55,17 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
       title: "Resources",
       links: [
         { label: "Blog", href: "/blog" },
-        { label: "Docs", href: "/docs" },
-        { label: "Security", href: "/security" },
-        { label: "Pricing", href: "/pricing" },
+        { label: "Documentation", href: "/docs" },
+        { label: "FAQ", href: "/faq" },
+        { label: "Security & privacy", href: "/security" },
+        { label: "Pricing & tiers", href: "/pricing" },
       ],
     },
     {
       title: "Company",
       links: [
-        { label: "About", href: "/about" },
-        { label: "Contact", href: "/contact" },
+        { label: "About Cerebro", href: "/about" },
+        { label: "Contact us", href: "/contact" },
         { label: "Book a demo", href: "/demo" },
       ],
     },

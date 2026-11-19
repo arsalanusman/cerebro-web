@@ -218,7 +218,7 @@ export function SiteHeader() {
               id: "p2",
               label: "AI data engine",
               text: "Clean, standardize and check every source",
-              href: "/#engine",
+              href: "/platform/data-integration",
               icon: ICONS.engine,
             },
             {
@@ -244,21 +244,21 @@ export function SiteHeader() {
               id: "p5",
               label: "Dashboards",
               text: "Widget-based and fully editable",
-              href: "/#dashboards",
+              href: "/platform/dashboards",
               icon: ICONS.dash,
             },
             {
               id: "p6",
               label: "Report builder",
               text: "Any cut of the data, saved and shared",
-              href: "/#reports",
+              href: "/platform/reports",
               icon: ICONS.table,
             },
             {
               id: "p7",
               label: "Hierarchy reports",
               text: "From platform to a single ad",
-              href: "/#hierarchy",
+              href: "/platform/objective-reporting",
               icon: ICONS.layers,
             },
             {
