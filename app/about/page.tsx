@@ -3,6 +3,8 @@ import Link from "next/link";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { aboutData } from "@/content/about";
 import { buildMetadata } from "@/lib/seo";
+import HorizontalRoadmap from "@/components/about/HorizontalRoadmap";
+import TeamSection from "@/components/about/TeamSection";
 
 export const metadata = buildMetadata({
   title: aboutData.seoTitle,
@@ -11,7 +13,7 @@ export const metadata = buildMetadata({
 });
 
 export default function AboutPage() {
-  const { who, principles, facts, photos } = aboutData;
+  const { who, principles, facts, photos, roadmap, leaders, techTeam } = aboutData;
 
   return (
     <div className="font-sans text-[#2B3040] bg-white tabular-nums">
@@ -23,7 +25,7 @@ export default function AboutPage() {
       />
 
       {/* Hero */}
-      <section className="py-16 md:py-22 bg-gradient-to-b from-[#F5F6FF] to-white">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-[#F5F6FF] to-white">
         <div className="max-w-[1240px] mx-auto px-6 md:px-10">
           <nav aria-label="Breadcrumb" className="text-[13px] text-[#6B7180]">
             <Link href="/" className="hover:text-[#4F46E5] no-underline">
@@ -31,11 +33,14 @@ export default function AboutPage() {
             </Link>{" "}
             / <span className="text-[#101426]">About</span>
           </nav>
-          <h1 className="mt-7 max-w-[900px] font-heading font-semibold text-[38px] sm:text-[48px] md:text-[64px] leading-[1.04] tracking-[-0.03em] text-[#101426]">
+          <p className="mt-6 m-0 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#4F46E5]">
+            ABOUT CEREBRO DNANO
+          </p>
+          <h1 className="mt-3 max-w-[900px] font-heading font-semibold text-[38px] sm:text-[48px] md:text-[64px] leading-[1.04] tracking-[-0.03em] text-[#101426]">
             We build the AI data engine for paid media.
           </h1>
           <p className="mt-5 max-w-[720px] text-[18px] md:text-[19px] leading-[1.6] text-[#5B6170]">
-            Cerebro DNano is a software company based in Karachi, Pakistan. Cerebro AI brings advertising data from any platform or sheet into one consistent model, so marketing teams and agencies can see what is working, and ask why.
+            Cerebro DNano is an advertising analytics software company headquartered in Karachi, Pakistan. We bring data from Meta, Google, TikTok, and custom sources into one unified model, empowering marketing teams to evaluate true objectives and question performance in plain language.
           </p>
         </div>
       </section>
@@ -43,9 +48,14 @@ export default function AboutPage() {
       {/* Why We Built Cerebro */}
       <section className="py-20 md:py-24">
         <div className="max-w-[1240px] mx-auto px-6 md:px-10 flex flex-col lg:flex-row gap-12 lg:gap-14 items-start">
-          <h2 className="m-0 lg:w-[320px] shrink-0 font-heading font-semibold text-[28px] sm:text-[34px] md:text-[40px] leading-[1.12] tracking-[-0.02em] text-[#101426]">
-            Why we built Cerebro
-          </h2>
+          <div className="lg:w-[340px] shrink-0">
+            <p className="m-0 mb-2 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#4F46E5]">
+              OUR FOUNDING PREMISE
+            </p>
+            <h2 className="m-0 font-heading font-semibold text-[28px] sm:text-[34px] md:text-[40px] leading-[1.12] tracking-[-0.02em] text-[#101426]">
+              Why we built Cerebro
+            </h2>
+          </div>
           <div className="flex-1 min-w-0 space-y-4 text-[17px] leading-[1.7] text-[#5B6170]">
             <p className="m-0">
               Modern marketing teams and agencies spend dozens of hours every month wrestling with fragmented ad platforms. Every channel has its own dashboard, its own attribution nuances, and its own exported spreadsheet formats.
@@ -60,9 +70,18 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Horizontal Product Roadmap: How We Got Here */}
+      <HorizontalRoadmap milestones={roadmap} />
+
+      {/* Team: Our Leaders & Our Tech Team */}
+      <TeamSection leaders={leaders} techTeam={techTeam} />
+
       {/* Who Cerebro is For */}
       <section className="py-20 md:py-24 bg-[#F7F8FA]">
         <div className="max-w-[1240px] mx-auto px-6 md:px-10">
+          <p className="m-0 mb-2 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#4F46E5]">
+            TAILORED SOLUTIONS
+          </p>
           <h2 className="m-0 font-heading font-semibold text-[28px] sm:text-[34px] md:text-[40px] leading-[1.12] tracking-[-0.02em] text-[#101426]">
             Who Cerebro is for
           </h2>
@@ -93,6 +112,9 @@ export default function AboutPage() {
       {/* How We Work (Principles) */}
       <section className="py-20 md:py-24">
         <div className="max-w-[1240px] mx-auto px-6 md:px-10">
+          <p className="m-0 mb-2 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#4F46E5]">
+            CORE VALUES
+          </p>
           <h2 className="m-0 font-heading font-semibold text-[28px] sm:text-[34px] md:text-[40px] leading-[1.12] tracking-[-0.02em] text-[#101426]">
             How we work
           </h2>
@@ -115,6 +137,9 @@ export default function AboutPage() {
       <section className="py-20 md:py-24 bg-[#F7F8FA]">
         <div className="max-w-[1240px] mx-auto px-6 md:px-10 flex flex-col lg:flex-row gap-12 items-start">
           <div className="lg:w-[460px] shrink-0 w-full">
+            <p className="m-0 mb-2 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#4F46E5]">
+              CORPORATE FACTS
+            </p>
             <h2 className="m-0 font-heading font-semibold text-[28px] sm:text-[34px] md:text-[40px] leading-[1.12] tracking-[-0.02em] text-[#101426]">
               The company
             </h2>
