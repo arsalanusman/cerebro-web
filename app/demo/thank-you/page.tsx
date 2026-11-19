@@ -1,45 +1,67 @@
 import React from "react";
 import Link from "next/link";
-import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
+import { SITE } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
-import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata = buildMetadata({
-  title: "Thank You",
-  description: "Your demo request has been received.",
+  title: "Thank you for booking a demo | Cerebro DNano",
+  description: "We have received your demo request and will be in touch shortly.",
   path: "/demo/thank-you",
-  noIndex: true, // Disallowed from indexing per requirements
+  noIndex: true,
 });
 
 export default function DemoThankYouPage() {
   return (
-    <div className="py-24 lg:py-36 min-h-[60vh] flex items-center bg-white">
-      <Container>
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="w-16 h-16 rounded-full bg-brand-soft text-brand flex items-center justify-center mx-auto mb-6">
-            <CheckCircle2 className="w-8 h-8" />
-          </div>
-          <p className="text-small font-semibold text-brand mb-2 uppercase tracking-wider">
-            Request confirmed
-          </p>
-          <h1 className="text-h1-mobile lg:text-h1 font-heading font-semibold text-ink tracking-tight mb-4">
-            Thank you for requesting a demo.
-          </h1>
-          <p className="text-body-lg text-muted max-prose-72ch mx-auto mb-10">
-            A member of our product engineering team will review your channel requirements and reach out via email within one business day.
-          </p>
+    <div className="font-sans text-[#2B3040] bg-white tabular-nums py-20 md:py-28">
+      <div className="max-w-[720px] mx-auto px-6 text-center">
+        <span className="w-16 h-16 rounded-full bg-[#DCFCE7] inline-flex items-center justify-center text-[#15803D]">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </span>
+        <h1 className="mt-6 font-heading font-semibold text-[36px] sm:text-[44px] text-[#101426] tracking-[-0.02em]">
+          Thanks, we have your request.
+        </h1>
+        <p className="mt-4 text-[18px] leading-[1.6] text-[#5B6170]">
+          We’ll reply from {SITE.email} within one business day to confirm a time that suits your team.
+        </p>
 
-          <div className="flex items-center justify-center flex-wrap gap-4">
-            <Button href="/" variant="primary" size="lg">
-              Return Home
-            </Button>
-            <Button href="/features" variant="secondary" size="lg">
-              Explore platform features <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
-          </div>
+        <div className="mt-10 p-6 rounded-2xl border border-[#E4E7EC] bg-[#FAFAFC] text-left">
+          <h2 className="m-0 font-heading text-[18px] font-semibold text-[#101426]">
+            While you wait:
+          </h2>
+          <ul className="mt-3 space-y-2 text-[15px] text-[#5B6170]">
+            <li>• Explore how Ask Cerebro answers ad performance questions.</li>
+            <li>• Check our native connectors for Meta Ads, Google Ads and TikTok Ads.</li>
+            <li>• Review how custom connectors map any reporting sheet with AI.</li>
+          </ul>
         </div>
-      </Container>
+
+        <div className="mt-8 flex justify-center gap-4 flex-wrap">
+          <Link
+            href="/ask-cerebro"
+            className="inline-flex items-center justify-center h-12 px-6 rounded-xl bg-[#4F46E5] text-white font-semibold text-[15px] hover:bg-[#4338CA] transition-colors no-underline"
+          >
+            Explore Ask Cerebro
+          </Link>
+          <Link
+            href="/"
+            className="inline-flex items-center justify-center h-12 px-6 rounded-xl border border-[#D5D8E0] bg-white text-[#101426] font-semibold text-[15px] hover:border-[#101426] transition-colors no-underline"
+          >
+            Back to home
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

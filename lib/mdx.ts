@@ -10,6 +10,8 @@ export interface ResourcePost {
   updated?: string;
   author?: string;
   ogImage?: string;
+  category?: string;
+  readTime?: string;
   draft?: boolean;
   content: string;
 }
@@ -36,6 +38,8 @@ export function getMdxFiles(dir: string): ResourcePost[] {
         date: data.date || "2026-11-19",
         updated: data.updated,
         author: data.author || "Cerebro DNano Team",
+        category: data.category || "Reporting",
+        readTime: data.readTime || "5 min read",
         ogImage: data.ogImage,
         draft: Boolean(data.draft),
         content,

@@ -1,91 +1,166 @@
 import React from "react";
-import { Container } from "@/components/ui/Container";
-import { PageHero } from "@/components/ui/PageHero";
-import { Section } from "@/components/ui/Section";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { CTASection } from "@/components/ui/CTASection";
+import Link from "next/link";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
+import { aboutData } from "@/content/about";
 import { buildMetadata } from "@/lib/seo";
-import { Database, ShieldCheck, Cpu } from "lucide-react";
 
 export const metadata = buildMetadata({
-  title: "About our mission",
-  description:
-    "Cerebro DNano is built to give digital marketing teams a single, reliable operating foundation across Meta, Google and TikTok.",
+  title: aboutData.seoTitle,
+  description: aboutData.seoDesc,
   path: "/about",
 });
 
 export default function AboutPage() {
-  const breadcrumbs = [{ label: "About", href: "/about" }];
+  const { who, principles, facts, photos } = aboutData;
 
   return (
-    <>
-      <BreadcrumbListJsonLd items={[{ name: "About", path: "/about" }]} />
-      <PageHero
-        breadcrumbs={breadcrumbs}
-        eyebrow="About Cerebro DNano"
-        title="Clarity behind every marketing campaign."
-        lead="We believe digital advertising teams spend too much time wrangling fragmented exports and not enough time understanding their actual marketing impact."
+    <div className="font-sans text-[#2B3040] bg-white tabular-nums">
+      <BreadcrumbListJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ]}
       />
 
-      <Section bg="white">
-        <Container>
-          <div className="max-w-3xl text-left space-y-6 text-body text-text leading-relaxed">
-            <h2 className="text-h2-mobile lg:text-h2 font-heading font-semibold text-ink h2-wrap-22ch mb-6">
-              Our engineering philosophy
+      {/* Hero */}
+      <section className="py-16 md:py-22 bg-gradient-to-b from-[#F5F6FF] to-white">
+        <div className="max-w-[1240px] mx-auto px-6 md:px-10">
+          <nav aria-label="Breadcrumb" className="text-[13px] text-[#6B7180]">
+            <Link href="/" className="hover:text-[#4F46E5] no-underline">
+              Home
+            </Link>{" "}
+            / <span className="text-[#101426]">About</span>
+          </nav>
+          <h1 className="mt-7 max-w-[900px] font-heading font-semibold text-[38px] sm:text-[48px] md:text-[64px] leading-[1.04] tracking-[-0.03em] text-[#101426]">
+            We build the AI data engine for paid media.
+          </h1>
+          <p className="mt-5 max-w-[720px] text-[18px] md:text-[19px] leading-[1.6] text-[#5B6170]">
+            Cerebro DNano is a software company based in Karachi, Pakistan. Cerebro AI brings advertising data from any platform or sheet into one consistent model, so marketing teams and agencies can see what is working, and ask why.
+          </p>
+        </div>
+      </section>
+
+      {/* Why We Built Cerebro */}
+      <section className="py-20 md:py-24">
+        <div className="max-w-[1240px] mx-auto px-6 md:px-10 flex flex-col lg:flex-row gap-12 lg:gap-14 items-start">
+          <h2 className="m-0 lg:w-[320px] shrink-0 font-heading font-semibold text-[28px] sm:text-[34px] md:text-[40px] leading-[1.12] tracking-[-0.02em] text-[#101426]">
+            Why we built Cerebro
+          </h2>
+          <div className="flex-1 min-w-0 space-y-4 text-[17px] leading-[1.7] text-[#5B6170]">
+            <p className="m-0">
+              Modern marketing teams and agencies spend dozens of hours every month wrestling with fragmented ad platforms. Every channel has its own dashboard, its own attribution nuances, and its own exported spreadsheet formats.
+            </p>
+            <p className="m-0">
+              We built Cerebro DNano to solve this fundamental fragmentation. By pairing automated API ingestion with Cerebro AI, we transform raw impressions, clicks, and conversions across Meta, Google, TikTok, and custom networks into a single coherent truth.
+            </p>
+            <p className="m-0">
+              Our mission is to help marketers judge campaigns by their true objectives, make reports instant and auditable, and let anyone interrogate their performance in plain language.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Who Cerebro is For */}
+      <section className="py-20 md:py-24 bg-[#F7F8FA]">
+        <div className="max-w-[1240px] mx-auto px-6 md:px-10">
+          <h2 className="m-0 font-heading font-semibold text-[28px] sm:text-[34px] md:text-[40px] leading-[1.12] tracking-[-0.02em] text-[#101426]">
+            Who Cerebro is for
+          </h2>
+          <div className="mt-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {who.map((w) => (
+              <Link
+                key={w.title}
+                href={w.href}
+                className="bg-white border border-[#E4E7EC] rounded-2xl p-5 no-underline hover:border-[#A5B4FC] hover:shadow-[0_8px_24px_rgba(79,70,229,0.08)] transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="font-heading text-[17px] font-semibold text-[#101426] group-hover:text-[#4F46E5] transition-colors">
+                    {w.title}
+                  </div>
+                  <p className="mt-2 m-0 text-[14px] leading-[1.55] text-[#5B6170]">
+                    {w.text}
+                  </p>
+                </div>
+                <span className="mt-4 text-[13px] font-semibold text-[#4F46E5] inline-flex items-center gap-1">
+                  Learn more &rarr;
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How We Work (Principles) */}
+      <section className="py-20 md:py-24">
+        <div className="max-w-[1240px] mx-auto px-6 md:px-10">
+          <h2 className="m-0 font-heading font-semibold text-[28px] sm:text-[34px] md:text-[40px] leading-[1.12] tracking-[-0.02em] text-[#101426]">
+            How we work
+          </h2>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+            {principles.map((p) => (
+              <div key={p.title} className="border-t-2 border-[#101426] pt-5">
+                <h3 className="m-0 font-heading text-[21px] font-semibold text-[#101426]">
+                  {p.title}
+                </h3>
+                <p className="mt-2 m-0 text-[15.5px] leading-[1.6] text-[#5B6170]">
+                  {p.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* The Company & Clifton Office Photos */}
+      <section className="py-20 md:py-24 bg-[#F7F8FA]">
+        <div className="max-w-[1240px] mx-auto px-6 md:px-10 flex flex-col lg:flex-row gap-12 items-start">
+          <div className="lg:w-[460px] shrink-0 w-full">
+            <h2 className="m-0 font-heading font-semibold text-[28px] sm:text-[34px] md:text-[40px] leading-[1.12] tracking-[-0.02em] text-[#101426]">
+              The company
             </h2>
-            <p>
-              Digital marketing has exploded into specialized channels. While Meta Ads, Google Ads and TikTok Ads provide robust advertising engines, each maintains its own definitions, conversion windows, and reporting interfaces.
-            </p>
-            <p>
-              Cerebro DNano was founded to solve this structural fragmentation. Rather than building another superficial dashboard that simply embeds third-party widgets, we created an enterprise data foundation that connects directly via official APIs, normalizes campaign metrics, and judges every campaign against its intended objective.
-            </p>
-            <p>
-              On top of this clean data layer sits Ask Cerebro, an embedded AI analyst that helps teams query their performance in plain language without relying on complex SQL queries or static spreadsheet formulas.
-            </p>
+            <dl className="mt-7 bg-white border border-[#E4E7EC] rounded-2xl p-6 sm:p-7 shadow-[0_4px_16px_rgba(16,20,38,0.04)] divide-y divide-[#EEF0F3]">
+              {facts.map((f, idx) => (
+                <div key={idx} className="flex gap-4 py-3.5 first:pt-0 last:pb-0 flex-wrap">
+                  <dt className="w-[130px] shrink-0 text-[14px] text-[#6B7180] font-medium">
+                    {f.k}
+                  </dt>
+                  <dd className="m-0 flex-1 text-[15px] leading-[1.6] text-[#101426] whitespace-pre-line font-medium">
+                    {f.v}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-16 border-t border-border text-left">
-            <div className="p-6 rounded-card bg-surface border border-border">
-              <div className="w-10 h-10 rounded-control bg-white border border-border flex items-center justify-center text-brand mb-4">
-                <Database className="w-5 h-5" />
+          <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {photos.map((p, idx) => (
+              <div
+                key={idx}
+                className="h-[190px] rounded-2xl border border-dashed border-[#CDD1DA] bg-white flex flex-col items-center justify-center p-4 text-center shadow-[0_2px_8px_rgba(16,20,38,0.02)]"
+              >
+                <span className="w-9 h-9 rounded-full bg-[#F5F6FF] text-[#4F46E5] inline-flex items-center justify-center mb-2">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                    <circle cx="12" cy="13" r="4" />
+                  </svg>
+                </span>
+                <span className="text-[14px] font-semibold text-[#101426]">{p}</span>
+                <span className="text-[12px] text-[#6B7180] mt-1">Karachi, Pakistan</span>
               </div>
-              <h3 className="text-body font-heading font-semibold text-ink mb-2">
-                Data Integrity First
-              </h3>
-              <p className="text-small text-muted leading-relaxed">
-                We never approximate or interpolate numbers. All metrics originate directly from authenticated platform APIs.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-card bg-surface border border-border">
-              <div className="w-10 h-10 rounded-control bg-white border border-border flex items-center justify-center text-brand mb-4">
-                <ShieldCheck className="w-5 h-5" />
-              </div>
-              <h3 className="text-body font-heading font-semibold text-ink mb-2">
-                Enterprise Governance
-              </h3>
-              <p className="text-small text-muted leading-relaxed">
-                Agency workspaces are strictly segregated with role-based access, audit trails, and encrypted credential storage.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-card bg-surface border border-border">
-              <div className="w-10 h-10 rounded-control bg-white border border-border flex items-center justify-center text-brand mb-4">
-                <Cpu className="w-5 h-5" />
-              </div>
-              <h3 className="text-body font-heading font-semibold text-ink mb-2">
-                Objective Alignment
-              </h3>
-              <p className="text-small text-muted leading-relaxed">
-                Campaigns are evaluated according to their actual business goal rather than uniform vanity metrics.
-              </p>
-            </div>
+            ))}
           </div>
-        </Container>
-      </Section>
-
-      <CTASection />
-    </>
+        </div>
+      </section>
+    </div>
   );
 }

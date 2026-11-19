@@ -10,59 +10,90 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: "var(--bg)",
-        surface: "var(--surface)",
-        "surface-2": "var(--surface-2)",
-        border: "var(--border)",
-        ink: "var(--ink)",
-        text: "var(--text)",
-        muted: "var(--muted)",
+        bg: "var(--bg, #FFFFFF)",
+        surface: "var(--surface, #F7F8FA)",
+        "surface-2": "var(--surface-2, #EEF0F4)",
+        "surface-app": "var(--surface-app, #FAFAFC)",
+        border: "var(--border, #E4E7EC)",
+        "border-strong": "var(--border-strong, #D5D8E0)",
+        "border-hover": "var(--border-hover, #C9CDD6)",
+        ink: "var(--ink, #101426)",
+        text: "var(--text, #2B3040)",
+        muted: "var(--muted, #5B6170)",
+        subtle: "var(--subtle, #6B7180)",
         brand: {
-          DEFAULT: "var(--brand)",
-          hover: "var(--brand-hover)",
-          soft: "var(--brand-soft)",
+          DEFAULT: "var(--brand, #4F46E5)",
+          hover: "var(--brand-hover, #4338CA)",
+          pressed: "var(--brand-pressed, #3730A3)",
+          soft: "var(--brand-soft, #EEF0FF)",
+          "soft-hover": "var(--brand-soft-hover, #E0E3FF)",
+          tint: "var(--brand-tint, #F5F6FF)",
+          border: "var(--brand-border, #C7CBF9)",
         },
-        navy: "var(--navy)",
+        navy: {
+          DEFAULT: "var(--navy, #1C1A57)",
+          deep: "var(--navy-deep, #16144A)",
+        },
+        "on-navy": {
+          DEFAULT: "var(--on-navy, #CDD0F3)",
+          accent: "var(--on-navy-accent, #A5B4FC)",
+        },
         chart: {
-          1: "var(--chart-1)",
-          2: "var(--chart-2)",
-          3: "var(--chart-3)",
+          1: "var(--chart-1, #2E2A82)",
+          2: "var(--chart-2, #6B7FE8)",
+          3: "var(--chart-3, #A5B4FC)",
         },
-        positive: "var(--positive)",
-        negative: "var(--negative)",
+        positive: {
+          DEFAULT: "var(--positive, #15803D)",
+          bg: "var(--positive-bg, #DCFCE7)",
+          text: "var(--positive-text, #166534)",
+        },
+        negative: {
+          DEFAULT: "var(--negative, #B91C1C)",
+          bg: "var(--negative-bg, #FEE2E2)",
+          text: "var(--negative-text, #991B1B)",
+        },
+        warning: {
+          text: "var(--warning-text, #9A3412)",
+          bg: "var(--warning-bg, #FFF7ED)",
+          border: "var(--warning-border, #F5D9C0)",
+        },
+        "neutral-pill": {
+          bg: "var(--neutral-pill-bg, #F1F2F5)",
+          text: "var(--neutral-pill-text, #4B5160)",
+        },
+        platform: {
+          meta: "var(--platform-meta, #1877F2)",
+          google: "var(--platform-google, #15803D)",
+          tiktok: "var(--platform-tiktok, #111827)",
+          soon: "var(--platform-soon, #7A8296)",
+        },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        heading: ["var(--font-geist)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
-      },
-      fontSize: {
-        display: ["4.5rem", { lineHeight: "1.05", letterSpacing: "-0.025em" }], // 72px
-        "display-mobile": ["2.625rem", { lineHeight: "1.1", letterSpacing: "-0.025em" }], // 42px
-        h1: ["3.25rem", { lineHeight: "1.12", letterSpacing: "-0.025em" }], // 52px
-        "h1-mobile": ["2.25rem", { lineHeight: "1.15", letterSpacing: "-0.025em" }], // 36px
-        h2: ["2.5rem", { lineHeight: "1.2", letterSpacing: "-0.015em" }], // 40px
-        "h2-mobile": ["1.875rem", { lineHeight: "1.25", letterSpacing: "-0.015em" }], // 30px
-        h3: ["1.375rem", { lineHeight: "1.3" }], // 22px
-        "h3-mobile": ["1.25rem", { lineHeight: "1.3" }], // 20px
-        "body-lg": ["1.25rem", { lineHeight: "1.6" }], // 20px
-        "body-lg-mobile": ["1.125rem", { lineHeight: "1.6" }], // 18px
-        body: ["1rem", { lineHeight: "1.6" }], // 16px
-        small: ["0.875rem", { lineHeight: "1.5" }], // 14px
-        caption: ["0.8125rem", { lineHeight: "1.4" }], // 13px
+        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        heading: ["var(--font-geist)", "Geist", "Inter", "system-ui", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "Geist Mono", "ui-monospace", "monospace"],
       },
       borderRadius: {
-        control: "8px",
-        card: "12px",
-        product: "16px",
+        control: "var(--radius-control, 8px)",
+        button: "var(--radius-button, 10px)",
+        card: "var(--radius-card, 12px)",
+        "card-lg": "var(--radius-card-lg, 14px)",
+        panel: "var(--radius-panel, 16px)",
+        pill: "var(--radius-pill, 999px)",
       },
       boxShadow: {
-        product: "0 20px 40px -15px rgba(16, 20, 38, 0.08), 0 0 1px 1px rgba(16, 20, 38, 0.04)",
-        menu: "0 12px 32px -8px rgba(16, 20, 38, 0.12), 0 0 1px rgba(16, 20, 38, 0.08)",
-        panel: "0 16px 36px -10px rgba(16, 20, 38, 0.10)",
+        "card-hover": "var(--shadow-card-hover, 0 12px 32px rgba(16, 20, 38, 0.08))",
+        menu: "var(--shadow-menu, 0 24px 48px rgba(16, 20, 38, 0.12))",
+        frame: "var(--shadow-frame, 0 30px 70px rgba(10, 8, 40, 0.35))",
+        "panel-ai": "var(--shadow-panel-ai, 0 2px 6px rgba(16, 20, 38, 0.08), 0 32px 80px rgba(10, 8, 40, 0.4))",
       },
       maxWidth: {
+        container: "1240px",
         content: "1240px",
+      },
+      height: {
+        header: "72px",
       },
     },
   },
