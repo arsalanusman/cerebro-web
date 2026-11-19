@@ -47,7 +47,7 @@ export default function ObjectiveToggle({ variant = "option-2" }: ObjectiveToggl
                   type="button"
                   aria-pressed={selected}
                   onClick={() => setActiveIdx(i)}
-                  className={`min-h-[44px] px-4.5 rounded-[9px] border-0 text-[14.5px] font-semibold cursor-pointer transition-all ${
+                  className={`min-h-[44px] px-4 sm:px-5 rounded-[9px] border-0 text-[14.5px] font-semibold cursor-pointer shrink-0 whitespace-nowrap transition-all ${
                     selected
                       ? "bg-white text-[#101426] shadow-sm"
                       : "bg-transparent text-[#5B6170] hover:text-[#101426]"
@@ -76,7 +76,7 @@ export default function ObjectiveToggle({ variant = "option-2" }: ObjectiveToggl
             <p className="mt-3.5 m-0 text-[15px] leading-relaxed text-[#5B6170]">
               {currentOption.explain}
             </p>
-            <p className="mt-4.5 m-0 text-[12.5px] text-[#6B7180]">
+            <p className="mt-5 m-0 text-[12.5px] text-[#6B7180]">
               Demo data, TikTok Ads, last 30 days. Mostly awareness spend.
             </p>
           </div>

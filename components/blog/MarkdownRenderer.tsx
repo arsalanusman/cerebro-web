@@ -95,7 +95,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                     <th
                       key={hIdx}
                       scope="col"
-                      className="text-left py-3.5 px-4.5 text-[13px] font-semibold text-[#6B7180]"
+                      className="text-left py-3.5 px-4 sm:px-5 text-[13px] font-semibold text-[#6B7180]"
                     >
                       {h}
                     </th>
@@ -105,8 +105,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               <tbody className="divide-y divide-[#EEF0F3]">
                 {bodyRows.map((row, rIdx) => (
                   <tr key={rIdx} className="hover:bg-[#FAFBFD] transition-colors">
-                    <td className="py-3.5 px-4.5 text-[#101426] font-medium">{row[0]}</td>
-                    <td className="py-3.5 px-4.5 text-[#2B3040]">{row[1]}</td>
+                    <td className="py-3.5 px-4 sm:px-5 text-[#101426] font-medium">{row[0]}</td>
+                    <td className="py-3.5 px-4 sm:px-5 text-[#2B3040]">{row[1]}</td>
                   </tr>
                 ))}
               </tbody>

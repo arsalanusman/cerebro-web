@@ -111,7 +111,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                 role="tab"
                 aria-selected={selected}
                 onClick={() => setActiveTab(i)}
-                className={`min-h-[44px] px-4.5 rounded-[10px] border text-[14.5px] font-semibold cursor-pointer transition-all ${
+                className={`min-h-[44px] px-4 sm:px-5 rounded-[10px] border text-[14.5px] font-semibold cursor-pointer shrink-0 whitespace-nowrap transition-all ${
                   selected
                     ? "border-[#101426] bg-[#101426] text-white"
                     : "border-[#DDE0E7] bg-white text-[#2B3040] hover:border-[#C9CDD6]"
@@ -156,7 +156,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                 </button>
               </div>
 
-              <div className="mt-4.5 flex flex-col lg:flex-row gap-4 items-start">
+              <div className="mt-5 flex flex-col lg:flex-row gap-4 items-start">
                 {/* Active Widgets Grid (2 cols) */}
                 <div className="flex-1 min-w-0 w-full grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   {activeWidgets.map((wKey) => {

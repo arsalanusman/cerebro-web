@@ -69,7 +69,7 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
         <div
           role="tablist"
           aria-label="Data source"
-          className="mt-9 inline-flex gap-1 p-1 rounded-xl bg-[#ECEEF3] flex-wrap"
+          className="mt-9 inline-flex gap-1.5 p-1.5 rounded-xl bg-[#ECEEF3] flex-wrap items-center"
         >
           {engineData.sources.map((s, i) => {
             const selected = i === srcIndex;
@@ -80,7 +80,7 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
                 role="tab"
                 aria-selected={selected}
                 onClick={() => playSource(i)}
-                className={`min-h-[44px] px-4.5 rounded-[9px] border-0 text-[14.5px] font-semibold cursor-pointer inline-flex items-center gap-2 transition-all ${
+                className={`min-h-[44px] px-4 sm:px-5 rounded-lg border-0 text-[14.5px] font-semibold cursor-pointer inline-flex items-center gap-2 shrink-0 whitespace-nowrap transition-all ${
                   selected
                     ? "bg-white text-[#101426] shadow-sm"
                     : "bg-transparent text-[#5B6170] hover:text-[#101426]"

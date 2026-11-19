@@ -288,7 +288,7 @@ export default function SolutionPage({ data }: SolutionPageProps) {
                   {data.features[3]?.text}
                 </p>
               </div>
-              <div className="w-full lg:w-[420px] shrink-0 bg-white rounded-xl p-4.5 text-[#101426] shadow-sm">
+              <div className="w-full lg:w-[420px] shrink-0 bg-white rounded-xl p-5 sm:p-6 text-[#101426] shadow-sm">
                 <div className="flex justify-end">
                   <span className="max-w-[320px] bg-[#F2F3F6] rounded-[12px_12px_4px_12px] p-[9px_12px] text-[13.5px] text-[#101426]">
                     {data.features[3]?.aiQuestion}

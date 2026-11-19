@@ -445,7 +445,7 @@ export function SiteHeader() {
           {/* Ask Cerebro Pill Button */}
           <Link
             href="/ask-cerebro"
-            className="inline-flex items-center gap-1.5 h-[38px] px-3 mr-2 rounded-full bg-[#EEF0FF] text-[#3730A3] hover:bg-[#E0E3FF] text-[15px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+            className="inline-flex items-center gap-1.5 h-[38px] px-3.5 mr-2 rounded-full bg-[#EEF0FF] text-[#3730A3] hover:bg-[#E0E3FF] text-[15px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand shrink-0 whitespace-nowrap"
           >
             <svg
               width="14"
@@ -460,7 +460,7 @@ export function SiteHeader() {
             >
               <path d={ICONS.spark} />
             </svg>
-            Ask Cerebro
+            <span className="whitespace-nowrap">Ask Cerebro</span>
           </Link>
 
           {/* Nav Items */}
@@ -472,7 +472,7 @@ export function SiteHeader() {
                   key={t.key}
                   onPointerEnter={() => handlePointerEnterTrigger(t.key)}
                   onPointerLeave={handlePointerLeaveTrigger}
-                  className="relative"
+                  className="relative shrink-0"
                 >
                   <button
                     ref={(el) => {
@@ -482,13 +482,13 @@ export function SiteHeader() {
                     aria-expanded={isOpen}
                     aria-controls={`menu-${t.key}`}
                     onClick={() => toggleMenu(t.key)}
-                    className={`inline-flex items-center gap-1.5 h-[38px] px-3 rounded-control text-[15px] font-medium transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
+                    className={`inline-flex items-center gap-1.5 h-[38px] px-3 rounded-control text-[15px] font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
                       isOpen
                         ? "bg-[#EEF0FF] text-[#3730A3]"
                         : "text-[#2B3040] hover:bg-[#F3F4F6]"
                     }`}
                   >
-                    <span>{t.label}</span>
+                    <span className="whitespace-nowrap">{t.label}</span>
                     <svg
                       width="12"
                       height="12"
@@ -512,37 +512,37 @@ export function SiteHeader() {
               <Link
                 key={t.key}
                 href={t.href || "/"}
-                className="inline-flex items-center h-[38px] px-3 rounded-control text-[#2B3040] hover:bg-[#F3F4F6] text-[15px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                className="inline-flex items-center h-[38px] px-3 rounded-control text-[#2B3040] hover:bg-[#F3F4F6] text-[15px] font-medium transition-colors shrink-0 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
               >
-                {t.label}
+                <span className="whitespace-nowrap">{t.label}</span>
               </Link>
             );
           })}
         </nav>
 
         {/* Right Desktop Actions */}
-        <div className="hidden xl:flex items-center gap-2">
+        <div className="hidden xl:flex items-center gap-2 shrink-0">
           <Link
             href="/contact"
-            className="inline-flex items-center h-[38px] px-3 rounded-control text-[#2B3040] hover:bg-[#F3F4F6] text-[15px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+            className="inline-flex items-center h-[38px] px-3 rounded-control text-[#2B3040] hover:bg-[#F3F4F6] text-[15px] font-medium transition-colors shrink-0 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
           >
-            Contact
+            <span className="whitespace-nowrap">Contact</span>
           </Link>
           <Link
             href="/demo"
-            className="inline-flex items-center justify-center h-[44px] px-5 rounded-control bg-[#4F46E5] hover:bg-[#4338CA] text-white text-[15px] font-semibold transition-colors shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+            className="inline-flex items-center justify-center h-[44px] px-5 rounded-control bg-[#4F46E5] hover:bg-[#4338CA] text-white text-[15px] font-semibold transition-colors shadow-xs shrink-0 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           >
-            Book a demo
+            <span className="whitespace-nowrap">Book a demo</span>
           </Link>
         </div>
 
         {/* Mobile Header Actions */}
-        <div className="flex xl:hidden items-center gap-2">
+        <div className="flex xl:hidden items-center gap-2 shrink-0">
           <Link
             href="/demo"
-            className="inline-flex items-center justify-center h-[36px] px-3.5 rounded-control bg-[#4F46E5] text-white text-caption font-semibold"
+            className="inline-flex items-center justify-center h-[36px] px-3.5 rounded-control bg-[#4F46E5] text-white text-caption font-semibold shrink-0 whitespace-nowrap"
           >
-            Book a demo
+            <span className="whitespace-nowrap">Book a demo</span>
           </Link>
           <button
             type="button"
@@ -722,9 +722,9 @@ export function SiteHeader() {
             <Link
               href="/ask-cerebro"
               onClick={() => setMobileOpen(false)}
-              className="inline-flex self-start items-center min-h-[40px] px-3.5 rounded-full bg-[#EEF0FF] text-[#3730A3] text-[16px] font-semibold mb-3"
+              className="inline-flex self-start items-center min-h-[40px] px-4 rounded-full bg-[#EEF0FF] text-[#3730A3] text-[16px] font-semibold mb-3 shrink-0 whitespace-nowrap"
             >
-              Ask Cerebro
+              <span className="whitespace-nowrap">Ask Cerebro</span>
             </Link>
 
             {/* Accordion Group 1: Home */}

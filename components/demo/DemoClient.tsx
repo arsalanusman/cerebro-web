@@ -340,7 +340,7 @@ export default function DemoClient() {
                 <h2 className="m-0 font-heading text-[22px] font-semibold text-white">
                   What happens next
                 </h2>
-                <div className="mt-5 flex flex-col gap-4.5">
+                <div className="mt-5 flex flex-col gap-4">
                   <div className="flex gap-3.5">
                     <span className="w-7 h-7 rounded-full bg-white/10 text-white text-[13px] font-semibold inline-flex items-center justify-center shrink-0">
                       1

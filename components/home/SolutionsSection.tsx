@@ -20,7 +20,7 @@ export default function SolutionsSection() {
         <div
           role="tablist"
           aria-label="Solutions"
-          className="mt-8 flex gap-1.5 flex-wrap"
+          className="mt-8 flex gap-2 flex-wrap items-center"
         >
           {solutionsData.map((sol, i) => {
             const selected = i === activeIdx;
@@ -31,9 +31,9 @@ export default function SolutionsSection() {
                 role="tab"
                 aria-selected={selected}
                 onClick={() => setActiveIdx(i)}
-                className={`min-h-[44px] px-4.5 rounded-[10px] border text-[14.5px] font-semibold cursor-pointer transition-all ${
+                className={`min-h-[44px] px-4 sm:px-5 rounded-[10px] border text-[14.5px] font-semibold cursor-pointer shrink-0 whitespace-nowrap transition-all ${
                   selected
-                    ? "border-[#4F46E5] bg-[#4F46E5] text-white"
+                    ? "border-[#4F46E5] bg-[#4F46E5] text-white shadow-xs"
                     : "border-[#DDE0E7] bg-white text-[#2B3040] hover:border-[#C9CDD6]"
                 }`}
               >
