@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 interface VideoExplainerProps {
   videoSrc?: string;
@@ -16,11 +16,67 @@ export default function VideoExplainer({
   title = "Watch Cerebro in action",
   duration = "2:15 min walkthrough",
 }: VideoExplainerProps) {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [hasError, setHasError] = useState(false);
 
+  // Autoplay with muted state on mount and when in viewport
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Browser policies strictly require muted for unprompted autoplay
+    video.muted = isMuted;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise
+                .then(() => setIsPlaying(true))
+                .catch(() => {
+                  // Browser prevented autoplay or waiting for user interaction
+                });
+            }
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    // Direct attempt immediately
+    const directPlay = video.play();
+    if (directPlay !== undefined) {
+      directPlay
+        .then(() => setIsPlaying(true))
+        .catch(() => {});
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [isMuted]);
+
+  const toggleSound = () => {
+    if (!videoRef.current) return;
+    const nextMuted = !videoRef.current.muted;
+    videoRef.current.muted = nextMuted;
+    setIsMuted(nextMuted);
+    if (videoRef.current.paused) {
+      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
+  };
+
   return (
-    <section className="py-16 sm:py-20 bg-white">
+    <section className="py-16 sm:py-20 bg-white" ref={containerRef}>
       <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
         {/* Header */}
         <div className="text-center max-w-[760px] mx-auto">
@@ -36,62 +92,98 @@ export default function VideoExplainer({
         </div>
 
         {/* Video Player Frame */}
-        <div className="mt-10 max-w-[1020px] mx-auto relative rounded-2xl border border-[#DCDFE7] bg-[#101426] overflow-hidden shadow-[0_24px_60px_rgba(16,20,38,0.12)]">
-          {/* Subtle glow */}
+        <div className="mt-10 max-w-[1020px] mx-auto relative rounded-2xl border border-[#DCDFE7] bg-[#101426] overflow-hidden shadow-[0_24px_60px_rgba(16,20,38,0.12)] group">
+          {/* Subtle atmospheric glow */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#4F46E5]/15 blur-3xl"
           />
 
           <div className="relative aspect-video w-full flex items-center justify-center bg-[#0F1222]">
-            {isPlaying && !hasError ? (
-              <video
-                src={videoSrc}
-                controls
-                autoPlay
-                className="w-full h-full object-cover"
-                onError={() => setHasError(true)}
-              >
-                Your browser does not support the video tag.
-              </video>
-            ) : (
-              <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-6 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#1C1A57] via-[#101426] to-[#0A0824]">
-                {/* Play Button Trigger */}
-                <button
-                  type="button"
-                  onClick={() => setIsPlaying(true)}
-                  aria-label="Play video walkthrough"
-                  className="group relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#4F46E5] hover:bg-[#4338CA] text-white flex items-center justify-center cursor-pointer shadow-[0_8px_32px_rgba(79,70,229,0.5)] transition-all transform hover:scale-105 active:scale-95"
+            {!hasError ? (
+              <>
+                <video
+                  ref={videoRef}
+                  src={videoSrc}
+                  poster={posterSrc}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                  className="w-full h-full object-cover"
+                  onError={() => setHasError(true)}
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
                 >
-                  <span className="absolute inset-0 rounded-full bg-[#4F46E5] animate-ping opacity-25 pointer-events-none" />
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="ml-1 text-white transition-transform group-hover:scale-110"
-                    aria-hidden="true"
-                  >
-                    <polygon points="5 3 19 12 5 21 5 3" />
-                  </svg>
-                </button>
+                  Your browser does not support the video tag.
+                </video>
 
-                {/* Subtitle & Duration pill */}
-                <div className="mt-6 flex flex-col items-center gap-2">
-                  <span className="text-white font-semibold text-lg tracking-tight">
-                    {title}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-medium text-[#C9CCF2]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
-                    {duration}
-                  </span>
+                {/* Floating Sound Toggle Pill */}
+                <div className="absolute top-4 right-4 z-20">
+                  <button
+                    type="button"
+                    onClick={toggleSound}
+                    aria-label={isMuted ? "Unmute video audio" : "Mute video audio"}
+                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/75 hover:bg-black/90 backdrop-blur-md text-white border border-white/20 text-xs font-semibold shadow-lg transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                  >
+                    {isMuted ? (
+                      <>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-[#F87171]"
+                          aria-hidden="true"
+                        >
+                          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                          <line x1="23" y1="9" x2="17" y2="15" />
+                          <line x1="17" y1="9" x2="23" y2="15" />
+                        </svg>
+                        <span>Unmute Audio</span>
+                      </>
+                    ) : (
+                      <>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-[#34D399]"
+                          aria-hidden="true"
+                        >
+                          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+                        </svg>
+                        <span>Mute Audio</span>
+                      </>
+                    )}
+                  </button>
                 </div>
 
-                {hasError && (
-                  <p className="mt-4 text-xs text-[#FCA5A5] max-w-sm">
-                    Upload your video file to <code className="bg-black/40 px-1 py-0.5 rounded">public/videos/cerebro-explainer.mp4</code> to play here automatically.
-                  </p>
-                )}
+                {/* Subtitle / badge bar at bottom left during playback preview */}
+                <div className="pointer-events-none absolute bottom-4 left-4 z-20 hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-black/60 backdrop-blur-sm border border-white/10 text-xs text-white/90">
+                  <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
+                  <span>{title} ({duration})</span>
+                </div>
+              </>
+            ) : (
+              <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-6 bg-[#0A0824]">
+                <p className="m-0 text-sm font-semibold text-[#FCA5A5]">
+                  Video preview unavailable
+                </p>
+                <p className="mt-2 text-xs text-[#9DA4B5] max-w-sm">
+                  Video source path: <code className="bg-black/40 px-1 py-0.5 rounded text-white">{videoSrc}</code>
+                </p>
               </div>
             )}
           </div>
