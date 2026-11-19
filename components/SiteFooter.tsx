@@ -173,9 +173,9 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
                 <Image
                   src="/brand/logo.png"
                   alt={SITE.name}
-                  width={112}
-                  height={28}
-                  className="h-[28px] w-auto object-contain block"
+                  width={180}
+                  height={56}
+                  className="h-[48px] sm:h-[56px] w-auto object-contain block"
                 />
               </Link>
               <p className="mt-4 max-w-[300px] text-[14.5px] leading-relaxed text-[#5B6170]">

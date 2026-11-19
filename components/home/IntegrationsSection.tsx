@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { engineData, integrationsData } from "@/content/home";
 
 export default function IntegrationsSection() {
@@ -30,12 +31,24 @@ export default function IntegrationsSection() {
                   key={idx}
                   className="flex items-center gap-2.5 text-sm py-0.5"
                 >
-                  <span
-                    className="w-6 h-6 rounded-md text-white text-[10px] font-bold inline-flex items-center justify-center shrink-0"
-                    style={{ background: x.color }}
-                  >
-                    {x.mark}
-                  </span>
+                  {x.logo ? (
+                    <span className="w-6 h-6 rounded-md bg-white border border-[#E4E7EC] flex items-center justify-center p-0.5 shrink-0 overflow-hidden shadow-xs">
+                      <Image
+                        src={x.logo}
+                        alt={x.name}
+                        width={16}
+                        height={16}
+                        className="object-contain"
+                      />
+                    </span>
+                  ) : (
+                    <span
+                      className="w-6 h-6 rounded-md text-white text-[10px] font-bold inline-flex items-center justify-center shrink-0"
+                      style={{ background: x.color }}
+                    >
+                      {x.mark}
+                    </span>
+                  )}
                   <span className="flex-1 text-[#101426]">{x.name}</span>
                   <span
                     className="text-[11.5px] font-semibold px-2 py-0.5 rounded-full"

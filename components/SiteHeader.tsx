@@ -222,13 +222,6 @@ export function SiteHeader() {
               icon: ICONS.engine,
             },
             {
-              id: "p3",
-              label: "AI connectors",
-              text: "Connect any marketing platform",
-              href: "/integrations",
-              icon: ICONS.plug,
-            },
-            {
               id: "p4",
               label: "AI sheet mapping",
               text: "CSV, Excel and Google Sheets",
@@ -260,13 +253,6 @@ export function SiteHeader() {
               text: "From platform to a single ad",
               href: "/platform/objective-reporting",
               icon: ICONS.layers,
-            },
-            {
-              id: "p8",
-              label: "Integrations",
-              text: "Native, custom and sheet uploads",
-              href: "/integrations",
-              icon: ICONS.grid,
             },
           ],
         },
@@ -434,7 +420,7 @@ export function SiteHeader() {
       ref={headerRef}
       className="sticky top-0 z-50 bg-white border-b border-[#E4E7EC] font-sans text-[#2B3040]"
     >
-      <div className="max-w-[1240px] mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between gap-6">
+      <div className="max-w-[1240px] mx-auto px-6 lg:px-10 h-[84px] flex items-center justify-between gap-6">
         {/* Logo */}
         <Link
           href="/"
@@ -444,17 +430,17 @@ export function SiteHeader() {
           <Image
             src="/brand/logo.png"
             alt="Cerebro DNano"
-            width={128}
-            height={30}
+            width={180}
+            height={56}
             priority
-            className="h-[30px] w-auto object-contain block"
+            className="h-[44px] sm:h-[50px] lg:h-[56px] w-auto object-contain block"
           />
         </Link>
 
         {/* Desktop Navigation */}
         <nav
           aria-label="Main"
-          className="hidden lg:flex items-center gap-1 flex-1 ml-4"
+          className="hidden xl:flex items-center gap-1 flex-1 ml-4"
         >
           {/* Ask Cerebro Pill Button */}
           <Link
@@ -535,7 +521,7 @@ export function SiteHeader() {
         </nav>
 
         {/* Right Desktop Actions */}
-        <div className="hidden lg:flex items-center gap-2">
+        <div className="hidden xl:flex items-center gap-2">
           <Link
             href="/contact"
             className="inline-flex items-center h-[38px] px-3 rounded-control text-[#2B3040] hover:bg-[#F3F4F6] text-[15px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
@@ -551,7 +537,7 @@ export function SiteHeader() {
         </div>
 
         {/* Mobile Header Actions */}
-        <div className="flex lg:hidden items-center gap-2">
+        <div className="flex xl:hidden items-center gap-2">
           <Link
             href="/demo"
             className="inline-flex items-center justify-center h-[36px] px-3.5 rounded-control bg-[#4F46E5] text-white text-caption font-semibold"
@@ -696,17 +682,17 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
-          className="fixed inset-0 z-50 bg-white flex flex-col overflow-y-auto lg:hidden animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 bg-white flex flex-col overflow-y-auto xl:hidden animate-in fade-in duration-200"
         >
           {/* Top Mobile Bar */}
-          <div className="h-[64px] px-5 border-b border-[#E4E7EC] flex items-center justify-between shrink-0">
+          <div className="h-[76px] px-5 border-b border-[#E4E7EC] flex items-center justify-between shrink-0">
             <Link href="/" onClick={() => setMobileOpen(false)}>
               <Image
                 src="/brand/logo.png"
                 alt="Cerebro DNano"
-                width={112}
-                height={26}
-                className="h-[26px] w-auto object-contain"
+                width={150}
+                height={46}
+                className="h-[46px] w-auto object-contain"
               />
             </Link>
             <button
@@ -826,32 +812,39 @@ export function SiteHeader() {
                     Ask Cerebro
                   </Link>
                   <Link
-                    href="/#engine"
+                    href="/platform/data-integration"
                     onClick={() => setMobileOpen(false)}
                     className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
                   >
                     AI data engine
                   </Link>
                   <Link
-                    href="/integrations"
+                    href="/integrations#sheets"
                     onClick={() => setMobileOpen(false)}
                     className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
                   >
-                    AI connectors
+                    AI sheet mapping
                   </Link>
                   <Link
-                    href="/#dashboards"
+                    href="/platform/dashboards"
                     onClick={() => setMobileOpen(false)}
                     className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
                   >
                     Dashboards
                   </Link>
                   <Link
-                    href="/#reports"
+                    href="/platform/reports"
                     onClick={() => setMobileOpen(false)}
                     className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
                   >
                     Report builder
+                  </Link>
+                  <Link
+                    href="/platform/objective-reporting"
+                    onClick={() => setMobileOpen(false)}
+                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
+                  >
+                    Hierarchy & objectives
                   </Link>
                 </div>
               )}

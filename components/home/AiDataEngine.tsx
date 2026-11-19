@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { engineData } from "@/content/home";
 
 interface AiDataEngineProps {
@@ -121,12 +122,24 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
                       key={idx}
                       className="flex items-center gap-2.5 bg-white border border-[#EEF0F3] rounded-lg p-2 sm:px-2.5"
                     >
-                      <span
-                        className="w-[22px] h-[22px] rounded-md text-white text-[10px] font-bold inline-flex items-center justify-center shrink-0"
-                        style={{ background: x.color }}
-                      >
-                        {x.mark}
-                      </span>
+                      {x.logo ? (
+                        <span className="w-[22px] h-[22px] rounded-md bg-white border border-[#E4E7EC] flex items-center justify-center p-0.5 shrink-0 overflow-hidden shadow-xs">
+                          <Image
+                            src={x.logo}
+                            alt={x.name}
+                            width={16}
+                            height={16}
+                            className="object-contain"
+                          />
+                        </span>
+                      ) : (
+                        <span
+                          className="w-[22px] h-[22px] rounded-md text-white text-[10px] font-bold inline-flex items-center justify-center shrink-0"
+                          style={{ background: x.color }}
+                        >
+                          {x.mark}
+                        </span>
+                      )}
                       <span className="flex-1 text-[13px] text-[#101426]">
                         {x.name}
                       </span>

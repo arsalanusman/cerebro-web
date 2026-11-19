@@ -75,8 +75,8 @@ export default function HeroDashboard() {
   ];
 
   return (
-    <div className="w-full">
-      <div className="flex flex-col lg:flex-row items-stretch lg:items-start justify-center gap-6 lg:gap-0 mt-12 lg:mt-16">
+    <div className="w-full max-w-full overflow-hidden">
+      <div className="flex flex-col lg:flex-row items-stretch lg:items-start justify-center gap-6 lg:gap-0 mt-12 lg:mt-16 max-w-full">
         {/* 1. Dashboard Mockup */}
         <div className="flex-1 min-w-0 max-w-full overflow-x-auto rounded-2xl shadow-[0_30px_70px_rgba(10,8,40,0.35)] border border-[#DCDFE7] bg-white">
           <div className="min-w-[720px] lg:min-w-[760px] h-[600px] flex overflow-hidden">
@@ -241,8 +241,19 @@ export default function HeroDashboard() {
                           isHighlighted ? "bg-[#EEF0FF]" : "bg-transparent"
                         }`}
                       >
-                        <div className="flex justify-between text-[11px]">
-                          <span className="text-[#2B3040]">{m.name}</span>
+                        <div className="flex justify-between items-center text-[11px]">
+                          <span className="text-[#2B3040] flex items-center gap-1.5">
+                            {m.logo && (
+                              <Image
+                                src={m.logo}
+                                alt={m.name}
+                                width={13}
+                                height={13}
+                                className="object-contain shrink-0"
+                              />
+                            )}
+                            <span>{m.name}</span>
+                          </span>
                           <span className="text-[#101426] font-semibold">{m.spend}</span>
                         </div>
                         <div className="mt-1 h-1.5 rounded-full bg-[#F0F1F4] overflow-hidden">

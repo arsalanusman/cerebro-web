@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { heroData } from "@/content/home";
 import HeroDashboard from "./HeroDashboard";
 
@@ -88,20 +89,35 @@ export default function HeroSection({ variant = "option-2" }: HeroSectionProps) 
 
           {/* Platform chips */}
           <div className="mt-7 flex gap-2 justify-center flex-wrap">
-            {heroData.chips.map((c, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center gap-2 h-[34px] pl-1.5 pr-3 rounded-full bg-white/[0.08] border border-white/[0.14] text-[#E3E5FF] text-[13px]"
-              >
+            {heroData.chips.map((c, i) => {
+              const chipLogo = (c as { logo?: string }).logo;
+              return (
                 <span
-                  className="w-[22px] h-[22px] rounded-full text-white text-[10px] font-bold inline-flex items-center justify-center"
-                  style={{ background: c.color }}
+                  key={i}
+                  className="inline-flex items-center gap-2 h-[34px] pl-1.5 pr-3 rounded-full bg-white/[0.08] border border-white/[0.14] text-[#E3E5FF] text-[13px]"
                 >
-                  {c.mark}
+                  {chipLogo ? (
+                    <span className="w-[22px] h-[22px] rounded-full bg-white flex items-center justify-center p-0.5 shrink-0 overflow-hidden shadow-xs">
+                      <Image
+                        src={chipLogo}
+                        alt={c.label}
+                        width={16}
+                        height={16}
+                        className="object-contain"
+                      />
+                    </span>
+                  ) : (
+                    <span
+                      className="w-[22px] h-[22px] rounded-full text-white text-[10px] font-bold inline-flex items-center justify-center"
+                      style={{ background: c.color }}
+                    >
+                      {c.mark}
+                    </span>
+                  )}
+                  {c.label}
                 </span>
-                {c.label}
-              </span>
-            ))}
+              );
+            })}
           </div>
         </div>
 

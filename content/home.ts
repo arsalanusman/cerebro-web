@@ -51,6 +51,7 @@ export interface HeroPlatformMix {
   clicks: string;
   ctr: string;
   cpa: string;
+  logo?: string;
 }
 
 export interface AiStep {
@@ -74,6 +75,7 @@ export interface EngineNativeItem {
   status: string;
   pillBg: string;
   pillFg: string;
+  logo?: string;
 }
 
 export interface EngineOutput {
@@ -162,9 +164,9 @@ export const heroData = {
     "Connect Meta, Google and TikTok, add a connector for any other platform, or upload a sheet. Cerebro's AI cleans and standardizes it, builds your reports, and answers your questions with the numbers behind them.",
 
   chips: [
-    { mark: "M", color: "#1877F2", label: "Meta Ads" },
-    { mark: "G", color: "#15803D", label: "Google Ads" },
-    { mark: "T", color: "#111827", label: "TikTok Ads" },
+    { mark: "M", color: "#1877F2", label: "Meta Ads", logo: "/brand/platforms/meta.png" },
+    { mark: "G", color: "#15803D", label: "Google Ads", logo: "/brand/platforms/google.png" },
+    { mark: "T", color: "#111827", label: "TikTok Ads", logo: "/brand/platforms/tiktok.png" },
     { mark: "+", color: "#4F46E5", label: "Any platform" },
     { mark: "↑", color: "#4F46E5", label: "CSV, Excel, Sheets" },
   ],
@@ -366,6 +368,7 @@ export const heroData = {
       clicks: "149.6K",
       ctr: "1.26%",
       cpa: "PKR 394.45",
+      logo: "/brand/platforms/meta.png",
     },
     {
       name: "TikTok Ads",
@@ -374,6 +377,7 @@ export const heroData = {
       clicks: "235.9K",
       ctr: "0.91%",
       cpa: "PKR 650.58",
+      logo: "/brand/platforms/tiktok.png",
     },
     {
       name: "Google Ads",
@@ -382,6 +386,7 @@ export const heroData = {
       clicks: "36.6K",
       ctr: "3.02%",
       cpa: "PKR 243.22",
+      logo: "/brand/platforms/google.png",
     },
   ] as HeroPlatformMix[],
 
@@ -497,6 +502,7 @@ export const engineData = {
       status: "Live",
       pillBg: "#DCFCE7",
       pillFg: "#166534",
+      logo: "/brand/platforms/meta.png",
     },
     {
       mark: "G",
@@ -505,6 +511,7 @@ export const engineData = {
       status: "Live",
       pillBg: "#DCFCE7",
       pillFg: "#166534",
+      logo: "/brand/platforms/google.png",
     },
     {
       mark: "T",
@@ -513,6 +520,7 @@ export const engineData = {
       status: "Live",
       pillBg: "#DCFCE7",
       pillFg: "#166534",
+      logo: "/brand/platforms/tiktok.png",
     },
     {
       mark: "in",
@@ -521,6 +529,7 @@ export const engineData = {
       status: "Coming soon",
       pillBg: "#F3F4F6",
       pillFg: "#5B6170",
+      logo: "/brand/platforms/linkedin.png",
     },
     {
       mark: "DV",
@@ -529,6 +538,7 @@ export const engineData = {
       status: "Coming soon",
       pillBg: "#F3F4F6",
       pillFg: "#5B6170",
+      logo: "/brand/platforms/dv360.png",
     },
   ] as EngineNativeItem[],
 

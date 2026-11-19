@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { securityData } from "@/content/security";
 import { buildMetadata } from "@/lib/seo";
@@ -142,6 +143,33 @@ export default function SecurityPage() {
                     </div>
                   ))}
                 </div>
+
+                {s.id === "permissions" && (
+                  <div className="mt-6 border border-[#E4E7EC] rounded-2xl overflow-hidden shadow-sm bg-[#F9FAFB]">
+                    <div className="p-4 sm:p-5 border-b border-[#E4E7EC] bg-white flex justify-between items-center">
+                      <div>
+                        <span className="text-xs font-semibold text-[#4F46E5] uppercase tracking-wide">
+                          Live Product Capture
+                        </span>
+                        <div className="text-sm font-semibold text-[#101426]">
+                          Granular Role-Based Access &amp; Client Scoping Drawer
+                        </div>
+                      </div>
+                      <span className="text-xs bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0] px-2.5 py-0.5 rounded-full font-medium">
+                        Active in Cerebro
+                      </span>
+                    </div>
+                    <div className="p-2 sm:p-4">
+                      <Image
+                        src="/product/team-access.png"
+                        alt="Cerebro Team & Access user creation and client role assignment interface"
+                        width={1200}
+                        height={675}
+                        className="w-full h-auto rounded-xl border border-[#E4E7EC] shadow-inner object-contain"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
 

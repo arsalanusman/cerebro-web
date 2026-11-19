@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { integrationsData } from "@/content/integrations";
+import EtlArchitectureSection from "./EtlArchitectureSection";
 
 export default function IntegrationsClient() {
   const [curStep, setCurStep] = useState(1);
@@ -135,6 +136,9 @@ export default function IntegrationsClient() {
           </p>
         </div>
       </section>
+
+      {/* Enterprise ETL Architecture Infographic Section */}
+      <EtlArchitectureSection />
 
       {/* Custom Connectors with AI */}
       <section id="custom" className="py-20 md:py-24">
