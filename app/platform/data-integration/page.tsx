@@ -1,116 +1,130 @@
 import React from "react";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
-import { FeatureRow } from "@/components/ui/FeatureRow";
-import { PlatformBadge } from "@/components/ui/PlatformBadge";
-import { RelatedLinks } from "@/components/ui/RelatedLinks";
-import { CTASection } from "@/components/ui/CTASection";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
-import DataHealthInspector from "@/components/platform/DataHealthInspector";
+import HeroConnectorVisual from "@/components/platform/HeroConnectorVisual";
+import FlexibleIngestionSection from "@/components/platform/FlexibleIngestionSection";
+import StatsBanner from "@/components/platform/StatsBanner";
+import PowerEveryReportSection from "@/components/platform/PowerEveryReportSection";
+import ClientTestimonialSection from "@/components/platform/ClientTestimonialSection";
+import UniteDataDeepDiveSection from "@/components/platform/UniteDataDeepDiveSection";
+import StrategicAdvantageGrid from "@/components/platform/StrategicAdvantageGrid";
+import UnifiedDataResourcesSection from "@/components/platform/UnifiedDataResourcesSection";
+import ProblemSolverSection from "@/components/platform/ProblemSolverSection";
+import HighImpactFinalCTA from "@/components/platform/HighImpactFinalCTA";
+import { ArrowRight, Cable, Sparkles } from "lucide-react";
 
 export const metadata = buildMetadata({
   title: "Data integration and ingestion",
   description:
-    "Connect Meta Ads, Google Ads and TikTok Ads via authenticated APIs to consolidate raw campaign data automatically.",
+    "Connect your entire marketing ecosystem. Ingest, normalize, and store records from Meta Ads, Google Ads, TikTok Ads, DV360, and custom spreadsheets into a unified schema.",
   path: "/platform/data-integration",
 });
 
 export default function DataIntegrationPage() {
-  const breadcrumbs = [
-    { label: "Platform", href: "/features" },
-    { label: "Data Integration", href: "/platform/data-integration" },
-  ];
-
   return (
     <>
       <BreadcrumbListJsonLd
         items={[
+          { name: "Home", path: "/" },
           { name: "Platform", path: "/features" },
           { name: "Data Integration", path: "/platform/data-integration" },
         ]}
       />
-      <PageHero
-        breadcrumbs={breadcrumbs}
-        eyebrow="Workflow 01 · Data Foundation"
-        title="Connect and consolidate every ad platform."
-        lead="Stop assembling weekly spreadsheets by hand. Cerebro connects directly to Meta, Google, and TikTok APIs to ingest, normalize, and store your marketing records in one reliable schema."
-        productShot={{
-          src: "/product/connections.png",
-          alt: "Cerebro data integration and channel connection interface",
-          priority: true,
-        }}
-      />
 
-      <Section bg="white">
+      {/* Hero Section */}
+      <section className="relative pt-12 pb-20 md:pt-16 md:pb-28 bg-white border-b border-border overflow-hidden">
         <Container>
-          <div className="flex items-center gap-3 mb-12 flex-wrap text-left">
-            <span className="text-small font-medium text-muted">
-              Live API connections:
-            </span>
-            <PlatformBadge platform="Meta Ads" size="md" />
-            <PlatformBadge platform="Google Ads" size="md" />
-            <PlatformBadge platform="TikTok Ads" size="md" />
-          </div>
-
-          <div className="space-y-24">
-            <div>
-              <div className="max-w-2xl text-left mb-8">
-                <p className="text-small font-medium text-brand mb-2.5">
-                  Direct Authentication & Sync Health
-                </p>
-                <h3 className="text-h2-mobile lg:text-h2 font-heading font-semibold text-ink">
-                  Official read-only APIs and proactive sync telemetry.
-                </h3>
-                <p className="mt-3 text-body text-muted leading-relaxed">
-                  Authenticate your advertising accounts in seconds. Scoped read-level tokens inspect campaign spend and performance while background monitors track token expiration and sync latency across every client account.
-                </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+            {/* Left Column: Hero Text */}
+            <div className="lg:col-span-6 text-left space-y-6">
+              {/* Category Eyebrow Pill */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-soft border border-brand/15 text-brand text-xs font-semibold tracking-wide uppercase">
+                <Cable className="w-3.5 h-3.5" />
+                <span>Data Integration</span>
+                <span className="text-brand/40">·</span>
+                <span className="text-muted">Workflow 01</span>
               </div>
-              <DataHealthInspector />
+
+              {/* Main Headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-ink tracking-tight leading-[1.08]">
+                Connect your entire marketing ecosystem
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-base sm:text-lg text-muted leading-relaxed max-w-xl">
+                Cerebro pulls campaign data, spend figures, and engagement metrics directly from official ad APIs, webhooks, and spreadsheets into a clean, query-ready marketing data warehouse.
+              </p>
+
+              {/* CTAs */}
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+                <Link
+                  href="/demo"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand text-white font-semibold text-sm hover:bg-brand-hover shadow-lg shadow-brand/20 transition-all duration-200"
+                >
+                  Start free trial
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/integrations"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-surface hover:bg-surface-2 text-ink border border-border font-semibold text-sm transition-all duration-200"
+                >
+                  Explore 50+ connectors
+                </Link>
+              </div>
+
+              {/* Social Proof Sub-tag */}
+              <div className="pt-2 flex items-center gap-3 text-xs text-muted">
+                <span className="flex items-center gap-1.5 font-medium text-ink">
+                  <Sparkles className="w-3.5 h-3.5 text-brand" />
+                  Connects in under 2 minutes
+                </span>
+                <span>·</span>
+                <span>Official read-only OAuth APIs</span>
+              </div>
             </div>
 
-            <FeatureRow
-              reverse={true}
-              eyebrow="Standardized Schema"
-              title="Harmonized metrics across channels."
-              description="Meta calls it a link click. Google calls it a click. TikTok calls it a destination click. Cerebro normalizes these definitions into a unified metric model so you can evaluate true totals without ambiguity."
-              points={[
-                "Automatic currency conversion and spend reconciliation",
-                "Consistent date, timezone, and attribution window mapping",
-                "Elimination of duplicate records across recurring sync cycles",
-              ]}
-              productShot={{
-                src: "/product/dashboard-executive.jpg",
-                alt: "Executive dashboard showing unified cross-channel totals and consolidated metrics",
-              }}
-            />
+            {/* Right Column: Hero Connector Visual */}
+            <div className="lg:col-span-6 w-full">
+              <HeroConnectorVisual />
+            </div>
           </div>
+        </Container>
+      </section>
 
-          <RelatedLinks
-            title="Next in workflow"
-            links={[
-              {
-                title: "Objective-based reporting",
-                description: "Categorize campaigns by goal to avoid misleading uniform metric averages.",
-                href: "/platform/objective-reporting",
-              },
-              {
-                title: "Cross-channel dashboards",
-                description: "Drill down from high-level totals into ad set and creative level metrics.",
-                href: "/platform/dashboards",
-              },
-              {
-                title: "Platform security architecture",
-                description: "Learn how customer data is encrypted, segregated, and protected.",
-                href: "/security",
-              },
-            ]}
-          />
+      {/* Main Content Body */}
+      <Section bg="white" className="!py-16">
+        <Container>
+          {/* Section 2: Three flexible ways to bring in your data */}
+          <FlexibleIngestionSection />
+
+          {/* Section 3: Dark Stats / Metric Callout Section */}
+          <StatsBanner />
+
+          {/* Section 4: Connect once. Power every report. */}
+          <PowerEveryReportSection />
+
+          {/* Section 5: What our clients say + Trust Logos */}
+          <ClientTestimonialSection />
+
+          {/* Section 7: Unite all your marketing data (Deep-dive tabs) */}
+          <UniteDataDeepDiveSection />
+
+          {/* Section 8: Transform scattered data into strategic advantage */}
+          <StrategicAdvantageGrid />
+
+          {/* Section 9: How growing companies transform with unified data */}
+          <UnifiedDataResourcesSection />
+
+          {/* Section 10: What problem are you looking to solve? */}
+          <ProblemSolverSection />
+
+          {/* Section 11: High-Impact Dark Final CTA */}
+          <HighImpactFinalCTA />
         </Container>
       </Section>
-
-      <CTASection />
     </>
   );
 }
