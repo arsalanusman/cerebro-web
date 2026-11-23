@@ -208,6 +208,13 @@ export function SiteHeader() {
           title: "Cerebro AI",
           items: [
             {
+              id: "p0",
+              label: "AI first homepage",
+              text: "Explore the dedicated AI-first experience",
+              href: "/ai-first",
+              icon: ICONS.spark,
+            },
+            {
               id: "p1",
               label: "Ask Cerebro",
               text: "Your AI analyst, answering from your data",
@@ -407,7 +414,8 @@ export function SiteHeader() {
   };
 
   const navTriggers = [
-    { key: "home", label: "Home", isMenu: true },
+    { key: "home", label: "Home", href: "/" },
+    { key: "ai-first", label: "AI first", href: "/ai-first" },
     { key: "platform", label: "Platform", isMenu: true },
     { key: "solutions", label: "Solutions", isMenu: true },
     { key: "integrations", label: "Integrations", href: "/integrations" },
@@ -512,8 +520,27 @@ export function SiteHeader() {
               <Link
                 key={t.key}
                 href={t.href || "/"}
-                className="inline-flex items-center h-[38px] px-3 rounded-control text-[#2B3040] hover:bg-[#F3F4F6] text-[15px] font-medium transition-colors shrink-0 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                className={`inline-flex items-center h-[38px] px-3 rounded-control text-[15px] font-medium transition-colors shrink-0 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
+                  t.key === "ai-first"
+                    ? "text-[#4F46E5] hover:bg-[#EEF0FF] font-semibold gap-1.5"
+                    : "text-[#2B3040] hover:bg-[#F3F4F6]"
+                }`}
               >
+                {t.key === "ai-first" && (
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d={ICONS.spark} />
+                  </svg>
+                )}
                 <span className="whitespace-nowrap">{t.label}</span>
               </Link>
             );
@@ -727,56 +754,34 @@ export function SiteHeader() {
               <span className="whitespace-nowrap">Ask Cerebro</span>
             </Link>
 
-            {/* Accordion Group 1: Home */}
-            <div className="border-b border-[#EEF0F3]">
-              <button
-                type="button"
-                onClick={() =>
-                  setMobileExpanded(mobileExpanded === "home" ? null : "home")
-                }
-                className="w-full flex items-center justify-between min-h-[52px] text-[17px] font-semibold text-[#101426] text-left"
+            {/* Home Link */}
+            <Link
+              href="/"
+              onClick={() => setMobileOpen(false)}
+              className="w-full flex items-center min-h-[50px] text-[17px] font-semibold text-[#101426] border-b border-[#EEF0F3]"
+            >
+              Home
+            </Link>
+
+            {/* AI first Link */}
+            <Link
+              href="/ai-first"
+              onClick={() => setMobileOpen(false)}
+              className="w-full flex items-center gap-2 min-h-[50px] text-[17px] font-semibold text-[#4F46E5] border-b border-[#EEF0F3]"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden="true"
               >
-                <span>Home options</span>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className={`transition-transform ${
-                    mobileExpanded === "home" ? "rotate-180" : ""
-                  }`}
-                >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-              {mobileExpanded === "home" && (
-                <div className="pb-3 pl-2 flex flex-col gap-2">
-                  <Link
-                    href="/option-1"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    Option 1 (Data-forward)
-                  </Link>
-                  <Link
-                    href="/option-2"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    Option 2 (AI-forward)
-                  </Link>
-                  <Link
-                    href="/present"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#4F46E5] font-semibold"
-                  >
-                    Present both
-                  </Link>
-                </div>
-              )}
-            </div>
+                <path d={ICONS.spark} />
+              </svg>
+              <span>AI first</span>
+            </Link>
 
             {/* Accordion Group 2: Platform */}
             <div className="border-b border-[#EEF0F3]">

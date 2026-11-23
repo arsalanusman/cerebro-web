@@ -31,6 +31,7 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
     {
       title: "Platform",
       links: [
+        { label: "AI first experience", href: "/ai-first" },
         { label: "Data integration", href: "/platform/data-integration" },
         { label: "Objective-based reporting", href: "/platform/objective-reporting" },
         { label: "Dashboards & hierarchy", href: "/platform/dashboards" },

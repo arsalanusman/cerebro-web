@@ -2,18 +2,20 @@ import React from "react";
 import { SoftwareApplicationJsonLd } from "@/components/seo/SoftwareApplicationJsonLd";
 import { buildMetadata } from "@/lib/seo";
 import HeroSection from "@/components/home/HeroSection";
-import AiStepsGrid from "@/components/home/AiStepsGrid";
+import VideoExplainer from "@/components/home/VideoExplainer";
 import AiDataEngine from "@/components/home/AiDataEngine";
 import AskCerebroSection from "@/components/home/AskCerebroSection";
 import ObjectiveToggle from "@/components/home/ObjectiveToggle";
 import BuildSection from "@/components/home/BuildSection";
+import CompareTable from "@/components/home/CompareTable";
 import SolutionsSection from "@/components/home/SolutionsSection";
 import IntegrationsSection from "@/components/home/IntegrationsSection";
+import TrustSection from "@/components/home/TrustSection";
 
 export const metadata = buildMetadata({
-  title: "Ad performance analytics and reporting | Cerebro DNano",
+  title: "Bring in any marketing data. Ask it anything | Cerebro DNano",
   description:
-    "Bring Meta Ads, Google Ads and TikTok Ads into one consistent view, judge every campaign by its goal, and ask questions in plain language.",
+    "Connect Meta, Google and TikTok, add a connector for any other platform, or upload a sheet. Cerebro's AI cleans and standardizes it, builds your reports, and answers your questions with the numbers behind them.",
   path: "/",
 });
 
@@ -21,15 +23,18 @@ export default function HomePage() {
   return (
     <>
       <SoftwareApplicationJsonLd />
-      {/* Option 2 (AI-forward Flagship) */}
-      <HeroSection variant="option-2" />
-      <AiStepsGrid />
-      <AiDataEngine variant="option-2" />
+      {/* Data-forward Flagship Homepage */}
+      <HeroSection variant="option-1" />
+      {/* Video Explainer Showcase */}
+      <VideoExplainer />
+      <AiDataEngine variant="option-1" />
       <AskCerebroSection />
-      <ObjectiveToggle variant="option-2" />
-      <BuildSection variant="option-2" />
+      <ObjectiveToggle variant="option-1" />
+      <BuildSection variant="option-1" />
+      <CompareTable />
       <SolutionsSection />
       <IntegrationsSection />
+      <TrustSection />
     </>
   );
 }
