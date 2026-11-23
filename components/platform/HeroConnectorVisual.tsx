@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Database, CheckCircle2, RefreshCw, Zap, ShieldCheck } from "lucide-react";
+import TiltCard from "@/components/motion/TiltCard";
 
 interface NodeItem {
   id: string;
@@ -69,9 +70,10 @@ export default function HeroConnectorVisual() {
   }, []);
 
   return (
-    <div className="relative w-full max-w-xl mx-auto select-none">
-      {/* Outer ambient glow */}
-      <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand/20 via-indigo-500/20 to-purple-600/20 blur-xl opacity-75" />
+    <TiltCard maxTilt={5} glare={true} className="w-full max-w-xl mx-auto select-none">
+      <div className="relative w-full">
+        {/* Outer ambient glow */}
+        <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand/20 via-indigo-500/20 to-purple-600/20 blur-xl opacity-75" />
 
       {/* Main Container */}
       <div className="relative bg-[#0B1021] border border-white/10 rounded-2xl p-6 md:p-8 text-white shadow-2xl overflow-hidden min-h-[380px] flex flex-col justify-between">
@@ -195,6 +197,7 @@ export default function HeroConnectorVisual() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </TiltCard>
   );
 }

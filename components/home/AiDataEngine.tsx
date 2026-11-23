@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { engineData } from "@/content/home";
+import ScrollReveal from "@/components/motion/ScrollReveal";
 
 interface AiDataEngineProps {
   variant?: "option-1" | "option-2";
@@ -58,55 +59,60 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
     <section id="engine" className="py-20 lg:py-[88px] bg-[#F7F8FA]">
       <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
         {/* Header */}
-        <h2 className="m-0 max-w-[760px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#101426]">
-          {h2}
-        </h2>
-        <p className="mt-4 m-0 max-w-[700px] text-lg leading-[1.55] text-[#5B6170]">
-          {lead}
-        </p>
+        <ScrollReveal direction="down" distance={20}>
+          <h2 className="m-0 max-w-[760px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#101426]">
+            {h2}
+          </h2>
+          <p className="mt-4 m-0 max-w-[700px] text-lg leading-[1.55] text-[#5B6170]">
+            {lead}
+          </p>
+        </ScrollReveal>
 
         {/* Source Tabs */}
-        <div
-          role="tablist"
-          aria-label="Data source"
-          className="mt-9 inline-flex gap-1.5 p-1.5 rounded-xl bg-[#ECEEF3] flex-wrap items-center"
-        >
-          {engineData.sources.map((s, i) => {
-            const selected = i === srcIndex;
-            return (
-              <button
-                key={i}
-                type="button"
-                role="tab"
-                aria-selected={selected}
-                onClick={() => playSource(i)}
-                className={`min-h-[44px] px-4 sm:px-5 rounded-lg border-0 text-[14.5px] font-semibold cursor-pointer inline-flex items-center gap-2 shrink-0 whitespace-nowrap transition-all ${
-                  selected
-                    ? "bg-white text-[#101426] shadow-sm"
-                    : "bg-transparent text-[#5B6170] hover:text-[#101426]"
-                }`}
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
+        <ScrollReveal direction="up" distance={16} delay={0.15}>
+          <div
+            role="tablist"
+            aria-label="Data source"
+            className="mt-9 inline-flex gap-1.5 p-1.5 rounded-xl bg-[#ECEEF3] flex-wrap items-center"
+          >
+            {engineData.sources.map((s, i) => {
+              const selected = i === srcIndex;
+              return (
+                <button
+                  key={i}
+                  type="button"
+                  role="tab"
+                  aria-selected={selected}
+                  onClick={() => playSource(i)}
+                  className={`min-h-[44px] px-4 sm:px-5 rounded-lg border-0 text-[14.5px] font-semibold cursor-pointer inline-flex items-center gap-2 shrink-0 whitespace-nowrap transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] ${
+                    selected
+                      ? "bg-white text-[#101426] shadow-sm"
+                      : "bg-transparent text-[#5B6170] hover:text-[#101426]"
+                  }`}
                 >
-                  <path d={s.d} />
-                </svg>
-                {s.label}
-              </button>
-            );
-          })}
-        </div>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d={s.d} />
+                  </svg>
+                  {s.label}
+                </button>
+              );
+            })}
+          </div>
+        </ScrollReveal>
 
         {/* Pipeline Container */}
-        <div className="mt-5 bg-white border border-[#E4E7EC] rounded-2xl p-6 sm:p-7 flex flex-col lg:flex-row gap-4 items-stretch shadow-sm">
+        <ScrollReveal direction="up" distance={24} delay={0.25}>
+          <div className="mt-5 bg-white border border-[#E4E7EC] rounded-2xl p-6 sm:p-7 flex flex-col lg:flex-row gap-4 items-stretch shadow-sm hover:shadow-md transition-shadow duration-300">
           {/* Column 1: Source */}
           <div className="flex-1 min-w-0 border border-[#EEF0F3] rounded-xl p-5 bg-[#FCFCFD] flex flex-col">
             <div className="text-xs font-semibold text-[#6B7180]">Source</div>
@@ -396,6 +402,7 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
             </div>
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );

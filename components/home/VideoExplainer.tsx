@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import ScrollReveal from "@/components/motion/ScrollReveal";
 
 interface VideoExplainerProps {
   videoSrc?: string;
@@ -79,20 +80,23 @@ export default function VideoExplainer({
     <section className="py-16 sm:py-20 bg-white" ref={containerRef}>
       <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
         {/* Header */}
-        <div className="text-center max-w-[760px] mx-auto">
-          <p className="m-0 mb-3 text-sm font-semibold text-[#4F46E5]">
-            PRODUCT WALKTHROUGH
-          </p>
-          <h2 className="m-0 font-display font-semibold text-[clamp(28px,3vw,42px)] leading-[1.1] tracking-[-0.02em] text-[#101426]">
-            See how every platform comes together in two minutes.
-          </h2>
-          <p className="mt-3.5 m-0 text-base sm:text-lg leading-[1.55] text-[#5B6170]">
-            Watch how Cerebro DNano connects to Meta, Google and TikTok APIs, unifies multi-channel data, and answers performance questions.
-          </p>
-        </div>
+        <ScrollReveal direction="down" distance={20}>
+          <div className="text-center max-w-[760px] mx-auto">
+            <p className="m-0 mb-3 text-sm font-semibold text-[#4F46E5]">
+              PRODUCT WALKTHROUGH
+            </p>
+            <h2 className="m-0 font-display font-semibold text-[clamp(28px,3vw,42px)] leading-[1.1] tracking-[-0.02em] text-[#101426]">
+              See how every platform comes together in two minutes.
+            </h2>
+            <p className="mt-3.5 m-0 text-base sm:text-lg leading-[1.55] text-[#5B6170]">
+              Watch how Cerebro DNano connects to Meta, Google and TikTok APIs, unifies multi-channel data, and answers performance questions.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Video Player Frame */}
-        <div className="mt-10 max-w-[1020px] mx-auto relative rounded-2xl border border-[#DCDFE7] bg-[#101426] overflow-hidden shadow-[0_24px_60px_rgba(16,20,38,0.12)] group">
+        <ScrollReveal direction="zoom" distance={24} delay={0.2} duration={0.8}>
+          <div className="mt-10 max-w-[1020px] mx-auto relative rounded-2xl border border-[#DCDFE7] bg-[#101426] overflow-hidden shadow-[0_24px_60px_rgba(16,20,38,0.12)] group">
           {/* Subtle atmospheric glow */}
           <div
             aria-hidden="true"
@@ -188,6 +192,7 @@ export default function VideoExplainer({
             )}
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );

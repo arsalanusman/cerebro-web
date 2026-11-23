@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ConsentBanner } from "@/components/layout/ConsentBanner";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import { buildMetadata } from "@/lib/seo";
+import SmoothScrollProvider from "@/components/motion/SmoothScrollProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -46,11 +47,13 @@ export default function RootLayout({
       className={`${inter.variable} ${geistSans.variable} ${geistMono.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-bg text-text antialiased">
-        <OrganizationJsonLd />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <ConsentBanner />
+        <SmoothScrollProvider>
+          <OrganizationJsonLd />
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <ConsentBanner />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

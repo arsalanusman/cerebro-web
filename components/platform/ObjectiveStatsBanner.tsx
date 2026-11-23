@@ -1,24 +1,32 @@
 import React from "react";
+import AnimatedCounter from "@/components/motion/AnimatedCounter";
+import TiltCard from "@/components/motion/TiltCard";
+import ScrollReveal from "@/components/motion/ScrollReveal";
 
 export default function ObjectiveStatsBanner() {
   const stats = [
     {
-      value: "4 Tiers",
+      numeric: 4,
+      suffix: " Tiers",
       label: "Standardized Goal Buckets",
       sublabel: "Awareness, Traffic, Leads, Sales",
     },
     {
-      value: "100%",
+      numeric: 100,
+      suffix: "%",
       label: "Distortion Elimination",
       sublabel: "No mixing CPMs with CPAs",
     },
     {
-      value: "3.2x",
+      numeric: 3.2,
+      suffix: "x",
+      decimals: 1,
       label: "Budget Precision",
       sublabel: "Fair cross-channel allocation",
     },
     {
-      value: "0",
+      numeric: 0,
+      suffix: "",
       label: "Manual Tagging Required",
       sublabel: "Auto-detected from campaign API setup",
     },
@@ -45,35 +53,42 @@ export default function ObjectiveStatsBanner() {
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center space-y-12">
-        <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-purple-300 font-semibold">
-            Meaningful Measurement Scale
-          </span>
-          <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white tracking-tight">
-            Judge each campaign strictly by its intended goal
-          </h2>
-          <p className="mt-4 text-slate-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            Eliminate distorted blended averages. When each channel is evaluated against its true operational mandate, media budgets can be scaled with total confidence.
-          </p>
-        </div>
+        <ScrollReveal direction="down" distance={20}>
+          <div>
+            <span className="text-xs font-mono uppercase tracking-widest text-purple-300 font-semibold">
+              Meaningful Measurement Scale
+            </span>
+            <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white tracking-tight">
+              Judge each campaign strictly by its intended goal
+            </h2>
+            <p className="mt-4 text-slate-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+              Eliminate distorted blended averages. When each channel is evaluated against its true operational mandate, media budgets can be scaled with total confidence.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* 4 Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 pt-4">
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm flex flex-col items-center text-center transition-all duration-300 hover:bg-white/[0.07] hover:border-purple-500/40"
-            >
-              <span className="text-4xl md:text-5xl font-heading font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-purple-200 tracking-tight">
-                {s.value}
-              </span>
-              <span className="mt-2.5 text-sm font-semibold text-white">
-                {s.label}
-              </span>
-              <span className="mt-1 text-xs text-slate-400">
-                {s.sublabel}
-              </span>
-            </div>
+          {stats.map((s, idx) => (
+            <ScrollReveal key={s.label} direction="up" distance={24} delay={idx * 0.1}>
+              <TiltCard maxTilt={5} glare={true} className="h-full">
+                <div className="p-6 h-full rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm flex flex-col items-center text-center transition-all duration-300 hover:bg-white/[0.08] hover:border-brand/50 hover:shadow-lg">
+                  <span className="text-4xl md:text-5xl font-heading font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-200 tracking-tight">
+                    <AnimatedCounter
+                      value={s.numeric}
+                      suffix={s.suffix}
+                      decimals={s.decimals}
+                    />
+                  </span>
+                  <span className="mt-2.5 text-sm font-semibold text-white">
+                    {s.label}
+                  </span>
+                  <span className="mt-1 text-xs text-slate-400">
+                    {s.sublabel}
+                  </span>
+                </div>
+              </TiltCard>
+            </ScrollReveal>
           ))}
         </div>
       </div>

@@ -2,6 +2,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen } from "lucide-react";
+import TiltCard from "@/components/motion/TiltCard";
+import ScrollReveal from "@/components/motion/ScrollReveal";
 
 export default function UnifiedDataResourcesSection() {
   const articles = [
@@ -36,57 +38,60 @@ export default function UnifiedDataResourcesSection() {
 
   return (
     <div className="py-20">
-      <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
-        <span className="text-xs font-semibold uppercase tracking-widest text-brand">
-          Knowledge & Insights
-        </span>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-ink tracking-tight">
-          How growing companies transform with unified data
-        </h2>
-        <p className="text-base md:text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-          Best practices, technical architectural guides, and proven agency playbooks.
-        </p>
-      </div>
+      <ScrollReveal direction="down" distance={20}>
+        <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
+          <span className="text-xs font-semibold uppercase tracking-widest text-brand">
+            Knowledge & Insights
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-ink tracking-tight">
+            How growing companies transform with unified data
+          </h2>
+          <p className="text-base md:text-lg text-muted max-w-2xl mx-auto leading-relaxed">
+            Best practices, technical architectural guides, and proven agency playbooks.
+          </p>
+        </div>
+      </ScrollReveal>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {articles.map((art) => (
-          <Link
-            key={art.title}
-            href={art.link}
-            className="group bg-white border border-border hover:border-brand/40 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-          >
-            <div>
-              <div className="relative aspect-[16/10] bg-surface-2 overflow-hidden border-b border-border">
-                <Image
-                  src={art.image}
-                  alt={art.title}
-                  fill
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex items-center justify-between text-xs text-muted mb-2.5">
-                  <span className="font-semibold text-brand uppercase tracking-wider">
-                    {art.category}
-                  </span>
-                  <span>{art.readTime}</span>
+        {articles.map((art, idx) => (
+          <ScrollReveal key={art.title} direction="up" distance={24} delay={idx * 0.12}>
+            <TiltCard maxTilt={4} glare={true} className="h-full">
+              <Link
+                href={art.link}
+                className="group bg-white border border-border hover:border-brand/40 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full"
+              >
+                <div>
+                  <div className="relative aspect-[16/10] bg-surface-2 overflow-hidden border-b border-border">
+                    <Image
+                      src={art.image}
+                      alt={art.title}
+                      fill
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between text-xs text-muted mb-2.5">
+                      <span className="font-semibold text-brand uppercase tracking-wider">
+                        {art.category}
+                      </span>
+                      <span>{art.readTime}</span>
+                    </div>
+                    <h3 className="font-heading font-bold text-ink text-base md:text-lg group-hover:text-brand transition-colors line-clamp-2 mb-2">
+                      {art.title}
+                    </h3>
+                    <p className="text-small text-muted line-clamp-2 leading-relaxed">
+                      {art.description}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="font-heading font-bold text-ink text-base md:text-lg group-hover:text-brand transition-colors line-clamp-2 mb-2">
-                  {art.title}
-                </h3>
-                <p className="text-small text-muted line-clamp-2 leading-relaxed">
-                  {art.description}
-                </p>
-              </div>
-            </div>
 
-            <div className="px-6 pb-6 pt-2">
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand group-hover:translate-x-1 transition-transform">
-                Read guide
-                <ArrowRight className="w-3.5 h-3.5" />
-              </span>
-            </div>
-          </Link>
+                <div className="px-6 pb-6 pt-2 flex items-center gap-2 text-xs font-semibold text-brand group-hover:text-brand-hover">
+                  <span>Read article</span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
+            </TiltCard>
+          </ScrollReveal>
         ))}
       </div>
     </div>

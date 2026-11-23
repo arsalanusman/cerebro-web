@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import MagneticButton from "@/components/motion/MagneticButton";
 
 // Authentic icons from handoff/design/SiteHeader.dc.html
 const ICONS: Record<string, string> = {
@@ -555,12 +556,14 @@ export function SiteHeader() {
           >
             <span className="whitespace-nowrap">Contact</span>
           </Link>
-          <Link
-            href="/demo"
-            className="inline-flex items-center justify-center h-[44px] px-5 rounded-control bg-[#4F46E5] hover:bg-[#4338CA] text-white text-[15px] font-semibold transition-colors shadow-xs shrink-0 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-          >
-            <span className="whitespace-nowrap">Book a demo</span>
-          </Link>
+          <MagneticButton strength={0.25}>
+            <Link
+              href="/demo"
+              className="inline-flex items-center justify-center h-[44px] px-5 rounded-control bg-[#4F46E5] hover:bg-[#4338CA] text-white text-[15px] font-semibold transition-all duration-200 shadow-sm hover:shadow-md shrink-0 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 transform hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <span className="whitespace-nowrap">Book a demo</span>
+            </Link>
+          </MagneticButton>
         </div>
 
         {/* Mobile Header Actions */}
