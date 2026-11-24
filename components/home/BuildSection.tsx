@@ -87,7 +87,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
 
   return (
     <section id="build" className="py-20 lg:py-[88px] bg-white">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
         {/* Header */}
         <h2 className="m-0 max-w-[760px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#000000]">
           {h2}

@@ -78,7 +78,7 @@ export default function VideoExplainer({
 
   return (
     <section className="py-16 sm:py-20 bg-white" ref={containerRef}>
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
         {/* Header */}
         <ScrollReveal direction="down" distance={20}>
           <div className="text-center max-w-[760px] mx-auto">

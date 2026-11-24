@@ -216,7 +216,7 @@ export default function FeaturesInteractive() {
     <div>
       {/* Interactive Tabs Showcase */}
       <section className="py-20 md:py-24 bg-[#0F1424] text-white">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10 box-border">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 box-border">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-[#8EC5F0]">
               DEEP DIVE

@@ -72,7 +72,7 @@ export default function ContactClient() {
     <div className="font-sans text-[#1C2433] bg-white tabular-nums">
       {/* Hero & Contact Details */}
       <section className="py-14 md:py-20 bg-gradient-to-b from-[#F3F8FE] to-white">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
           <nav aria-label="Breadcrumb" className="text-[13px] text-[#6B7685]">
             <Link href="/" className="hover:text-[#0070C2] no-underline">
               Home
@@ -373,7 +373,7 @@ export default function ContactClient() {
 
       {/* Office Photos Section */}
       <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
           <h2 className="m-0 font-heading font-semibold text-[26px] sm:text-[30px] md:text-[34px] leading-[1.15] tracking-[-0.02em] text-[#000000]">
             Our office in Clifton
           </h2>

@@ -78,7 +78,7 @@ export default function DemoClient() {
   return (
     <div className="font-sans text-[#1C2433] bg-white tabular-nums">
       <section className="py-14 md:py-20 bg-gradient-to-b from-[#F3F8FE] to-white">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
           <nav aria-label="Breadcrumb" className="text-[13px] text-[#6B7685]">
             <Link href="/" className="hover:text-[#0070C2] no-underline">
               Home

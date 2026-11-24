@@ -376,7 +376,7 @@ export function SiteHeader() {
       className="sticky top-0 z-50 bg-white border-b border-[#E2E8F0] font-sans text-[#1C2433]"
     >
       {/* Desktop Navigation (>= 1024px) */}
-      <div className="hidden lg:flex items-center justify-between gap-2 xl:gap-5 max-w-[1440px] min-h-[80px] mx-auto px-4 lg:px-6 xl:px-10 box-border">
+      <div className="hidden lg:flex items-center justify-between gap-3 xl:gap-6 max-w-[1440px] min-h-[80px] mx-auto px-6 sm:px-8 lg:px-12 box-border">
         {/* Brand Logo (2x scaled) */}
         <Link
           href="/"
@@ -545,7 +545,7 @@ export function SiteHeader() {
           onMouseLeave={handlePointerLeaveMenu}
           className="hidden lg:block absolute left-0 right-0 top-full bg-white border-t border-[#EEF0F3] border-b border-[#E2E8F0] shadow-[0_24px_48px_rgba(0,0,0,0.12)] z-50 animate-in fade-in duration-150"
         >
-          <div className="max-w-[1240px] mx-auto px-4 lg:px-6 xl:px-10 py-6 xl:py-7 pb-8 box-border flex gap-5 xl:gap-8">
+          <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 py-6 xl:py-7 pb-8 box-border flex gap-5 xl:gap-8">
             {/* Columns */}
             {currentPanel.cols.map((col, idx) => (
               <div key={idx} className="flex-1 min-w-[260px]">
@@ -655,7 +655,7 @@ export function SiteHeader() {
       )}
 
       {/* Mobile Header (< 1024px) */}
-      <div className="flex lg:hidden items-center justify-between min-h-[72px] px-5 sm:px-6 box-border bg-white border-b border-[#E2E8F0]">
+      <div className="flex lg:hidden items-center justify-between min-h-[72px] max-w-[1440px] mx-auto px-6 sm:px-8 box-border bg-white border-b border-[#E2E8F0]">
         <Link
           href="/"
           aria-label="Cerebro dNano home"

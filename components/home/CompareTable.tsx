@@ -5,7 +5,7 @@ import ScrollReveal from "@/components/motion/ScrollReveal";
 export default function CompareTable() {
   return (
     <section className="py-20 lg:py-[88px] bg-[#F6F8FB]">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
         {/* Header */}
         <ScrollReveal direction="down" distance={20}>
           <div className="flex gap-12 justify-between items-end flex-wrap">

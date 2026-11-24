@@ -74,7 +74,7 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
     <div className="font-sans text-[#1C2433] bg-white">
       {/* ── Trust Section ── */}
       <section aria-label="Trust" className="border-t border-[#EEF0F3] bg-white">
-        <div className="max-w-[1240px] mx-auto px-6 lg:px-10 py-9 box-border flex gap-7 items-center flex-wrap">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 py-9 box-border flex gap-7 items-center flex-wrap">
           <span className="font-heading text-[18px] font-semibold text-[#000000]">
             Built to be trusted with client data
           </span>
@@ -135,7 +135,7 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
                 "radial-gradient(circle, rgba(142,197,240,0.35) 0, rgba(0,112,194,0.12) 25%, rgba(2,39,113,0) 60%)",
             }}
           />
-          <div className="relative max-w-[1240px] mx-auto px-6 lg:px-10 box-border text-center">
+          <div className="relative max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 box-border text-center">
             <h2 className="m-0 mx-auto max-w-[760px] font-heading font-semibold text-[32px] sm:text-[40px] lg:text-[52px] leading-[1.08] tracking-[-0.025em] text-white">
               Ask your own campaigns a question.
             </h2>
@@ -162,7 +162,7 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
 
       {/* ── Main Footer ── */}
       <footer className="py-12 lg:py-16 pb-9 bg-white border-t border-[#EEF0F3]">
-        <div className="max-w-[1240px] mx-auto px-6 lg:px-10 box-border">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 box-border">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 justify-between">
             {/* Identity & Address */}
             <div className="w-full lg:w-[280px] shrink-0">

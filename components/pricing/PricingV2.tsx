@@ -118,7 +118,7 @@ export default function PricingV2() {
 
       {/* Main Calculator & Cards Section */}
       <section id="main" className="pb-[96px] bg-[#EEF5FC]">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10 box-border">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 box-border">
           {/* Calculator Controls */}
           <div className="text-center">
             <div className="text-[16px] font-semibold text-[#000000]">
@@ -227,7 +227,7 @@ export default function PricingV2() {
 
       {/* Compare Plans Table */}
       <section className="py-[104px] bg-white">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10 box-border">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 box-border">
           <div>
             <h2 className="m-0 text-center font-heading font-semibold text-[30px] sm:text-[38px] md:text-[46px] leading-[1.08] tracking-[-0.025em] text-[#000000]">
               Compare plans

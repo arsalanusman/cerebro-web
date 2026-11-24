@@ -87,8 +87,8 @@ const config: Config = {
         float: "var(--shadow-float, 0 2px 6px rgba(0,0,0,0.05), 0 24px 56px rgba(1,22,64,0.22))",
       },
       maxWidth: {
-        container: "1240px",
-        content: "1240px",
+        container: "1440px",
+        content: "1440px",
       },
       height: {
         header: "72px",

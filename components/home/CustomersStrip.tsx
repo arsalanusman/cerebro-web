@@ -38,7 +38,7 @@ export default function CustomersStrip() {
       aria-label="Customers"
       className="py-10 sm:py-12 border-b border-[#EEF0F3] bg-white"
     >
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border text-center">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border text-center">
         <p className="m-0 mb-6 text-sm font-medium text-[#6B7685] tracking-wide">
           Trusted by marketing and analytics teams at
         </p>

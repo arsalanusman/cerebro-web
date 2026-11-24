@@ -94,7 +94,7 @@ export default function EtlArchitectureSection() {
         className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(circle,rgba(0,112,194,0.18)_0,rgba(168,85,247,0.08)_35%,rgba(9,10,21,0)_70%)]"
       />
 
-      <div className="relative max-w-[1240px] mx-auto px-6 md:px-10 box-border">
+      <div className="relative max-w-[1440px] mx-auto px-6 md:px-10 box-border">
         {/* Section Header */}
         <div className="max-w-[780px]">
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.08] border border-white/[0.14] text-[#8EC5F0] text-xs font-semibold tracking-wide uppercase">

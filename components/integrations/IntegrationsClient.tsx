@@ -22,7 +22,7 @@ export default function IntegrationsClient() {
     <div className="font-sans text-[#1C2433] bg-white tabular-nums">
       {/* Hero */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-[#F3F8FE] to-white">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
           <nav aria-label="Breadcrumb" className="text-[13px] text-[#6B7685]">
             <Link href="/" className="hover:text-[#0070C2] no-underline">
               Home
@@ -76,7 +76,7 @@ export default function IntegrationsClient() {
 
       {/* Native Connectors */}
       <section id="native" className="py-20 md:py-24 bg-[#F6F8FB]">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
           <h2 className="m-0 font-heading font-semibold text-[30px] sm:text-[36px] md:text-[44px] leading-[1.1] tracking-[-0.02em] text-[#000000]">
             Native connectors
           </h2>
@@ -142,7 +142,7 @@ export default function IntegrationsClient() {
 
       {/* Custom Connectors with AI */}
       <section id="custom" className="py-20 md:py-24">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
           <p className="m-0 mb-3 text-[14px] font-semibold text-[#0070C2]">Cerebro AI</p>
           <h2 className="m-0 max-w-[760px] font-heading font-semibold text-[30px] sm:text-[36px] md:text-[44px] leading-[1.1] tracking-[-0.02em] text-[#000000]">
             Custom connectors for any platform, built with AI.
@@ -385,7 +385,7 @@ export default function IntegrationsClient() {
 
       {/* Sheet Upload Section */}
       <section id="upload" className="py-20 md:py-24 bg-[#F6F8FB]">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10 flex flex-col lg:flex-row gap-12 lg:gap-14 items-center">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col lg:flex-row gap-12 lg:gap-14 items-center">
           <div className="lg:w-[450px] shrink-0">
             <p className="m-0 mb-3 text-[14px] font-semibold text-[#0070C2]">Cerebro AI</p>
             <h2 className="m-0 font-heading font-semibold text-[30px] sm:text-[36px] md:text-[44px] leading-[1.1] tracking-[-0.02em] text-[#000000]">

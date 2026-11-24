@@ -57,7 +57,7 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
 
   return (
     <section id="engine" className="py-20 lg:py-[88px] bg-[#F6F8FB]">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
         {/* Header */}
         <ScrollReveal direction="down" distance={20}>
           <h2 className="m-0 max-w-[760px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#000000]">

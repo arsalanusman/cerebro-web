@@ -709,7 +709,7 @@ export function HomeV2() {
           }}
         />
 
-        <div className="relative max-w-[1360px] mx-auto px-6 lg:px-10 box-border">
+        <div className="relative max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 box-border">
           <div className="text-center max-w-[800px] mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8F2FC] text-[#004C87] text-[12px] font-bold border border-[#BFD8F0] mb-4">
               <span>UNIFIED INGESTION ARCHITECTURE</span>
@@ -961,7 +961,7 @@ export function HomeV2() {
           }}
         />
 
-        <div className="relative max-w-[1360px] mx-auto px-6 lg:px-10 box-border grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="relative max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 box-border grid grid-cols-2 lg:grid-cols-4 gap-8">
           {[
             { big: "3", unit: "Native APIs", label: "Direct Meta, Google & TikTok streaming sync with zero cookie drops." },
             { big: "12s", unit: "AI Builder", label: "Draft custom API connector schemas with automated JSON verification." },
@@ -995,7 +995,7 @@ export function HomeV2() {
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full pointer-events-none opacity-20 blur-3xl bg-[radial-gradient(circle,_#0070C2_0%,_#022771_70%)]"
         />
 
-        <div className="relative max-w-[1360px] mx-auto px-6 lg:px-10 box-border">
+        <div className="relative max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 box-border">
           <div className="text-center max-w-[760px] mx-auto">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#8EC5F0] text-[12.5px] font-semibold mb-4">
               <span className="w-2 h-2 rounded-full bg-[#0070C2] animate-pulse" />
@@ -1123,7 +1123,7 @@ export function HomeV2() {
 
       {/* ── 5. Feature Deep Dives (Interactive Architecture Canvas) ── */}
       <section className="py-20 lg:py-28 bg-[#FAFBFD] relative overflow-hidden">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-10 box-border flex flex-col gap-24">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 box-border flex flex-col gap-24">
 
           {/* Feature 1: Objective Engine */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -1298,7 +1298,7 @@ export function HomeV2() {
 
       {/* ── 6. Solutions & Enterprise Verticals ── */}
       <section className="py-20 lg:py-28 bg-[#F6F8FB]">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-10 box-border">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 box-border">
           <div className="text-center max-w-[720px] mx-auto">
             <h2 className="m-0 font-heading font-semibold text-[32px] sm:text-[42px] lg:text-[48px] leading-[1.08] tracking-[-0.025em] text-[#000000]">
               Built for performance marketing leaders.
@@ -1404,7 +1404,7 @@ export function HomeV2() {
 
       {/* ── 8. Panoramic Final Launchpad CTA ── */}
       <section className="py-20 lg:py-24 bg-gradient-to-b from-white via-[#F4F8FC] to-[#EEF5FC] border-t border-[#BFD8F0]">
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-10 text-center">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8F2FC] text-[#004C87] text-[12px] font-bold border border-[#BFD8F0] mb-4">
             <span>GET STARTED TODAY</span>
           </div>

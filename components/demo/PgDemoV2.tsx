@@ -43,7 +43,7 @@ export default function PgDemoV2() {
   return (
     <div className="font-sans text-[#1C2433] bg-white min-w-0 tabular-nums">
       <section className="py-20 md:py-26 bg-[#EEF5FC]">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10 box-border flex gap-12 lg:gap-16 flex-wrap items-start">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 box-border flex gap-12 lg:gap-16 flex-wrap items-start">
           {/* Left Column: Context & Proof */}
           <div className="flex-1 min-w-[320px] max-w-[520px]">
             <p className="m-0 mb-4 text-[14px] font-semibold text-[#0070C2]">Book a demo</p>

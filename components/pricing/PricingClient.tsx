@@ -12,7 +12,7 @@ export default function PricingClient() {
     <div className="font-sans text-[#1C2433] bg-white tabular-nums">
       {/* Hero */}
       <section className="py-16 md:py-20 text-center bg-gradient-to-b from-[#F3F8FE] to-white">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
           <nav aria-label="Breadcrumb" className="text-[13px] text-[#6B7685] inline-block">
             <Link href="/" className="hover:text-[#0070C2] no-underline">
               Home
@@ -60,7 +60,7 @@ export default function PricingClient() {
 
       {/* Plan Cards */}
       <section className="py-6 md:py-10 pb-20 md:pb-24">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
           {plans.map((p, idx) => {
             const isRec = idx === sizeIdx;
             return (
@@ -129,7 +129,7 @@ export default function PricingClient() {
 
       {/* Compare Plans Matrix */}
       <section className="py-20 md:py-24 bg-[#F6F8FB]">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
           <h2 className="m-0 font-heading font-semibold text-[28px] sm:text-[34px] md:text-[40px] leading-[1.12] tracking-[-0.02em] text-[#000000]">
             Compare plans
           </h2>

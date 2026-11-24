@@ -124,7 +124,7 @@ export default function FAQClient() {
 
   return (
     <div className="py-16 sm:py-20 bg-white">
-      <div className="max-w-[1240px] mx-auto px-6 md:px-10 box-border">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 box-border">
         {/* Search Bar */}
         <div className="max-w-xl mx-auto mb-14">
           <div className="relative">

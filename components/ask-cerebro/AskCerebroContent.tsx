@@ -7,7 +7,7 @@ export default function AskCerebroContent() {
     <>
       {/* 1. Four Kinds of Questions */}
       <section id="ask-types" className="py-20 lg:py-24 bg-white">
-        <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
           <h2 className="m-0 max-w-[720px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#000000]">
             Four kinds of questions it handles well.
           </h2>
@@ -84,7 +84,7 @@ export default function AskCerebroContent() {
 
       {/* 2. How Ask Cerebro Works */}
       <section className="py-20 lg:py-24 bg-[#F6F8FB]">
-        <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
           <h2 className="m-0 max-w-[720px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#000000]">
             How Ask Cerebro works through a question.
           </h2>
@@ -142,7 +142,7 @@ export default function AskCerebroContent() {
 
       {/* 3. Questions Teams Ask Every Week */}
       <section className="py-20 lg:py-24 bg-white">
-        <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
           <h2 className="m-0 max-w-[720px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#000000]">
             Questions teams ask every week.
           </h2>
@@ -199,7 +199,7 @@ export default function AskCerebroContent() {
 
       {/* 5. Part of Cerebro AI Pillars */}
       <section className="py-16 sm:py-[72px] bg-white border-t border-[#EEF0F3]">
-        <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
           <div className="text-[13px] font-semibold text-[#6B7685]">
             Part of Cerebro AI
           </div>

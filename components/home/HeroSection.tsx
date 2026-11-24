@@ -58,7 +58,7 @@ export default function HeroSection({ variant = "option-2" }: HeroSectionProps) 
         />
       </svg>
 
-      <div className="relative max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+      <div className="relative max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
         {/* Text Area */}
         <div className="max-w-[960px] mx-auto text-center">
           {!isOption1 && (

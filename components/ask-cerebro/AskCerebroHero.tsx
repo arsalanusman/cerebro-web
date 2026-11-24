@@ -16,7 +16,7 @@ export default function AskCerebroHero() {
         className="pointer-events-none absolute -top-[260px] -right-[200px] w-[720px] h-[720px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.9)_0,rgba(199,210,254,0.5)_2.5%,rgba(129,140,248,0.22)_12%,rgba(0,112,194,0.07)_30%,rgba(2,39,113,0)_58%)]"
       />
 
-      <div className="relative max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+      <div className="relative max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="text-[13px] text-[#8EC5F0]">
           <Link href="/" className="text-[#C9CCF2] hover:text-white transition-colors">

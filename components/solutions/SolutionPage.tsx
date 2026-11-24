@@ -53,7 +53,7 @@ export default function SolutionPage({ data }: SolutionPageProps) {
 
       {/* 1. Hero Section */}
       <section className="pt-16 pb-24 bg-[linear-gradient(to_bottom,#F3F8FE_0,#FFFFFF_100%)]">
-        <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="text-[13px] text-[#6B7685]">
             <Link href="/" className="hover:text-[#000000] transition-colors">
@@ -136,7 +136,7 @@ export default function SolutionPage({ data }: SolutionPageProps) {
 
       {/* 2. Pains Breakdown */}
       <section className="py-20 lg:py-[88px] bg-white">
-        <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
           <h2 className="m-0 max-w-[720px] font-display font-semibold text-[clamp(28px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#000000]">
             {data.painsTitle}
           </h2>
@@ -161,7 +161,7 @@ export default function SolutionPage({ data }: SolutionPageProps) {
 
       {/* 3. How Cerebro Runs Solution */}
       <section className="py-20 lg:py-[88px] bg-[#F6F8FB]">
-        <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
           <h2 className="m-0 max-w-[720px] font-display font-semibold text-[clamp(28px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#000000]">
             {data.featuresTitle}
           </h2>
@@ -308,7 +308,7 @@ export default function SolutionPage({ data }: SolutionPageProps) {
 
       {/* 4. Questions Asked */}
       <section className="py-20 lg:py-[88px] bg-white">
-        <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
           <h2 className="m-0 max-w-[720px] font-display font-semibold text-[clamp(28px,3vw,40px)] leading-[1.12] tracking-[-0.02em] text-[#000000]">
             {data.questionsTitle}
           </h2>

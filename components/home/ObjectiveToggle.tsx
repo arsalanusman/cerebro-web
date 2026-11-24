@@ -22,7 +22,7 @@ export default function ObjectiveToggle({ variant = "option-2" }: ObjectiveToggl
 
   return (
     <section className="py-20 lg:py-[88px] bg-[#F6F8FB]">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
         {/* Header and Toggle Row */}
         <div className="flex gap-8 justify-between items-end flex-wrap">
           <div>

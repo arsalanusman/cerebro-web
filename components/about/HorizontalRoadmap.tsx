@@ -37,7 +37,7 @@ export default function HorizontalRoadmap({ milestones }: HorizontalRoadmapProps
 
   return (
     <section className="py-20 md:py-24 bg-gradient-to-b from-white to-[#F6F8FB] border-y border-[#E2E8F0] overflow-hidden">
-      <div className="max-w-[1240px] mx-auto px-6 md:px-10 box-border">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 box-border">
         {/* Section Header with Controls */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <div>

@@ -11,7 +11,7 @@ interface TeamSectionProps {
 export default function TeamSection({ leaders, techTeam }: TeamSectionProps) {
   return (
     <div className="py-20 md:py-28 bg-white" id="team">
-      <div className="max-w-[1240px] mx-auto px-6 md:px-10 box-border">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 box-border">
         {/* ========================================================= */}
         {/* SECTION 1: TEAM OUR LEADERS                               */}
         {/* ========================================================= */}
