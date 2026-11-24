@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cerebro DNano homepage, option 3 (minimal)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700&amp;family=Geist+Mono:wght@400;500&amp;family=Inter:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#4F46E5}a:hover{color:#4338CA}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #2B3040; background: #FFFFFF; min-width: 0; font-variant-numeric: tabular-nums">
+<dc-import name="SiteHeader" hint-size="100%,72px"></dc-import>
+
+<section id="top" style="padding: 80px 0 96px">
+<div style="max-width: 1240px; margin: 0 auto; padding: 0 40px; box-sizing: border-box; display: flex; gap: 64px; align-items: center; flex-wrap: wrap">
+<div style="flex: 1 1 460px; min-width: 0">
+<h1 style="margin: 0; font-family: Geist, Inter, sans-serif; font-weight: 600; font-size: clamp(42px, 5vw, 68px); line-height: 1.02; letter-spacing: -0.035em; color: #101426">Your AI analyst for every ad platform.</h1>
+<p style="margin: 24px 0 0; max-width: 480px; font-size: 19px; line-height: 1.55; color: #5B6170">Bring in any marketing data. Cerebro AI cleans it, reports on it and answers your questions.</p>
+<div style="margin-top: 32px; display: flex; gap: 10px; flex-wrap: wrap">
+<a href="PgDemo.dc.html" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 22px; background: #4F46E5; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600">Book a demo</a>
+<a href="#ways" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 22px; background: #FFFFFF; border: 1px solid #D5D8E0; color: #101426; text-decoration: none; font-size: 15px; font-weight: 600">See how it works</a>
+</div>
+</div>
+<div style="flex: 1 1 480px; max-width: 560px; position: relative">
+<div style="position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 28px; overflow: hidden; background: #141244">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(0,112,194,0.55) 0, rgba(0,112,194,0.16) 30%, rgba(20,18,68,0) 62%)"></div>
+<svg role="img" aria-label="The Cerebro mark at the center of a grid of nodes, with Meta, Google, TikTok, sheets and custom connectors flowing into it" viewBox="0 0 560 560" style="position: absolute; inset: 0; width: 100%; height: 100%">
+<defs><radialGradient id="h3-core" cx="40%" cy="32%" r="78%"><stop offset="0" stop-color="#6CC0F5"></stop><stop offset="0.45" stop-color="#0070C2"></stop><stop offset="1" stop-color="#022771"></stop></radialGradient></defs>
+<ellipse cx="280" cy="280" rx="262" ry="100" fill="none" stroke="rgba(255,255,255,0.08)" transform="rotate(-22 280 280)"></ellipse>
+<ellipse cx="280" cy="280" rx="262" ry="100" fill="none" stroke="rgba(255,255,255,0.06)" transform="rotate(22 280 280)"></ellipse>
+<sc-for list="{{heroLinks}}" as="l" hint-placeholder-count="6"><path d="{{l}}" fill="none" stroke="rgba(165,180,252,0.55)" stroke-width="1.6" stroke-dasharray="4 6" stroke-linecap="round"></path></sc-for>
+<sc-for list="{{heroNodes}}" as="n" hint-placeholder-count="24">
+<circle cx="{{n.x}}" cy="{{n.y}}" r="{{n.halo}}" fill="rgba(165,180,252,0.12)"></circle>
+<circle cx="{{n.x}}" cy="{{n.y}}" r="{{n.r}}" fill="{{n.fill}}" stroke="{{n.stroke}}" stroke-width="1.4"></circle>
+<text x="{{n.x}}" y="{{n.ty}}" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="{{n.fg}}">{{n.mark}}</text>
+</sc-for>
+<circle cx="280" cy="280" r="98" fill="none" stroke="rgba(0,112,194,0.14)" stroke-width="1"></circle>
+<circle cx="280" cy="280" r="76" fill="none" stroke="rgba(0,112,194,0.25)" stroke-width="10"></circle>
+<circle cx="280" cy="280" r="64" fill="url(#h3-core)"></circle>
+</svg>
+<img src="/_blob/10bbf4ea07e97759e5385e3dd93fcaf9" alt="" style="position: absolute; left: 50%; top: 50%; width: 14%; height: auto; transform: translate(-50%, -50%)">
+</div>
+<div style="position: absolute; left: -36px; bottom: 48px; width: 250px; background: #FFFFFF; border-radius: 16px; box-shadow: 0 2px 6px rgba(16,20,38,0.06), 0 24px 56px rgba(10,8,40,0.28); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: flex-end; background: #F2F3F6; border-radius: 12px 12px 4px 12px; padding: 7px 11px; font-size: 13px; color: #101426">Why did CPA rise?</span>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 500; color: #101426"><span style="width: 24px; height: 24px; border-radius: 8px; background: #EEF0FF; display: inline-flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"></path></svg></span>TikTok drove the rise.</span>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-label="Customers" style="background: #F7F8FA; padding: 36px 0">
+<div style="max-width: 1240px; margin: 0 auto; padding: 0 40px; box-sizing: border-box; display: flex; align-items: center; gap: 32px; flex-wrap: wrap">
+<span style="font-size: 14px; color: #5B6170">Trusted by marketing teams at</span>
+<div style="flex: 1 1 600px; display: flex; gap: 14px; flex-wrap: wrap">
+<sc-for list="{{logos}}" as="l" hint-placeholder-count="6"><span style="flex: 1 1 120px; height: 40px; border-radius: 8px; border: 1px dashed #CDD1DA; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; color: #6B7180">Client logo</span></sc-for>
+</div>
+</div>
+</section>
+
+<section id="ways" style="padding: 112px 0 104px">
+<div style="max-width: 1240px; margin: 0 auto; padding: 0 40px; box-sizing: border-box">
+<div style="text-align: center">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-weight: 600; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.08; letter-spacing: -0.025em; color: #101426">Every source. One clean model.</h2>
+<p style="margin: 14px auto 0; max-width: 560px; font-size: 18px; line-height: 1.5; color: #5B6170">Connect a platform, build a connector with AI, or upload a sheet.</p>
+</div>
+<div style="margin-top: 56px; display: flex; gap: 20px; flex-wrap: wrap">
+
+<a href="PlatIntegrations.dc.html" style="flex: 1 1 320px; min-width: 0; text-decoration: none; display: flex; flex-direction: column; gap: 18px">
+<div style="height: 280px; border-radius: 24px; background: #F1F2FF; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%"><defs><pattern id="h3-dots-1" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#C7CBF9"></circle></pattern></defs><rect width="100%" height="100%" fill="url(#h3-dots-1)" opacity="0.6"></rect></svg>
+<div style="position: relative; display: grid; grid-template-columns: repeat(4, 58px); gap: 14px">
+<sc-for list="{{tiles}}" as="t" hint-placeholder-count="8"><span style="width: 58px; height: 58px; border-radius: 16px; background: #FFFFFF; box-shadow: 0 10px 22px rgba(28,26,87,0.10); opacity: {{t.op}}; display: inline-flex; align-items: center; justify-content: center"><span style="width: 30px; height: 30px; border-radius: 9px; background: {{t.color}}; color: #FFFFFF; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">{{t.mark}}</span></span></sc-for>
+</div>
+</div>
+<div><div style="font-family: Geist, Inter, sans-serif; font-size: 21px; font-weight: 600; color: #101426">Native connectors</div><div style="margin-top: 6px; font-size: 15px; line-height: 1.5; color: #5B6170">Meta, Google and TikTok in a few clicks.</div></div>
+</a>
+
+<a href="PlatIntegrations.dc.html" style="flex: 1 1 320px; min-width: 0; text-decoration: none; display: flex; flex-direction: column; gap: 18px">
+<div style="height: 280px; border-radius: 24px; background: #141244; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center">
+<div aria-hidden="true" style="position: absolute; left: -120px; bottom: -180px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(0,112,194,0.45) 0, rgba(20,18,68,0) 62%)"></div>
+<div style="position: relative; width: 280px; border-radius: 14px; background: #0D0B33; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 24px 50px rgba(0,0,0,0.35); overflow: hidden">
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="font-size: 12px; font-weight: 600; color: #FFFFFF">Connector builder</span><span style="font-size: 10.5px; font-weight: 600; color: #C7D2FE; background: rgba(79,70,229,0.35); padding: 2px 8px; border-radius: 9px">AI draft</span></div>
+<div style="padding: 12px 14px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.7">
+<sc-for list="{{code}}" as="ln" hint-placeholder-count="5"><div style="white-space: pre"><span style="color: #CDD0F3">{{ln.pre}}</span><span style="color: #A5B4FC">{{ln.k}}</span><span style="color: #CDD0F3">{{ln.mid}}</span><span style="color: #86EFAC">{{ln.v}}</span></div></sc-for>
+</div>
+</div>
+</div>
+<div><div style="font-family: Geist, Inter, sans-serif; font-size: 21px; font-weight: 600; color: #101426">AI-built connectors</div><div style="margin-top: 6px; font-size: 15px; line-height: 1.5; color: #5B6170">Any other platform, drafted by Cerebro AI.</div></div>
+</a>
+
+<a href="PlatIntegrations.dc.html" style="flex: 1 1 320px; min-width: 0; text-decoration: none; display: flex; flex-direction: column; gap: 18px">
+<div style="height: 280px; border-radius: 24px; background: #F1F2FF; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center">
+<div style="position: relative; width: 300px; height: 200px">
+<svg aria-hidden="true" viewBox="0 0 300 200" style="position: absolute; inset: 0; width: 100%; height: 100%">
+<path d="M118 40 C 180 40, 180 100, 228 100" fill="none" stroke="#A5B4FC" stroke-width="1.6" stroke-dasharray="4 6"></path>
+<path d="M118 100 C 170 100, 190 100, 228 100" fill="none" stroke="#A5B4FC" stroke-width="1.6" stroke-dasharray="4 6"></path>
+<path d="M118 160 C 180 160, 180 100, 228 100" fill="none" stroke="#A5B4FC" stroke-width="1.6" stroke-dasharray="4 6"></path>
+</svg>
+<sc-for list="{{files}}" as="f" hint-placeholder-count="3"><span style="position: absolute; left: 0; top: {{f.top}}; display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 12px 0 6px; border-radius: 17px; background: #FFFFFF; box-shadow: 0 8px 18px rgba(28,26,87,0.12); font-size: 12.5px; font-weight: 600; color: #101426"><span style="width: 22px; height: 22px; border-radius: 6px; background: {{f.color}}; color: #FFFFFF; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">{{f.mark}}</span>{{f.label}}</span></sc-for>
+<span style="position: absolute; left: 228px; top: 100px; width: 72px; height: 72px; margin: -36px 0 0 -36px; border-radius: 36px; background: radial-gradient(circle at 40% 32%, #6CC0F5 0, #0070C2 45%, #022771 100%); box-shadow: 0 0 0 8px rgba(0,112,194,0.12), 0 16px 36px rgba(2,39,113,0.3); display: flex; align-items: center; justify-content: center"><img src="/_blob/10bbf4ea07e97759e5385e3dd93fcaf9" alt="" style="width: 40px; height: auto"></span>
+</div>
+</div>
+<div><div style="font-family: Geist, Inter, sans-serif; font-size: 21px; font-weight: 600; color: #101426">Sheet upload</div><div style="margin-top: 6px; font-size: 15px; line-height: 1.5; color: #5B6170">CSV, Excel and Google Sheets, mapped by AI.</div></div>
+</a>
+
+</div>
+</div>
+</section>
+
+<section aria-label="Facts" style="position: relative; overflow: hidden; background: #1C1A57; padding: 88px 0">
+<div aria-hidden="true" style="position: absolute; right: -200px; top: -260px; width: 640px; height: 640px; border-radius: 50%; background: radial-gradient(circle, rgba(0,112,194,0.35) 0, rgba(28,26,87,0) 62%)"></div>
+<div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 0 40px; box-sizing: border-box; display: flex; gap: 24px; flex-wrap: wrap">
+<sc-for list="{{facts}}" as="f" hint-placeholder-count="4">
+<div style="flex: 1 1 220px; min-width: 0; border-left: 1px solid rgba(255,255,255,0.16); padding-left: 24px">
+<div style="font-family: Geist, Inter, sans-serif; font-size: clamp(48px, 5vw, 72px); font-weight: 600; letter-spacing: -0.035em; color: #FFFFFF; line-height: 1">{{f.big}}</div>
+<div style="margin-top: 14px; font-size: 15.5px; color: #CDD0F3">{{f.label}}</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section id="ask" style="position: relative; overflow: hidden; background: #141244; padding: 112px 0 104px">
+<div aria-hidden="true" style="position: absolute; left: 50%; top: 120px; width: 900px; height: 900px; margin-left: -450px; border-radius: 50%; background: radial-gradient(circle, rgba(0,112,194,0.35) 0, rgba(0,112,194,0.08) 30%, rgba(20,18,68,0) 60%)"></div>
+<div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 0 40px; box-sizing: border-box">
+<div style="text-align: center">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-weight: 600; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.08; letter-spacing: -0.025em; color: #FFFFFF">Ask Cerebro. Get answers, not exports.</h2>
+<p style="margin: 14px auto 0; max-width: 560px; font-size: 18px; line-height: 1.5; color: #CDD0F3">Plain questions, answers with the numbers behind them.</p>
+</div>
+<div aria-live="polite" style="margin-top: 56px; height: 400px; border-radius: 28px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; overflow: hidden">
+<div style="width: 520px; max-width: 90%; display: flex; flex-direction: column; gap: 16px">
+<span style="align-self: flex-end; background: #FFFFFF; border-radius: 16px 16px 4px 16px; padding: 12px 16px; font-size: 15.5px; color: #101426; box-shadow: 0 16px 36px rgba(0,0,0,0.25)">{{cur.q}}</span>
+<div style="align-self: flex-start; width: 340px; max-width: 100%; background: #FFFFFF; border-radius: 18px; padding: 20px 22px; box-shadow: 0 24px 60px rgba(0,0,0,0.35)">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #4F46E5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"></path></svg>Ask Cerebro</div>
+<div style="margin-top: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap"><span style="font-family: Geist, Inter, sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -0.02em; color: #101426">{{cur.value}}</span><span style="font-size: 12.5px; font-weight: 600; padding: 3px 9px; border-radius: 10px; background: {{cur.pillBg}}; color: {{cur.pillFg}}">{{cur.pill}}</span></div>
+<p style="margin: 8px 0 0; font-size: 14.5px; line-height: 1.5; color: #5B6170">{{cur.line}}</p>
+</div>
+</div>
+</div>
+<div role="tablist" aria-label="Kinds of questions" style="margin-top: 28px; display: flex; gap: 20px; flex-wrap: wrap">
+<sc-for list="{{askTabs}}" as="t" hint-placeholder-count="4">
+<button type="button" role="tab" aria-selected="{{t.selected}}" onClick="{{t.pick}}" style="flex: 1 1 220px; min-width: 0; text-align: left; border: 0; border-top: 2px solid {{t.line}}; background: transparent; padding: 16px 0 0; font: inherit; cursor: pointer">
+<span style="display: block; font-size: 16px; font-weight: 600; color: {{t.fg}}">{{t.title}}</span>
+<span style="display: block; margin-top: 6px; font-size: 14px; line-height: 1.45; color: {{t.sub}}">{{t.text}}</span>
+</button>
+</sc-for>
+</div>
+<p style="margin: 28px 0 0; text-align: center; font-size: 13px; color: #A5B4FC">Demo data for a sample brand.</p>
+</div>
+</section>
+
+<section style="padding: 112px 0 40px">
+<div style="max-width: 1240px; margin: 0 auto; padding: 0 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 88px">
+
+<div style="display: flex; gap: 64px; align-items: center; flex-wrap: wrap">
+<div style="flex: 1 1 380px; min-width: 0">
+<h3 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.12; font-weight: 600; letter-spacing: -0.02em; color: #101426">Judge every campaign by its own goal.</h3>
+<p style="margin: 14px 0 0; max-width: 420px; font-size: 17px; line-height: 1.55; color: #5B6170">Reach campaigns on CPM, sales campaigns on CPA.</p>
+<a href="PlatObjective.dc.html" style="margin-top: 20px; display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; text-decoration: none">Objective-based reporting<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div style="flex: 1.3 1 520px; min-width: 0; height: 380px; border-radius: 28px; background: #F1F2FF; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center">
+<div aria-hidden="true" style="position: absolute; right: -120px; top: -140px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(165,180,252,0.7) 0, rgba(165,180,252,0) 65%)"></div>
+<div style="position: relative; display: flex; align-items: center; gap: 16px">
+<div style="width: 190px; background: #FFFFFF; border-radius: 18px; padding: 20px; box-shadow: 0 16px 36px rgba(28,26,87,0.12)"><div style="font-size: 12.5px; color: #5B6170">Judged on CPA</div><div style="margin-top: 8px; font-family: Geist, Inter, sans-serif; font-size: 28px; font-weight: 600; color: #101426">650.58</div><span style="display: inline-block; margin-top: 10px; font-size: 11.5px; font-weight: 600; padding: 3px 8px; border-radius: 8px; background: #FEE2E2; color: #991B1B">Looks worst</span></div>
+<span style="width: 40px; height: 40px; border-radius: 20px; background: #FFFFFF; box-shadow: 0 8px 20px rgba(28,26,87,0.12); display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #5B6170">vs</span>
+<div style="width: 190px; background: #FFFFFF; border-radius: 18px; padding: 20px; border: 2px solid #A5B4FC; box-shadow: 0 20px 44px rgba(79,70,229,0.2)"><div style="font-size: 12.5px; color: #4338CA">Judged on its goal</div><div style="margin-top: 8px; font-family: Geist, Inter, sans-serif; font-size: 28px; font-weight: 600; color: #101426">119.23</div><span style="display: inline-block; margin-top: 10px; font-size: 11.5px; font-weight: 600; padding: 3px 8px; border-radius: 8px; background: #DCFCE7; color: #166534">Best CPM</span></div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; gap: 64px; align-items: center; flex-wrap: wrap">
+<div style="flex: 1 1 380px; min-width: 0">
+<h3 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.12; font-weight: 600; letter-spacing: -0.02em; color: #101426">Dashboards your team builds in clicks.</h3>
+<p style="margin: 14px 0 0; max-width: 420px; font-size: 17px; line-height: 1.55; color: #5B6170">Widget-based, editable, and shared with every client.</p>
+<a href="PlatDashboards.dc.html" style="margin-top: 20px; display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; text-decoration: none">Dashboards<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div style="flex: 1.3 1 520px; min-width: 0; height: 380px; border-radius: 28px; background: #F1F2FF; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%"><defs><pattern id="h3-dots-2" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#C7CBF9"></circle></pattern></defs><rect width="100%" height="100%" fill="url(#h3-dots-2)" opacity="0.6"></rect></svg>
+<div style="position: relative; width: 420px; height: 260px">
+<div style="position: absolute; left: 0; top: 20px; display: grid; grid-template-columns: repeat(3, 76px); gap: 12px">
+<sc-for list="{{widgets}}" as="w" hint-placeholder-count="6"><span style="height: 76px; border-radius: 16px; background: #FFFFFF; border: {{w.bd}}; box-shadow: 0 8px 18px rgba(28,26,87,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; font-size: 11.5px; font-weight: 600; color: {{w.fg}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{w.d}}"></path></svg>{{w.n}}</span></sc-for>
+</div>
+<div style="position: absolute; right: 0; bottom: 0; width: 190px; background: #FFFFFF; border-radius: 18px; padding: 18px 20px; box-shadow: 0 24px 50px rgba(28,26,87,0.18)"><div style="font-size: 12.5px; color: #5B6170">Total spend</div><div style="margin-top: 6px; font-family: Geist, Inter, sans-serif; font-size: 26px; font-weight: 600; color: #101426">PKR 5.8M</div><svg viewBox="0 0 150 34" aria-hidden="true" style="width: 100%; height: 34px; margin-top: 8px"><polyline points="0,26 22,24 44,27 66,22 88,24 110,16 130,10 150,12" fill="none" stroke="#4F46E5" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"></polyline></svg></div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; gap: 64px; align-items: center; flex-wrap: wrap">
+<div style="flex: 1 1 380px; min-width: 0">
+<h3 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.12; font-weight: 600; letter-spacing: -0.02em; color: #101426">From the big picture to a single ad.</h3>
+<p style="margin: 14px 0 0; max-width: 420px; font-size: 17px; line-height: 1.55; color: #5B6170">Drill from platform to campaign, ad set and ad.</p>
+<a href="PlatDashboards.dc.html" style="margin-top: 20px; display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; text-decoration: none">Hierarchy reports<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div style="flex: 1.3 1 520px; min-width: 0; height: 380px; border-radius: 28px; background: #141244; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center">
+<div aria-hidden="true" style="position: absolute; left: -140px; bottom: -220px; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(0,112,194,0.45) 0, rgba(20,18,68,0) 62%)"></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 14px; width: 380px">
+<sc-for list="{{crumbs}}" as="c" hint-placeholder-count="4"><span style="margin-left: {{c.indent}}; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; background: {{c.bg}}; color: {{c.fg}}; border-radius: 12px; padding: 11px 15px; font-size: 14px; font-weight: 600; box-shadow: 0 14px 30px rgba(0,0,0,0.3)"><span style="font-size: 11px; font-weight: 600; color: {{c.tag}}">{{c.level}}</span>{{c.label}}</span></sc-for>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section style="padding: 104px 0 112px; background: #F7F8FA">
+<div style="max-width: 1240px; margin: 0 auto; padding: 0 40px; box-sizing: border-box">
+<div style="text-align: center">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-weight: 600; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.08; letter-spacing: -0.025em; color: #101426">Built for the teams that run paid media.</h2>
+</div>
+<div style="margin-top: 56px; display: flex; gap: 20px; flex-wrap: wrap">
+
+<a href="SolAgencies.dc.html" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; border-radius: 24px; overflow: hidden; text-decoration: none; display: flex; flex-direction: column">
+<div style="height: 220px; background: #F1F2FF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="170" height="170" viewBox="0 0 200 200"><defs><radialGradient id="h3-cube-sp" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#6CC0F5"></stop><stop offset="0.5" stop-color="#0070C2"></stop><stop offset="1" stop-color="#022771"></stop></radialGradient></defs><polygon points="100,52 160,84 100,116 40,84" fill="#E0E3FF"></polygon><polygon points="40,84 100,116 100,180 40,148" fill="#6B7FE8"></polygon><polygon points="160,84 100,116 100,180 160,148" fill="#4F46E5"></polygon><polyline points="40,84 100,116 160,84" fill="none" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></polyline><circle cx="100" cy="66" r="18" fill="url(#h3-cube-sp)"></circle></svg></div>
+<div style="padding: 24px 26px 28px"><div style="font-family: Geist, Inter, sans-serif; font-size: 22px; font-weight: 600; color: #101426">Agencies</div><div style="margin-top: 6px; font-size: 15px; line-height: 1.5; color: #5B6170">Every client in one workspace, each with its own view.</div></div>
+</a>
+
+<a href="SolBrands.dc.html" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; border-radius: 24px; overflow: hidden; text-decoration: none; display: flex; flex-direction: column">
+<div style="height: 220px; background: #F1F2FF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="210" height="170" viewBox="0 0 240 200"><defs><radialGradient id="h3-sp1" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#A9A5FF"></stop><stop offset="0.5" stop-color="#4F46E5"></stop><stop offset="1" stop-color="#2E2A82"></stop></radialGradient><radialGradient id="h3-sp2" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="0.6" stop-color="#E6E8F5"></stop><stop offset="1" stop-color="#B9BEDA"></stop></radialGradient><radialGradient id="h3-sp3" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#6CC0F5"></stop><stop offset="0.5" stop-color="#0070C2"></stop><stop offset="1" stop-color="#022771"></stop></radialGradient></defs><circle cx="88" cy="112" r="56" fill="url(#h3-sp1)"></circle><circle cx="166" cy="76" r="32" fill="url(#h3-sp2)"></circle><circle cx="170" cy="150" r="20" fill="url(#h3-sp3)"></circle></svg></div>
+<div style="padding: 24px 26px 28px"><div style="font-family: Geist, Inter, sans-serif; font-size: 22px; font-weight: 600; color: #101426">Brands</div><div style="margin-top: 6px; font-size: 15px; line-height: 1.5; color: #5B6170">One view of paid media for marketing and leadership.</div></div>
+</a>
+
+<a href="IndBanking.dc.html" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; border-radius: 24px; overflow: hidden; text-decoration: none; display: flex; flex-direction: column">
+<div style="height: 220px; background: #F1F2FF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="210" height="170" viewBox="0 0 240 200"><defs><linearGradient id="h3-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E0E3FF"></stop><stop offset="0.5" stop-color="#6B7FE8"></stop><stop offset="1" stop-color="#2E2A82"></stop></linearGradient><radialGradient id="h3-sp4" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#6CC0F5"></stop><stop offset="0.5" stop-color="#0070C2"></stop><stop offset="1" stop-color="#022771"></stop></radialGradient></defs><ellipse cx="120" cy="104" rx="92" ry="34" fill="none" stroke="url(#h3-ring)" stroke-width="16" transform="rotate(-14 120 104)"></ellipse><ellipse cx="120" cy="100" rx="92" ry="34" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="1.5" transform="rotate(-14 120 100)"></ellipse><circle cx="120" cy="104" r="30" fill="url(#h3-sp4)"></circle><circle cx="204" cy="78" r="9" fill="#FFFFFF"></circle></svg></div>
+<div style="padding: 24px 26px 28px"><div style="font-family: Geist, Inter, sans-serif; font-size: 22px; font-weight: 600; color: #101426">Industries</div><div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap"><sc-for list="{{industries}}" as="i" hint-placeholder-count="4"><span style="font-size: 13px; font-weight: 500; padding: 5px 11px; border-radius: 14px; background: #F1F2FF; color: #3730A3">{{i}}</span></sc-for></div></div>
+</a>
+
+</div>
+</div>
+</section>
+
+<section style="padding: 104px 0">
+<div style="max-width: 920px; margin: 0 auto; padding: 0 40px; box-sizing: border-box; text-align: center">
+<p style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: clamp(24px, 2.6vw, 34px); line-height: 1.3; font-weight: 500; letter-spacing: -0.015em; color: #9AA0AD">“[One approved client quote, in their words, shown here once it is approved in writing.]”</p>
+<div style="margin-top: 24px; display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: #6B7180"><span style="width: 36px; height: 36px; border-radius: 18px; background: #ECEEF3"></span>[Name], [Role], [Company]</div>
+</div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,1050px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6600}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { ask: 0 }; }
+  renderVals() {
+    var self = this;
+    var P = [100, 190, 280, 370, 460], C = 280;
+    var src = { '0,0': ['M', '#1877F2'], '4,0': ['G', '#15803D'], '0,4': ['T', '#111827'], '4,4': ['↑', '#4F46E5'], '0,2': ['+', '#4F46E5'], '4,2': ['✦', '#4F46E5'] };
+    var nodes = [], links = [];
+    for (var r = 0; r < 5; r++) for (var c = 0; c < 5; c++) {
+      if (r === 2 && c === 2) continue;
+      var s = src[c + ',' + r], x = P[c], y = P[r];
+      nodes.push({ x: x, y: y, ty: y + 6, r: s ? 24 : 20, halo: s ? 34 : 0, fill: s ? '#FFFFFF' : 'rgba(255,255,255,0.03)', stroke: s ? '#FFFFFF' : 'rgba(255,255,255,0.16)', mark: s ? s[0] : '', fg: s ? s[1] : 'transparent' });
+      if (s) {
+        var mx = (x + C) / 2 + (r === 2 ? 0 : (c < 2 ? 34 : -34)), my = (y + C) / 2 + (r < 2 ? 34 : (r > 2 ? -34 : 0));
+        links.push('M' + x + ' ' + y + ' Q ' + mx + ' ' + my + ' ' + C + ' ' + C);
+      }
+    }
+    var asks = [
+      { title: 'Why did it change?', text: 'Finds what moved a number.', q: 'Why did CPA rise last month?', value: 'PKR 468.81', pill: '↑ 17%', pillBg: '#FEE2E2', pillFg: '#991B1B', line: 'TikTok drove the rise, mostly from an awareness campaign.' },
+      { title: 'Who is responding?', text: 'Results by age and gender.', q: 'Which audience converts best on Meta?', value: 'Women 25–34', pill: 'PKR 312 CPA', pillBg: '#DCFCE7', pillFg: '#166534', line: '21% below the Meta average.' },
+      { title: 'What should we change?', text: 'Fixes with their likely impact.', q: 'How do we bring CPA down?', value: '+300 to +350', pill: 'conversions', pillBg: '#EEF0FF', pillFg: '#3730A3', line: 'Move PKR 300K to Women 18–34 | Feed, then test for two weeks.' },
+      { title: 'What can’t it see?', text: 'Says so, instead of guessing.', q: 'How many in-store sales did we drive?', value: 'Not in your data', pill: 'No guessing', pillBg: '#F1F2F5', pillFg: '#4B5160', line: 'I can show online conversions for the same campaigns instead.' }
+    ];
+    var a = this.state.ask;
+    return {
+      heroNodes: nodes, heroLinks: links,
+      logos: [1, 2, 3, 4, 5, 6],
+      tiles: [
+        { mark: 'M', color: '#1877F2', op: 1 }, { mark: 'G', color: '#15803D', op: 1 }, { mark: 'T', color: '#111827', op: 1 }, { mark: '+', color: '#4F46E5', op: 1 },
+        { mark: 'CSV', color: '#0F766E', op: 1 }, { mark: 'S', color: '#0F9D58', op: 1 }, { mark: 'in', color: '#7A8296', op: 0.45 }, { mark: 'DV', color: '#7A8296', op: 0.45 }
+      ],
+      code: [
+        { pre: '{', k: '', mid: '', v: '' },
+        { pre: '  ', k: '"platform"', mid: ': ', v: '"Local publisher"' },
+        { pre: '  ', k: '"cost_local"', mid: ': ', v: '"spend"' },
+        { pre: '  ', k: '"imps"', mid: ': ', v: '"impressions"' },
+        { pre: '}', k: '', mid: '', v: '' }
+      ],
+      files: [
+        { top: '23px', mark: 'CSV', color: '#0F766E', label: 'CSV' },
+        { top: '83px', mark: 'XLS', color: '#166534', label: 'Excel' },
+        { top: '143px', mark: 'S', color: '#0F9D58', label: 'Google Sheets' }
+      ],
+      facts: [
+        { big: '3', label: 'Native connectors live' },
+        { big: 'Any', label: 'Platform, with AI-built connectors' },
+        { big: '3', label: 'Sheet formats, mapped by AI' },
+        { big: '5', label: 'AI steps on every source' }
+      ],
+      askTabs: asks.map(function (x, i) { var on = i === a; return { title: x.title, text: x.text, selected: on, line: on ? '#FFFFFF' : 'rgba(255,255,255,0.16)', fg: on ? '#FFFFFF' : '#A5B4FC', sub: on ? '#CDD0F3' : 'rgba(205,208,243,0.6)', pick: function () { self.setState({ ask: i }); } }; }),
+      cur: asks[a],
+      widgets: [
+        { n: 'KPI', d: 'M4 4h16v16H4zM8 14l3-3 2 2 3-4', bd: '1.5px solid #4F46E5', fg: '#3730A3' }, { n: 'Trend', d: 'M3 17l6-6 4 4 8-8', bd: '1px solid transparent', fg: '#2B3040' }, { n: 'Donut', d: 'M12 3a9 9 0 1 0 9 9h-9z', bd: '1px solid transparent', fg: '#2B3040' },
+        { n: 'Table', d: 'M3 4h18v16H3zM3 10h18M9 4v16', bd: '1px solid transparent', fg: '#2B3040' }, { n: 'Funnel', d: 'M3 4h18l-7 8v6l-4 2v-8z', bd: '1px solid transparent', fg: '#2B3040' }, { n: 'Ranked', d: 'M8 6h13M8 12h10M8 18h7M3 6h.01M3 12h.01M3 18h.01', bd: '1px solid transparent', fg: '#2B3040' }
+      ],
+      crumbs: [
+        { level: 'Platform', label: 'Meta Ads', indent: '0px', bg: 'rgba(255,255,255,0.1)', fg: '#FFFFFF', tag: '#A5B4FC' },
+        { level: 'Campaign', label: 'Winter Collection', indent: '40px', bg: 'rgba(255,255,255,0.14)', fg: '#FFFFFF', tag: '#A5B4FC' },
+        { level: 'Ad set', label: 'Parents 28–45 | Feed', indent: '80px', bg: 'rgba(255,255,255,0.18)', fg: '#FFFFFF', tag: '#A5B4FC' },
+        { level: 'Ad', label: 'Product feed v2', indent: '120px', bg: '#FFFFFF', fg: '#101426', tag: '#4F46E5' }
+      ],
+      industries: ['Banking', 'Telecom', 'FMCG', 'E-commerce']
+    };
+  }
+}
+</script>
+</body>
+</html>

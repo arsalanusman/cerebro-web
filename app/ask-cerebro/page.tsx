@@ -1,28 +1,21 @@
 import React from "react";
+import PlatAskV2 from "@/components/platform/PlatAskV2";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
-import AskCerebroHero from "@/components/ask-cerebro/AskCerebroHero";
-import AskCerebroContent from "@/components/ask-cerebro/AskCerebroContent";
 
 export const metadata = buildMetadata({
-  title: "Ask Cerebro | AI Ad Performance Analyst | Cerebro DNano",
-  description:
-    "Ask Cerebro answers questions about your connected and uploaded ad data in plain language. Every answer shows the numbers behind it, with full data transparency.",
+  title: "Ask Cerebro - Your AI analyst, answering from your data",
+  description: "Plain questions. Answers with the numbers behind them.",
   path: "/ask-cerebro",
 });
 
-export default function AskCerebroPage() {
+export default function Page() {
   return (
     <>
       <BreadcrumbListJsonLd
-        items={[
-          { name: "Home", path: "/" },
-          { name: "Platform", path: "/features" },
-          { name: "Ask Cerebro", path: "/ask-cerebro" },
-        ]}
+        items={[{"name":"Home","path":"/"},{"name":"Ask Cerebro","path":"/ask-cerebro"}]}
       />
-      <AskCerebroHero />
-      <AskCerebroContent />
+      <PlatAskV2 />
     </>
   );
 }

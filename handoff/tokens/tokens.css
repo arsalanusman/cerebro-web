@@ -1,0 +1,89 @@
+/* Cerebro DNano design tokens (v2, style library). Values match design/_reference/Style*.dc.html and every page design. */
+:root {
+  /* Brand blue: only the mark, glows and brand art */
+  --logo-navy: #022771;
+  --logo-blue: #0070C2;
+  --brand-gradient: radial-gradient(circle at 40% 32%, #6CC0F5 0, #0070C2 45%, #022771 100%);
+
+  /* Action indigo: buttons, links, selected states */
+  --brand: #4F46E5;
+  --brand-hover: #4338CA;
+  --brand-pressed: #3730A3;
+  --brand-soft: #EEF0FF;
+  --brand-soft-hover: #E0E3FF;
+  --brand-tint: #F5F6FF;
+  --brand-border: #C7CBF9;
+  --brand-light: #A5B4FC;
+
+  /* Fields */
+  --deep-navy: #141244;   /* hero art, signature art, tabs bands */
+  --navy: #1C1A57;        /* facts band, final CTA */
+  --lavender: #F1F2FF;    /* illustration tiles, centered heroes */
+  --surface: #F7F8FA;     /* logo band, quiet sections */
+  --surface-app: #FAFAFC;
+  --on-navy: #CDD0F3;
+
+  /* Text and lines */
+  --ink: #101426;
+  --text: #2B3040;
+  --muted: #5B6170;
+  --subtle: #6B7180;
+  --border: #E4E7EC;
+  --border-strong: #D5D8E0;
+  --border-hover: #C9CDD6;
+
+  /* Status (inside UI moments only) */
+  --positive: #15803D;  --positive-bg: #DCFCE7;  --positive-text: #166534;
+  --negative: #B91C1C;  --negative-bg: #FEE2E2;  --negative-text: #991B1B;
+  --warning: #C2410C;   --warning-bg: #FFF7ED;   --warning-text: #9A3412;
+  --neutral-bg: #F1F2F5; --neutral-text: #4B5160;
+
+  /* Platform marks (inside platform badges only) */
+  --platform-meta: #1877F2;
+  --platform-google: #15803D;
+  --platform-tiktok: #111827;
+  --platform-soon: #7A8296;
+
+  /* Type */
+  --font-heading: 'Geist', Inter, system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+
+  /* Radius */
+  --radius-control: 10px;
+  --radius-card: 18px;
+  --radius-panel: 20px;
+  --radius-tile: 24px;
+  --radius-tile-lg: 28px;
+  --radius-pill: 999px;
+
+  /* Buttons */
+  --button-h: 44px;          /* page buttons */
+  --button-h-header: 40px;   /* header button */
+
+  /* Shadows and focus */
+  --shadow-card: 0 2px 6px rgba(16,20,38,0.05), 0 20px 48px rgba(28,26,87,0.16);
+  --shadow-menu: 0 24px 48px rgba(16,20,38,0.12);
+  --shadow-float: 0 2px 6px rgba(16,20,38,0.06), 0 24px 56px rgba(10,8,40,0.28);
+  --ring: 0 0 0 3px rgba(79,70,229,0.35);
+  --ring-on-navy: 0 0 0 3px rgba(255,255,255,0.5);
+  --ring-input: 0 0 0 3px rgba(79,70,229,0.18);
+
+  /* Layout */
+  --container: 1240px;
+  --gutter: 40px;
+  --gutter-mobile: 24px;
+  --section-y: 104px;
+  --section-y-mobile: 64px;
+  --header-h: 72px;
+  --mobile-menu-breakpoint: 1024px;
+
+  /* Motion */
+  --dur-fast: 150ms;
+  --dur-base: 200ms;
+  --dur-slow: 500ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: 0ms; --dur-base: 0ms; --dur-slow: 0ms; }
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Site footer</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #2B3040; background: #FFFFFF">
+
+<section aria-label="Trust" style="border-top: 1px solid #EEF0F3; background: #FFFFFF">
+<div style="max-width: 1240px; margin: 0 auto; padding: 36px 40px; box-sizing: border-box; display: flex; gap: 28px; align-items: center; flex-wrap: wrap">
+<span style="font-family: Geist, Inter, sans-serif; font-size: 18px; font-weight: 600; color: #101426">Built to be trusted with client data</span>
+<div style="flex: 1 1 520px; display: flex; gap: 22px; flex-wrap: wrap">
+<sc-for list="{{trust}}" as="t" hint-placeholder-count="4">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #2B3040"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{t.d}}"></path></svg>{{t.label}}</span>
+</sc-for>
+</div>
+<a href="PgSecurity.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: 14.5px; font-weight: 600; color: #4F46E5; text-decoration: none">Read about security<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</section>
+
+<sc-if value="{{showCta}}" hint-placeholder-val="{{true}}">
+<section style="position: relative; overflow: hidden; padding: 104px 0; background: #1C1A57">
+<div aria-hidden="true" style="position: absolute; bottom: -320px; left: 50%; margin-left: -380px; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle, rgba(165,180,252,0.35) 0, rgba(79,70,229,0.12) 25%, rgba(28,26,87,0) 60%)"></div>
+<div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 0 40px; box-sizing: border-box; text-align: center">
+<h2 style="margin: 0 auto; max-width: 760px; font-family: Geist, Inter, sans-serif; font-weight: 600; font-size: clamp(32px, 3.6vw, 52px); line-height: 1.08; letter-spacing: -0.025em; color: #FFFFFF">Ask your own campaigns a question.</h2>
+<p style="margin: 20px auto 0; max-width: 600px; font-size: 18px; line-height: 1.55; color: #D4D6F2">Book a personalized demo. We’ll connect your platforms or load your sheets, and you ask Cerebro the questions.</p>
+<div style="margin-top: 36px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap">
+<a href="PgDemo.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 22px; background: #FFFFFF; color: #1C1A57; text-decoration: none; font-size: 15px; font-weight: 600">Book a demo</a>
+<a href="PgContact.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 22px; border: 1px solid rgba(255,255,255,0.4); color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600">Talk to sales</a>
+</div>
+</div>
+</section>
+</sc-if>
+
+<footer style="padding: 64px 0 36px; background: #FFFFFF; border-top: 1px solid #EEF0F3">
+<div style="max-width: 1240px; margin: 0 auto; padding: 0 40px; box-sizing: border-box">
+<div style="display: flex; gap: 48px; flex-wrap: wrap">
+<div style="flex: 1 1 280px; min-width: 0">
+<span role="img" aria-label="Cerebro DNano" style="display: inline-flex; align-items: center; gap: 8px"><img src="/_blob/43283f03c4d43f04640c058460029561" alt="" style="height: 26px; width: auto; display: block"><img src="/_blob/e07c3f2e1692e3cb785a530b2aec79eb" alt="" style="height: 16px; width: auto; display: block"></span>
+<p style="margin: 16px 0 0; max-width: 300px; font-size: 14.5px; line-height: 1.55; color: #5B6170">Cerebro AI, the data engine for paid media reporting, for agencies and brands.</p>
+<address style="margin-top: 22px; font-style: normal; font-size: 14px; line-height: 1.7; color: #2B3040">Cerebro DNano<br>[Office and floor number]<br>The Forum, Block 9 Clifton<br>Karachi 75600, Pakistan<br><a href="tel:+923422732873" style="color: #4F46E5; text-decoration: none">+92 342 2732873</a><br><a href="mailto:hello@cerebro.media" style="color: #4F46E5; text-decoration: none">hello@cerebro.media</a><br><span style="color: #5B6170">Mon – Fri: 9:00 AM – 6:00 PM PKT</span></address>
+</div>
+<sc-for list="{{cols}}" as="col" hint-placeholder-count="4">
+<nav aria-label="{{col.title}}" style="flex: 1 1 140px">
+<div style="font-size: 13px; font-weight: 600; color: #101426">{{col.title}}</div>
+<ul style="margin: 14px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{col.links}}" as="lnk" hint-placeholder-count="5">
+<li><a href="{{lnk.href}}" style="font-size: 14px; color: #5B6170; text-decoration: none">{{lnk.label}}</a></li>
+</sc-for>
+</ul>
+</nav>
+</sc-for>
+</div>
+<div style="margin-top: 48px; padding-top: 22px; border-top: 1px solid #EEF0F3; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px; color: #5B6170">
+<span>© 2026 Cerebro DNano</span>
+<span style="display: flex; gap: 20px; flex-wrap: wrap"><a href="PgPrivacy.dc.html" style="color: #5B6170; text-decoration: none">Privacy policy</a><a href="PgTerms.dc.html" style="color: #5B6170; text-decoration: none">Terms of service</a><a href="PgDeletion.dc.html" style="color: #5B6170; text-decoration: none">Data deletion</a></span>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"cta":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":1050}}'>
+class Component extends DCLogic {
+  renderVals() {
+    function L(label, href) { return { label: label, href: href || 'Home2.dc.html' }; }
+    return {
+      showCta: this.props.cta ?? true,
+      trust: [
+        { label: 'Role-based access', d: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z' },
+        { label: 'Client-level permissions', d: 'M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4' },
+        { label: 'Activity log', d: 'M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01' },
+        { label: 'AI data checks', d: 'M12 7v5l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z' }
+      ],
+      cols: [
+        { title: 'Platform', links: [L('Ask Cerebro', 'PlatAsk.dc.html'), L('AI data engine', 'PlatData.dc.html'), L('Dashboards', 'PlatDashboards.dc.html'), L('Report builder', 'PlatReports.dc.html'), L('Objective engine', 'PlatObjective.dc.html'), L('Integrations', 'PlatIntegrations.dc.html')] },
+        { title: 'Solutions', links: [L('Agencies', 'SolAgencies.dc.html'), L('Brands', 'SolBrands.dc.html'), L('Banking and finance', 'IndBanking.dc.html'), L('Telecom', 'IndTelecom.dc.html'), L('FMCG', 'IndFMCG.dc.html'), L('E-commerce', 'IndEcommerce.dc.html')] },
+        { title: 'Resources', links: [L('Blog', 'PgBlog.dc.html'), L('Docs', 'PgDocs.dc.html'), L('FAQ', 'PgFAQ.dc.html'), L('Security', 'PgSecurity.dc.html'), L('Pricing', 'PgPricing.dc.html')] },
+        { title: 'Company', links: [L('About', 'PgAbout.dc.html'), L('Contact', 'PgContact.dc.html'), L('Book a demo', 'PgDemo.dc.html')] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

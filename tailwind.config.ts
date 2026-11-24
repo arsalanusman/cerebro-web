@@ -11,9 +11,11 @@ const config: Config = {
     extend: {
       colors: {
         bg: "var(--bg, #FFFFFF)",
+        "logo-navy": "var(--logo-navy, #022771)",
+        "logo-blue": "var(--logo-blue, #0070C2)",
         surface: "var(--surface, #F7F8FA)",
-        "surface-2": "var(--surface-2, #EEF0F4)",
         "surface-app": "var(--surface-app, #FAFAFC)",
+        lavender: "var(--lavender, #F1F2FF)",
         border: "var(--border, #E4E7EC)",
         "border-strong": "var(--border-strong, #D5D8E0)",
         "border-hover": "var(--border-hover, #C9CDD6)",
@@ -29,19 +31,16 @@ const config: Config = {
           "soft-hover": "var(--brand-soft-hover, #E0E3FF)",
           tint: "var(--brand-tint, #F5F6FF)",
           border: "var(--brand-border, #C7CBF9)",
+          light: "var(--brand-light, #A5B4FC)",
         },
         navy: {
           DEFAULT: "var(--navy, #1C1A57)",
-          deep: "var(--navy-deep, #16144A)",
+          deep: "var(--deep-navy, #141244)",
         },
+        "deep-navy": "var(--deep-navy, #141244)",
         "on-navy": {
           DEFAULT: "var(--on-navy, #CDD0F3)",
-          accent: "var(--on-navy-accent, #A5B4FC)",
-        },
-        chart: {
-          1: "var(--chart-1, #2E2A82)",
-          2: "var(--chart-2, #6B7FE8)",
-          3: "var(--chart-3, #A5B4FC)",
+          accent: "var(--brand-light, #A5B4FC)",
         },
         positive: {
           DEFAULT: "var(--positive, #15803D)",
@@ -54,14 +53,12 @@ const config: Config = {
           text: "var(--negative-text, #991B1B)",
         },
         warning: {
-          text: "var(--warning-text, #9A3412)",
+          DEFAULT: "var(--warning, #C2410C)",
           bg: "var(--warning-bg, #FFF7ED)",
-          border: "var(--warning-border, #F5D9C0)",
+          text: "var(--warning-text, #9A3412)",
         },
-        "neutral-pill": {
-          bg: "var(--neutral-pill-bg, #F1F2F5)",
-          text: "var(--neutral-pill-text, #4B5160)",
-        },
+        "neutral-bg": "var(--neutral-bg, #F1F2F5)",
+        "neutral-text": "var(--neutral-text, #4B5160)",
         platform: {
           meta: "var(--platform-meta, #1877F2)",
           google: "var(--platform-google, #15803D)",
@@ -75,18 +72,17 @@ const config: Config = {
         mono: ["var(--font-geist-mono)", "Geist Mono", "ui-monospace", "monospace"],
       },
       borderRadius: {
-        control: "var(--radius-control, 8px)",
-        button: "var(--radius-button, 10px)",
-        card: "var(--radius-card, 12px)",
-        "card-lg": "var(--radius-card-lg, 14px)",
-        panel: "var(--radius-panel, 16px)",
+        control: "var(--radius-control, 10px)",
+        card: "var(--radius-card, 18px)",
+        panel: "var(--radius-panel, 20px)",
+        tile: "var(--radius-tile, 24px)",
+        "tile-lg": "var(--radius-tile-lg, 28px)",
         pill: "var(--radius-pill, 999px)",
       },
       boxShadow: {
-        "card-hover": "var(--shadow-card-hover, 0 12px 32px rgba(16, 20, 38, 0.08))",
-        menu: "var(--shadow-menu, 0 24px 48px rgba(16, 20, 38, 0.12))",
-        frame: "var(--shadow-frame, 0 30px 70px rgba(10, 8, 40, 0.35))",
-        "panel-ai": "var(--shadow-panel-ai, 0 2px 6px rgba(16, 20, 38, 0.08), 0 32px 80px rgba(10, 8, 40, 0.4))",
+        card: "var(--shadow-card, 0 2px 6px rgba(16,20,38,0.05), 0 20px 48px rgba(28,26,87,0.16))",
+        menu: "var(--shadow-menu, 0 24px 48px rgba(16,20,38,0.12))",
+        float: "var(--shadow-float, 0 2px 6px rgba(16,20,38,0.06), 0 24px 56px rgba(10,8,40,0.28))",
       },
       maxWidth: {
         container: "1240px",
@@ -94,6 +90,8 @@ const config: Config = {
       },
       height: {
         header: "72px",
+        "button-desktop": "var(--button-h, 44px)",
+        "button-header": "var(--button-h-header, 40px)",
       },
     },
   },

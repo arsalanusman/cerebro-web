@@ -1,15 +1,21 @@
 import React from "react";
-import LegalPage from "@/components/legal/LegalPage";
-import { legalDocs } from "@/content/legal";
+import PgDeletionV2 from "@/components/legal/PgDeletionV2";
+import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Data Deletion Instructions | Cerebro DNano",
-  description:
-    "How to disconnect your ad accounts and request complete deletion of your data from Cerebro DNano.",
+  title: "Data Deletion - Cerebro DNano",
+  description: "Instructions on requesting data deletion and removing platform access.",
   path: "/data-deletion",
 });
 
-export default function DataDeletionPage() {
-  return <LegalPage doc={legalDocs["data-deletion"]} />;
+export default function Page() {
+  return (
+    <>
+      <BreadcrumbListJsonLd
+        items={[{"name":"Home","path":"/"},{"name":"Data Deletion","path":"/data-deletion"}]}
+      />
+      <PgDeletionV2 />
+    </>
+  );
 }

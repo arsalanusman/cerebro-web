@@ -1,25 +1,21 @@
 import React from "react";
-import DocsClient from "@/components/docs/DocsClient";
+import PgDocsV2 from "@/components/docs/PgDocsV2";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Documentation & Product Guide | Cerebro DNano",
-  description:
-    "Comprehensive guides for connecting ad platforms, uploading custom sheets, building objective-based reports, and using Ask Cerebro.",
+  title: "Docs - Set up and use Cerebro",
+  description: "Documentation for workspace setup, native connectors, sheets, dashboards and reports.",
   path: "/docs",
 });
 
-export default function DocsPage() {
+export default function Page() {
   return (
     <>
       <BreadcrumbListJsonLd
-        items={[
-          { name: "Home", path: "/" },
-          { name: "Docs", path: "/docs" },
-        ]}
+        items={[{"name":"Home","path":"/"},{"name":"Docs","path":"/docs"}]}
       />
-      <DocsClient initialSlug="getting-started" />
+      <PgDocsV2 />
     </>
   );
 }

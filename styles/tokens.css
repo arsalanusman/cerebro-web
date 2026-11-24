@@ -1,19 +1,11 @@
-/* Cerebro DNano design tokens. Values match design/UIStates.dc.html and every page design. */
+/* Cerebro DNano design tokens (v2, style library). Values match design/_reference/Style*.dc.html and every page design. */
 :root {
-  /* Surfaces and text */
-  --bg: #FFFFFF;
-  --surface: #F7F8FA;
-  --surface-2: #EEF0F4;
-  --surface-app: #FAFAFC;
-  --border: #E4E7EC;
-  --border-strong: #D5D8E0;
-  --border-hover: #C9CDD6;
-  --ink: #101426;
-  --text: #2B3040;
-  --muted: #5B6170;
-  --subtle: #6B7180;
+  /* Brand blue: only the mark, glows and brand art */
+  --logo-navy: #022771;
+  --logo-blue: #0070C2;
+  --brand-gradient: radial-gradient(circle at 40% 32%, #6CC0F5 0, #0070C2 45%, #022771 100%);
 
-  /* Brand */
+  /* Action indigo: buttons, links, selected states */
   --brand: #4F46E5;
   --brand-hover: #4338CA;
   --brand-pressed: #3730A3;
@@ -21,30 +13,32 @@
   --brand-soft-hover: #E0E3FF;
   --brand-tint: #F5F6FF;
   --brand-border: #C7CBF9;
-  --navy: #1C1A57;
-  --navy-deep: #16144A;
+  --brand-light: #A5B4FC;
+
+  /* Fields */
+  --deep-navy: #141244;   /* hero art, signature art, tabs bands */
+  --navy: #1C1A57;        /* facts band, final CTA */
+  --lavender: #F1F2FF;    /* illustration tiles, centered heroes */
+  --surface: #F7F8FA;     /* logo band, quiet sections */
+  --surface-app: #FAFAFC;
   --on-navy: #CDD0F3;
-  --on-navy-accent: #A5B4FC;
 
-  /* Charts */
-  --chart-1: #2E2A82;
-  --chart-2: #6B7FE8;
-  --chart-3: #A5B4FC;
+  /* Text and lines */
+  --ink: #101426;
+  --text: #2B3040;
+  --muted: #5B6170;
+  --subtle: #6B7180;
+  --border: #E4E7EC;
+  --border-strong: #D5D8E0;
+  --border-hover: #C9CDD6;
 
-  /* Status */
-  --positive: #15803D;
-  --positive-bg: #DCFCE7;
-  --positive-text: #166534;
-  --negative: #B91C1C;
-  --negative-bg: #FEE2E2;
-  --negative-text: #991B1B;
-  --warning-text: #9A3412;
-  --warning-bg: #FFF7ED;
-  --warning-border: #F5D9C0;
-  --neutral-pill-bg: #F1F2F5;
-  --neutral-pill-text: #4B5160;
+  /* Status (inside UI moments only) */
+  --positive: #15803D;  --positive-bg: #DCFCE7;  --positive-text: #166534;
+  --negative: #B91C1C;  --negative-bg: #FEE2E2;  --negative-text: #991B1B;
+  --warning: #C2410C;   --warning-bg: #FFF7ED;   --warning-text: #9A3412;
+  --neutral-bg: #F1F2F5; --neutral-text: #4B5160;
 
-  /* Platform marks (only inside platform badges) */
+  /* Platform marks (inside platform badges only) */
   --platform-meta: #1877F2;
   --platform-google: #15803D;
   --platform-tiktok: #111827;
@@ -56,27 +50,30 @@
   --font-mono: 'Geist Mono', ui-monospace, monospace;
 
   /* Radius */
-  --radius-control: 8px;
-  --radius-button: 10px;
-  --radius-card: 12px;
-  --radius-card-lg: 14px;
-  --radius-panel: 16px;
+  --radius-control: 10px;
+  --radius-card: 18px;
+  --radius-panel: 20px;
+  --radius-tile: 24px;
+  --radius-tile-lg: 28px;
   --radius-pill: 999px;
 
+  /* Buttons */
+  --button-h: 44px;          /* page buttons */
+  --button-h-header: 40px;   /* header button */
+
   /* Shadows and focus */
-  --shadow-card-hover: 0 12px 32px rgba(16, 20, 38, 0.08);
-  --shadow-menu: 0 24px 48px rgba(16, 20, 38, 0.12);
-  --shadow-frame: 0 30px 70px rgba(10, 8, 40, 0.35);
-  --shadow-panel-ai: 0 2px 6px rgba(16, 20, 38, 0.08), 0 32px 80px rgba(10, 8, 40, 0.4);
-  --ring: 0 0 0 3px rgba(79, 70, 229, 0.35);
-  --ring-on-navy: 0 0 0 3px rgba(255, 255, 255, 0.5);
-  --ring-input: 0 0 0 3px rgba(79, 70, 229, 0.18);
+  --shadow-card: 0 2px 6px rgba(16,20,38,0.05), 0 20px 48px rgba(28,26,87,0.16);
+  --shadow-menu: 0 24px 48px rgba(16,20,38,0.12);
+  --shadow-float: 0 2px 6px rgba(16,20,38,0.06), 0 24px 56px rgba(10,8,40,0.28);
+  --ring: 0 0 0 3px rgba(79,70,229,0.35);
+  --ring-on-navy: 0 0 0 3px rgba(255,255,255,0.5);
+  --ring-input: 0 0 0 3px rgba(79,70,229,0.18);
 
   /* Layout */
   --container: 1240px;
   --gutter: 40px;
   --gutter-mobile: 24px;
-  --section-y: 88px;
+  --section-y: 104px;
   --section-y-mobile: 64px;
   --header-h: 72px;
   --mobile-menu-breakpoint: 1024px;
@@ -87,7 +84,6 @@
   --dur-slow: 500ms;
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-
 @media (prefers-reduced-motion: reduce) {
   :root { --dur-fast: 0ms; --dur-base: 0ms; --dur-slow: 0ms; }
 }

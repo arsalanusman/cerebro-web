@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { SITE } from "@/lib/site";
+import { SITE, isPlaceholderHidden } from "@/lib/site";
 
 export interface SiteFooterProps {
   cta?: boolean;
@@ -31,14 +31,12 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
     {
       title: "Platform",
       links: [
-        { label: "AI first experience", href: "/ai-first" },
-        { label: "Data integration", href: "/platform/data-integration" },
-        { label: "Objective-based reporting", href: "/platform/objective-reporting" },
-        { label: "Dashboards & hierarchy", href: "/platform/dashboards" },
-        { label: "Reports & builder", href: "/platform/reports" },
-        { label: "Ask Cerebro AI", href: "/ask-cerebro" },
-        { label: "Integrations directory", href: "/integrations" },
-        { label: "All platform features", href: "/features" },
+        { label: "Ask Cerebro", href: "/ask-cerebro" },
+        { label: "AI data engine", href: "/platform/data-integration" },
+        { label: "Dashboards", href: "/platform/dashboards" },
+        { label: "Report builder", href: "/platform/reports" },
+        { label: "Objective engine", href: "/platform/objective-reporting" },
+        { label: "Integrations", href: "/integrations" },
       ],
     },
     {
@@ -56,17 +54,17 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
       title: "Resources",
       links: [
         { label: "Blog", href: "/blog" },
-        { label: "Documentation", href: "/docs" },
+        { label: "Docs", href: "/docs" },
         { label: "FAQ", href: "/faq" },
-        { label: "Security & privacy", href: "/security" },
-        { label: "Pricing & tiers", href: "/pricing" },
+        { label: "Security", href: "/security" },
+        { label: "Pricing", href: "/pricing" },
       ],
     },
     {
       title: "Company",
       links: [
-        { label: "About Cerebro", href: "/about" },
-        { label: "Contact us", href: "/contact" },
+        { label: "About", href: "/about" },
+        { label: "Contact", href: "/contact" },
         { label: "Book a demo", href: "/demo" },
       ],
     },
@@ -74,14 +72,13 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
 
   return (
     <div className="font-sans text-[#2B3040] bg-white">
-      {/* ── Trust Strip ── */}
+      {/* ── Trust Section ── */}
       <section aria-label="Trust" className="border-t border-[#EEF0F3] bg-white">
-        <div className="max-w-[1240px] mx-auto px-6 lg:px-10 py-9 flex gap-7 items-center justify-between flex-wrap">
+        <div className="max-w-[1240px] mx-auto px-6 lg:px-10 py-9 box-border flex gap-7 items-center flex-wrap">
           <span className="font-heading text-[18px] font-semibold text-[#101426]">
             Built to be trusted with client data
           </span>
-
-          <div className="flex-1 min-w-[300px] flex gap-5 lg:gap-6 flex-wrap items-center">
+          <div className="flex-1 min-w-[280px] lg:min-w-[520px] flex gap-5 lg:gap-[22px] flex-wrap items-center">
             {trustItems.map((t, idx) => (
               <span
                 key={idx}
@@ -100,11 +97,10 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
                 >
                   <path d={t.d} />
                 </svg>
-                {t.label}
+                <span>{t.label}</span>
               </span>
             ))}
           </div>
-
           <Link
             href="/security"
             className="inline-flex items-center gap-1.5 min-h-[44px] text-[14.5px] font-semibold text-[#4F46E5] hover:text-[#4338CA] transition-colors"
@@ -127,35 +123,35 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
         </div>
       </section>
 
-      {/* ── Book a Demo Navy Band (prop cta) ── */}
+      {/* ── Call To Action Section (Conditional via prop `cta`) ── */}
       {cta && (
-        <section className="relative overflow-hidden py-24 sm:py-28 bg-[#1C1A57] text-white">
+        <section className="relative overflow-hidden py-16 lg:py-[104px] bg-[#1C1A57]">
+          {/* Subtle glow circle */}
           <div
             aria-hidden="true"
-            className="absolute -bottom-[320px] left-1/2 -ml-[380px] w-[760px] h-[760px] rounded-full pointer-events-none"
+            className="absolute -bottom-80 left-1/2 -ml-[380px] w-[760px] h-[760px] rounded-full pointer-events-none"
             style={{
               background:
                 "radial-gradient(circle, rgba(165,180,252,0.35) 0, rgba(79,70,229,0.12) 25%, rgba(28,26,87,0) 60%)",
             }}
           />
-          <div className="relative max-w-[1240px] mx-auto px-6 lg:px-10 text-center">
-            <h2 className="mx-auto max-w-[760px] font-heading font-semibold text-[32px] sm:text-[44px] lg:text-[52px] leading-[1.08] tracking-tight text-white">
+          <div className="relative max-w-[1240px] mx-auto px-6 lg:px-10 box-border text-center">
+            <h2 className="m-0 mx-auto max-w-[760px] font-heading font-semibold text-[32px] sm:text-[40px] lg:text-[52px] leading-[1.08] tracking-[-0.025em] text-white">
               Ask your own campaigns a question.
             </h2>
-            <p className="mt-5 mx-auto max-w-[600px] text-[18px] leading-relaxed text-[#D4D6F2]">
-              Book a personalized demo. We’ll connect your platforms or load your
-              sheets, and you ask Cerebro the questions.
+            <p className="mt-5 mx-auto max-w-[600px] text-[16px] lg:text-[18px] leading-[1.55] text-[#D4D6F2]">
+              Book a personalized demo. We’ll connect your platforms or load your sheets, and you ask Cerebro the questions.
             </p>
             <div className="mt-9 flex gap-3 justify-center flex-wrap">
               <Link
                 href="/demo"
-                className="inline-flex items-center justify-center min-h-[52px] px-7 rounded-[10px] bg-white text-[#1C1A57] hover:bg-slate-50 text-[16px] font-semibold transition-colors shadow-sm"
+                className="inline-flex items-center justify-center min-h-[44px] px-[22px] rounded-[22px] bg-white hover:bg-[#F3F4F6] text-[#1C1A57] text-[15px] font-semibold transition-colors shadow-sm"
               >
                 Book a demo
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center min-h-[52px] px-7 rounded-[10px] border border-white/40 text-white hover:bg-white/10 text-[16px] font-semibold transition-colors"
+                className="inline-flex items-center justify-center min-h-[44px] px-[22px] rounded-[22px] border border-white/40 hover:border-white/70 text-white text-[15px] font-semibold transition-colors"
               >
                 Talk to sales
               </Link>
@@ -164,78 +160,92 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
         </section>
       )}
 
-      {/* ── Footer Navigation ── */}
-      <footer className="py-16 sm:py-20 pb-10 bg-white border-t border-[#EEF0F3]">
-        <div className="max-w-[1240px] mx-auto px-6 lg:px-10">
-          <div className="flex gap-12 flex-wrap">
-            {/* Brand & Address Column */}
-            <div className="flex-1 min-w-[280px]">
-              <Link href="/">
+      {/* ── Main Footer ── */}
+      <footer className="py-12 lg:py-16 pb-9 bg-white border-t border-[#EEF0F3]">
+        <div className="max-w-[1240px] mx-auto px-6 lg:px-10 box-border">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 justify-between">
+            {/* Identity & Address */}
+            <div className="w-full lg:w-[280px] shrink-0">
+              <span
+                role="img"
+                aria-label="Cerebro DNano"
+                className="inline-flex items-center gap-2"
+              >
                 <Image
-                  src="/brand/logo.png"
-                  alt={SITE.name}
-                  width={180}
-                  height={56}
-                  className="h-[48px] sm:h-[56px] w-auto object-contain block"
+                  src="/brand/cerebro-mark.svg"
+                  alt="Cerebro mark"
+                  width={26}
+                  height={26}
+                  className="h-[26px] w-auto block"
                 />
-              </Link>
-              <p className="mt-4 max-w-[300px] text-[14.5px] leading-relaxed text-[#5B6170]">
-                Cerebro AI, the data engine for paid media reporting, for agencies
-                and brands.
+                <Image
+                  src="/brand/cerebro-wordmark.svg"
+                  alt="Cerebro DNano"
+                  width={104}
+                  height={16}
+                  className="h-[16px] w-auto block"
+                />
+              </span>
+              <p className="mt-4 max-w-[280px] text-[14.5px] leading-[1.55] text-[#5B6170]">
+                Cerebro AI, the data engine for paid media reporting, for agencies and brands.
               </p>
-              <address className="mt-6 not-italic text-[14px] leading-relaxed text-[#2B3040]">
-                <span className="font-semibold">{SITE.name}</span>
-                <br />
-                {SITE.address.unit}
-                <br />
-                {SITE.address.street}
-                <br />
-                {SITE.address.city} {SITE.address.postalCode}, {SITE.address.country}
-                <br />
-                <a
-                  href={SITE.phoneHref}
-                  className="text-[#4F46E5] hover:text-[#4338CA] transition-colors"
-                >
-                  {SITE.phoneDisplay}
-                </a>
-                <br />
-                <a
-                  href={`mailto:${SITE.email}`}
-                  className="text-[#4F46E5] hover:text-[#4338CA] transition-colors"
-                >
-                  {SITE.email}
-                </a>
-                <br />
-                <span className="text-[#5B6170]">{SITE.hoursDisplay}</span>
+              <address className="mt-[22px] not-italic text-[14px] leading-[1.7] text-[#2B3040]">
+                <div className="font-semibold text-[#101426]">{SITE.name}</div>
+                {!isPlaceholderHidden(SITE.address.unit) && (
+                  <div className="text-[#6B7180]">{SITE.address.unit}</div>
+                )}
+                <div>{SITE.address.street}</div>
+                <div>
+                  {SITE.address.city} {SITE.address.postalCode}, {SITE.address.country}
+                </div>
+                <div>
+                  <a
+                    href={SITE.phoneHref}
+                    className="text-[#4F46E5] hover:text-[#4338CA] transition-colors"
+                  >
+                    {SITE.phoneDisplay}
+                  </a>
+                </div>
+                <div>
+                  <a
+                    href={`mailto:${SITE.email}`}
+                    className="text-[#4F46E5] hover:text-[#4338CA] transition-colors"
+                  >
+                    {SITE.email}
+                  </a>
+                </div>
+                <div className="text-[#5B6170] mt-1">{SITE.hoursDisplay}</div>
               </address>
             </div>
 
-            {/* 4 Link Columns */}
-            {columns.map((col, idx) => (
-              <nav key={idx} aria-label={col.title} className="flex-1 min-w-[140px]">
-                <div className="text-[13px] font-semibold text-[#101426] mb-3.5">
-                  {col.title}
-                </div>
-                <ul className="m-0 p-0 list-none flex flex-col gap-2.5">
-                  {col.links.map((lnk, lIdx) => (
-                    <li key={lIdx}>
-                      <Link
-                        href={lnk.href}
-                        className="text-[14px] text-[#5B6170] hover:text-[#101426] transition-colors"
-                      >
-                        {lnk.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            ))}
+            {/* Navigation Columns (Platform, Solutions, Resources, Company) */}
+            <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-10 min-w-0">
+              {columns.map((col, idx) => (
+                <nav key={idx} aria-label={col.title}>
+                  <div className="text-[13px] font-semibold text-[#101426]">
+                    {col.title}
+                  </div>
+                  <ul className="mt-3.5 p-0 list-none flex flex-col gap-2.5">
+                    {col.links.map((lnk, lIdx) => (
+                      <li key={lIdx}>
+                        <Link
+                          href={lnk.href}
+                          className="text-[14px] text-[#5B6170] hover:text-[#101426] transition-colors"
+                        >
+                          {lnk.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              ))}
+            </div>
           </div>
 
-          {/* Bottom Legal & Copyright Bar */}
-          <div className="mt-12 pt-6 border-t border-[#EEF0F3] flex justify-between gap-4 flex-wrap text-[13px] text-[#5B6170]">
-            <span>© 2026 {SITE.name}</span>
-            <span className="flex gap-5 flex-wrap">
+          {/* Sub-footer Legal Bar */}
+          <div className="mt-12 pt-[22px] border-t border-[#EEF0F3] flex justify-between gap-4 flex-wrap text-[13px] text-[#5B6170]">
+            <span>© 2026 Cerebro DNano</span>
+            <div className="flex gap-5 flex-wrap">
               <Link
                 href="/privacy-policy"
                 className="text-[#5B6170] hover:text-[#101426] transition-colors"
@@ -254,7 +264,7 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
               >
                 Data deletion
               </Link>
-            </span>
+            </div>
           </div>
         </div>
       </footer>

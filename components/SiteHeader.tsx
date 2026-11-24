@@ -4,11 +4,11 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import MagneticButton from "@/components/motion/MagneticButton";
 
 // Authentic icons from handoff/design/SiteHeader.dc.html
 const ICONS: Record<string, string> = {
-  spark: "M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9zM19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z",
+  spark: "M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z",
+  sparkDouble: "M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9zM19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z",
   engine: "M4 6h16M4 12h16M4 18h16M8 4v4M16 10v4M11 16v4",
   plug: "M12 22v-5M9 8V2M15 8V2M18 8v5a6 6 0 0 1-12 0V8z",
   sheet: "M3 4h18v16H3zM3 10h18M3 15h18M9 4v16",
@@ -64,12 +64,10 @@ interface MenuSection {
 
 export function SiteHeader() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [hoverKey, setHoverKey] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileExpanded, setMobileExpanded] = useState<string | null>("platform");
   const headerRef = useRef<HTMLElement>(null);
-  const hoverTimer = useRef<NodeJS.Timeout | null>(null);
   const leaveTimer = useRef<NodeJS.Timeout | null>(null);
-  const triggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const pathname = usePathname();
 
   // Close menus on route change
@@ -90,21 +88,15 @@ export function SiteHeader() {
     };
   }, [mobileOpen]);
 
-  // Handle outside click & Escape key
+  // Handle escape key
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        if (openMenu) {
-          const trigger = triggerRefs.current[openMenu];
-          setOpenMenu(null);
-          trigger?.focus();
-        }
-        if (mobileOpen) {
-          setMobileOpen(false);
-        }
+        setOpenMenu(null);
+        setMobileOpen(false);
       }
     },
-    [openMenu, mobileOpen]
+    []
   );
 
   useEffect(() => {
@@ -112,109 +104,41 @@ export function SiteHeader() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
 
-  const handlePointerEnterTrigger = (menuKey: string) => {
+  const handlePointerEnterMenu = (menuKey: string) => {
     if (leaveTimer.current) {
       clearTimeout(leaveTimer.current);
       leaveTimer.current = null;
     }
-    if (openMenu) {
-      setOpenMenu(menuKey);
-    } else {
-      hoverTimer.current = setTimeout(() => {
-        setOpenMenu(menuKey);
-      }, 120);
-    }
+    setOpenMenu(menuKey);
+    setHoverKey(menuKey);
   };
 
-  const handlePointerLeaveTrigger = () => {
-    if (hoverTimer.current) {
-      clearTimeout(hoverTimer.current);
-      hoverTimer.current = null;
-    }
+  const handlePointerLeaveMenu = () => {
     leaveTimer.current = setTimeout(() => {
       setOpenMenu(null);
-    }, 200);
+      setHoverKey(null);
+    }, 180);
   };
 
-  const handlePanelPointerEnter = () => {
-    if (leaveTimer.current) {
-      clearTimeout(leaveTimer.current);
-      leaveTimer.current = null;
-    }
-  };
-
-  const handlePanelPointerLeave = () => {
+  const handleHeaderLeave = () => {
     leaveTimer.current = setTimeout(() => {
       setOpenMenu(null);
-    }, 200);
+      setHoverKey(null);
+    }, 180);
   };
 
   const toggleMenu = (menuKey: string) => {
-    if (openMenu === menuKey) {
-      setOpenMenu(null);
-    } else {
-      setOpenMenu(menuKey);
-    }
+    setOpenMenu(openMenu === menuKey ? null : menuKey);
+    setHoverKey(menuKey);
   };
 
   const MENUS: Record<string, MenuSection> = {
-    home: {
-      label: "Home menu",
-      cols: [
-        {
-          title: "Homepage options",
-          items: [
-            {
-              id: "h1",
-              label: "Option 1 (Data-forward)",
-              text: "Bring in any data, ask anything",
-              href: "/option-1",
-              icon: ICONS.dash,
-            },
-            {
-              id: "h2",
-              label: "Option 2 (AI-forward)",
-              text: "Your AI analyst, AI-forward",
-              href: "/option-2",
-              icon: ICONS.spark,
-            },
-            {
-              id: "h3",
-              label: "Present both",
-              text: "Switch between the two options from a dropdown",
-              href: "/present",
-              icon: ICONS.layers,
-            },
-          ],
-        },
-      ],
-      feature: {
-        href: "/present",
-        bg: "#F5F6FF",
-        bd: "#E0E3FF",
-        kicker: "#4F46E5",
-        title: "#101426",
-        body: "#5B6170",
-        link: "#4F46E5",
-        eyebrow: "Presenting?",
-        heading: "Show both homepage options in one view",
-        text: "One page with a dropdown to switch between option 1 and option 2.",
-        cta: "Open presenter view",
-      },
-    },
     platform: {
       label: "Platform menu",
       cols: [
         {
           title: "Cerebro AI",
           items: [
-            {
-              id: "p0",
-              label: "AI first homepage",
-              text: "Explore the dedicated AI-first experience",
-              href: "/ai-first",
-              icon: ICONS.spark,
-            },
             {
               id: "p1",
               label: "Ask Cerebro",
@@ -230,10 +154,17 @@ export function SiteHeader() {
               icon: ICONS.engine,
             },
             {
+              id: "p3",
+              label: "AI connectors",
+              text: "Connect any marketing platform",
+              href: "/integrations",
+              icon: ICONS.plug,
+            },
+            {
               id: "p4",
               label: "AI sheet mapping",
               text: "CSV, Excel and Google Sheets",
-              href: "/integrations#sheets",
+              href: "/integrations",
               icon: ICONS.sheet,
             },
           ],
@@ -257,10 +188,17 @@ export function SiteHeader() {
             },
             {
               id: "p7",
-              label: "Hierarchy reports",
-              text: "From platform to a single ad",
+              label: "Objective engine",
+              text: "Every campaign judged by its goal",
               href: "/platform/objective-reporting",
               icon: ICONS.layers,
+            },
+            {
+              id: "p8",
+              label: "Integrations",
+              text: "Native, custom and sheet uploads",
+              href: "/integrations",
+              icon: ICONS.grid,
             },
           ],
         },
@@ -328,7 +266,7 @@ export function SiteHeader() {
             {
               id: "s6",
               label: "E-commerce",
-              text: "Spend through to conversions",
+              text: "What your ads really earn",
               href: "/industries/ecommerce",
               icon: ICONS.cart,
             },
@@ -369,6 +307,13 @@ export function SiteHeader() {
               href: "/docs",
               icon: ICONS.doc,
             },
+            {
+              id: "r6",
+              label: "FAQ",
+              text: "Quick answers to common questions",
+              href: "/faq",
+              icon: ICONS.info,
+            },
           ],
         },
         {
@@ -399,7 +344,7 @@ export function SiteHeader() {
         },
       ],
       feature: {
-        href: "/blog/understanding-objective-based-ad-reporting",
+        href: "/blog/blended-roas-vs-platform-roas",
         bg: "#FFFFFF",
         bd: "#E4E7EC",
         kicker: "#4F46E5",
@@ -415,46 +360,74 @@ export function SiteHeader() {
   };
 
   const navTriggers = [
-    { key: "home", label: "Home", href: "/" },
-    { key: "ai-first", label: "AI first", href: "/ai-first" },
     { key: "platform", label: "Platform", isMenu: true },
     { key: "solutions", label: "Solutions", isMenu: true },
-    { key: "integrations", label: "Integrations", href: "/integrations" },
-    { key: "pricing", label: "Pricing", href: "/pricing" },
+    { key: "integrations", label: "Integrations", isMenu: false, href: "/integrations" },
+    { key: "pricing", label: "Pricing", isMenu: false, href: "/pricing" },
     { key: "resources", label: "Resources", isMenu: true },
   ];
+
+  const currentPanel = openMenu && MENUS[openMenu] ? MENUS[openMenu] : null;
 
   return (
     <header
       ref={headerRef}
+      onMouseLeave={handleHeaderLeave}
       className="sticky top-0 z-50 bg-white border-b border-[#E4E7EC] font-sans text-[#2B3040]"
     >
-      <div className="max-w-[1240px] mx-auto px-6 lg:px-10 h-[84px] flex items-center justify-between gap-6">
-        {/* Logo */}
+      {/* Desktop Navigation (>= 1024px) */}
+      <div className="hidden lg:flex items-center gap-7 max-w-[1240px] min-h-[72px] mx-auto px-10 box-border">
+        {/* Brand Logo */}
         <Link
           href="/"
           aria-label="Cerebro DNano home"
-          className="flex items-center shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded-control"
+          className="inline-flex items-center gap-[9px] shrink-0"
         >
           <Image
-            src="/brand/logo.png"
-            alt="Cerebro DNano"
-            width={180}
-            height={56}
+            src="/brand/cerebro-mark.svg"
+            alt="Cerebro mark"
+            width={28}
+            height={28}
+            className="h-7 w-auto block"
             priority
-            className="h-[44px] sm:h-[50px] lg:h-[56px] w-auto object-contain block"
+          />
+          <Image
+            src="/brand/cerebro-wordmark.svg"
+            alt="Cerebro DNano"
+            width={112}
+            height={17}
+            className="h-[17px] w-auto block"
+            priority
           />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav
-          aria-label="Main"
-          className="hidden xl:flex items-center gap-1 flex-1 ml-4"
-        >
-          {/* Ask Cerebro Pill Button */}
+        {/* Navigation items */}
+        <nav aria-label="Main" className="flex items-center gap-1 flex-1">
+          {/* AI first link (requested by user) */}
+          <Link
+            href="/ai-first"
+            className="inline-flex items-center gap-1.5 min-h-[38px] px-3 mr-1 rounded-[19px] bg-[#EEF0FF] hover:bg-[#E0E3FF] text-[#3730A3] font-semibold text-[15px] transition-colors"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d={ICONS.spark} />
+            </svg>
+            <span>AI first</span>
+          </Link>
+
+          {/* Ask Cerebro pill button */}
           <Link
             href="/ask-cerebro"
-            className="inline-flex items-center gap-1.5 h-[38px] px-3.5 mr-2 rounded-full bg-[#EEF0FF] text-[#3730A3] hover:bg-[#E0E3FF] text-[15px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand shrink-0 whitespace-nowrap"
+            className="inline-flex items-center gap-1.5 min-h-[38px] px-3 mr-2 rounded-[19px] bg-[#EEF0FF] hover:bg-[#E0E3FF] text-[#3730A3] font-semibold text-[15px] transition-colors"
           >
             <svg
               width="14"
@@ -467,563 +440,546 @@ export function SiteHeader() {
               strokeLinejoin="round"
               aria-hidden="true"
             >
-              <path d={ICONS.spark} />
+              <path d={ICONS.sparkDouble} />
             </svg>
-            <span className="whitespace-nowrap">Ask Cerebro</span>
+            <span>Ask Cerebro</span>
           </Link>
 
-          {/* Nav Items */}
+          {/* Main menu links / triggers */}
           {navTriggers.map((t) => {
+            const isOpen = openMenu === t.key;
             if (t.isMenu) {
-              const isOpen = openMenu === t.key;
               return (
-                <div
+                <button
                   key={t.key}
-                  onPointerEnter={() => handlePointerEnterTrigger(t.key)}
-                  onPointerLeave={handlePointerLeaveTrigger}
-                  className="relative shrink-0"
+                  type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={`menu-${t.key}`}
+                  onMouseEnter={() => handlePointerEnterMenu(t.key)}
+                  onClick={() => toggleMenu(t.key)}
+                  className={`inline-flex items-center gap-1.5 min-h-[38px] px-3 rounded-lg text-[15px] font-medium transition-colors ${
+                    isOpen
+                      ? "bg-[#EEF0FF] text-[#3730A3]"
+                      : hoverKey === t.key
+                      ? "bg-[#F3F4F6] text-[#2B3040]"
+                      : "bg-transparent text-[#2B3040]"
+                  }`}
                 >
-                  <button
-                    ref={(el) => {
-                      triggerRefs.current[t.key] = el;
-                    }}
-                    type="button"
-                    aria-expanded={isOpen}
-                    aria-controls={`menu-${t.key}`}
-                    onClick={() => toggleMenu(t.key)}
-                    className={`inline-flex items-center gap-1.5 h-[38px] px-3 rounded-control text-[15px] font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
-                      isOpen
-                        ? "bg-[#EEF0FF] text-[#3730A3]"
-                        : "text-[#2B3040] hover:bg-[#F3F4F6]"
+                  <span>{t.label}</span>
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    aria-hidden="true"
+                    className={`transition-transform duration-150 ${
+                      isOpen ? "rotate-180 text-[#3730A3]" : "text-[#5B6170]"
                     }`}
                   >
-                    <span className="whitespace-nowrap">{t.label}</span>
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      aria-hidden="true"
-                      className={`transition-transform duration-150 ${
-                        isOpen ? "rotate-180" : ""
-                      }`}
-                    >
-                      <path d="m6 9 6 6 6-6" />
-                    </svg>
-                  </button>
-                </div>
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
               );
             }
 
             return (
               <Link
                 key={t.key}
-                href={t.href || "/"}
-                className={`inline-flex items-center h-[38px] px-3 rounded-control text-[15px] font-medium transition-colors shrink-0 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
-                  t.key === "ai-first"
-                    ? "text-[#4F46E5] hover:bg-[#EEF0FF] font-semibold gap-1.5"
-                    : "text-[#2B3040] hover:bg-[#F3F4F6]"
+                href={t.href || "#"}
+                onMouseEnter={() => {
+                  setOpenMenu(null);
+                  setHoverKey(t.key);
+                }}
+                onMouseLeave={() => setHoverKey(null)}
+                className={`inline-flex items-center min-h-[38px] px-3 rounded-lg text-[15px] font-medium transition-colors ${
+                  hoverKey === t.key
+                    ? "bg-[#F3F4F6] text-[#2B3040]"
+                    : "bg-transparent text-[#2B3040]"
                 }`}
               >
-                {t.key === "ai-first" && (
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d={ICONS.spark} />
-                  </svg>
-                )}
-                <span className="whitespace-nowrap">{t.label}</span>
+                {t.label}
               </Link>
             );
           })}
         </nav>
 
-        {/* Right Desktop Actions */}
-        <div className="hidden xl:flex items-center gap-2 shrink-0">
+        {/* Right CTA Actions */}
+        <div className="flex items-center gap-2 shrink-0">
           <Link
             href="/contact"
-            className="inline-flex items-center h-[38px] px-3 rounded-control text-[#2B3040] hover:bg-[#F3F4F6] text-[15px] font-medium transition-colors shrink-0 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+            onMouseEnter={() => setHoverKey("contact")}
+            onMouseLeave={() => setHoverKey(null)}
+            className={`inline-flex items-center min-h-[38px] px-3 rounded-lg text-[15px] font-medium transition-colors ${
+              hoverKey === "contact"
+                ? "bg-[#F3F4F6] text-[#2B3040]"
+                : "bg-transparent text-[#2B3040]"
+            }`}
           >
-            <span className="whitespace-nowrap">Contact</span>
+            Contact
           </Link>
-          <MagneticButton strength={0.25}>
-            <Link
-              href="/demo"
-              className="inline-flex items-center justify-center h-[44px] px-5 rounded-control bg-[#4F46E5] hover:bg-[#4338CA] text-white text-[15px] font-semibold transition-all duration-200 shadow-sm hover:shadow-md shrink-0 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 transform hover:-translate-y-0.5 active:translate-y-0"
-            >
-              <span className="whitespace-nowrap">Book a demo</span>
-            </Link>
-          </MagneticButton>
-        </div>
-
-        {/* Mobile Header Actions */}
-        <div className="flex xl:hidden items-center gap-2 shrink-0">
           <Link
             href="/demo"
-            className="inline-flex items-center justify-center h-[36px] px-3.5 rounded-control bg-[#4F46E5] text-white text-caption font-semibold shrink-0 whitespace-nowrap"
+            className="inline-flex items-center min-h-[40px] px-[18px] rounded-[20px] bg-[#4F46E5] hover:bg-[#4338CA] text-white text-[15px] font-semibold transition-colors shadow-sm"
           >
-            <span className="whitespace-nowrap">Book a demo</span>
+            Book a demo
           </Link>
-          <button
-            type="button"
-            aria-label="Open menu"
-            onClick={() => setMobileOpen(true)}
-            className="w-11 h-11 rounded-[10px] border border-[#E4E7EC] bg-white inline-flex items-center justify-center text-[#101426] hover:bg-[#F3F4F6] transition-colors cursor-pointer"
-          >
+        </div>
+      </div>
+
+      {/* Desktop Mega Menu Dropdown */}
+      {currentPanel && (
+        <div
+          id={`menu-${openMenu}`}
+          role="region"
+          aria-label={currentPanel.label}
+          onMouseEnter={() => {
+            if (leaveTimer.current) {
+              clearTimeout(leaveTimer.current);
+              leaveTimer.current = null;
+            }
+          }}
+          onMouseLeave={handlePointerLeaveMenu}
+          className="hidden lg:block absolute left-0 right-0 top-full bg-white border-t border-[#EEF0F3] border-b border-[#E4E7EC] shadow-[0_24px_48px_rgba(16,20,38,0.12)] z-50 animate-in fade-in duration-150"
+        >
+          <div className="max-w-[1240px] mx-auto px-10 py-7 pb-8 box-border flex gap-8">
+            {/* Columns */}
+            {currentPanel.cols.map((col, idx) => (
+              <div key={idx} className="flex-1 min-w-[260px]">
+                <div className="text-[12px] font-semibold text-[#6B7180] px-3 uppercase tracking-wider">
+                  {col.title}
+                </div>
+                <div className="mt-2 flex flex-col gap-0.5">
+                  {col.items.map((it) => {
+                    const isHovered = hoverKey === it.id;
+                    return (
+                      <Link
+                        key={it.id}
+                        href={it.href}
+                        onMouseEnter={() => setHoverKey(it.id)}
+                        onMouseLeave={() => setHoverKey(openMenu)}
+                        className={`flex gap-3 items-start p-2.5 px-3 rounded-[10px] text-decoration-none transition-colors ${
+                          isHovered ? "bg-[#F5F6FF]" : "bg-transparent"
+                        }`}
+                      >
+                        <span
+                          className={`flex-none w-[34px] height-[34px] h-[34px] rounded-[9px] inline-flex items-center justify-center transition-colors ${
+                            isHovered ? "bg-[#E0E3FF]" : "bg-[#EEF0FF]"
+                          }`}
+                        >
+                          <svg
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#4F46E5"
+                            strokeWidth="1.8"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d={it.icon} />
+                          </svg>
+                        </span>
+                        <span className="flex flex-col gap-0.5">
+                          <span
+                            className={`text-[14.5px] font-semibold transition-colors ${
+                              isHovered ? "text-[#3730A3]" : "text-[#101426]"
+                            }`}
+                          >
+                            {it.label}
+                          </span>
+                          <span className="text-[13px] leading-[1.4] text-[#5B6170]">
+                            {it.text}
+                          </span>
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+
+            {/* Feature Promo Card */}
+            <Link
+              href={currentPanel.feature.href}
+              style={{
+                backgroundColor: currentPanel.feature.bg,
+                borderColor: currentPanel.feature.bd,
+              }}
+              className="flex-[0_1_300px] min-w-[280px] rounded-[14px] border p-[22px] flex flex-col gap-2.5 transition-transform hover:-translate-y-0.5 duration-150"
+            >
+              <span
+                style={{ color: currentPanel.feature.kicker }}
+                className="text-[12px] font-semibold uppercase tracking-wider"
+              >
+                {currentPanel.feature.eyebrow}
+              </span>
+              <span
+                style={{ color: currentPanel.feature.title }}
+                className="font-heading text-[18px] leading-[1.3] font-semibold"
+              >
+                {currentPanel.feature.heading}
+              </span>
+              <span
+                style={{ color: currentPanel.feature.body }}
+                className="text-[13.5px] leading-[1.5]"
+              >
+                {currentPanel.feature.text}
+              </span>
+              <span
+                style={{ color: currentPanel.feature.link }}
+                className="mt-auto inline-flex items-center gap-1.5 text-[14px] font-semibold pt-2"
+              >
+                <span>{currentPanel.feature.cta}</span>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Header (< 1024px) from MobHome.dc.html */}
+      <div className="flex lg:hidden items-center justify-between h-16 px-6 box-border bg-white border-b border-[#E4E7EC]">
+        <Link
+          href="/"
+          aria-label="Cerebro DNano home"
+          className="inline-flex items-center gap-[7px]"
+        >
+          <Image
+            src="/brand/cerebro-mark.svg"
+            alt="Cerebro"
+            width={24}
+            height={24}
+            className="h-6 w-auto block"
+            priority
+          />
+          <Image
+            src="/brand/cerebro-wordmark.svg"
+            alt="Cerebro DNano"
+            width={96}
+            height={15}
+            className="h-[15px] w-auto block"
+            priority
+          />
+        </Link>
+
+        {/* Hamburger / Close button */}
+        <button
+          type="button"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="w-11 h-11 rounded-xl border border-[#E4E7EC] bg-white inline-flex items-center justify-center cursor-pointer text-[#101426] transition-colors active:bg-[#F3F4F6]"
+        >
+          {mobileOpen ? (
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#101426"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
+          ) : (
             <svg
               width="20"
               height="20"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
+              stroke="#101426"
               strokeWidth="2"
               strokeLinecap="round"
+              strokeLinejoin="round"
               aria-hidden="true"
             >
               <path d="M4 7h16M4 12h16M4 17h16" />
             </svg>
-          </button>
-        </div>
+          )}
+        </button>
       </div>
 
-      {/* Desktop Mega Menu Dropdown */}
-      {openMenu && MENUS[openMenu] && (
-        <div
-          id={`menu-${openMenu}`}
-          role="region"
-          aria-label={MENUS[openMenu].label}
-          onPointerEnter={handlePanelPointerEnter}
-          onPointerLeave={handlePanelPointerLeave}
-          className="absolute left-0 right-0 top-full bg-white border-t border-[#EEF0F3] border-b border-[#E4E7EC] shadow-[0_24px_48px_rgba(16,20,38,0.12)] animate-in fade-in duration-150"
-        >
-          <div className="max-w-[1240px] mx-auto px-6 lg:px-10 py-7 pb-8 flex gap-8 flex-wrap">
-            {/* Columns */}
-            {MENUS[openMenu].cols.map((col, cIdx) => (
-              <div key={cIdx} className="flex-1 min-w-[240px]">
-                <div className="text-[12px] font-semibold text-[#6B7180] px-3 mb-2">
-                  {col.title}
-                </div>
-                <div className="flex flex-col gap-0.5">
-                  {col.items.map((it) => (
-                    <Link
-                      key={it.id}
-                      href={it.href}
-                      onClick={() => setOpenMenu(null)}
-                      className="group flex items-start gap-3 p-2.5 rounded-[10px] hover:bg-[#F5F6FF] transition-colors"
-                    >
-                      <span className="w-[34px] h-[34px] rounded-[9px] bg-[#EEF0FF] group-hover:bg-[#E0E3FF] text-[#4F46E5] inline-flex items-center justify-center shrink-0 transition-colors">
-                        <svg
-                          width="17"
-                          height="17"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          aria-hidden="true"
-                        >
-                          <path d={it.icon} />
-                        </svg>
-                      </span>
-                      <span className="flex flex-col gap-0.5">
-                        <span className="text-[14.5px] font-semibold text-[#101426] group-hover:text-[#3730A3] transition-colors leading-snug">
-                          {it.label}
-                        </span>
-                        <span className="text-[13px] leading-snug text-[#5B6170]">
-                          {it.text}
-                        </span>
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-
-            {/* Feature Card */}
-            {MENUS[openMenu].feature && (
-              <Link
-                href={MENUS[openMenu].feature.href}
-                onClick={() => setOpenMenu(null)}
-                style={{
-                  backgroundColor: MENUS[openMenu].feature.bg,
-                  borderColor: MENUS[openMenu].feature.bd,
-                }}
-                className="w-[300px] rounded-[14px] border p-[22px] flex flex-col justify-between hover:shadow-card-hover transition-all"
-              >
-                <div>
-                  <span
-                    style={{ color: MENUS[openMenu].feature.kicker }}
-                    className="text-[12px] font-semibold block mb-2"
-                  >
-                    {MENUS[openMenu].feature.eyebrow}
-                  </span>
-                  <span
-                    style={{ color: MENUS[openMenu].feature.title }}
-                    className="font-heading text-[18px] leading-[1.3] font-semibold block mb-2"
-                  >
-                    {MENUS[openMenu].feature.heading}
-                  </span>
-                  <span
-                    style={{ color: MENUS[openMenu].feature.body }}
-                    className="text-[13.5px] leading-relaxed block"
-                  >
-                    {MENUS[openMenu].feature.text}
-                  </span>
-                </div>
-                <span
-                  style={{ color: MENUS[openMenu].feature.link }}
-                  className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold"
-                >
-                  {MENUS[openMenu].feature.cta}
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                </span>
-              </Link>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* Full-Screen Mobile Drawer (< 1024px) */}
+      {/* Mobile Drawer Menu (< 1024px) */}
       {mobileOpen && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label="Mobile Navigation"
-          className="fixed inset-0 z-50 bg-white flex flex-col overflow-y-auto xl:hidden animate-in fade-in duration-200"
+        <nav
+          aria-label="Main"
+          className="lg:hidden absolute left-0 right-0 top-16 bg-white border-t border-[#EEF0F3] shadow-[0_24px_48px_rgba(16,20,38,0.14)] px-6 py-4 pb-7 z-50 max-h-[calc(100vh-64px)] overflow-y-auto animate-in slide-in-from-top-2 duration-150"
         >
-          {/* Top Mobile Bar */}
-          <div className="h-[76px] px-5 border-b border-[#E4E7EC] flex items-center justify-between shrink-0">
-            <Link href="/" onClick={() => setMobileOpen(false)}>
-              <Image
-                src="/brand/logo.png"
-                alt="Cerebro DNano"
-                width={150}
-                height={46}
-                className="h-[46px] w-auto object-contain"
-              />
-            </Link>
-            <button
-              type="button"
-              aria-label="Close menu"
-              onClick={() => setMobileOpen(false)}
-              className="w-11 h-11 rounded-[10px] border border-[#E4E7EC] bg-[#F3F4F6] inline-flex items-center justify-center text-[#101426] cursor-pointer"
+          {/* AI first link */}
+          <Link
+            href="/ai-first"
+            onClick={() => setMobileOpen(false)}
+            className="inline-flex items-center gap-1.5 min-h-[40px] px-3.5 rounded-[20px] bg-[#EEF0FF] text-[#3730A3] font-semibold text-[16px] mb-2 mr-2"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
             >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                aria-hidden="true"
-              >
-                <path d="M6 6l12 12M18 6 6 18" />
-              </svg>
-            </button>
-          </div>
+              <path d={ICONS.spark} />
+            </svg>
+            <span>AI first</span>
+          </Link>
 
-          {/* Mobile Menu Body */}
-          <div className="p-5 flex-1 flex flex-col">
-            {/* Ask Cerebro Pill */}
-            <Link
-              href="/ask-cerebro"
-              onClick={() => setMobileOpen(false)}
-              className="inline-flex self-start items-center min-h-[40px] px-4 rounded-full bg-[#EEF0FF] text-[#3730A3] text-[16px] font-semibold mb-3 shrink-0 whitespace-nowrap"
+          {/* Ask Cerebro pill */}
+          <Link
+            href="/ask-cerebro"
+            onClick={() => setMobileOpen(false)}
+            className="inline-flex items-center gap-1.5 min-h-[40px] px-3.5 rounded-[20px] bg-[#EEF0FF] text-[#3730A3] font-semibold text-[16px] mb-2"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
             >
-              <span className="whitespace-nowrap">Ask Cerebro</span>
-            </Link>
+              <path d={ICONS.sparkDouble} />
+            </svg>
+            <span>Ask Cerebro</span>
+          </Link>
 
-            {/* Home Link */}
-            <Link
-              href="/"
-              onClick={() => setMobileOpen(false)}
-              className="w-full flex items-center min-h-[50px] text-[17px] font-semibold text-[#101426] border-b border-[#EEF0F3]"
-            >
-              Home
-            </Link>
-
-            {/* AI first Link */}
-            <Link
-              href="/ai-first"
-              onClick={() => setMobileOpen(false)}
-              className="w-full flex items-center gap-2 min-h-[50px] text-[17px] font-semibold text-[#4F46E5] border-b border-[#EEF0F3]"
-            >
+          {/* Platform Accordion */}
+          <details className="border-b border-[#EEF0F3] group">
+            <summary className="min-h-[54px] flex items-center justify-between cursor-pointer text-[17px] font-semibold text-[#101426] select-none list-none [&::-webkit-details-marker]:hidden">
+              <span>Platform</span>
               <svg
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="currentColor"
+                stroke="#5B6170"
                 strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 aria-hidden="true"
+                className="transition-transform group-open:rotate-180"
               >
-                <path d={ICONS.spark} />
+                <path d="m6 9 6 6 6-6" />
               </svg>
-              <span>AI first</span>
-            </Link>
-
-            {/* Accordion Group 2: Platform */}
-            <div className="border-b border-[#EEF0F3]">
-              <button
-                type="button"
-                onClick={() =>
-                  setMobileExpanded(mobileExpanded === "platform" ? null : "platform")
-                }
-                className="w-full flex items-center justify-between min-h-[52px] text-[17px] font-semibold text-[#3730A3] text-left"
-              >
-                <span>Platform</span>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className={`transition-transform ${
-                    mobileExpanded === "platform" ? "rotate-180" : ""
-                  }`}
-                >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-              {mobileExpanded === "platform" && (
-                <div className="pb-3 pl-2 flex flex-col gap-2">
-                  <Link
-                    href="/ask-cerebro"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    Ask Cerebro
-                  </Link>
-                  <Link
-                    href="/platform/data-integration"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    AI data engine
-                  </Link>
-                  <Link
-                    href="/integrations#sheets"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    AI sheet mapping
-                  </Link>
-                  <Link
-                    href="/platform/dashboards"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    Dashboards
-                  </Link>
-                  <Link
-                    href="/platform/reports"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    Report builder
-                  </Link>
-                  <Link
-                    href="/platform/objective-reporting"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    Hierarchy & objectives
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* Accordion Group 3: Solutions */}
-            <div className="border-b border-[#EEF0F3]">
-              <button
-                type="button"
-                onClick={() =>
-                  setMobileExpanded(mobileExpanded === "solutions" ? null : "solutions")
-                }
-                className="w-full flex items-center justify-between min-h-[52px] text-[17px] font-semibold text-[#101426] text-left"
-              >
-                <span>Solutions</span>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className={`transition-transform ${
-                    mobileExpanded === "solutions" ? "rotate-180" : ""
-                  }`}
-                >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-              {mobileExpanded === "solutions" && (
-                <div className="pb-3 pl-2 flex flex-col gap-2">
-                  <Link
-                    href="/solutions/agencies"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    Agencies
-                  </Link>
-                  <Link
-                    href="/solutions/brands"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    Brands
-                  </Link>
-                  <Link
-                    href="/industries/banking-and-finance"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    Banking and finance
-                  </Link>
-                  <Link
-                    href="/industries/telecom"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    Telecom
-                  </Link>
-                  <Link
-                    href="/industries/fmcg"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    FMCG
-                  </Link>
-                  <Link
-                    href="/industries/ecommerce"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    E-commerce
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* Direct Links */}
-            <Link
-              href="/integrations"
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center min-h-[52px] border-b border-[#EEF0F3] text-[17px] font-semibold text-[#101426]"
-            >
-              Integrations
-            </Link>
-            <Link
-              href="/pricing"
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center min-h-[52px] border-b border-[#EEF0F3] text-[17px] font-semibold text-[#101426]"
-            >
-              Pricing
-            </Link>
-
-            {/* Accordion Group 4: Resources */}
-            <div className="border-b border-[#EEF0F3]">
-              <button
-                type="button"
-                onClick={() =>
-                  setMobileExpanded(mobileExpanded === "resources" ? null : "resources")
-                }
-                className="w-full flex items-center justify-between min-h-[52px] text-[17px] font-semibold text-[#101426] text-left"
-              >
-                <span>Resources</span>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className={`transition-transform ${
-                    mobileExpanded === "resources" ? "rotate-180" : ""
-                  }`}
-                >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-              {mobileExpanded === "resources" && (
-                <div className="pb-3 pl-2 flex flex-col gap-2">
-                  <Link
-                    href="/blog"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    Blog
-                  </Link>
-                  <Link
-                    href="/docs"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    Docs
-                  </Link>
-                  <Link
-                    href="/about"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    About
-                  </Link>
-                  <Link
-                    href="/security"
-                    onClick={() => setMobileOpen(false)}
-                    className="min-h-[38px] flex items-center text-[15px] text-[#2B3040]"
-                  >
-                    Security
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <Link
-              href="/contact"
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center min-h-[52px] border-b border-[#EEF0F3] text-[17px] font-semibold text-[#101426]"
-            >
-              Contact
-            </Link>
-
-            {/* Mobile Bottom CTA */}
-            <div className="mt-auto pt-6">
+            </summary>
+            <div className="pl-2 pb-3 flex flex-col">
               <Link
-                href="/demo"
+                href="/platform/data-integration"
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-center min-h-[48px] rounded-[10px] bg-[#4F46E5] text-white text-[15px] font-semibold"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
               >
-                Book a demo
+                Data integration
+              </Link>
+              <Link
+                href="/platform/dashboards"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                Dashboards
+              </Link>
+              <Link
+                href="/platform/objective-reporting"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                Objective engine
+              </Link>
+              <Link
+                href="/platform/reports"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                Reports
+              </Link>
+              <Link
+                href="/features"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                All features
               </Link>
             </div>
-          </div>
-        </div>
+          </details>
+
+          {/* Solutions Accordion */}
+          <details className="border-b border-[#EEF0F3] group">
+            <summary className="min-h-[54px] flex items-center justify-between cursor-pointer text-[17px] font-semibold text-[#101426] select-none list-none [&::-webkit-details-marker]:hidden">
+              <span>Solutions</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#5B6170"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className="transition-transform group-open:rotate-180"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <div className="pl-2 pb-3 flex flex-col">
+              <Link
+                href="/solutions/agencies"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                Agencies
+              </Link>
+              <Link
+                href="/solutions/brands"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                Brands
+              </Link>
+              <Link
+                href="/industries/banking-and-finance"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                Banking and finance
+              </Link>
+              <Link
+                href="/industries/telecom"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                Telecom
+              </Link>
+              <Link
+                href="/industries/fmcg"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                FMCG
+              </Link>
+              <Link
+                href="/industries/ecommerce"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                E-commerce
+              </Link>
+            </div>
+          </details>
+
+          {/* Resources Accordion */}
+          <details className="border-b border-[#EEF0F3] group">
+            <summary className="min-h-[54px] flex items-center justify-between cursor-pointer text-[17px] font-semibold text-[#101426] select-none list-none [&::-webkit-details-marker]:hidden">
+              <span>Resources</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#5B6170"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className="transition-transform group-open:rotate-180"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <div className="pl-2 pb-3 flex flex-col">
+              <Link
+                href="/blog"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                Blog
+              </Link>
+              <Link
+                href="/docs"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                Docs
+              </Link>
+              <Link
+                href="/faq"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                FAQ
+              </Link>
+              <Link
+                href="/about"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                About
+              </Link>
+              <Link
+                href="/security"
+                onClick={() => setMobileOpen(false)}
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+              >
+                Security
+              </Link>
+            </div>
+          </details>
+
+          {/* Direct Menu Links */}
+          <Link
+            href="/integrations"
+            onClick={() => setMobileOpen(false)}
+            className="min-h-[54px] flex items-center border-b border-[#EEF0F3] text-[17px] font-semibold text-[#101426]"
+          >
+            Integrations
+          </Link>
+          <Link
+            href="/pricing"
+            onClick={() => setMobileOpen(false)}
+            className="min-h-[54px] flex items-center border-b border-[#EEF0F3] text-[17px] font-semibold text-[#101426]"
+          >
+            Pricing
+          </Link>
+          <Link
+            href="/contact"
+            onClick={() => setMobileOpen(false)}
+            className="min-h-[54px] flex items-center border-b border-[#EEF0F3] text-[17px] font-semibold text-[#101426]"
+          >
+            Contact
+          </Link>
+
+          {/* Book a demo Button */}
+          <Link
+            href="/demo"
+            onClick={() => setMobileOpen(false)}
+            className="mt-5 flex items-center justify-center h-12 rounded-[24px] bg-[#4F46E5] text-white text-[15px] font-semibold shadow-sm"
+          >
+            Book a demo
+          </Link>
+        </nav>
       )}
     </header>
   );
