@@ -53,15 +53,6 @@ export function HomeV2() {
     }, 320);
   };
 
-  const heroLinks = [
-    "M100 100 Q 224 224 280 280",
-    "M460 100 Q 336 224 280 280",
-    "M100 280 Q 190 280 280 280",
-    "M460 280 Q 370 280 280 280",
-    "M100 460 Q 224 336 280 280",
-    "M460 460 Q 336 336 280 280",
-  ];
-
   const askTabs: AskTabItem[] = [
     {
       title: "Why did it change?",
@@ -127,334 +118,426 @@ export function HomeV2() {
 
   return (
     <div className="font-sans text-[#1C2433] bg-white min-w-0 tabular-nums">
-      {/* ── 1. Immersive Full-Screen Hero Section (100svh Living Canvas) ── */}
+      {/* ── 1. Expansive Living Pipeline Canvas Hero (Figma Weave Style) ── */}
       <section
         id="top"
-        className="relative overflow-hidden min-h-[100svh] min-h-[740px] max-h-[1060px] flex flex-col justify-center bg-gradient-to-b from-[#FAFBFD] via-white to-[#F6F8FB] border-b border-[#E2E8F0] pt-8 pb-16 lg:py-0"
+        className="relative overflow-hidden bg-gradient-to-b from-[#FAFBFD] via-[#F4F8FC] to-[#EBF3FB] border-b border-[#E2E8F0] pt-8 pb-14 lg:pt-12 lg:pb-20"
       >
-        {/* Subtle technical coordinate canvas grid */}
+        {/* Subtle technical coordinate canvas dot matrix */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 pointer-events-none opacity-30"
+          className="absolute inset-0 pointer-events-none opacity-25"
           style={{
-            backgroundImage: "radial-gradient(#0070C2 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(#0070C2 1.2px, transparent 1.2px)",
             backgroundSize: "28px 28px",
           }}
         />
 
-        {/* Ambient atmospheric radial glow */}
+        {/* Ambient luminous energy glow across the canvas */}
         <div
           aria-hidden="true"
-          className="absolute top-1/2 right-[8%] -translate-y-1/2 w-[650px] h-[650px] rounded-full pointer-events-none opacity-20 blur-3xl bg-[radial-gradient(circle,_#0070C2_0%,_#022771_65%,_transparent_100%)]"
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[550px] rounded-full pointer-events-none opacity-25 blur-3xl bg-[radial-gradient(ellipse,_#0070C2_0%,_#8EC5F0_45%,_transparent_75%)]"
         />
 
-        <div className="relative max-w-[1240px] w-full mx-auto px-6 lg:px-10 box-border flex gap-12 lg:gap-16 items-center flex-wrap my-auto">
-          {/* Hero Left Content */}
-          <div className="flex-1 min-w-[300px] lg:min-w-[460px] z-10">
-            {/* Live Pipeline Kicker Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E8F2FC] border border-[#BFD8F0] text-[#004C87] text-[13px] font-semibold mb-5 shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-[#0070C2] relative inline-flex">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0070C2] opacity-75" />
-              </span>
-              <span>Cerebro dNano · Unified Marketing Intelligence</span>
+        {/* ── TOP DISPLAY HEADER (Split-column, High impact) ── */}
+        <div className="relative max-w-[1440px] w-full mx-auto px-6 sm:px-8 lg:px-12 mb-8 lg:mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+            {/* Left Title Block */}
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E8F2FC] border border-[#BFD8F0] text-[#004C87] text-[13px] font-semibold mb-4 shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-[#0070C2] relative inline-flex">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0070C2] opacity-75" />
+                </span>
+                <span>Cerebro dNano · Unified Marketing Intelligence</span>
+              </div>
+              <h1 className="m-0 font-heading font-bold text-[38px] sm:text-[52px] lg:text-[68px] leading-[1.04] tracking-[-0.035em] text-[#000000]">
+                Your AI analyst for every ad platform.
+              </h1>
+              <p className="mt-4 max-w-[580px] text-[17px] lg:text-[19px] leading-[1.55] text-[#5A6675]">
+                Bring in any marketing data. Cerebro AI cleans it, standardizes objectives, and answers your performance questions with full audit steps.
+              </p>
             </div>
 
-            <h1 className="m-0 font-heading font-semibold text-[38px] sm:text-[48px] lg:text-[68px] leading-[1.03] tracking-[-0.035em] text-[#000000]">
-              Your AI analyst for every ad platform.
-            </h1>
-            <p className="mt-5 lg:mt-6 max-w-[500px] text-[17px] lg:text-[19px] leading-[1.55] text-[#5A6675]">
-              Bring in any marketing data. Cerebro AI cleans it, standardizes objectives, and answers your performance questions with full audit steps.
-            </p>
-
-            <div className="mt-8 flex gap-3.5 flex-wrap items-center">
-              <Link
-                href="/demo"
-                className="group whitespace-nowrap shrink-0 inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full bg-[#0070C2] hover:bg-[#005DA3] text-white text-[15px] font-semibold transition-all duration-200 shadow-[0_4px_16px_rgba(0,112,194,0.28)] hover:shadow-[0_6px_24px_rgba(0,112,194,0.4)] hover:-translate-y-0.5 active:translate-y-0"
-              >
-                <span>Book a demo</span>
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="transition-transform group-hover:translate-x-1"
+            {/* Right Action & Telemetry Block */}
+            <div className="lg:col-span-5 flex flex-col items-start lg:items-end gap-5">
+              <div className="flex flex-wrap items-center gap-3.5">
+                <Link
+                  href="/demo"
+                  className="group whitespace-nowrap shrink-0 inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full bg-[#0070C2] hover:bg-[#005DA3] text-white text-[15px] font-semibold transition-all duration-200 shadow-[0_4px_16px_rgba(0,112,194,0.28)] hover:shadow-[0_6px_24px_rgba(0,112,194,0.4)] hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
-              <a
-                href="#ways"
-                className="whitespace-nowrap shrink-0 inline-flex items-center justify-center h-12 px-6 rounded-full bg-white hover:bg-[#F6F8FB] border border-[#CBD5E1] text-[#1C2433] text-[15px] font-semibold transition-all hover:border-[#0070C2] hover:-translate-y-0.5 active:translate-y-0"
-              >
-                See how it works
-              </a>
-            </div>
+                  <span>Book a demo</span>
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="transition-transform group-hover:translate-x-1"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <a
+                  href="#ways"
+                  className="whitespace-nowrap shrink-0 inline-flex items-center justify-center h-12 px-6 rounded-full bg-white hover:bg-[#F6F8FB] border border-[#CBD5E1] text-[#1C2433] text-[15px] font-semibold transition-all hover:border-[#0070C2] hover:-translate-y-0.5 active:translate-y-0 shadow-xs"
+                >
+                  See how it works
+                </a>
+              </div>
 
-            {/* Live Micro-Signals strip */}
-            <div className="mt-8 pt-6 border-t border-[#E2E8F0]/80 flex items-center gap-6 text-[13px] text-[#5A6675] flex-wrap">
-              <div className="flex items-center gap-1.5 font-medium">
-                <span className="w-2 h-2 rounded-full bg-[#15803D]" />
-                <span>3 Native APIs Live</span>
-              </div>
-              <div className="flex items-center gap-1.5 font-medium">
-                <span className="w-2 h-2 rounded-full bg-[#0070C2]" />
-                <span>Zero raw ad tracking cookies</span>
-              </div>
-              <div className="flex items-center gap-1.5 font-medium">
-                <span className="w-2 h-2 rounded-full bg-[#022771]" />
-                <span>PKR & USD Normalization</span>
+              {/* Live Micro-Signals */}
+              <div className="flex items-center gap-5 text-[13px] text-[#5A6675] flex-wrap justify-start lg:justify-end">
+                <div className="flex items-center gap-1.5 font-medium">
+                  <span className="w-2 h-2 rounded-full bg-[#15803D]" />
+                  <span>3 Native APIs Live</span>
+                </div>
+                <div className="flex items-center gap-1.5 font-medium">
+                  <span className="w-2 h-2 rounded-full bg-[#0070C2]" />
+                  <span>Zero raw ad tracking cookies</span>
+                </div>
+                <div className="flex items-center gap-1.5 font-medium">
+                  <span className="w-2 h-2 rounded-full bg-[#022771]" />
+                  <span>PKR & USD Normalization</span>
+                </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Hero Right Visual (Living Spatial Node Canvas) */}
-          <div className="flex-1 min-w-[300px] lg:min-w-[500px] max-w-[580px] relative mx-auto w-full">
-            <div className="relative w-full aspect-square rounded-[32px] overflow-hidden bg-[#011640] shadow-[0_24px_70px_rgba(1,22,64,0.4),0_2px_12px_rgba(0,0,0,0.12)] border border-white/10">
-              {/* Radial depth glow */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    "radial-gradient(circle at 50% 50%, rgba(0,112,194,0.55) 0%, rgba(0,112,194,0.18) 32%, rgba(1,22,64,0) 66%)",
-                }}
-              />
+        {/* ── LIVING PIPELINE CANVAS (Panoramic Spatial Node Stage) ── */}
+        <div className="relative max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="relative w-full rounded-[28px] sm:rounded-[36px] bg-[#EEF5FC]/85 border border-[#BFD8F0]/90 shadow-[0_24px_70px_rgba(1,22,64,0.08),0_2px_12px_rgba(0,0,0,0.03)] overflow-hidden p-6 sm:p-8 lg:p-10 min-h-[580px] lg:min-h-[640px] flex flex-col justify-between">
+            {/* Canvas Ambient Depth Glow */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(circle at 50% 50%, rgba(0,112,194,0.18) 0%, rgba(142,197,240,0.08) 35%, rgba(238,245,252,0) 70%)",
+              }}
+            />
 
-              <svg
-                role="img"
-                aria-label="Cerebro dNano live intelligence pipeline connecting ad channels to central AI core"
-                viewBox="0 0 560 560"
-                className="absolute inset-0 w-full h-full"
-              >
-                <defs>
-                  <radialGradient id="h3-core" cx="40%" cy="32%" r="78%">
-                    <stop offset="0%" stopColor="#6CC0F5" />
-                    <stop offset="45%" stopColor="#0070C2" />
-                    <stop offset="100%" stopColor="#022771" />
-                  </radialGradient>
-                  <linearGradient id="stream-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#8EC5F0" stopOpacity="0.4" />
-                    <stop offset="50%" stopColor="#6CC0F5" stopOpacity="1" />
-                    <stop offset="100%" stopColor="#0070C2" stopOpacity="0.8" />
-                  </linearGradient>
-                </defs>
-
-                {/* Tilted orbital concentric rings */}
-                <ellipse
-                  cx="280"
-                  cy="280"
-                  rx="262"
-                  ry="105"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.08)"
-                  className="animate-spin-slow origin-[280px_280px]"
-                />
-                <ellipse
-                  cx="280"
-                  cy="280"
-                  rx="240"
-                  ry="95"
-                  fill="none"
-                  stroke="rgba(142,197,240,0.12)"
-                  transform="rotate(32 280 280)"
-                />
-
-                {/* Base flow lines */}
-                {heroLinks.map((l, idx) => (
-                  <path
-                    key={`track-${idx}`}
-                    d={l}
-                    fill="none"
-                    stroke="rgba(142,197,240,0.22)"
-                    strokeWidth="1.8"
-                    strokeDasharray="4 6"
-                  />
-                ))}
-
-                {/* Animated streaming light pulses */}
-                {heroLinks.map((l, idx) => (
-                  <path
-                    key={`pulse-${idx}`}
-                    d={l}
-                    fill="none"
-                    stroke="url(#stream-gradient)"
-                    strokeWidth="2.5"
-                    className="animate-flow-stream"
-                    strokeLinecap="round"
-                  />
-                ))}
-
-                {/* Continuous streaming packet dots along quadratic paths */}
-                <circle r="4" fill="#6CC0F5" filter="drop-shadow(0 0 6px #6CC0F5)">
-                  <animateMotion path="M100 100 Q 224 224 280 280" dur="2.4s" repeatCount="indefinite" />
-                </circle>
-                <circle r="4" fill="#8EC5F0" filter="drop-shadow(0 0 6px #6CC0F5)">
-                  <animateMotion path="M460 100 Q 336 224 280 280" dur="2.8s" repeatCount="indefinite" />
-                </circle>
-                <circle r="4" fill="#6CC0F5" filter="drop-shadow(0 0 6px #6CC0F5)">
-                  <animateMotion path="M100 460 Q 224 336 280 280" dur="3.2s" repeatCount="indefinite" />
-                </circle>
-                <circle r="4" fill="#8EC5F0" filter="drop-shadow(0 0 6px #6CC0F5)">
-                  <animateMotion path="M460 460 Q 336 336 280 280" dur="2.6s" repeatCount="indefinite" />
-                </circle>
-
-                {/* Passive grid nodes for depth */}
-                {[
-                  [190, 100], [280, 100], [370, 100],
-                  [100, 190], [190, 190], [280, 190], [370, 190], [460, 190],
-                  [190, 280], [370, 280],
-                  [100, 370], [190, 370], [280, 370], [370, 370], [460, 370],
-                  [190, 460], [280, 460], [370, 460]
-                ].map(([nx, ny], idx) => (
-                  <circle
-                    key={idx}
-                    cx={nx}
-                    cy={ny}
-                    r={18}
-                    fill="rgba(255,255,255,0.03)"
-                    stroke="rgba(255,255,255,0.14)"
-                    strokeWidth="1.2"
-                  />
-                ))}
-
-                {/* Active source nodes with official logos */}
-                {/* 1. Meta (100, 100) */}
-                <circle cx="100" cy="100" r="34" fill="rgba(142,197,240,0.14)" />
-                <circle cx="100" cy="100" r="24" fill="#FFFFFF" />
-                <image href="/brand/platforms/meta.png" x="87" y="87" width="26" height="26" />
-
-                {/* 2. Google Ads (460, 100) */}
-                <circle cx="460" cy="100" r="34" fill="rgba(142,197,240,0.14)" />
-                <circle cx="460" cy="100" r="24" fill="#FFFFFF" />
-                <image href="/brand/platforms/google.png" x="447" y="87" width="26" height="26" />
-
-                {/* 3. Custom connector + (100, 280) */}
-                <circle cx="100" cy="280" r="34" fill="rgba(142,197,240,0.14)" />
-                <circle cx="100" cy="280" r="24" fill="#FFFFFF" />
-                <text x="100" y="286" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="700" fill="#0070C2">+</text>
-
-                {/* 4. AI sparkle ✦ (460, 280) */}
-                <circle cx="460" cy="280" r="34" fill="rgba(142,197,240,0.14)" />
-                <circle cx="460" cy="280" r="24" fill="#FFFFFF" />
-                <text x="460" y="286" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="700" fill="#0070C2">✦</text>
-
-                {/* 5. TikTok (100, 460) */}
-                <circle cx="100" cy="460" r="34" fill="rgba(142,197,240,0.14)" />
-                <circle cx="100" cy="460" r="24" fill="#FFFFFF" />
-                <image href="/brand/platforms/tiktok.png" x="87" y="447" width="26" height="26" />
-
-                {/* 6. Upload Sheets (460, 460) */}
-                <circle cx="460" cy="460" r="34" fill="rgba(142,197,240,0.14)" />
-                <circle cx="460" cy="460" r="24" fill="#FFFFFF" />
-                <image href="/brand/platforms/sheets.svg" x="447" y="447" width="26" height="26" />
-
-                {/* Center Core Node */}
-                <circle cx="280" cy="280" r="105" fill="none" stroke="rgba(0,112,194,0.12)" strokeWidth="1" />
-                <circle cx="280" cy="280" r="88" fill="none" stroke="rgba(0,112,194,0.22)" strokeWidth="1.5" strokeDasharray="5 7" className="animate-spin-slow origin-[280px_280px]" />
-                <circle cx="280" cy="280" r="76" fill="none" stroke="rgba(0,112,194,0.28)" strokeWidth="8" />
-                <circle cx="280" cy="280" r="64" fill="url(#h3-core)" className="animate-pulse-glow origin-[280px_280px]" />
-              </svg>
-
-              {/* Center Cerebro White Mark */}
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[14%] pointer-events-none">
-                <Image
-                  src="/brand/cerebro-mark-white.svg"
-                  alt="Cerebro Core"
-                  width={78}
-                  height={78}
-                  className="w-full h-auto block drop-shadow-[0_0_16px_rgba(108,192,245,0.7)]"
-                />
+            {/* Canvas Top Bar - System Status */}
+            <div className="relative z-10 flex items-center justify-between pb-4 border-b border-[#BFD8F0]/60 text-[12px] font-semibold text-[#004C87]">
+              <div className="inline-flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#0070C2] animate-pulse" />
+                <span className="tracking-wide uppercase text-[11px] font-bold">Cerebro dNano Living Pipeline Graph</span>
+              </div>
+              <div className="hidden sm:flex items-center gap-4 text-[#5A6675] text-[11.5px] font-medium">
+                <span>Multi-touch attribution active</span>
+                <span className="text-[#BFD8F0]">|</span>
+                <span className="text-[#166534] bg-[#DCFCE7] px-2 py-0.5 rounded-full font-semibold">Sub-second Latency</span>
               </div>
             </div>
 
-            {/* Floating Top-Right Live ROAS Widget */}
-            <div className="absolute -right-3 sm:-right-6 lg:-right-8 top-6 sm:top-8 w-[205px] bg-white/95 backdrop-blur-md rounded-[18px] shadow-[0_16px_40px_rgba(1,22,64,0.18)] border border-[#E2E8F0] p-3.5 flex flex-col gap-1.5 z-20 animate-float hidden sm:flex">
-              <div className="flex items-center justify-between text-[11.5px] font-semibold text-[#5A6675]">
-                <span>Blended ROAS</span>
-                <span className="text-[#166534] bg-[#DCFCE7] px-1.5 py-0.5 rounded-full text-[10.5px] font-bold">
-                  ↑ 18.4%
-                </span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="font-heading text-[22px] font-bold text-[#000000] tabular-nums">
-                  3.82x
-                </span>
-                <span className="text-[12px] text-[#5A6675]">vs 3.22x goal</span>
-              </div>
-              <svg width="100%" height="22" viewBox="0 0 160 22" fill="none">
-                <path
-                  d="M0 18 L25 16 L50 20 L75 12 L100 14 L125 7 L160 2"
-                  stroke="#0070C2"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
+            {/* ── THE NODE GRAPH STAGE (Desktop 3-Column Pipeline / Mobile Stacked) ── */}
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center my-auto py-6">
 
-            {/* Floating Interactive Ask Cerebro Dialogue Card */}
-            <div className="absolute -left-2 sm:-left-6 lg:-left-10 -bottom-6 sm:-bottom-8 w-[290px] sm:w-[325px] bg-white/95 backdrop-blur-md rounded-[20px] shadow-[0_20px_50px_rgba(1,22,64,0.22),0_4px_12px_rgba(0,0,0,0.06)] border border-[#E2E8F0] p-4 flex flex-col gap-3 z-20 transition-all duration-300">
-              <div className="flex items-center justify-between border-b border-[#F0F2F6] pb-2">
-                <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#0070C2]">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" />
-                  </svg>
-                  <span>Ask Cerebro AI</span>
-                </span>
-                <span className="text-[10px] font-medium text-[#166534] bg-[#DCFCE7] px-2 py-0.5 rounded-full font-semibold">
-                  Live Model
-                </span>
-              </div>
+              {/* STAGE 1: INGESTION NODES (Left - Cols 1 to 4) */}
+              <div className="lg:col-span-4 flex flex-col gap-3 relative">
+                <div className="text-[11px] font-bold uppercase tracking-wider text-[#0070C2] mb-1 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0070C2]" />
+                  <span>Data Ingestion Nodes</span>
+                </div>
 
-              {/* Quick question selector tabs */}
-              <div className="flex gap-1.5 overflow-x-auto pb-0.5 scrollbar-none">
-                {heroQuestions.map((item, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => handleSelectQuestion(idx)}
-                    className={`text-[11px] font-semibold px-2.5 py-1 rounded-full whitespace-nowrap transition-all ${
-                      heroPromptIdx === idx
-                        ? "bg-[#0070C2] text-white shadow-xs"
-                        : "bg-[#F1F3F7] text-[#5A6675] hover:bg-[#E2E8F0]"
-                    }`}
-                  >
-                    {idx === 0 ? "Why CPA?" : idx === 1 ? "Best Audience" : "Pacing"}
-                  </button>
-                ))}
-              </div>
-
-              {/* Question Bubble */}
-              <div className="self-end bg-[#F2F4F8] rounded-[14px_14px_4px_14px] py-1.5 px-3 text-[12.5px] font-medium text-[#000000]">
-                {heroQuestions[heroPromptIdx].q}
-              </div>
-
-              {/* Answer Bubble with loading state */}
-              <div className="flex items-start gap-2.5 text-[13px] leading-relaxed text-[#000000] bg-[#EEF5FC] p-2.5 rounded-[12px]">
-                <span className="w-5 h-5 rounded-[6px] bg-[#0070C2] text-white inline-flex items-center justify-center shrink-0 mt-0.5">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" />
-                  </svg>
-                </span>
-                {isThinking ? (
-                  <div className="flex items-center gap-1.5 py-1 text-[#0070C2] font-semibold text-[12px]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0070C2] animate-bounce" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0070C2] animate-bounce [animation-delay:0.15s]" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0070C2] animate-bounce [animation-delay:0.3s]" />
-                    <span>Synthesizing cross-channel data...</span>
+                {/* Node 1: Meta Ads */}
+                <div className="relative bg-white/95 backdrop-blur-md rounded-[16px] p-3.5 border border-[#BFD8F0] shadow-[0_4px_16px_rgba(1,22,64,0.05)] hover:border-[#0070C2] hover:shadow-[0_8px_24px_rgba(0,112,194,0.15)] transition-all flex items-center justify-between group">
+                  <div className="flex items-center gap-3">
+                    <span className="w-10 h-10 rounded-[12px] bg-[#EEF5FC] border border-[#BFD8F0]/60 flex items-center justify-center shrink-0">
+                      <Image src="/brand/platforms/meta.png" alt="Meta Ads" width={22} height={22} className="object-contain" />
+                    </span>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[13.5px] font-bold text-[#000000]">Meta Ads</span>
+                        <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-md bg-[#DCFCE7] text-[#166534]">Live API</span>
+                      </div>
+                      <p className="m-0 text-[11.5px] text-[#5A6675]">Conversions API · PKR 1.84M Spend · 4.1x ROAS</p>
+                    </div>
                   </div>
-                ) : (
-                  <div>
-                    <p className="m-0 font-medium text-[12.5px] leading-snug">{heroQuestions[heroPromptIdx].a}</p>
-                    <span className="mt-1 inline-block text-[10.5px] font-semibold text-[#005DA3]">
-                      Verified from {heroQuestions[heroPromptIdx].source}
+                  {/* Socket Anchor Dot on Right */}
+                  <span aria-hidden="true" className="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border-2 border-[#0070C2] shadow-[0_0_8px_rgba(0,112,194,0.6)]" />
+                </div>
+
+                {/* Node 2: Google Ads */}
+                <div className="relative bg-white/95 backdrop-blur-md rounded-[16px] p-3.5 border border-[#BFD8F0] shadow-[0_4px_16px_rgba(1,22,64,0.05)] hover:border-[#0070C2] hover:shadow-[0_8px_24px_rgba(0,112,194,0.15)] transition-all flex items-center justify-between group">
+                  <div className="flex items-center gap-3">
+                    <span className="w-10 h-10 rounded-[12px] bg-[#EEF5FC] border border-[#BFD8F0]/60 flex items-center justify-center shrink-0">
+                      <Image src="/brand/platforms/google.png" alt="Google Ads" width={22} height={22} className="object-contain" />
+                    </span>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[13.5px] font-bold text-[#000000]">Google Ads</span>
+                        <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-md bg-[#DCFCE7] text-[#166534]">Live API</span>
+                      </div>
+                      <p className="m-0 text-[11.5px] text-[#5A6675]">Search & PMax · 18.2K Conv · PKR 240 CPA</p>
+                    </div>
+                  </div>
+                  {/* Socket Anchor Dot on Right */}
+                  <span aria-hidden="true" className="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border-2 border-[#0070C2] shadow-[0_0_8px_rgba(0,112,194,0.6)]" />
+                </div>
+
+                {/* Node 3: TikTok Ads */}
+                <div className="relative bg-white/95 backdrop-blur-md rounded-[16px] p-3.5 border border-[#BFD8F0] shadow-[0_4px_16px_rgba(1,22,64,0.05)] hover:border-[#0070C2] hover:shadow-[0_8px_24px_rgba(0,112,194,0.15)] transition-all flex items-center justify-between group">
+                  <div className="flex items-center gap-3">
+                    <span className="w-10 h-10 rounded-[12px] bg-[#EEF5FC] border border-[#BFD8F0]/60 flex items-center justify-center shrink-0">
+                      <Image src="/brand/platforms/tiktok.png" alt="TikTok Ads" width={22} height={22} className="object-contain" />
+                    </span>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[13.5px] font-bold text-[#000000]">TikTok Ads</span>
+                        <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-md bg-[#DCFCE7] text-[#166534]">Streaming</span>
+                      </div>
+                      <p className="m-0 text-[11.5px] text-[#5A6675]">Spark Ads & Reach · 82% CPA Shift Detected</p>
+                    </div>
+                  </div>
+                  {/* Socket Anchor Dot on Right */}
+                  <span aria-hidden="true" className="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border-2 border-[#0070C2] shadow-[0_0_8px_rgba(0,112,194,0.6)]" />
+                </div>
+
+                {/* Node 4: Offline Sales & POS */}
+                <div className="relative bg-white/95 backdrop-blur-md rounded-[16px] p-3.5 border border-[#BFD8F0] shadow-[0_4px_16px_rgba(1,22,64,0.05)] hover:border-[#0070C2] hover:shadow-[0_8px_24px_rgba(0,112,194,0.15)] transition-all flex items-center justify-between group">
+                  <div className="flex items-center gap-3">
+                    <span className="w-10 h-10 rounded-[12px] bg-[#EEF5FC] border border-[#BFD8F0]/60 flex items-center justify-center shrink-0">
+                      <Image src="/brand/platforms/sheets.svg" alt="Sheets & POS" width={22} height={22} className="object-contain" />
+                    </span>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[13.5px] font-bold text-[#000000]">Offline POS & Sheets</span>
+                        <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-md bg-[#E8F2FC] text-[#0070C2]">Hourly Batch</span>
+                      </div>
+                      <p className="m-0 text-[11.5px] text-[#5A6675]">Karachi & Lahore Stores · PKR 8.4M Offline Revenue</p>
+                    </div>
+                  </div>
+                  {/* Socket Anchor Dot on Right */}
+                  <span aria-hidden="true" className="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border-2 border-[#0070C2] shadow-[0_0_8px_rgba(0,112,194,0.6)]" />
+                </div>
+              </div>
+
+              {/* STAGE 2: CEREBRO dNANO NEURAL CORE (Center - Cols 5 to 7) */}
+              <div className="lg:col-span-4 flex flex-col items-center justify-center relative min-h-[300px] text-center px-4">
+                {/* Luminous orbital rings and glowing brain center */}
+                <div className="relative w-[190px] h-[190px] flex items-center justify-center">
+                  {/* Outer slow-spinning dashed ring */}
+                  <div className="absolute inset-0 rounded-full border-2 border-dashed border-[#0070C2]/30 animate-spin-slow" />
+                  {/* Mid pulse ring */}
+                  <div className="absolute inset-3 rounded-full border border-[#8EC5F0]/50 animate-pulse-glow" />
+                  {/* Inner luminous glow aura */}
+                  <div className="absolute inset-6 rounded-full bg-[radial-gradient(circle,_#0070C2_0%,_#022771_100%)] shadow-[0_0_36px_rgba(0,112,194,0.55)] flex items-center justify-center" />
+
+                  {/* Cerebro Mark in Center */}
+                  <div className="relative z-10 w-16 h-16 flex items-center justify-center">
+                    <Image
+                      src="/brand/cerebro-mark-white.svg"
+                      alt="Cerebro dNano Core"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain drop-shadow-[0_0_12px_rgba(142,197,240,0.8)]"
+                    />
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E8F2FC] text-[#004C87] text-[12px] font-bold border border-[#BFD8F0]">
+                    <span>Cerebro dNano AI Core</span>
+                  </div>
+                  <p className="mt-1.5 text-[12px] text-[#5A6675] max-w-[260px] mx-auto leading-snug">
+                    Deterministic cross-channel taxonomy & multi-touch attribution
+                  </p>
+                  <div className="mt-2 flex items-center justify-center gap-2 text-[10.5px] font-semibold text-[#166534]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#166534] animate-ping" />
+                    <span>0 Hallucinations · Verified Audits</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* STAGE 3: INTERACTIVE DECISION & ANALYST NODES (Right - Cols 8 to 12) */}
+              <div className="lg:col-span-4 flex flex-col gap-3.5 relative">
+                <div className="text-[11px] font-bold uppercase tracking-wider text-[#0070C2] mb-1 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0070C2]" />
+                  <span>Decision & Telemetry Outputs</span>
+                </div>
+
+                {/* Node 5: Interactive Ask Cerebro AI Console */}
+                <div className="relative bg-white/95 backdrop-blur-md rounded-[20px] p-4 border border-[#BFD8F0] shadow-[0_12px_32px_rgba(1,22,64,0.08)] flex flex-col gap-3 transition-all">
+                  {/* Socket Anchor Dot on Left */}
+                  <span aria-hidden="true" className="hidden lg:block absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border-2 border-[#0070C2] shadow-[0_0_8px_rgba(0,112,194,0.6)]" />
+
+                  <div className="flex items-center justify-between border-b border-[#F0F2F6] pb-2">
+                    <span className="inline-flex items-center gap-1.5 text-[12px] font-bold text-[#0070C2]">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" />
+                      </svg>
+                      <span>Ask Cerebro AI</span>
+                    </span>
+                    <span className="text-[10px] font-semibold text-[#166534] bg-[#DCFCE7] px-2 py-0.5 rounded-full">
+                      Audited Model
                     </span>
                   </div>
-                )}
+
+                  {/* Interactive Question Tabs */}
+                  <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+                    {heroQuestions.map((item, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => handleSelectQuestion(idx)}
+                        className={`text-[11px] font-semibold px-2.5 py-1 rounded-full whitespace-nowrap transition-all cursor-pointer ${
+                          heroPromptIdx === idx
+                            ? "bg-[#0070C2] text-white shadow-xs"
+                            : "bg-[#F1F3F7] text-[#5A6675] hover:bg-[#E2E8F0]"
+                        }`}
+                      >
+                        {idx === 0 ? "Why CPA?" : idx === 1 ? "Best Audience" : "Pacing"}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Dynamic Question Bubble */}
+                  <div className="self-end bg-[#F2F4F8] rounded-[14px_14px_4px_14px] py-1.5 px-3 text-[12px] font-medium text-[#000000]">
+                    {heroQuestions[heroPromptIdx].q}
+                  </div>
+
+                  {/* Dynamic Answer Bubble */}
+                  <div className="flex items-start gap-2.5 text-[12.5px] leading-relaxed text-[#000000] bg-[#EEF5FC] p-2.5 rounded-[12px] border border-[#BFD8F0]/50">
+                    <span className="w-5 h-5 rounded-[6px] bg-[#0070C2] text-white inline-flex items-center justify-center shrink-0 mt-0.5">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" />
+                      </svg>
+                    </span>
+                    {isThinking ? (
+                      <div className="flex items-center gap-1.5 py-1 text-[#0070C2] font-semibold text-[11.5px]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0070C2] animate-bounce" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0070C2] animate-bounce [animation-delay:0.15s]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0070C2] animate-bounce [animation-delay:0.3s]" />
+                        <span>Synthesizing cross-channel data...</span>
+                      </div>
+                    ) : (
+                      <div>
+                        <div className="flex items-baseline gap-2 mb-0.5">
+                          <span className="font-heading font-bold text-[14px] text-[#0070C2]">{heroQuestions[heroPromptIdx].change}</span>
+                          <span className="text-[10px] text-[#166534] bg-[#DCFCE7] px-1.5 py-0.2 rounded font-semibold">Audited</span>
+                        </div>
+                        <p className="m-0 font-medium text-[12px] leading-snug">{heroQuestions[heroPromptIdx].a}</p>
+                        <span className="mt-1 inline-block text-[10.5px] font-semibold text-[#005DA3]">
+                          ✓ Verified from {heroQuestions[heroPromptIdx].source}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Node 6: Blended ROAS & Telemetry Card */}
+                <div className="relative bg-white/95 backdrop-blur-md rounded-[20px] p-3.5 border border-[#BFD8F0] shadow-[0_8px_24px_rgba(1,22,64,0.06)] flex flex-col gap-2">
+                  {/* Socket Anchor Dot on Left */}
+                  <span aria-hidden="true" className="hidden lg:block absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border-2 border-[#0070C2] shadow-[0_0_8px_rgba(0,112,194,0.6)]" />
+
+                  <div className="flex items-center justify-between text-[11.5px] font-semibold text-[#5A6675]">
+                    <span className="text-[#000000] font-bold">Blended Real-Time ROAS</span>
+                    <span className="text-[#166534] bg-[#DCFCE7] px-2 py-0.5 rounded-full text-[10.5px] font-bold">
+                      ↑ 18.4%
+                    </span>
+                  </div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-heading text-[22px] font-bold text-[#000000] tabular-nums">
+                      3.82x
+                    </span>
+                    <span className="text-[12px] text-[#5A6675]">vs 3.22x target</span>
+                  </div>
+                  <svg width="100%" height="24" viewBox="0 0 200 24" fill="none">
+                    <path
+                      d="M0 20 L30 17 L65 22 L100 12 L135 15 L170 7 L200 2"
+                      stroke="#0070C2"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <div className="mt-1 pt-1.5 border-t border-[#F0F2F6] flex items-center justify-between text-[11px] text-[#5A6675]">
+                    <span>Automated Action:</span>
+                    <span className="font-semibold text-[#0070C2]">Shift PKR 300K to Feed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ── SVG FLUID BEZIER CONNECTOR CABLES ACROSS THE CANVAS (Desktop) ── */}
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none hidden lg:block"
+              viewBox="0 0 1200 600"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id="wire-grad-left" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#8EC5F0" stopOpacity="0.7" />
+                  <stop offset="50%" stopColor="#0070C2" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#022771" stopOpacity="1" />
+                </linearGradient>
+                <linearGradient id="wire-grad-right" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#022771" stopOpacity="1" />
+                  <stop offset="50%" stopColor="#0070C2" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#8EC5F0" stopOpacity="0.7" />
+                </linearGradient>
+              </defs>
+
+              {/* Ingestion Cables (Left cards into center Core) */}
+              {/* Path 1: Meta (approx 380, 140) -> Core (600, 300) */}
+              <path d="M 380 140 C 470 140, 520 280, 560 300" fill="none" stroke="#BFD8F0" strokeWidth="1.8" strokeDasharray="4 6" />
+              <path d="M 380 140 C 470 140, 520 280, 560 300" fill="none" stroke="url(#wire-grad-left)" strokeWidth="2.5" className="animate-flow-stream" />
+              <circle r="4" fill="#0070C2" filter="drop-shadow(0 0 6px #0070C2)">
+                <animateMotion path="M 380 140 C 470 140, 520 280, 560 300" dur="2.8s" repeatCount="indefinite" />
+              </circle>
+
+              {/* Path 2: Google (approx 380, 230) -> Core (600, 300) */}
+              <path d="M 380 230 C 460 230, 520 290, 560 300" fill="none" stroke="#BFD8F0" strokeWidth="1.8" strokeDasharray="4 6" />
+              <path d="M 380 230 C 460 230, 520 290, 560 300" fill="none" stroke="url(#wire-grad-left)" strokeWidth="2.5" className="animate-flow-stream" />
+              <circle r="4" fill="#0070C2" filter="drop-shadow(0 0 6px #0070C2)">
+                <animateMotion path="M 380 230 C 460 230, 520 290, 560 300" dur="2.4s" repeatCount="indefinite" />
+              </circle>
+
+              {/* Path 3: TikTok (approx 380, 330) -> Core (600, 300) */}
+              <path d="M 380 330 C 460 330, 520 310, 560 300" fill="none" stroke="#BFD8F0" strokeWidth="1.8" strokeDasharray="4 6" />
+              <path d="M 380 330 C 460 330, 520 310, 560 300" fill="none" stroke="url(#wire-grad-left)" strokeWidth="2.5" className="animate-flow-stream" />
+              <circle r="4" fill="#0070C2" filter="drop-shadow(0 0 6px #0070C2)">
+                <animateMotion path="M 380 330 C 460 330, 520 310, 560 300" dur="3.0s" repeatCount="indefinite" />
+              </circle>
+
+              {/* Path 4: Offline POS (approx 380, 430) -> Core (600, 300) */}
+              <path d="M 380 430 C 470 430, 520 320, 560 300" fill="none" stroke="#BFD8F0" strokeWidth="1.8" strokeDasharray="4 6" />
+              <path d="M 380 430 C 470 430, 520 320, 560 300" fill="none" stroke="url(#wire-grad-left)" strokeWidth="2.5" className="animate-flow-stream" />
+              <circle r="4" fill="#0070C2" filter="drop-shadow(0 0 6px #0070C2)">
+                <animateMotion path="M 380 430 C 470 430, 520 320, 560 300" dur="3.4s" repeatCount="indefinite" />
+              </circle>
+
+              {/* Output Cables (Center Core out to Right cards) */}
+              {/* Path 5: Core (640, 300) -> Ask Cerebro (810, 200) */}
+              <path d="M 640 300 C 700 300, 740 200, 810 200" fill="none" stroke="#BFD8F0" strokeWidth="1.8" strokeDasharray="4 6" />
+              <path d="M 640 300 C 700 300, 740 200, 810 200" fill="none" stroke="url(#wire-grad-right)" strokeWidth="2.5" className="animate-flow-stream" />
+              <circle r="4" fill="#6CC0F5" filter="drop-shadow(0 0 6px #6CC0F5)">
+                <animateMotion path="M 640 300 C 700 300, 740 200, 810 200" dur="2.5s" repeatCount="indefinite" />
+              </circle>
+
+              {/* Path 6: Core (640, 300) -> Blended ROAS (810, 440) */}
+              <path d="M 640 300 C 700 300, 740 440, 810 440" fill="none" stroke="#BFD8F0" strokeWidth="1.8" strokeDasharray="4 6" />
+              <path d="M 640 300 C 700 300, 740 440, 810 440" fill="none" stroke="url(#wire-grad-right)" strokeWidth="2.5" className="animate-flow-stream" />
+              <circle r="4" fill="#6CC0F5" filter="drop-shadow(0 0 6px #6CC0F5)">
+                <animateMotion path="M 640 300 C 700 300, 740 440, 810 440" dur="2.9s" repeatCount="indefinite" />
+              </circle>
+            </svg>
+
+            {/* Canvas Bottom Bar */}
+            <div className="relative z-10 pt-4 border-t border-[#BFD8F0]/60 flex items-center justify-between text-[11.5px] text-[#5A6675] flex-wrap gap-2">
+              <div className="flex items-center gap-2">
+                <span className="font-semibold text-[#000000]">Zero cookies required:</span>
+                <span>Deterministic server-side API ingest with 100% hash validation</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="font-semibold text-[#0070C2]">Autonomous Pipeline</span>
+                <span>·</span>
+                <span>Ready for all enterprise ad stacks</span>
               </div>
             </div>
           </div>
