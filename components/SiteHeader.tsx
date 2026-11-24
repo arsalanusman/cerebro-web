@@ -376,27 +376,27 @@ export function SiteHeader() {
       className="sticky top-0 z-50 bg-white border-b border-[#E2E8F0] font-sans text-[#1C2433]"
     >
       {/* Desktop Navigation (>= 1024px) */}
-      <div className="hidden lg:flex items-center justify-between gap-2 xl:gap-5 max-w-[1240px] min-h-[72px] mx-auto px-3.5 lg:px-4 xl:px-8 2xl:px-10 box-border">
-        {/* Brand Logo */}
+      <div className="hidden lg:flex items-center justify-between gap-2 xl:gap-5 max-w-[1440px] min-h-[80px] mx-auto px-4 lg:px-6 xl:px-10 box-border">
+        {/* Brand Logo (2x scaled) */}
         <Link
           href="/"
           aria-label="Cerebro dNano home"
-          className="inline-flex items-center gap-[9px] shrink-0"
+          className="inline-flex items-center gap-3 shrink-0 py-2"
         >
           <Image
             src="/brand/cerebro-mark.svg"
             alt="Cerebro mark"
-            width={28}
-            height={28}
-            className="h-7 w-auto block shrink-0"
+            width={56}
+            height={56}
+            className="h-12 w-auto block shrink-0"
             priority
           />
           <Image
             src="/brand/cerebro-wordmark.svg"
             alt="Cerebro dNano"
-            width={112}
-            height={17}
-            className="h-[17px] w-auto block shrink-0"
+            width={224}
+            height={34}
+            className="h-[34px] w-auto block shrink-0"
             priority
           />
         </Link>
@@ -654,27 +654,27 @@ export function SiteHeader() {
         </div>
       )}
 
-      {/* Mobile Header (< 1024px) from MobHome.dc.html */}
-      <div className="flex lg:hidden items-center justify-between h-16 px-6 box-border bg-white border-b border-[#E2E8F0]">
+      {/* Mobile Header (< 1024px) */}
+      <div className="flex lg:hidden items-center justify-between min-h-[72px] px-5 sm:px-6 box-border bg-white border-b border-[#E2E8F0]">
         <Link
           href="/"
           aria-label="Cerebro dNano home"
-          className="inline-flex items-center gap-[7px]"
+          className="inline-flex items-center gap-2.5 py-2"
         >
           <Image
             src="/brand/cerebro-mark.svg"
             alt="Cerebro"
-            width={24}
-            height={24}
-            className="h-6 w-auto block"
+            width={48}
+            height={48}
+            className="h-10 w-auto block shrink-0"
             priority
           />
           <Image
             src="/brand/cerebro-wordmark.svg"
             alt="Cerebro dNano"
-            width={96}
-            height={15}
-            className="h-[15px] w-auto block"
+            width={192}
+            height={30}
+            className="h-[30px] w-auto block shrink-0"
             priority
           />
         </Link>

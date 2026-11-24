@@ -169,21 +169,21 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
               <span
                 role="img"
                 aria-label="Cerebro dNano"
-                className="inline-flex items-center gap-2"
+                className="inline-flex items-center gap-3"
               >
                 <Image
                   src="/brand/cerebro-mark.svg"
                   alt="Cerebro mark"
-                  width={26}
-                  height={26}
-                  className="h-[26px] w-auto block"
+                  width={52}
+                  height={52}
+                  className="h-12 w-auto block shrink-0"
                 />
                 <Image
                   src="/brand/cerebro-wordmark.svg"
                   alt="Cerebro dNano"
-                  width={104}
-                  height={16}
-                  className="h-[16px] w-auto block"
+                  width={208}
+                  height={32}
+                  className="h-[32px] w-auto block shrink-0"
                 />
               </span>
               <p className="mt-4 max-w-[280px] text-[14.5px] leading-[1.55] text-[#5A6675]">
