@@ -4,7 +4,7 @@ import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Privacy Policy - Cerebro DNano",
+  title: "Privacy Policy - Cerebro dNano",
   description: "How we collect, store, and protect your data.",
   path: "/privacy-policy",
 });

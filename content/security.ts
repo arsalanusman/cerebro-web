@@ -45,7 +45,7 @@ function t(title: string, text: string): SecurityItem {
 }
 
 export const securityData = {
-  seoTitle: "Security and data protection | Cerebro DNano",
+  seoTitle: "Security and data protection | Cerebro dNano",
   seoDesc: "How Cerebro protects client advertising data, enforces role-based access control, and keeps AI models scoped strictly to authorized workspaces.",
   summary: [
     { label: "Role-based access", href: "#access", d: "M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" },

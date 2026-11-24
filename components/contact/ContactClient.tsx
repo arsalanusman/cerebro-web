@@ -81,7 +81,7 @@ export default function ContactClient() {
           </nav>
 
           <h1 className="mt-7 font-heading font-semibold text-[36px] sm:text-[44px] md:text-[54px] leading-[1.05] tracking-[-0.03em] text-[#101426]">
-            Contact Cerebro DNano
+            Contact Cerebro dNano
           </h1>
           <p className="mt-4 max-w-[560px] text-[18px] leading-[1.55] text-[#5B6170]">
             Questions about Cerebro AI, a demo, a custom connector or working together? Reach us here.
@@ -191,7 +191,7 @@ export default function ContactClient() {
                   </div>
                 ) : (
                   <iframe
-                    title="Cerebro DNano Office Location"
+                    title="Cerebro dNano Office Location"
                     width="100%"
                     height="240"
                     style={{ border: 0 }}
@@ -322,7 +322,7 @@ export default function ContactClient() {
                       className="w-4 h-4 mt-0.5 accent-[#4F46E5]"
                     />
                     <span>
-                      I agree to Cerebro DNano contacting me about this message, as described in the{" "}
+                      I agree to Cerebro dNano contacting me about this message, as described in the{" "}
                       <Link href="/privacy-policy" className="text-[#4F46E5] hover:underline">
                         privacy policy
                       </Link>

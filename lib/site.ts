@@ -1,5 +1,5 @@
 export const SITE = {
-  name: "Cerebro DNano",
+  name: "Cerebro dNano",
   shortName: "Cerebro",
   url: "https://cerebro.media",
   email: "hello@cerebro.media",

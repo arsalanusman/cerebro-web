@@ -24,7 +24,7 @@ export default function TeamSection({ leaders, techTeam }: TeamSectionProps) {
               Executive &amp; Product Leadership
             </h2>
             <p className="mt-3.5 m-0 text-base sm:text-lg text-[#5B6170] leading-[1.6]">
-              Steering Cerebro DNano&apos;s product vision, enterprise architecture, and customer partnerships from our headquarters in Karachi, Pakistan.
+              Steering Cerebro dNano&apos;s product vision, enterprise architecture, and customer partnerships from our headquarters in Karachi, Pakistan.
             </p>
           </div>
 

@@ -11,7 +11,7 @@ import SolutionsSection from "@/components/home/SolutionsSection";
 import IntegrationsSection from "@/components/home/IntegrationsSection";
 
 export const metadata = buildMetadata({
-  title: "AI first: Your AI analyst for every ad platform | Cerebro DNano",
+  title: "AI first: Your AI analyst for every ad platform | Cerebro dNano",
   description:
     "Cerebro AI brings in data from any marketing platform or sheet, cleans and standardizes it, flags what's wrong, builds your reports, and answers your questions with the numbers behind them.",
   path: "/ai-first",

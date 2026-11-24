@@ -4,7 +4,7 @@ import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Terms of Service - Cerebro DNano",
+  title: "Terms of Service - Cerebro dNano",
   description: "Terms and conditions for using the Cerebro platform.",
   path: "/terms-of-service",
 });

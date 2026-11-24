@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 
   return buildMetadata({
-    title: `${chapter.t} | Cerebro DNano Documentation`,
+    title: `${chapter.t} | Cerebro dNano Documentation`,
     description: chapter.intro,
     path: `/docs/${chapter.slug}`,
   });

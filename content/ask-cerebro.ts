@@ -16,7 +16,7 @@ export interface AskCerebroQuestion {
 
 export const askCerebroContent = {
   seo: {
-    title: "Ask Cerebro | AI Ad Performance Analyst | Cerebro DNano",
+    title: "Ask Cerebro | AI Ad Performance Analyst | Cerebro dNano",
     description:
       "Ask Cerebro answers questions about your connected and uploaded ad data in plain language. Every answer shows the numbers behind it, with full data transparency.",
     canonical: "https://cerebro.media/ask-cerebro",

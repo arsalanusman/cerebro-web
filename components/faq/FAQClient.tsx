@@ -18,8 +18,8 @@ const FAQ_SECTIONS: FAQTopic[] = [
     topic: "General & Capabilities",
     items: [
       {
-        q: "Which advertising platforms does Cerebro DNano support?",
-        a: "Cerebro DNano supports live API integrations with Meta Ads (Facebook & Instagram), Google Ads (Search, Display, YouTube, PMax), and TikTok Ads. Additional networks like DV360, LinkedIn Ads, and Snapchat Ads are available in beta or via custom AI connectors.",
+        q: "Which advertising platforms does Cerebro dNano support?",
+        a: "Cerebro dNano supports live API integrations with Meta Ads (Facebook & Instagram), Google Ads (Search, Display, YouTube, PMax), and TikTok Ads. Additional networks like DV360, LinkedIn Ads, and Snapchat Ads are available in beta or via custom AI connectors.",
       },
       {
         q: "How does Cerebro access our advertising accounts?",

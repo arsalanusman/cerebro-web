@@ -30,7 +30,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = buildMetadata({
-  title: "Cerebro DNano",
+  title: "Cerebro dNano",
   description:
     "Enterprise marketing data integration, analytics and reporting platform for Meta Ads, Google Ads and TikTok Ads.",
   path: "/",

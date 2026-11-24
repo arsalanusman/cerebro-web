@@ -4,7 +4,7 @@ import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Data Deletion - Cerebro DNano",
+  title: "Data Deletion - Cerebro dNano",
   description: "Instructions on requesting data deletion and removing platform access.",
   path: "/data-deletion",
 });

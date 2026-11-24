@@ -273,7 +273,7 @@ export default function DemoClient() {
                       className="w-4 h-4 mt-0.5 accent-[#4F46E5]"
                     />
                     <span>
-                      I agree to Cerebro DNano contacting me about this request, as described in the{" "}
+                      I agree to Cerebro dNano contacting me about this request, as described in the{" "}
                       <Link href="/privacy-policy" className="text-[#4F46E5] hover:underline">
                         privacy policy
                       </Link>

@@ -380,7 +380,7 @@ export function SiteHeader() {
         {/* Brand Logo */}
         <Link
           href="/"
-          aria-label="Cerebro DNano home"
+          aria-label="Cerebro dNano home"
           className="inline-flex items-center gap-[9px] shrink-0"
         >
           <Image
@@ -393,7 +393,7 @@ export function SiteHeader() {
           />
           <Image
             src="/brand/cerebro-wordmark.svg"
-            alt="Cerebro DNano"
+            alt="Cerebro dNano"
             width={112}
             height={17}
             className="h-[17px] w-auto block shrink-0"
@@ -658,7 +658,7 @@ export function SiteHeader() {
       <div className="flex lg:hidden items-center justify-between h-16 px-6 box-border bg-white border-b border-[#E4E7EC]">
         <Link
           href="/"
-          aria-label="Cerebro DNano home"
+          aria-label="Cerebro dNano home"
           className="inline-flex items-center gap-[7px]"
         >
           <Image
@@ -671,7 +671,7 @@ export function SiteHeader() {
           />
           <Image
             src="/brand/cerebro-wordmark.svg"
-            alt="Cerebro DNano"
+            alt="Cerebro dNano"
             width={96}
             height={15}
             className="h-[15px] w-auto block"

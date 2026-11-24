@@ -20,7 +20,7 @@ export interface MatrixRow {
 }
 
 export const pricingData = {
-  seoTitle: "Pricing plans | Cerebro DNano",
+  seoTitle: "Pricing plans | Cerebro dNano",
   seoDesc: "Plans that fit how you work. Every plan includes Cerebro AI. Set up around your platforms, brands and team.",
   sizes: ["1 brand", "2 to 5", "6 or more"],
   plans: [

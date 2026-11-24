@@ -22,7 +22,7 @@ export interface TeamMember {
 }
 
 export const aboutData = {
-  seoTitle: "About Cerebro DNano | Team, Mission & Roadmap",
+  seoTitle: "About Cerebro dNano | Team, Mission & Roadmap",
   seoDesc:
     "We build the AI data engine for paid media. Learn about our leadership, our tech engineering team, and the horizontal product roadmap from Karachi, Pakistan.",
 
@@ -30,7 +30,7 @@ export const aboutData = {
   mission: {
     badge: "OUR MISSION",
     title: "Bringing clarity, consistency, and intelligence to paid media.",
-    lead: "Cerebro DNano transforms fragmented ad reporting into an automated, auditable single source of truth.",
+    lead: "Cerebro dNano transforms fragmented ad reporting into an automated, auditable single source of truth.",
   },
 
   // Horizontal Timeline / Product Roadmap: "How We Got Here"

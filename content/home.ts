@@ -1,5 +1,5 @@
 /**
- * Flagship Homepage content for Cerebro DNano.
+ * Flagship Homepage content for Cerebro dNano.
  * Source of truth: handoff/design/Home2.dc.html & handoff/design/Main.dc.html
  * Adheres strictly to docs/site-rules.md:
  * - Live platforms: Meta Ads, Google Ads, TikTok Ads only
@@ -142,7 +142,7 @@ export interface TrustItem {
 // SEO Metadata
 // ---------------------------------------------------------------------------
 export const seo = {
-  title: "Ad performance analytics and reporting | Cerebro DNano",
+  title: "Ad performance analytics and reporting | Cerebro dNano",
   description:
     "Bring Meta Ads, Google Ads and TikTok Ads into one consistent view, judge every campaign by its goal, and ask questions in plain language.",
   canonical: "https://cerebro.media/",

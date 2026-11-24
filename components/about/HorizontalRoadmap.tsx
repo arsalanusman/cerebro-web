@@ -48,7 +48,7 @@ export default function HorizontalRoadmap({ milestones }: HorizontalRoadmapProps
               Our Product Journey &amp; Roadmap
             </h2>
             <p className="mt-3 m-0 text-base sm:text-lg text-[#5B6170] max-w-[640px] leading-[1.6]">
-              From an internal frustration with spreadsheet reporting to an enterprise AI analytics platform. Here is how Cerebro DNano evolved, and where we are heading next.
+              From an internal frustration with spreadsheet reporting to an enterprise AI analytics platform. Here is how Cerebro dNano evolved, and where we are heading next.
             </p>
           </div>
 

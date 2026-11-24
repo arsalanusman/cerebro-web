@@ -225,7 +225,7 @@ export default function FeaturesInteractive() {
               Every capability your performance team needs
             </h2>
             <p className="mt-3 text-base sm:text-lg text-[#94A3B8]">
-              Explore the core architectural pillars powering Cerebro DNano.
+              Explore the core architectural pillars powering Cerebro dNano.
             </p>
           </div>
 
@@ -296,7 +296,7 @@ export default function FeaturesInteractive() {
               BENCHMARK
             </p>
             <h2 className="m-0 font-heading font-semibold text-[28px] sm:text-[36px] text-[#101426] leading-tight">
-              Cerebro DNano vs. The Spreadsheet Stack
+              Cerebro dNano vs. The Spreadsheet Stack
             </h2>
             <p className="mt-3 m-0 text-base text-[#5B6170]">
               See why high-growth agencies replace manual exports with automated intelligence.
@@ -311,7 +311,7 @@ export default function FeaturesInteractive() {
                     <th className="py-4 px-6">Capability</th>
                     <th className="py-4 px-6 text-center">Manual Spreadsheet Stack</th>
                     <th className="py-4 px-6 text-center text-[#4F46E5] bg-[#EEF2FF]">
-                      Cerebro DNano
+                      Cerebro dNano
                     </th>
                   </tr>
                 </thead>

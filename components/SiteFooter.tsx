@@ -168,7 +168,7 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
             <div className="w-full lg:w-[280px] shrink-0">
               <span
                 role="img"
-                aria-label="Cerebro DNano"
+                aria-label="Cerebro dNano"
                 className="inline-flex items-center gap-2"
               >
                 <Image
@@ -180,7 +180,7 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
                 />
                 <Image
                   src="/brand/cerebro-wordmark.svg"
-                  alt="Cerebro DNano"
+                  alt="Cerebro dNano"
                   width={104}
                   height={16}
                   className="h-[16px] w-auto block"
@@ -244,7 +244,7 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
 
           {/* Sub-footer Legal Bar */}
           <div className="mt-12 pt-[22px] border-t border-[#EEF0F3] flex justify-between gap-4 flex-wrap text-[13px] text-[#5B6170]">
-            <span>© 2026 Cerebro DNano</span>
+            <span>© 2026 Cerebro dNano</span>
             <div className="flex gap-5 flex-wrap">
               <Link
                 href="/privacy-policy"

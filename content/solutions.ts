@@ -57,7 +57,7 @@ export const solutionsData: Record<string, SolutionPageData> = {
     eyebrow: "For marketing agencies",
     title: "Report on every client from one workspace.",
     lead: "Bring in every client’s platforms and sheets, let Cerebro AI clean and standardize them, and give each client a view of their own results and nothing else.",
-    seoTitle: "Cerebro for Advertising Agencies | Cerebro DNano",
+    seoTitle: "Cerebro for Advertising Agencies | Cerebro dNano",
     seoDesc: "Automate reporting across every client account. Standardize multi-channel advertising performance from Meta, Google, and TikTok.",
     canonical: "https://cerebro.media/solutions/agencies",
     clientsPreview: {
@@ -152,7 +152,7 @@ export const solutionsData: Record<string, SolutionPageData> = {
     eyebrow: "For in-house marketing teams",
     title: "One view of paid media for marketing and leadership.",
     lead: "Marketing and leadership look at the same numbers, from every platform and every agency. Judge every campaign by its goal, and ask questions in plain language.",
-    seoTitle: "Cerebro for Brands & Marketing Teams | Cerebro DNano",
+    seoTitle: "Cerebro for Brands & Marketing Teams | Cerebro dNano",
     seoDesc: "Unify in-house and agency ad reporting. Single source of truth for paid media spend and performance.",
     canonical: "https://cerebro.media/solutions/brands",
     clientsPreview: {
@@ -237,7 +237,7 @@ export const solutionsData: Record<string, SolutionPageData> = {
     eyebrow: "Banking & Financial Services",
     title: "Paid media reporting with the access control finance expects.",
     lead: "Many financial products on many platforms in one unified view, with granular control over who sees what and complete audit visibility.",
-    seoTitle: "Ad Analytics for Banking and Finance | Cerebro DNano",
+    seoTitle: "Ad Analytics for Banking and Finance | Cerebro dNano",
     seoDesc: "Compliant paid media reporting for financial institutions. Role-based isolation, auditable data handling.",
     canonical: "https://cerebro.media/industries/banking-and-finance",
     clientsPreview: {
@@ -321,7 +321,7 @@ export const solutionsData: Record<string, SolutionPageData> = {
     eyebrow: "Telecommunications",
     title: "Consolidated reporting for always-on campaigns.",
     lead: "Packages, devices, data bundles, and postpaid offers across Meta, Google, and TikTok in one consistent, real-time hierarchy view.",
-    seoTitle: "Paid Media Analytics for Telecom | Cerebro DNano",
+    seoTitle: "Paid Media Analytics for Telecom | Cerebro dNano",
     seoDesc: "Multi-channel advertising consolidation for telecom operators. Track high-velocity packages and device promos.",
     canonical: "https://cerebro.media/industries/telecom",
     clientsPreview: {
@@ -401,7 +401,7 @@ export const solutionsData: Record<string, SolutionPageData> = {
     eyebrow: "Fast-Moving Consumer Goods",
     title: "Compare brand and product campaigns across every platform.",
     lead: "Awareness-heavy FMCG portfolios judged on the metrics that actually fit them: CPM, video completion, reach, and retail store visits.",
-    seoTitle: "FMCG Brand Portfolio Ad Analytics | Cerebro DNano",
+    seoTitle: "FMCG Brand Portfolio Ad Analytics | Cerebro dNano",
     seoDesc: "Measure brand awareness and retail lift across multi-brand FMCG portfolios on Meta, TikTok, and Google.",
     canonical: "https://cerebro.media/industries/fmcg",
     clientsPreview: {
@@ -481,7 +481,7 @@ export const solutionsData: Record<string, SolutionPageData> = {
     eyebrow: "E-commerce & D2C",
     title: "Follow ad spend through to conversions and value.",
     lead: "Know which platforms, audiences, and creative variations actually generate profitable orders, with blended ROAS and true acquisition costs.",
-    seoTitle: "E-commerce & D2C Ad Analytics | Cerebro DNano",
+    seoTitle: "E-commerce & D2C Ad Analytics | Cerebro dNano",
     seoDesc: "Unified performance reporting from impressions to checkout. Compare Meta, Google, and TikTok conversion value.",
     canonical: "https://cerebro.media/industries/ecommerce",
     clientsPreview: {

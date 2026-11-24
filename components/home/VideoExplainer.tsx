@@ -89,7 +89,7 @@ export default function VideoExplainer({
               See how every platform comes together in two minutes.
             </h2>
             <p className="mt-3.5 m-0 text-base sm:text-lg leading-[1.55] text-[#5B6170]">
-              Watch how Cerebro DNano connects to Meta, Google and TikTok APIs, unifies multi-channel data, and answers performance questions.
+              Watch how Cerebro dNano connects to Meta, Google and TikTok APIs, unifies multi-channel data, and answers performance questions.
             </p>
           </div>
         </ScrollReveal>
