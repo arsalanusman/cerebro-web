@@ -134,7 +134,7 @@ export default function PricingV2() {
                     type="button"
                     aria-pressed={isOn}
                     onClick={() => setSelectedIdx(i)}
-                    className="h-[44px] px-[18px] rounded-[22px] font-inherit text-[14.5px] font-semibold cursor-pointer transition-colors"
+                    className="whitespace-nowrap shrink-0 h-[44px] px-[18px] rounded-[22px] font-inherit text-[14.5px] font-semibold cursor-pointer transition-colors"
                     style={{
                       border: isOn ? "1px solid #101426" : "1px solid #D5D8E0",
                       background: isOn ? "#101426" : "#FFFFFF",
@@ -184,7 +184,7 @@ export default function PricingV2() {
                   </div>
                   <Link
                     href="/demo"
-                    className="inline-flex items-center justify-center h-[46px] px-6 rounded-[23px] text-[15px] font-semibold no-underline transition-colors"
+                    className="whitespace-nowrap shrink-0 inline-flex items-center justify-center h-[46px] px-6 rounded-[23px] text-[15px] font-semibold no-underline transition-colors"
                     style={{
                       background: plan.ctaStyle === "primary" ? "#4F46E5" : "#FFFFFF",
                       color: plan.ctaStyle === "primary" ? "#FFFFFF" : "#101426",

@@ -145,13 +145,13 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
             <div className="mt-9 flex gap-3 justify-center flex-wrap">
               <Link
                 href="/demo"
-                className="inline-flex items-center justify-center min-h-[44px] px-[22px] rounded-[22px] bg-white hover:bg-[#F3F4F6] text-[#1C1A57] text-[15px] font-semibold transition-colors shadow-sm"
+                className="whitespace-nowrap shrink-0 inline-flex items-center justify-center min-h-[44px] px-[22px] rounded-[22px] bg-white hover:bg-[#F3F4F6] text-[#1C1A57] text-[15px] font-semibold transition-colors shadow-sm"
               >
                 Book a demo
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center min-h-[44px] px-[22px] rounded-[22px] border border-white/40 hover:border-white/70 text-white text-[15px] font-semibold transition-colors"
+                className="whitespace-nowrap shrink-0 inline-flex items-center justify-center min-h-[44px] px-[22px] rounded-[22px] border border-white/40 hover:border-white/70 text-white text-[15px] font-semibold transition-colors"
               >
                 Talk to sales
               </Link>

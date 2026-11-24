@@ -376,7 +376,7 @@ export function SiteHeader() {
       className="sticky top-0 z-50 bg-white border-b border-[#E4E7EC] font-sans text-[#2B3040]"
     >
       {/* Desktop Navigation (>= 1024px) */}
-      <div className="hidden lg:flex items-center gap-7 max-w-[1240px] min-h-[72px] mx-auto px-10 box-border">
+      <div className="hidden lg:flex items-center justify-between gap-2 xl:gap-5 max-w-[1240px] min-h-[72px] mx-auto px-3.5 lg:px-4 xl:px-8 2xl:px-10 box-border">
         {/* Brand Logo */}
         <Link
           href="/"
@@ -388,7 +388,7 @@ export function SiteHeader() {
             alt="Cerebro mark"
             width={28}
             height={28}
-            className="h-7 w-auto block"
+            className="h-7 w-auto block shrink-0"
             priority
           />
           <Image
@@ -396,17 +396,17 @@ export function SiteHeader() {
             alt="Cerebro DNano"
             width={112}
             height={17}
-            className="h-[17px] w-auto block"
+            className="h-[17px] w-auto block shrink-0"
             priority
           />
         </Link>
 
         {/* Navigation items */}
-        <nav aria-label="Main" className="flex items-center gap-1 flex-1">
+        <nav aria-label="Main" className="flex items-center gap-0.5 xl:gap-1.5 flex-1 min-w-0 justify-center">
           {/* AI first link (requested by user) */}
           <Link
             href="/ai-first"
-            className="inline-flex items-center gap-1.5 min-h-[38px] px-3 mr-1 rounded-[19px] bg-[#EEF0FF] hover:bg-[#E0E3FF] text-[#3730A3] font-semibold text-[15px] transition-colors"
+            className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 min-h-[36px] xl:min-h-[38px] px-2.5 xl:px-3 rounded-[19px] bg-[#EEF0FF] hover:bg-[#E0E3FF] text-[#3730A3] font-semibold text-[13px] xl:text-[15px] transition-colors"
           >
             <svg
               width="14"
@@ -418,6 +418,7 @@ export function SiteHeader() {
               strokeLinecap="round"
               strokeLinejoin="round"
               aria-hidden="true"
+              className="shrink-0"
             >
               <path d={ICONS.spark} />
             </svg>
@@ -427,7 +428,7 @@ export function SiteHeader() {
           {/* Ask Cerebro pill button */}
           <Link
             href="/ask-cerebro"
-            className="inline-flex items-center gap-1.5 min-h-[38px] px-3 mr-2 rounded-[19px] bg-[#EEF0FF] hover:bg-[#E0E3FF] text-[#3730A3] font-semibold text-[15px] transition-colors"
+            className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 min-h-[36px] xl:min-h-[38px] px-2.5 xl:px-3 rounded-[19px] bg-[#EEF0FF] hover:bg-[#E0E3FF] text-[#3730A3] font-semibold text-[13px] xl:text-[15px] transition-colors"
           >
             <svg
               width="14"
@@ -439,6 +440,7 @@ export function SiteHeader() {
               strokeLinecap="round"
               strokeLinejoin="round"
               aria-hidden="true"
+              className="shrink-0"
             >
               <path d={ICONS.sparkDouble} />
             </svg>
@@ -457,7 +459,7 @@ export function SiteHeader() {
                   aria-controls={`menu-${t.key}`}
                   onMouseEnter={() => handlePointerEnterMenu(t.key)}
                   onClick={() => toggleMenu(t.key)}
-                  className={`inline-flex items-center gap-1.5 min-h-[38px] px-3 rounded-lg text-[15px] font-medium transition-colors ${
+                  className={`whitespace-nowrap shrink-0 inline-flex items-center gap-1 xl:gap-1.5 min-h-[36px] xl:min-h-[38px] px-2 xl:px-3 rounded-lg text-[13px] xl:text-[15px] font-medium transition-colors ${
                     isOpen
                       ? "bg-[#EEF0FF] text-[#3730A3]"
                       : hoverKey === t.key
@@ -474,7 +476,7 @@ export function SiteHeader() {
                     stroke="currentColor"
                     strokeWidth="2"
                     aria-hidden="true"
-                    className={`transition-transform duration-150 ${
+                    className={`shrink-0 transition-transform duration-150 ${
                       isOpen ? "rotate-180 text-[#3730A3]" : "text-[#5B6170]"
                     }`}
                   >
@@ -493,7 +495,7 @@ export function SiteHeader() {
                   setHoverKey(t.key);
                 }}
                 onMouseLeave={() => setHoverKey(null)}
-                className={`inline-flex items-center min-h-[38px] px-3 rounded-lg text-[15px] font-medium transition-colors ${
+                className={`whitespace-nowrap shrink-0 inline-flex items-center min-h-[36px] xl:min-h-[38px] px-2 xl:px-3 rounded-lg text-[13px] xl:text-[15px] font-medium transition-colors ${
                   hoverKey === t.key
                     ? "bg-[#F3F4F6] text-[#2B3040]"
                     : "bg-transparent text-[#2B3040]"
@@ -506,12 +508,12 @@ export function SiteHeader() {
         </nav>
 
         {/* Right CTA Actions */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-1 xl:gap-2 shrink-0">
           <Link
             href="/contact"
             onMouseEnter={() => setHoverKey("contact")}
             onMouseLeave={() => setHoverKey(null)}
-            className={`inline-flex items-center min-h-[38px] px-3 rounded-lg text-[15px] font-medium transition-colors ${
+            className={`whitespace-nowrap shrink-0 inline-flex items-center min-h-[36px] xl:min-h-[38px] px-2 xl:px-3 rounded-lg text-[13px] xl:text-[15px] font-medium transition-colors ${
               hoverKey === "contact"
                 ? "bg-[#F3F4F6] text-[#2B3040]"
                 : "bg-transparent text-[#2B3040]"
@@ -521,7 +523,7 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/demo"
-            className="inline-flex items-center min-h-[40px] px-[18px] rounded-[20px] bg-[#4F46E5] hover:bg-[#4338CA] text-white text-[15px] font-semibold transition-colors shadow-sm"
+            className="whitespace-nowrap shrink-0 inline-flex items-center min-h-[38px] xl:min-h-[40px] px-3 xl:px-[18px] rounded-[20px] bg-[#4F46E5] hover:bg-[#4338CA] text-white text-[13px] xl:text-[15px] font-semibold transition-colors shadow-sm"
           >
             Book a demo
           </Link>
@@ -543,7 +545,7 @@ export function SiteHeader() {
           onMouseLeave={handlePointerLeaveMenu}
           className="hidden lg:block absolute left-0 right-0 top-full bg-white border-t border-[#EEF0F3] border-b border-[#E4E7EC] shadow-[0_24px_48px_rgba(16,20,38,0.12)] z-50 animate-in fade-in duration-150"
         >
-          <div className="max-w-[1240px] mx-auto px-10 py-7 pb-8 box-border flex gap-8">
+          <div className="max-w-[1240px] mx-auto px-4 lg:px-6 xl:px-10 py-6 xl:py-7 pb-8 box-border flex gap-5 xl:gap-8">
             {/* Columns */}
             {currentPanel.cols.map((col, idx) => (
               <div key={idx} className="flex-1 min-w-[260px]">
@@ -723,49 +725,52 @@ export function SiteHeader() {
           aria-label="Main"
           className="lg:hidden absolute left-0 right-0 top-16 bg-white border-t border-[#EEF0F3] shadow-[0_24px_48px_rgba(16,20,38,0.14)] px-6 py-4 pb-7 z-50 max-h-[calc(100vh-64px)] overflow-y-auto animate-in slide-in-from-top-2 duration-150"
         >
-          {/* AI first link */}
-          <Link
-            href="/ai-first"
-            onClick={() => setMobileOpen(false)}
-            className="inline-flex items-center gap-1.5 min-h-[40px] px-3.5 rounded-[20px] bg-[#EEF0FF] text-[#3730A3] font-semibold text-[16px] mb-2 mr-2"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
+          {/* AI first and Ask Cerebro 2-column quick access */}
+          <div className="grid grid-cols-2 gap-2.5 mb-3.5">
+            <Link
+              href="/ai-first"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center justify-center gap-1.5 min-h-[42px] px-3 rounded-full bg-[#EEF0FF] hover:bg-[#E0E3FF] text-[#3730A3] font-semibold text-[14.5px] transition-colors whitespace-nowrap"
             >
-              <path d={ICONS.spark} />
-            </svg>
-            <span>AI first</span>
-          </Link>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className="shrink-0"
+              >
+                <path d={ICONS.spark} />
+              </svg>
+              <span>AI first</span>
+            </Link>
 
-          {/* Ask Cerebro pill */}
-          <Link
-            href="/ask-cerebro"
-            onClick={() => setMobileOpen(false)}
-            className="inline-flex items-center gap-1.5 min-h-[40px] px-3.5 rounded-[20px] bg-[#EEF0FF] text-[#3730A3] font-semibold text-[16px] mb-2"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
+            <Link
+              href="/ask-cerebro"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center justify-center gap-1.5 min-h-[42px] px-3 rounded-full bg-[#EEF0FF] hover:bg-[#E0E3FF] text-[#3730A3] font-semibold text-[14.5px] transition-colors whitespace-nowrap"
             >
-              <path d={ICONS.sparkDouble} />
-            </svg>
-            <span>Ask Cerebro</span>
-          </Link>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.9"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className="shrink-0"
+              >
+                <path d={ICONS.sparkDouble} />
+              </svg>
+              <span>Ask Cerebro</span>
+            </Link>
+          </div>
 
           {/* Platform Accordion */}
           <details className="border-b border-[#EEF0F3] group">

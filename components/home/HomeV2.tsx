@@ -107,13 +107,13 @@ export function HomeV2() {
             <div className="mt-7 lg:mt-8 flex gap-2.5 flex-wrap">
               <Link
                 href="/demo"
-                className="inline-flex items-center justify-center h-11 px-[22px] rounded-[22px] bg-[#4F46E5] hover:bg-[#4338CA] text-white text-[15px] font-semibold transition-colors shadow-sm"
+                className="whitespace-nowrap shrink-0 inline-flex items-center justify-center h-11 px-[22px] rounded-[22px] bg-[#4F46E5] hover:bg-[#4338CA] text-white text-[15px] font-semibold transition-colors shadow-sm"
               >
                 Book a demo
               </Link>
               <a
                 href="#ways"
-                className="inline-flex items-center justify-center h-11 px-[22px] rounded-[22px] bg-white hover:bg-[#F3F4F6] border border-[#D5D8E0] text-[#101426] text-[15px] font-semibold transition-colors"
+                className="whitespace-nowrap shrink-0 inline-flex items-center justify-center h-11 px-[22px] rounded-[22px] bg-white hover:bg-[#F3F4F6] border border-[#D5D8E0] text-[#101426] text-[15px] font-semibold transition-colors"
               >
                 See how it works
               </a>

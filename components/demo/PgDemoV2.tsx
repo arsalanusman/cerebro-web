@@ -350,7 +350,7 @@ export default function PgDemoV2() {
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="inline-flex items-center justify-center h-[46px] px-6 rounded-full bg-white text-[#101426] border border-[#D5D8E0] text-[15px] font-semibold cursor-pointer hover:bg-[#F5F6F8] transition-colors"
+                      className="whitespace-nowrap shrink-0 inline-flex items-center justify-center h-[46px] px-6 rounded-full bg-white text-[#101426] border border-[#D5D8E0] text-[15px] font-semibold cursor-pointer hover:bg-[#F5F6F8] transition-colors"
                     >
                       Back
                     </button>
@@ -359,7 +359,7 @@ export default function PgDemoV2() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="inline-flex items-center justify-center h-[46px] px-6 rounded-full bg-[#4F46E5] text-white border-0 text-[15px] font-semibold cursor-pointer hover:bg-[#4338CA] transition-colors"
+                      className="whitespace-nowrap shrink-0 inline-flex items-center justify-center h-[46px] px-6 rounded-full bg-[#4F46E5] text-white border-0 text-[15px] font-semibold cursor-pointer hover:bg-[#4338CA] transition-colors"
                     >
                       Continue
                     </button>
@@ -367,7 +367,7 @@ export default function PgDemoV2() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="inline-flex items-center justify-center h-[46px] px-6 rounded-full bg-[#4F46E5] text-white border-0 text-[15px] font-semibold cursor-pointer hover:bg-[#4338CA] transition-colors"
+                      className="whitespace-nowrap shrink-0 inline-flex items-center justify-center h-[46px] px-6 rounded-full bg-[#4F46E5] text-white border-0 text-[15px] font-semibold cursor-pointer hover:bg-[#4338CA] transition-colors"
                     >
                       Book my demo
                     </button>
