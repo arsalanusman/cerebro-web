@@ -160,11 +160,11 @@ export const aboutData = {
       ],
     },
     {
-      name: "Product Design Lead",
-      role: "Senior Product & UX/CX Designer",
+      name: "Muhammad Imran",
+      role: "Lead Product Designer UX/CX",
       department: "Product & UX/CX Design",
       bio: "Designing and leading end-to-end digital product experiences, translating business requirements into intuitive user journeys, scalable design systems, and high-performing web and mobile products. Experienced in product strategy, UX research, stakeholder collaboration, and hands-on design leadership with 8+ years of experience.",
-      initials: "PD",
+      initials: "MI",
       stack: [
         "Figma",
         "Design Systems",
