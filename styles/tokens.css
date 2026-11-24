@@ -1,0 +1,93 @@
+/* Cerebro DNano design tokens. Values match design/UIStates.dc.html and every page design. */
+:root {
+  /* Surfaces and text */
+  --bg: #FFFFFF;
+  --surface: #F7F8FA;
+  --surface-2: #EEF0F4;
+  --surface-app: #FAFAFC;
+  --border: #E4E7EC;
+  --border-strong: #D5D8E0;
+  --border-hover: #C9CDD6;
+  --ink: #101426;
+  --text: #2B3040;
+  --muted: #5B6170;
+  --subtle: #6B7180;
+
+  /* Brand */
+  --brand: #4F46E5;
+  --brand-hover: #4338CA;
+  --brand-pressed: #3730A3;
+  --brand-soft: #EEF0FF;
+  --brand-soft-hover: #E0E3FF;
+  --brand-tint: #F5F6FF;
+  --brand-border: #C7CBF9;
+  --navy: #1C1A57;
+  --navy-deep: #16144A;
+  --on-navy: #CDD0F3;
+  --on-navy-accent: #A5B4FC;
+
+  /* Charts */
+  --chart-1: #2E2A82;
+  --chart-2: #6B7FE8;
+  --chart-3: #A5B4FC;
+
+  /* Status */
+  --positive: #15803D;
+  --positive-bg: #DCFCE7;
+  --positive-text: #166534;
+  --negative: #B91C1C;
+  --negative-bg: #FEE2E2;
+  --negative-text: #991B1B;
+  --warning-text: #9A3412;
+  --warning-bg: #FFF7ED;
+  --warning-border: #F5D9C0;
+  --neutral-pill-bg: #F1F2F5;
+  --neutral-pill-text: #4B5160;
+
+  /* Platform marks (only inside platform badges) */
+  --platform-meta: #1877F2;
+  --platform-google: #15803D;
+  --platform-tiktok: #111827;
+  --platform-soon: #7A8296;
+
+  /* Type */
+  --font-heading: 'Geist', Inter, system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+
+  /* Radius */
+  --radius-control: 8px;
+  --radius-button: 10px;
+  --radius-card: 12px;
+  --radius-card-lg: 14px;
+  --radius-panel: 16px;
+  --radius-pill: 999px;
+
+  /* Shadows and focus */
+  --shadow-card-hover: 0 12px 32px rgba(16, 20, 38, 0.08);
+  --shadow-menu: 0 24px 48px rgba(16, 20, 38, 0.12);
+  --shadow-frame: 0 30px 70px rgba(10, 8, 40, 0.35);
+  --shadow-panel-ai: 0 2px 6px rgba(16, 20, 38, 0.08), 0 32px 80px rgba(10, 8, 40, 0.4);
+  --ring: 0 0 0 3px rgba(79, 70, 229, 0.35);
+  --ring-on-navy: 0 0 0 3px rgba(255, 255, 255, 0.5);
+  --ring-input: 0 0 0 3px rgba(79, 70, 229, 0.18);
+
+  /* Layout */
+  --container: 1240px;
+  --gutter: 40px;
+  --gutter-mobile: 24px;
+  --section-y: 88px;
+  --section-y-mobile: 64px;
+  --header-h: 72px;
+  --mobile-menu-breakpoint: 1024px;
+
+  /* Motion */
+  --dur-fast: 150ms;
+  --dur-base: 200ms;
+  --dur-slow: 500ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: 0ms; --dur-base: 0ms; --dur-slow: 0ms; }
+}
