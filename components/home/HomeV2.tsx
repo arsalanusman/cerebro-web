@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import CustomersStrip from "@/components/home/CustomersStrip";
 
 interface AskTabItem {
   title: string;
@@ -697,9 +696,6 @@ export function HomeV2() {
           </div>
         </div>
       </section>
-
-      {/* ── Client Logo Marquee Strip (Samsung, Nestlé, Easypaisa, Fauji Foods) ── */}
-      <CustomersStrip />
 
       {/* ── 2. Unified Living Ingestion Canvas: Every source. One clean model. ── */}
       <section id="ways" className="py-20 lg:py-28 lg:pb-24 bg-white relative overflow-hidden">
