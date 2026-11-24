@@ -19,6 +19,39 @@ interface AskTabItem {
 
 export function HomeV2() {
   const [activeAskTab, setActiveAskTab] = useState(0);
+  const [heroPromptIdx, setHeroPromptIdx] = useState(0);
+  const [isThinking, setIsThinking] = useState(false);
+  const [activeFeatureTab, setActiveFeatureTab] = useState(0);
+
+  const heroQuestions = [
+    {
+      q: "Why did CPA rise?",
+      a: "TikTok drove 82% of the rise due to top-of-funnel reach.",
+      source: "TikTok Marketing API",
+      change: "↑ 17.4%",
+    },
+    {
+      q: "Which audience converts best?",
+      a: "Women 25–34 on Meta delivers 4.1x ROAS at PKR 312 CPA.",
+      source: "Meta Ads Graph API",
+      change: "4.1x ROAS",
+    },
+    {
+      q: "What spend is pacing behind?",
+      a: "Google Search is at 98.4% pacing. Reallocate PKR 45K to Meta.",
+      source: "Google Ads API",
+      change: "Pacing 98.4%",
+    },
+  ];
+
+  const handleSelectQuestion = (idx: number) => {
+    if (idx === heroPromptIdx) return;
+    setIsThinking(true);
+    setTimeout(() => {
+      setHeroPromptIdx(idx);
+      setIsThinking(false);
+    }, 320);
+  };
 
   const heroLinks = [
     "M100 100 Q 224 224 280 280",
@@ -94,48 +127,106 @@ export function HomeV2() {
 
   return (
     <div className="font-sans text-[#1C2433] bg-white min-w-0 tabular-nums">
-      {/* ── 1. Hero Section ── */}
-      <section id="top" className="py-12 lg:py-20 lg:pb-24">
-        <div className="max-w-[1240px] mx-auto px-6 lg:px-10 box-border flex gap-12 lg:gap-16 items-center flex-wrap">
+      {/* ── 1. Immersive Full-Screen Hero Section (100svh Living Canvas) ── */}
+      <section
+        id="top"
+        className="relative overflow-hidden min-h-[100svh] min-h-[740px] max-h-[1060px] flex flex-col justify-center bg-gradient-to-b from-[#FAFBFD] via-white to-[#F6F8FB] border-b border-[#E2E8F0] pt-8 pb-16 lg:py-0"
+      >
+        {/* Subtle technical coordinate canvas grid */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none opacity-30"
+          style={{
+            backgroundImage: "radial-gradient(#0070C2 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+
+        {/* Ambient atmospheric radial glow */}
+        <div
+          aria-hidden="true"
+          className="absolute top-1/2 right-[8%] -translate-y-1/2 w-[650px] h-[650px] rounded-full pointer-events-none opacity-20 blur-3xl bg-[radial-gradient(circle,_#0070C2_0%,_#022771_65%,_transparent_100%)]"
+        />
+
+        <div className="relative max-w-[1240px] w-full mx-auto px-6 lg:px-10 box-border flex gap-12 lg:gap-16 items-center flex-wrap my-auto">
           {/* Hero Left Content */}
-          <div className="flex-1 min-w-[300px] lg:min-w-[460px]">
-            <h1 className="m-0 font-heading font-semibold text-[36px] sm:text-[46px] lg:text-[68px] leading-[1.04] lg:leading-[1.02] tracking-[-0.035em] text-[#000000]">
+          <div className="flex-1 min-w-[300px] lg:min-w-[460px] z-10">
+            {/* Live Pipeline Kicker Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E8F2FC] border border-[#BFD8F0] text-[#004C87] text-[13px] font-semibold mb-5 shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-[#0070C2] relative inline-flex">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0070C2] opacity-75" />
+              </span>
+              <span>Cerebro dNano · Unified Marketing Intelligence</span>
+            </div>
+
+            <h1 className="m-0 font-heading font-semibold text-[38px] sm:text-[48px] lg:text-[68px] leading-[1.03] tracking-[-0.035em] text-[#000000]">
               Your AI analyst for every ad platform.
             </h1>
-            <p className="mt-5 lg:mt-6 max-w-[480px] text-[17px] lg:text-[19px] leading-[1.55] text-[#5A6675]">
-              Bring in any marketing data. Cerebro AI cleans it, reports on it and answers your questions.
+            <p className="mt-5 lg:mt-6 max-w-[500px] text-[17px] lg:text-[19px] leading-[1.55] text-[#5A6675]">
+              Bring in any marketing data. Cerebro AI cleans it, standardizes objectives, and answers your performance questions with full audit steps.
             </p>
-            <div className="mt-7 lg:mt-8 flex gap-2.5 flex-wrap">
+
+            <div className="mt-8 flex gap-3.5 flex-wrap items-center">
               <Link
                 href="/demo"
-                className="whitespace-nowrap shrink-0 inline-flex items-center justify-center h-11 px-[22px] rounded-[22px] bg-[#0070C2] hover:bg-[#005DA3] text-white text-[15px] font-semibold transition-colors shadow-sm"
+                className="group whitespace-nowrap shrink-0 inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full bg-[#0070C2] hover:bg-[#005DA3] text-white text-[15px] font-semibold transition-all duration-200 shadow-[0_4px_16px_rgba(0,112,194,0.28)] hover:shadow-[0_6px_24px_rgba(0,112,194,0.4)] hover:-translate-y-0.5 active:translate-y-0"
               >
-                Book a demo
+                <span>Book a demo</span>
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="transition-transform group-hover:translate-x-1"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
               </Link>
               <a
                 href="#ways"
-                className="whitespace-nowrap shrink-0 inline-flex items-center justify-center h-11 px-[22px] rounded-[22px] bg-white hover:bg-[#F3F4F6] border border-[#D5D8E0] text-[#000000] text-[15px] font-semibold transition-colors"
+                className="whitespace-nowrap shrink-0 inline-flex items-center justify-center h-12 px-6 rounded-full bg-white hover:bg-[#F6F8FB] border border-[#CBD5E1] text-[#1C2433] text-[15px] font-semibold transition-all hover:border-[#0070C2] hover:-translate-y-0.5 active:translate-y-0"
               >
                 See how it works
               </a>
             </div>
+
+            {/* Live Micro-Signals strip */}
+            <div className="mt-8 pt-6 border-t border-[#E2E8F0]/80 flex items-center gap-6 text-[13px] text-[#5A6675] flex-wrap">
+              <div className="flex items-center gap-1.5 font-medium">
+                <span className="w-2 h-2 rounded-full bg-[#15803D]" />
+                <span>3 Native APIs Live</span>
+              </div>
+              <div className="flex items-center gap-1.5 font-medium">
+                <span className="w-2 h-2 rounded-full bg-[#0070C2]" />
+                <span>Zero raw ad tracking cookies</span>
+              </div>
+              <div className="flex items-center gap-1.5 font-medium">
+                <span className="w-2 h-2 rounded-full bg-[#022771]" />
+                <span>PKR & USD Normalization</span>
+              </div>
+            </div>
           </div>
 
-          {/* Hero Right Visual (The Neural Grid Art) */}
-          <div className="flex-1 min-w-[280px] lg:min-w-[480px] max-w-[560px] relative mx-auto w-full">
-            <div className="relative w-full aspect-square rounded-[24px] lg:rounded-[28px] overflow-hidden bg-[#011640] shadow-2xl">
-              {/* Radial glow */}
+          {/* Hero Right Visual (Living Spatial Node Canvas) */}
+          <div className="flex-1 min-w-[300px] lg:min-w-[500px] max-w-[580px] relative mx-auto w-full">
+            <div className="relative w-full aspect-square rounded-[32px] overflow-hidden bg-[#011640] shadow-[0_24px_70px_rgba(1,22,64,0.4),0_2px_12px_rgba(0,0,0,0.12)] border border-white/10">
+              {/* Radial depth glow */}
               <div
                 aria-hidden="true"
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background:
-                    "radial-gradient(circle at 50% 50%, rgba(0,112,194,0.55) 0, rgba(0,112,194,0.16) 30%, rgba(1,22,64,0) 62%)",
+                    "radial-gradient(circle at 50% 50%, rgba(0,112,194,0.55) 0%, rgba(0,112,194,0.18) 32%, rgba(1,22,64,0) 66%)",
                 }}
               />
+
               <svg
                 role="img"
-                aria-label="The Cerebro mark at the center of a grid of nodes, with Meta, Google, TikTok, sheets and custom connectors flowing into it"
+                aria-label="Cerebro dNano live intelligence pipeline connecting ad channels to central AI core"
                 viewBox="0 0 560 560"
                 className="absolute inset-0 w-full h-full"
               >
@@ -145,26 +236,73 @@ export function HomeV2() {
                     <stop offset="45%" stopColor="#0070C2" />
                     <stop offset="100%" stopColor="#022771" />
                   </radialGradient>
+                  <linearGradient id="stream-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#8EC5F0" stopOpacity="0.4" />
+                    <stop offset="50%" stopColor="#6CC0F5" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#0070C2" stopOpacity="0.8" />
+                  </linearGradient>
                 </defs>
-                {/* Tilted orbital rings */}
-                <ellipse cx="280" cy="280" rx="262" ry="100" fill="none" stroke="rgba(255,255,255,0.08)" transform="rotate(-22 280 280)" />
-                <ellipse cx="280" cy="280" rx="262" ry="100" fill="none" stroke="rgba(255,255,255,0.06)" transform="rotate(22 280 280)" />
 
-                {/* Flow lines */}
+                {/* Tilted orbital concentric rings */}
+                <ellipse
+                  cx="280"
+                  cy="280"
+                  rx="262"
+                  ry="105"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.08)"
+                  className="animate-spin-slow origin-[280px_280px]"
+                />
+                <ellipse
+                  cx="280"
+                  cy="280"
+                  rx="240"
+                  ry="95"
+                  fill="none"
+                  stroke="rgba(142,197,240,0.12)"
+                  transform="rotate(32 280 280)"
+                />
+
+                {/* Base flow lines */}
                 {heroLinks.map((l, idx) => (
                   <path
-                    key={idx}
+                    key={`track-${idx}`}
                     d={l}
                     fill="none"
-                    stroke="rgba(142,197,240,0.55)"
-                    strokeWidth="1.6"
+                    stroke="rgba(142,197,240,0.22)"
+                    strokeWidth="1.8"
                     strokeDasharray="4 6"
+                  />
+                ))}
+
+                {/* Animated streaming light pulses */}
+                {heroLinks.map((l, idx) => (
+                  <path
+                    key={`pulse-${idx}`}
+                    d={l}
+                    fill="none"
+                    stroke="url(#stream-gradient)"
+                    strokeWidth="2.5"
+                    className="animate-flow-stream"
                     strokeLinecap="round"
                   />
                 ))}
 
-                {/* 5x5 Grid Nodes */}
-                {/* Passive grid nodes */}
+                {/* Continuous streaming packet dots along quadratic paths */}
+                <circle r="4" fill="#6CC0F5" filter="drop-shadow(0 0 6px #6CC0F5)">
+                  <animateMotion path="M100 100 Q 224 224 280 280" dur="2.4s" repeatCount="indefinite" />
+                </circle>
+                <circle r="4" fill="#8EC5F0" filter="drop-shadow(0 0 6px #6CC0F5)">
+                  <animateMotion path="M460 100 Q 336 224 280 280" dur="2.8s" repeatCount="indefinite" />
+                </circle>
+                <circle r="4" fill="#6CC0F5" filter="drop-shadow(0 0 6px #6CC0F5)">
+                  <animateMotion path="M100 460 Q 224 336 280 280" dur="3.2s" repeatCount="indefinite" />
+                </circle>
+                <circle r="4" fill="#8EC5F0" filter="drop-shadow(0 0 6px #6CC0F5)">
+                  <animateMotion path="M460 460 Q 336 336 280 280" dur="2.6s" repeatCount="indefinite" />
+                </circle>
+
+                {/* Passive grid nodes for depth */}
                 {[
                   [190, 100], [280, 100], [370, 100],
                   [100, 190], [190, 190], [280, 190], [370, 190], [460, 190],
@@ -176,75 +314,148 @@ export function HomeV2() {
                     key={idx}
                     cx={nx}
                     cy={ny}
-                    r={20}
+                    r={18}
                     fill="rgba(255,255,255,0.03)"
-                    stroke="rgba(255,255,255,0.16)"
-                    strokeWidth="1.4"
+                    stroke="rgba(255,255,255,0.14)"
+                    strokeWidth="1.2"
                   />
                 ))}
 
-                {/* Active source nodes with logos */}
+                {/* Active source nodes with official logos */}
                 {/* 1. Meta (100, 100) */}
-                <circle cx="100" cy="100" r="34" fill="rgba(142,197,240,0.12)" />
+                <circle cx="100" cy="100" r="34" fill="rgba(142,197,240,0.14)" />
                 <circle cx="100" cy="100" r="24" fill="#FFFFFF" />
                 <image href="/brand/platforms/meta.png" x="87" y="87" width="26" height="26" />
 
                 {/* 2. Google Ads (460, 100) */}
-                <circle cx="460" cy="100" r="34" fill="rgba(142,197,240,0.12)" />
+                <circle cx="460" cy="100" r="34" fill="rgba(142,197,240,0.14)" />
                 <circle cx="460" cy="100" r="24" fill="#FFFFFF" />
                 <image href="/brand/platforms/google.png" x="447" y="87" width="26" height="26" />
 
                 {/* 3. Custom connector + (100, 280) */}
-                <circle cx="100" cy="280" r="34" fill="rgba(142,197,240,0.12)" />
+                <circle cx="100" cy="280" r="34" fill="rgba(142,197,240,0.14)" />
                 <circle cx="100" cy="280" r="24" fill="#FFFFFF" />
                 <text x="100" y="286" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="700" fill="#0070C2">+</text>
 
                 {/* 4. AI sparkle ✦ (460, 280) */}
-                <circle cx="460" cy="280" r="34" fill="rgba(142,197,240,0.12)" />
+                <circle cx="460" cy="280" r="34" fill="rgba(142,197,240,0.14)" />
                 <circle cx="460" cy="280" r="24" fill="#FFFFFF" />
                 <text x="460" y="286" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="700" fill="#0070C2">✦</text>
 
                 {/* 5. TikTok (100, 460) */}
-                <circle cx="100" cy="460" r="34" fill="rgba(142,197,240,0.12)" />
+                <circle cx="100" cy="460" r="34" fill="rgba(142,197,240,0.14)" />
                 <circle cx="100" cy="460" r="24" fill="#FFFFFF" />
                 <image href="/brand/platforms/tiktok.png" x="87" y="447" width="26" height="26" />
 
-                {/* 6. Upload ↑ (460, 460) */}
-                <circle cx="460" cy="460" r="34" fill="rgba(142,197,240,0.12)" />
+                {/* 6. Upload Sheets (460, 460) */}
+                <circle cx="460" cy="460" r="34" fill="rgba(142,197,240,0.14)" />
                 <circle cx="460" cy="460" r="24" fill="#FFFFFF" />
-                <text x="460" y="466" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="700" fill="#0070C2">↑</text>
+                <image href="/brand/platforms/sheets.svg" x="447" y="447" width="26" height="26" />
 
                 {/* Center Core Node */}
-                <circle cx="280" cy="280" r="98" fill="none" stroke="rgba(0,112,194,0.14)" strokeWidth="1" />
-                <circle cx="280" cy="280" r="76" fill="none" stroke="rgba(0,112,194,0.25)" strokeWidth="10" />
-                <circle cx="280" cy="280" r="64" fill="url(#h3-core)" />
+                <circle cx="280" cy="280" r="105" fill="none" stroke="rgba(0,112,194,0.12)" strokeWidth="1" />
+                <circle cx="280" cy="280" r="88" fill="none" stroke="rgba(0,112,194,0.22)" strokeWidth="1.5" strokeDasharray="5 7" className="animate-spin-slow origin-[280px_280px]" />
+                <circle cx="280" cy="280" r="76" fill="none" stroke="rgba(0,112,194,0.28)" strokeWidth="8" />
+                <circle cx="280" cy="280" r="64" fill="url(#h3-core)" className="animate-pulse-glow origin-[280px_280px]" />
               </svg>
 
-              {/* Center Cerebro Mark */}
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[14%]">
+              {/* Center Cerebro White Mark */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[14%] pointer-events-none">
                 <Image
                   src="/brand/cerebro-mark-white.svg"
-                  alt="Cerebro"
+                  alt="Cerebro Core"
                   width={78}
                   height={78}
-                  className="w-full h-auto block"
+                  className="w-full h-auto block drop-shadow-[0_0_16px_rgba(108,192,245,0.7)]"
                 />
               </div>
             </div>
 
-            {/* Floating Ask Cerebro Dialog Card - Positioned cleanly below the TikTok node */}
-            <div className="absolute -left-3 sm:-left-8 lg:-left-12 -bottom-5 sm:-bottom-7 w-[240px] sm:w-[260px] bg-white rounded-[16px] shadow-[0_2px_6px_rgba(0,0,0,0.06),0_24px_56px_rgba(1,14,40,0.28)] p-3.5 sm:p-4 flex flex-col gap-2.5 z-10 transition-transform duration-200 hover:scale-[1.02]">
-              <span className="self-end bg-[#F2F3F6] rounded-[12px_12px_4px_12px] py-1.5 px-3 text-[13px] text-[#000000]">
-                Why did CPA rise?
-              </span>
-              <span className="inline-flex items-center gap-2 text-[13.5px] font-medium text-[#000000]">
-                <span className="w-6 h-6 rounded-[8px] bg-[#E8F2FC] inline-flex items-center justify-center shrink-0">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0070C2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            {/* Floating Top-Right Live ROAS Widget */}
+            <div className="absolute -right-3 sm:-right-6 lg:-right-8 top-6 sm:top-8 w-[205px] bg-white/95 backdrop-blur-md rounded-[18px] shadow-[0_16px_40px_rgba(1,22,64,0.18)] border border-[#E2E8F0] p-3.5 flex flex-col gap-1.5 z-20 animate-float hidden sm:flex">
+              <div className="flex items-center justify-between text-[11.5px] font-semibold text-[#5A6675]">
+                <span>Blended ROAS</span>
+                <span className="text-[#166534] bg-[#DCFCE7] px-1.5 py-0.5 rounded-full text-[10.5px] font-bold">
+                  ↑ 18.4%
+                </span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-heading text-[22px] font-bold text-[#000000] tabular-nums">
+                  3.82x
+                </span>
+                <span className="text-[12px] text-[#5A6675]">vs 3.22x goal</span>
+              </div>
+              <svg width="100%" height="22" viewBox="0 0 160 22" fill="none">
+                <path
+                  d="M0 18 L25 16 L50 20 L75 12 L100 14 L125 7 L160 2"
+                  stroke="#0070C2"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+
+            {/* Floating Interactive Ask Cerebro Dialogue Card */}
+            <div className="absolute -left-2 sm:-left-6 lg:-left-10 -bottom-6 sm:-bottom-8 w-[290px] sm:w-[325px] bg-white/95 backdrop-blur-md rounded-[20px] shadow-[0_20px_50px_rgba(1,22,64,0.22),0_4px_12px_rgba(0,0,0,0.06)] border border-[#E2E8F0] p-4 flex flex-col gap-3 z-20 transition-all duration-300">
+              <div className="flex items-center justify-between border-b border-[#F0F2F6] pb-2">
+                <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#0070C2]">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" />
+                  </svg>
+                  <span>Ask Cerebro AI</span>
+                </span>
+                <span className="text-[10px] font-medium text-[#166534] bg-[#DCFCE7] px-2 py-0.5 rounded-full font-semibold">
+                  Live Model
+                </span>
+              </div>
+
+              {/* Quick question selector tabs */}
+              <div className="flex gap-1.5 overflow-x-auto pb-0.5 scrollbar-none">
+                {heroQuestions.map((item, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => handleSelectQuestion(idx)}
+                    className={`text-[11px] font-semibold px-2.5 py-1 rounded-full whitespace-nowrap transition-all ${
+                      heroPromptIdx === idx
+                        ? "bg-[#0070C2] text-white shadow-xs"
+                        : "bg-[#F1F3F7] text-[#5A6675] hover:bg-[#E2E8F0]"
+                    }`}
+                  >
+                    {idx === 0 ? "Why CPA?" : idx === 1 ? "Best Audience" : "Pacing"}
+                  </button>
+                ))}
+              </div>
+
+              {/* Question Bubble */}
+              <div className="self-end bg-[#F2F4F8] rounded-[14px_14px_4px_14px] py-1.5 px-3 text-[12.5px] font-medium text-[#000000]">
+                {heroQuestions[heroPromptIdx].q}
+              </div>
+
+              {/* Answer Bubble with loading state */}
+              <div className="flex items-start gap-2.5 text-[13px] leading-relaxed text-[#000000] bg-[#EEF5FC] p-2.5 rounded-[12px]">
+                <span className="w-5 h-5 rounded-[6px] bg-[#0070C2] text-white inline-flex items-center justify-center shrink-0 mt-0.5">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" />
                   </svg>
                 </span>
-                <span>TikTok drove the rise.</span>
-              </span>
+                {isThinking ? (
+                  <div className="flex items-center gap-1.5 py-1 text-[#0070C2] font-semibold text-[12px]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0070C2] animate-bounce" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0070C2] animate-bounce [animation-delay:0.15s]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0070C2] animate-bounce [animation-delay:0.3s]" />
+                    <span>Synthesizing cross-channel data...</span>
+                  </div>
+                ) : (
+                  <div>
+                    <p className="m-0 font-medium text-[12.5px] leading-snug">{heroQuestions[heroPromptIdx].a}</p>
+                    <span className="mt-1 inline-block text-[10.5px] font-semibold text-[#005DA3]">
+                      Verified from {heroQuestions[heroPromptIdx].source}
+                    </span>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -263,6 +474,39 @@ export function HomeV2() {
             <p className="mt-3.5 mx-auto max-w-[560px] text-[17px] lg:text-[18px] leading-[1.5] text-[#5A6675]">
               Connect a platform, build a connector with AI, or upload a sheet.
             </p>
+
+            {/* Interactive Feature Cloud Exploration Pills (Inspired by Figma Weave) */}
+            <div className="mt-8 flex justify-center items-center gap-2 flex-wrap">
+              {[
+                { id: 0, label: "Native Connectors", badge: "3 Live" },
+                { id: 1, label: "AI Connector Builder", badge: "Instant" },
+                { id: 2, label: "Spreadsheets & POS", badge: "Auto-mapped" },
+                { id: 3, label: "Objective Taxonomy", badge: "Unified" },
+                { id: 4, label: "Automated Delivery", badge: "Exports" },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveFeatureTab(tab.id)}
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[13.5px] font-semibold transition-all duration-200 cursor-pointer ${
+                    activeFeatureTab === tab.id
+                      ? "bg-[#0070C2] text-white shadow-[0_4px_14px_rgba(0,112,194,0.3)] scale-[1.02]"
+                      : "bg-[#F6F8FB] hover:bg-[#EEF5FC] text-[#5A6675] hover:text-[#0070C2] border border-[#E2E8F0]"
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                  <span
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                      activeFeatureTab === tab.id
+                        ? "bg-white/20 text-white"
+                        : "bg-[#E2E8F0] text-[#5A6675]"
+                    }`}
+                  >
+                    {tab.badge}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="mt-14 flex gap-5 flex-wrap">
