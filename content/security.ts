@@ -20,7 +20,7 @@ const OK = {
   state: "In place",
   pillBg: "#DCFCE7",
   pillFg: "#166534",
-  bd: "#E4E7EC",
+  bd: "#E2E8F0",
   bg: "#FFFFFF",
   dot: "#15803D",
   icon: "M20 6 9 17l-5-5",

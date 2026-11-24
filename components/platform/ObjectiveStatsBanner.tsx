@@ -43,7 +43,7 @@ export default function ObjectiveStatsBanner() {
           <defs>
             <linearGradient id="objGlow" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#A855F7" />
-              <stop offset="100%" stopColor="#4F46E5" />
+              <stop offset="100%" stopColor="#0070C2" />
             </linearGradient>
           </defs>
         </svg>

@@ -39,7 +39,7 @@ export function PlatformBadge({ platform, className = "", size = "md" }: Platfor
 
   return (
     <span
-      className={`inline-flex items-center rounded-full border border-border bg-white text-ink font-medium select-none shadow-sm transition-all hover:border-[#A5B4FC] ${sizeClasses[size]} ${className}`}
+      className={`inline-flex items-center rounded-full border border-border bg-white text-ink font-medium select-none shadow-sm transition-all hover:border-[#8EC5F0] ${sizeClasses[size]} ${className}`}
     >
       {iconSrc && (
         <Image

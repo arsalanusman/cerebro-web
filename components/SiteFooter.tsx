@@ -71,25 +71,25 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
   ];
 
   return (
-    <div className="font-sans text-[#2B3040] bg-white">
+    <div className="font-sans text-[#1C2433] bg-white">
       {/* ── Trust Section ── */}
       <section aria-label="Trust" className="border-t border-[#EEF0F3] bg-white">
         <div className="max-w-[1240px] mx-auto px-6 lg:px-10 py-9 box-border flex gap-7 items-center flex-wrap">
-          <span className="font-heading text-[18px] font-semibold text-[#101426]">
+          <span className="font-heading text-[18px] font-semibold text-[#000000]">
             Built to be trusted with client data
           </span>
           <div className="flex-1 min-w-[280px] lg:min-w-[520px] flex gap-5 lg:gap-[22px] flex-wrap items-center">
             {trustItems.map((t, idx) => (
               <span
                 key={idx}
-                className="inline-flex items-center gap-2 text-[14px] text-[#2B3040]"
+                className="inline-flex items-center gap-2 text-[14px] text-[#1C2433]"
               >
                 <svg
                   width="16"
                   height="16"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="#4F46E5"
+                  stroke="#0070C2"
                   strokeWidth="1.9"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -103,7 +103,7 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
           </div>
           <Link
             href="/security"
-            className="inline-flex items-center gap-1.5 min-h-[44px] text-[14.5px] font-semibold text-[#4F46E5] hover:text-[#4338CA] transition-colors"
+            className="inline-flex items-center gap-1.5 min-h-[44px] text-[14.5px] font-semibold text-[#0070C2] hover:text-[#005DA3] transition-colors"
           >
             <span>Read about security</span>
             <svg
@@ -125,14 +125,14 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
 
       {/* ── Call To Action Section (Conditional via prop `cta`) ── */}
       {cta && (
-        <section className="relative overflow-hidden py-16 lg:py-[104px] bg-[#1C1A57]">
+        <section className="relative overflow-hidden py-16 lg:py-[104px] bg-[#022771]">
           {/* Subtle glow circle */}
           <div
             aria-hidden="true"
             className="absolute -bottom-80 left-1/2 -ml-[380px] w-[760px] h-[760px] rounded-full pointer-events-none"
             style={{
               background:
-                "radial-gradient(circle, rgba(165,180,252,0.35) 0, rgba(79,70,229,0.12) 25%, rgba(28,26,87,0) 60%)",
+                "radial-gradient(circle, rgba(142,197,240,0.35) 0, rgba(0,112,194,0.12) 25%, rgba(2,39,113,0) 60%)",
             }}
           />
           <div className="relative max-w-[1240px] mx-auto px-6 lg:px-10 box-border text-center">
@@ -145,7 +145,7 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
             <div className="mt-9 flex gap-3 justify-center flex-wrap">
               <Link
                 href="/demo"
-                className="whitespace-nowrap shrink-0 inline-flex items-center justify-center min-h-[44px] px-[22px] rounded-[22px] bg-white hover:bg-[#F3F4F6] text-[#1C1A57] text-[15px] font-semibold transition-colors shadow-sm"
+                className="whitespace-nowrap shrink-0 inline-flex items-center justify-center min-h-[44px] px-[22px] rounded-[22px] bg-white hover:bg-[#F3F4F6] text-[#022771] text-[15px] font-semibold transition-colors shadow-sm"
               >
                 Book a demo
               </Link>
@@ -186,13 +186,13 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
                   className="h-[16px] w-auto block"
                 />
               </span>
-              <p className="mt-4 max-w-[280px] text-[14.5px] leading-[1.55] text-[#5B6170]">
+              <p className="mt-4 max-w-[280px] text-[14.5px] leading-[1.55] text-[#5A6675]">
                 Cerebro AI, the data engine for paid media reporting, for agencies and brands.
               </p>
-              <address className="mt-[22px] not-italic text-[14px] leading-[1.7] text-[#2B3040]">
-                <div className="font-semibold text-[#101426]">{SITE.name}</div>
+              <address className="mt-[22px] not-italic text-[14px] leading-[1.7] text-[#1C2433]">
+                <div className="font-semibold text-[#000000]">{SITE.name}</div>
                 {!isPlaceholderHidden(SITE.address.unit) && (
-                  <div className="text-[#6B7180]">{SITE.address.unit}</div>
+                  <div className="text-[#6B7685]">{SITE.address.unit}</div>
                 )}
                 <div>{SITE.address.street}</div>
                 <div>
@@ -201,7 +201,7 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
                 <div>
                   <a
                     href={SITE.phoneHref}
-                    className="text-[#4F46E5] hover:text-[#4338CA] transition-colors"
+                    className="text-[#0070C2] hover:text-[#005DA3] transition-colors"
                   >
                     {SITE.phoneDisplay}
                   </a>
@@ -209,12 +209,12 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
                 <div>
                   <a
                     href={`mailto:${SITE.email}`}
-                    className="text-[#4F46E5] hover:text-[#4338CA] transition-colors"
+                    className="text-[#0070C2] hover:text-[#005DA3] transition-colors"
                   >
                     {SITE.email}
                   </a>
                 </div>
-                <div className="text-[#5B6170] mt-1">{SITE.hoursDisplay}</div>
+                <div className="text-[#5A6675] mt-1">{SITE.hoursDisplay}</div>
               </address>
             </div>
 
@@ -222,7 +222,7 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
             <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-10 min-w-0">
               {columns.map((col, idx) => (
                 <nav key={idx} aria-label={col.title}>
-                  <div className="text-[13px] font-semibold text-[#101426]">
+                  <div className="text-[13px] font-semibold text-[#000000]">
                     {col.title}
                   </div>
                   <ul className="mt-3.5 p-0 list-none flex flex-col gap-2.5">
@@ -230,7 +230,7 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
                       <li key={lIdx}>
                         <Link
                           href={lnk.href}
-                          className="text-[14px] text-[#5B6170] hover:text-[#101426] transition-colors"
+                          className="text-[14px] text-[#5A6675] hover:text-[#000000] transition-colors"
                         >
                           {lnk.label}
                         </Link>
@@ -243,24 +243,24 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
           </div>
 
           {/* Sub-footer Legal Bar */}
-          <div className="mt-12 pt-[22px] border-t border-[#EEF0F3] flex justify-between gap-4 flex-wrap text-[13px] text-[#5B6170]">
+          <div className="mt-12 pt-[22px] border-t border-[#EEF0F3] flex justify-between gap-4 flex-wrap text-[13px] text-[#5A6675]">
             <span>© 2026 Cerebro dNano</span>
             <div className="flex gap-5 flex-wrap">
               <Link
                 href="/privacy-policy"
-                className="text-[#5B6170] hover:text-[#101426] transition-colors"
+                className="text-[#5A6675] hover:text-[#000000] transition-colors"
               >
                 Privacy policy
               </Link>
               <Link
                 href="/terms-of-service"
-                className="text-[#5B6170] hover:text-[#101426] transition-colors"
+                className="text-[#5A6675] hover:text-[#000000] transition-colors"
               >
                 Terms of service
               </Link>
               <Link
                 href="/data-deletion"
-                className="text-[#5B6170] hover:text-[#101426] transition-colors"
+                className="text-[#5A6675] hover:text-[#000000] transition-colors"
               >
                 Data deletion
               </Link>

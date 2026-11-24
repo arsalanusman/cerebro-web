@@ -109,9 +109,9 @@ export default function HeroConnectorVisual() {
           <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#4F46E5" stopOpacity="0.8" />
+                <stop offset="0%" stopColor="#0070C2" stopOpacity="0.8" />
                 <stop offset="50%" stopColor="#818CF8" stopOpacity="0.4" />
-                <stop offset="100%" stopColor="#4F46E5" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#0070C2" stopOpacity="0.8" />
               </linearGradient>
             </defs>
             {/* Connection lines from center (50%, 50%) to corners */}

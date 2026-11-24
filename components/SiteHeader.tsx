@@ -205,11 +205,11 @@ export function SiteHeader() {
       ],
       feature: {
         href: "/demo",
-        bg: "#1C1A57",
-        bd: "#1C1A57",
-        kicker: "#A5B4FC",
+        bg: "#022771",
+        bd: "#022771",
+        kicker: "#8EC5F0",
         title: "#FFFFFF",
-        body: "#CDD0F3",
+        body: "#C9DDF2",
         link: "#FFFFFF",
         eyebrow: "Book a demo",
         heading: "See Cerebro AI on your own campaigns",
@@ -275,12 +275,12 @@ export function SiteHeader() {
       ],
       feature: {
         href: "/solutions/agencies",
-        bg: "#F5F6FF",
-        bd: "#E0E3FF",
-        kicker: "#4F46E5",
-        title: "#101426",
-        body: "#5B6170",
-        link: "#4F46E5",
+        bg: "#F3F8FE",
+        bd: "#D6E8F8",
+        kicker: "#0070C2",
+        title: "#000000",
+        body: "#5A6675",
+        link: "#0070C2",
         eyebrow: "For agencies",
         heading: "Report on every client from one workspace",
         text: "Client-level access, shared widgets and Ask Cerebro for every client.",
@@ -346,11 +346,11 @@ export function SiteHeader() {
       feature: {
         href: "/blog/blended-roas-vs-platform-roas",
         bg: "#FFFFFF",
-        bd: "#E4E7EC",
-        kicker: "#4F46E5",
-        title: "#101426",
-        body: "#5B6170",
-        link: "#4F46E5",
+        bd: "#E2E8F0",
+        kicker: "#0070C2",
+        title: "#000000",
+        body: "#5A6675",
+        link: "#0070C2",
         eyebrow: "Latest article",
         heading: "Blended ROAS vs platform ROAS: which number should you trust?",
         text: "Why platform totals never add up, and how to report both honestly.",
@@ -373,7 +373,7 @@ export function SiteHeader() {
     <header
       ref={headerRef}
       onMouseLeave={handleHeaderLeave}
-      className="sticky top-0 z-50 bg-white border-b border-[#E4E7EC] font-sans text-[#2B3040]"
+      className="sticky top-0 z-50 bg-white border-b border-[#E2E8F0] font-sans text-[#1C2433]"
     >
       {/* Desktop Navigation (>= 1024px) */}
       <div className="hidden lg:flex items-center justify-between gap-2 xl:gap-5 max-w-[1240px] min-h-[72px] mx-auto px-3.5 lg:px-4 xl:px-8 2xl:px-10 box-border">
@@ -406,7 +406,7 @@ export function SiteHeader() {
           {/* AI first link (requested by user) */}
           <Link
             href="/ai-first"
-            className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 min-h-[36px] xl:min-h-[38px] px-2.5 xl:px-3 rounded-[19px] bg-[#EEF0FF] hover:bg-[#E0E3FF] text-[#3730A3] font-semibold text-[13px] xl:text-[15px] transition-colors"
+            className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 min-h-[36px] xl:min-h-[38px] px-2.5 xl:px-3 rounded-[19px] bg-[#E8F2FC] hover:bg-[#D6E8F8] text-[#004C87] font-semibold text-[13px] xl:text-[15px] transition-colors"
           >
             <svg
               width="14"
@@ -428,7 +428,7 @@ export function SiteHeader() {
           {/* Ask Cerebro pill button */}
           <Link
             href="/ask-cerebro"
-            className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 min-h-[36px] xl:min-h-[38px] px-2.5 xl:px-3 rounded-[19px] bg-[#EEF0FF] hover:bg-[#E0E3FF] text-[#3730A3] font-semibold text-[13px] xl:text-[15px] transition-colors"
+            className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 min-h-[36px] xl:min-h-[38px] px-2.5 xl:px-3 rounded-[19px] bg-[#E8F2FC] hover:bg-[#D6E8F8] text-[#004C87] font-semibold text-[13px] xl:text-[15px] transition-colors"
           >
             <svg
               width="14"
@@ -461,10 +461,10 @@ export function SiteHeader() {
                   onClick={() => toggleMenu(t.key)}
                   className={`whitespace-nowrap shrink-0 inline-flex items-center gap-1 xl:gap-1.5 min-h-[36px] xl:min-h-[38px] px-2 xl:px-3 rounded-lg text-[13px] xl:text-[15px] font-medium transition-colors ${
                     isOpen
-                      ? "bg-[#EEF0FF] text-[#3730A3]"
+                      ? "bg-[#E8F2FC] text-[#004C87]"
                       : hoverKey === t.key
-                      ? "bg-[#F3F4F6] text-[#2B3040]"
-                      : "bg-transparent text-[#2B3040]"
+                      ? "bg-[#F3F4F6] text-[#1C2433]"
+                      : "bg-transparent text-[#1C2433]"
                   }`}
                 >
                   <span>{t.label}</span>
@@ -477,7 +477,7 @@ export function SiteHeader() {
                     strokeWidth="2"
                     aria-hidden="true"
                     className={`shrink-0 transition-transform duration-150 ${
-                      isOpen ? "rotate-180 text-[#3730A3]" : "text-[#5B6170]"
+                      isOpen ? "rotate-180 text-[#004C87]" : "text-[#5A6675]"
                     }`}
                   >
                     <path d="m6 9 6 6 6-6" />
@@ -497,8 +497,8 @@ export function SiteHeader() {
                 onMouseLeave={() => setHoverKey(null)}
                 className={`whitespace-nowrap shrink-0 inline-flex items-center min-h-[36px] xl:min-h-[38px] px-2 xl:px-3 rounded-lg text-[13px] xl:text-[15px] font-medium transition-colors ${
                   hoverKey === t.key
-                    ? "bg-[#F3F4F6] text-[#2B3040]"
-                    : "bg-transparent text-[#2B3040]"
+                    ? "bg-[#F3F4F6] text-[#1C2433]"
+                    : "bg-transparent text-[#1C2433]"
                 }`}
               >
                 {t.label}
@@ -515,15 +515,15 @@ export function SiteHeader() {
             onMouseLeave={() => setHoverKey(null)}
             className={`whitespace-nowrap shrink-0 inline-flex items-center min-h-[36px] xl:min-h-[38px] px-2 xl:px-3 rounded-lg text-[13px] xl:text-[15px] font-medium transition-colors ${
               hoverKey === "contact"
-                ? "bg-[#F3F4F6] text-[#2B3040]"
-                : "bg-transparent text-[#2B3040]"
+                ? "bg-[#F3F4F6] text-[#1C2433]"
+                : "bg-transparent text-[#1C2433]"
             }`}
           >
             Contact
           </Link>
           <Link
             href="/demo"
-            className="whitespace-nowrap shrink-0 inline-flex items-center min-h-[38px] xl:min-h-[40px] px-3 xl:px-[18px] rounded-[20px] bg-[#4F46E5] hover:bg-[#4338CA] text-white text-[13px] xl:text-[15px] font-semibold transition-colors shadow-sm"
+            className="whitespace-nowrap shrink-0 inline-flex items-center min-h-[38px] xl:min-h-[40px] px-3 xl:px-[18px] rounded-[20px] bg-[#0070C2] hover:bg-[#005DA3] text-white text-[13px] xl:text-[15px] font-semibold transition-colors shadow-sm"
           >
             Book a demo
           </Link>
@@ -543,13 +543,13 @@ export function SiteHeader() {
             }
           }}
           onMouseLeave={handlePointerLeaveMenu}
-          className="hidden lg:block absolute left-0 right-0 top-full bg-white border-t border-[#EEF0F3] border-b border-[#E4E7EC] shadow-[0_24px_48px_rgba(16,20,38,0.12)] z-50 animate-in fade-in duration-150"
+          className="hidden lg:block absolute left-0 right-0 top-full bg-white border-t border-[#EEF0F3] border-b border-[#E2E8F0] shadow-[0_24px_48px_rgba(0,0,0,0.12)] z-50 animate-in fade-in duration-150"
         >
           <div className="max-w-[1240px] mx-auto px-4 lg:px-6 xl:px-10 py-6 xl:py-7 pb-8 box-border flex gap-5 xl:gap-8">
             {/* Columns */}
             {currentPanel.cols.map((col, idx) => (
               <div key={idx} className="flex-1 min-w-[260px]">
-                <div className="text-[12px] font-semibold text-[#6B7180] px-3 uppercase tracking-wider">
+                <div className="text-[12px] font-semibold text-[#6B7685] px-3 uppercase tracking-wider">
                   {col.title}
                 </div>
                 <div className="mt-2 flex flex-col gap-0.5">
@@ -562,12 +562,12 @@ export function SiteHeader() {
                         onMouseEnter={() => setHoverKey(it.id)}
                         onMouseLeave={() => setHoverKey(openMenu)}
                         className={`flex gap-3 items-start p-2.5 px-3 rounded-[10px] text-decoration-none transition-colors ${
-                          isHovered ? "bg-[#F5F6FF]" : "bg-transparent"
+                          isHovered ? "bg-[#F3F8FE]" : "bg-transparent"
                         }`}
                       >
                         <span
                           className={`flex-none w-[34px] height-[34px] h-[34px] rounded-[9px] inline-flex items-center justify-center transition-colors ${
-                            isHovered ? "bg-[#E0E3FF]" : "bg-[#EEF0FF]"
+                            isHovered ? "bg-[#D6E8F8]" : "bg-[#E8F2FC]"
                           }`}
                         >
                           <svg
@@ -575,7 +575,7 @@ export function SiteHeader() {
                             height="17"
                             viewBox="0 0 24 24"
                             fill="none"
-                            stroke="#4F46E5"
+                            stroke="#0070C2"
                             strokeWidth="1.8"
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -587,12 +587,12 @@ export function SiteHeader() {
                         <span className="flex flex-col gap-0.5">
                           <span
                             className={`text-[14.5px] font-semibold transition-colors ${
-                              isHovered ? "text-[#3730A3]" : "text-[#101426]"
+                              isHovered ? "text-[#004C87]" : "text-[#000000]"
                             }`}
                           >
                             {it.label}
                           </span>
-                          <span className="text-[13px] leading-[1.4] text-[#5B6170]">
+                          <span className="text-[13px] leading-[1.4] text-[#5A6675]">
                             {it.text}
                           </span>
                         </span>
@@ -655,7 +655,7 @@ export function SiteHeader() {
       )}
 
       {/* Mobile Header (< 1024px) from MobHome.dc.html */}
-      <div className="flex lg:hidden items-center justify-between h-16 px-6 box-border bg-white border-b border-[#E4E7EC]">
+      <div className="flex lg:hidden items-center justify-between h-16 px-6 box-border bg-white border-b border-[#E2E8F0]">
         <Link
           href="/"
           aria-label="Cerebro dNano home"
@@ -685,7 +685,7 @@ export function SiteHeader() {
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="w-11 h-11 rounded-xl border border-[#E4E7EC] bg-white inline-flex items-center justify-center cursor-pointer text-[#101426] transition-colors active:bg-[#F3F4F6]"
+          className="w-11 h-11 rounded-xl border border-[#E2E8F0] bg-white inline-flex items-center justify-center cursor-pointer text-[#000000] transition-colors active:bg-[#F3F4F6]"
         >
           {mobileOpen ? (
             <svg
@@ -693,7 +693,7 @@ export function SiteHeader() {
               height="18"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#101426"
+              stroke="#000000"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -707,7 +707,7 @@ export function SiteHeader() {
               height="20"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#101426"
+              stroke="#000000"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -723,14 +723,14 @@ export function SiteHeader() {
       {mobileOpen && (
         <nav
           aria-label="Main"
-          className="lg:hidden absolute left-0 right-0 top-16 bg-white border-t border-[#EEF0F3] shadow-[0_24px_48px_rgba(16,20,38,0.14)] px-6 py-4 pb-7 z-50 max-h-[calc(100vh-64px)] overflow-y-auto animate-in slide-in-from-top-2 duration-150"
+          className="lg:hidden absolute left-0 right-0 top-16 bg-white border-t border-[#EEF0F3] shadow-[0_24px_48px_rgba(0,0,0,0.14)] px-6 py-4 pb-7 z-50 max-h-[calc(100vh-64px)] overflow-y-auto animate-in slide-in-from-top-2 duration-150"
         >
           {/* AI first and Ask Cerebro 2-column quick access */}
           <div className="grid grid-cols-2 gap-2.5 mb-3.5">
             <Link
               href="/ai-first"
               onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center gap-1.5 min-h-[42px] px-3 rounded-full bg-[#EEF0FF] hover:bg-[#E0E3FF] text-[#3730A3] font-semibold text-[14.5px] transition-colors whitespace-nowrap"
+              className="flex items-center justify-center gap-1.5 min-h-[42px] px-3 rounded-full bg-[#E8F2FC] hover:bg-[#D6E8F8] text-[#004C87] font-semibold text-[14.5px] transition-colors whitespace-nowrap"
             >
               <svg
                 width="14"
@@ -752,7 +752,7 @@ export function SiteHeader() {
             <Link
               href="/ask-cerebro"
               onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center gap-1.5 min-h-[42px] px-3 rounded-full bg-[#EEF0FF] hover:bg-[#E0E3FF] text-[#3730A3] font-semibold text-[14.5px] transition-colors whitespace-nowrap"
+              className="flex items-center justify-center gap-1.5 min-h-[42px] px-3 rounded-full bg-[#E8F2FC] hover:bg-[#D6E8F8] text-[#004C87] font-semibold text-[14.5px] transition-colors whitespace-nowrap"
             >
               <svg
                 width="14"
@@ -774,14 +774,14 @@ export function SiteHeader() {
 
           {/* Platform Accordion */}
           <details className="border-b border-[#EEF0F3] group">
-            <summary className="min-h-[54px] flex items-center justify-between cursor-pointer text-[17px] font-semibold text-[#101426] select-none list-none [&::-webkit-details-marker]:hidden">
+            <summary className="min-h-[54px] flex items-center justify-between cursor-pointer text-[17px] font-semibold text-[#000000] select-none list-none [&::-webkit-details-marker]:hidden">
               <span>Platform</span>
               <svg
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#5B6170"
+                stroke="#5A6675"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -795,35 +795,35 @@ export function SiteHeader() {
               <Link
                 href="/platform/data-integration"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 Data integration
               </Link>
               <Link
                 href="/platform/dashboards"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 Dashboards
               </Link>
               <Link
                 href="/platform/objective-reporting"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 Objective engine
               </Link>
               <Link
                 href="/platform/reports"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 Reports
               </Link>
               <Link
                 href="/features"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 All features
               </Link>
@@ -832,14 +832,14 @@ export function SiteHeader() {
 
           {/* Solutions Accordion */}
           <details className="border-b border-[#EEF0F3] group">
-            <summary className="min-h-[54px] flex items-center justify-between cursor-pointer text-[17px] font-semibold text-[#101426] select-none list-none [&::-webkit-details-marker]:hidden">
+            <summary className="min-h-[54px] flex items-center justify-between cursor-pointer text-[17px] font-semibold text-[#000000] select-none list-none [&::-webkit-details-marker]:hidden">
               <span>Solutions</span>
               <svg
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#5B6170"
+                stroke="#5A6675"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -853,42 +853,42 @@ export function SiteHeader() {
               <Link
                 href="/solutions/agencies"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 Agencies
               </Link>
               <Link
                 href="/solutions/brands"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 Brands
               </Link>
               <Link
                 href="/industries/banking-and-finance"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 Banking and finance
               </Link>
               <Link
                 href="/industries/telecom"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 Telecom
               </Link>
               <Link
                 href="/industries/fmcg"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 FMCG
               </Link>
               <Link
                 href="/industries/ecommerce"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 E-commerce
               </Link>
@@ -897,14 +897,14 @@ export function SiteHeader() {
 
           {/* Resources Accordion */}
           <details className="border-b border-[#EEF0F3] group">
-            <summary className="min-h-[54px] flex items-center justify-between cursor-pointer text-[17px] font-semibold text-[#101426] select-none list-none [&::-webkit-details-marker]:hidden">
+            <summary className="min-h-[54px] flex items-center justify-between cursor-pointer text-[17px] font-semibold text-[#000000] select-none list-none [&::-webkit-details-marker]:hidden">
               <span>Resources</span>
               <svg
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#5B6170"
+                stroke="#5A6675"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -918,35 +918,35 @@ export function SiteHeader() {
               <Link
                 href="/blog"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 Blog
               </Link>
               <Link
                 href="/docs"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 Docs
               </Link>
               <Link
                 href="/faq"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 FAQ
               </Link>
               <Link
                 href="/about"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 About
               </Link>
               <Link
                 href="/security"
                 onClick={() => setMobileOpen(false)}
-                className="min-h-[44px] flex items-center text-[15.5px] text-[#2B3040]"
+                className="min-h-[44px] flex items-center text-[15.5px] text-[#1C2433]"
               >
                 Security
               </Link>
@@ -957,21 +957,21 @@ export function SiteHeader() {
           <Link
             href="/integrations"
             onClick={() => setMobileOpen(false)}
-            className="min-h-[54px] flex items-center border-b border-[#EEF0F3] text-[17px] font-semibold text-[#101426]"
+            className="min-h-[54px] flex items-center border-b border-[#EEF0F3] text-[17px] font-semibold text-[#000000]"
           >
             Integrations
           </Link>
           <Link
             href="/pricing"
             onClick={() => setMobileOpen(false)}
-            className="min-h-[54px] flex items-center border-b border-[#EEF0F3] text-[17px] font-semibold text-[#101426]"
+            className="min-h-[54px] flex items-center border-b border-[#EEF0F3] text-[17px] font-semibold text-[#000000]"
           >
             Pricing
           </Link>
           <Link
             href="/contact"
             onClick={() => setMobileOpen(false)}
-            className="min-h-[54px] flex items-center border-b border-[#EEF0F3] text-[17px] font-semibold text-[#101426]"
+            className="min-h-[54px] flex items-center border-b border-[#EEF0F3] text-[17px] font-semibold text-[#000000]"
           >
             Contact
           </Link>
@@ -980,7 +980,7 @@ export function SiteHeader() {
           <Link
             href="/demo"
             onClick={() => setMobileOpen(false)}
-            className="mt-5 flex items-center justify-center h-12 rounded-[24px] bg-[#4F46E5] text-white text-[15px] font-semibold shadow-sm"
+            className="mt-5 flex items-center justify-center h-12 rounded-[24px] bg-[#0070C2] text-white text-[15px] font-semibold shadow-sm"
           >
             Book a demo
           </Link>

@@ -11,12 +11,12 @@ export default function TrustSection() {
         {/* Header */}
         <ScrollReveal direction="down" distance={20}>
           <div className="flex gap-12 justify-between items-end flex-wrap">
-            <h2 className="m-0 max-w-[640px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#101426]">
+            <h2 className="m-0 max-w-[640px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#000000]">
               {trustData.h2}
             </h2>
             <Link
               href={trustData.linkHref}
-              className="inline-flex items-center gap-2 min-h-[44px] text-[15px] font-semibold text-[#4F46E5] hover:text-[#4338CA] transition-colors group"
+              className="inline-flex items-center gap-2 min-h-[44px] text-[15px] font-semibold text-[#0070C2] hover:text-[#005DA3] transition-colors group"
             >
               <span>{trustData.linkText}</span>
               <svg
@@ -42,8 +42,8 @@ export default function TrustSection() {
           {trustData.items.map((t, idx) => (
             <ScrollReveal key={idx} direction="up" distance={24} delay={idx * 0.1}>
               <TiltCard maxTilt={5} glare={true} className="h-full">
-                <div className="bg-white border border-[#E4E7EC] hover:border-[#C7D2FE] rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
-                  <div className="w-10 h-10 rounded-lg bg-[#EEF0FF] flex items-center justify-center text-[#4F46E5]">
+                <div className="bg-white border border-[#E2E8F0] hover:border-[#BFD8F0] rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
+                  <div className="w-10 h-10 rounded-lg bg-[#E8F2FC] flex items-center justify-center text-[#0070C2]">
                     <svg
                       width="22"
                       height="22"
@@ -58,10 +58,10 @@ export default function TrustSection() {
                       <path d={t.d} />
                     </svg>
                   </div>
-                  <h3 className="m-0 mt-3.5 text-base font-semibold text-[#101426]">
+                  <h3 className="m-0 mt-3.5 text-base font-semibold text-[#000000]">
                     {t.title}
                   </h3>
-                  <p className="mt-1.5 m-0 text-[14.5px] leading-[1.55] text-[#5B6170]">
+                  <p className="mt-1.5 m-0 text-[14.5px] leading-[1.55] text-[#5A6675]">
                     {t.text}
                   </p>
                 </div>

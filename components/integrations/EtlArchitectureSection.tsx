@@ -91,20 +91,20 @@ export default function EtlArchitectureSection() {
       {/* Background glow effects */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(circle,rgba(79,70,229,0.18)_0,rgba(168,85,247,0.08)_35%,rgba(9,10,21,0)_70%)]"
+        className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(circle,rgba(0,112,194,0.18)_0,rgba(168,85,247,0.08)_35%,rgba(9,10,21,0)_70%)]"
       />
 
       <div className="relative max-w-[1240px] mx-auto px-6 md:px-10 box-border">
         {/* Section Header */}
         <div className="max-w-[780px]">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.08] border border-white/[0.14] text-[#A5B4FC] text-xs font-semibold tracking-wide uppercase">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.08] border border-white/[0.14] text-[#8EC5F0] text-xs font-semibold tracking-wide uppercase">
             <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
             ENTERPRISE PIPELINE ARCHITECTURE
           </span>
           <h2 className="mt-4 m-0 font-heading font-semibold text-[30px] sm:text-[40px] md:text-[50px] leading-[1.08] tracking-[-0.03em] text-white">
             How Cerebro transforms raw ad APIs into an auditable single source of truth.
           </h2>
-          <p className="mt-4 m-0 text-base sm:text-lg text-[#CDD0F3] leading-[1.6]">
+          <p className="mt-4 m-0 text-base sm:text-lg text-[#C9DDF2] leading-[1.6]">
             Every click, impression, conversion, and rupee spent is ingested, normalized, currency-converted, and checked before entering your dashboards and AI answers.
           </p>
         </div>
@@ -133,12 +133,12 @@ export default function EtlArchitectureSection() {
                 <div className="flex items-center justify-between w-full">
                   <span
                     className={`font-mono text-xs font-bold px-2 py-0.5 rounded ${
-                      isSelected ? "bg-[#4F46E5] text-white" : "bg-white/[0.08] text-[#9CA3AF]"
+                      isSelected ? "bg-[#0070C2] text-white" : "bg-white/[0.08] text-[#9CA3AF]"
                     }`}
                   >
                     {stg.stepNumber}
                   </span>
-                  <span className="text-[11px] font-semibold text-[#A5B4FC] hidden sm:inline">
+                  <span className="text-[11px] font-semibold text-[#8EC5F0] hidden sm:inline">
                     {stg.badge}
                   </span>
                 </div>
@@ -160,7 +160,7 @@ export default function EtlArchitectureSection() {
           <div className="lg:col-span-7 bg-white/[0.03] border border-white/[0.1] rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#A5B4FC]">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#8EC5F0]">
                   Visual Architecture Flow
                 </span>
                 <span className="text-xs font-medium text-[#10B981] bg-[#064E3B] px-2.5 py-0.5 rounded-full border border-[#059669]">
@@ -192,7 +192,7 @@ export default function EtlArchitectureSection() {
                             />
                           </div>
                         ) : (
-                          <span className="w-5 h-5 rounded bg-[#4F46E5] text-white text-[9px] font-bold flex items-center justify-center shrink-0">
+                          <span className="w-5 h-5 rounded bg-[#0070C2] text-white text-[9px] font-bold flex items-center justify-center shrink-0">
                             {src.mark}
                           </span>
                         )}
@@ -206,22 +206,22 @@ export default function EtlArchitectureSection() {
                 </div>
 
                 {/* 2. Cerebro Processing Core Card */}
-                <div className="bg-[#1C1A57] border border-[#818CF8]/40 rounded-xl p-4 flex flex-col gap-3 shadow-[0_0_20px_rgba(79,70,229,0.15)] relative">
-                  <div className="text-xs font-semibold text-[#A5B4FC] uppercase tracking-wide flex items-center justify-between">
+                <div className="bg-[#022771] border border-[#818CF8]/40 rounded-xl p-4 flex flex-col gap-3 shadow-[0_0_20px_rgba(0,112,194,0.15)] relative">
+                  <div className="text-xs font-semibold text-[#8EC5F0] uppercase tracking-wide flex items-center justify-between">
                     <span>2. Cerebro Engine</span>
                     <span className="w-2 h-2 rounded-full bg-[#818CF8] animate-ping" />
                   </div>
                   <div className="flex flex-col gap-2 text-[11.5px]">
                     <div className="bg-white/[0.08] rounded-lg p-2 border border-white/[0.1] text-[#E0E7FF]">
-                      <span className="text-[10px] text-[#A5B4FC] block font-mono">DEDUPLICATION</span>
+                      <span className="text-[10px] text-[#8EC5F0] block font-mono">DEDUPLICATION</span>
                       Unified click &amp; impression metrics
                     </div>
                     <div className="bg-white/[0.08] rounded-lg p-2 border border-white/[0.1] text-[#E0E7FF]">
-                      <span className="text-[10px] text-[#A5B4FC] block font-mono">CURRENCY FX</span>
+                      <span className="text-[10px] text-[#8EC5F0] block font-mono">CURRENCY FX</span>
                       USD/AED auto-converted to PKR
                     </div>
                     <div className="bg-white/[0.08] rounded-lg p-2 border border-white/[0.1] text-[#E0E7FF]">
-                      <span className="text-[10px] text-[#A5B4FC] block font-mono">OBJECTIVE MODEL</span>
+                      <span className="text-[10px] text-[#8EC5F0] block font-mono">OBJECTIVE MODEL</span>
                       Traffic, Leads, App, Video
                     </div>
                   </div>
@@ -257,18 +257,18 @@ export default function EtlArchitectureSection() {
             {/* Bottom Telemetry Bar */}
             <div className="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs text-[#9CA3AF] flex-wrap gap-2">
               <span className="font-mono">Pipeline Status: All systems operational</span>
-              <span className="text-[#A5B4FC] font-semibold">{currentStage.metricsPill}</span>
+              <span className="text-[#8EC5F0] font-semibold">{currentStage.metricsPill}</span>
             </div>
           </div>
 
           {/* Right Column: Stage Deep Dive Inspector (5 cols) */}
-          <div className="lg:col-span-5 bg-[#101426] border border-[#2E2A82] rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl">
+          <div className="lg:col-span-5 bg-[#000000] border border-[#022771] rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl">
             <div>
               <div className="flex items-center justify-between gap-3 flex-wrap">
-                <span className="font-mono text-xs text-[#818CF8] bg-[#1E1B4B] px-2.5 py-1 rounded-md border border-[#4338CA]">
+                <span className="font-mono text-xs text-[#818CF8] bg-[#1E1B4B] px-2.5 py-1 rounded-md border border-[#005DA3]">
                   STAGE {currentStage.stepNumber} INSPECTOR
                 </span>
-                <span className="text-xs font-semibold text-[#CDD0F3]">
+                <span className="text-xs font-semibold text-[#C9DDF2]">
                   {currentStage.badge}
                 </span>
               </div>
@@ -277,13 +277,13 @@ export default function EtlArchitectureSection() {
                 {currentStage.name}
               </h3>
 
-              <p className="mt-3 m-0 text-sm sm:text-[15px] leading-[1.6] text-[#CDD0F3]">
+              <p className="mt-3 m-0 text-sm sm:text-[15px] leading-[1.6] text-[#C9DDF2]">
                 {currentStage.summary}
               </p>
 
               {/* Technical Transformation Details */}
               <div className="mt-6 space-y-3">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#A5B4FC] block">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#8EC5F0] block">
                   Stage Engineering Highlights
                 </span>
                 <ul className="m-0 p-0 list-none space-y-2.5">
@@ -314,7 +314,7 @@ export default function EtlArchitectureSection() {
             <div className="mt-8 pt-5 border-t border-white/[0.08]">
               <a
                 href="/demo"
-                className="inline-flex items-center justify-center w-full min-h-[46px] rounded-xl bg-[#4F46E5] hover:bg-[#4338CA] text-white text-sm font-semibold transition-colors no-underline shadow-md"
+                className="inline-flex items-center justify-center w-full min-h-[46px] rounded-xl bg-[#0070C2] hover:bg-[#005DA3] text-white text-sm font-semibold transition-colors no-underline shadow-md"
               >
                 Inspect your data pipeline in a live demo &rarr;
               </a>

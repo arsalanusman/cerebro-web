@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
               style={{
                 fontSize: "28px",
                 fontWeight: 600,
-                color: "#101426",
+                color: "#000000",
                 letterSpacing: "-0.02em",
               }}
             >
@@ -38,8 +38,8 @@ export async function GET(request: NextRequest) {
               style={{
                 fontSize: "14px",
                 fontWeight: 500,
-                color: "#4F46E5",
-                backgroundColor: "#EEF0FF",
+                color: "#0070C2",
+                backgroundColor: "#E8F2FC",
                 padding: "4px 10px",
                 borderRadius: "6px",
               }}
@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
               DNano
             </span>
           </div>
-          <span style={{ fontSize: "16px", color: "#5B6170" }}>
+          <span style={{ fontSize: "16px", color: "#5A6675" }}>
             cerebro.media
           </span>
         </div>
@@ -57,7 +57,7 @@ export async function GET(request: NextRequest) {
             style={{
               width: "48px",
               height: "4px",
-              backgroundColor: "#4F46E5",
+              backgroundColor: "#0070C2",
               borderRadius: "2px",
             }}
           />
@@ -65,7 +65,7 @@ export async function GET(request: NextRequest) {
             style={{
               fontSize: "56px",
               fontWeight: 600,
-              color: "#101426",
+              color: "#000000",
               lineHeight: 1.15,
               letterSpacing: "-0.025em",
               margin: 0,
@@ -80,14 +80,14 @@ export async function GET(request: NextRequest) {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            borderTop: "1px solid #E4E7EC",
+            borderTop: "1px solid #E2E8F0",
             paddingTop: "24px",
           }}
         >
-          <span style={{ fontSize: "16px", color: "#5B6170" }}>
+          <span style={{ fontSize: "16px", color: "#5A6675" }}>
             Marketing data integration, analytics and reporting platform
           </span>
-          <span style={{ fontSize: "16px", color: "#101426", fontWeight: 500 }}>
+          <span style={{ fontSize: "16px", color: "#000000", fontWeight: 500 }}>
             Meta Ads · Google Ads · TikTok Ads
           </span>
         </div>

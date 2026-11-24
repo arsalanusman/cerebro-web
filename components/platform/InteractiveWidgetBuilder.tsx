@@ -97,7 +97,7 @@ export default function InteractiveWidgetBuilder() {
               onClick={() => setActiveIdx(idx)}
               className={`flex items-center gap-2.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 isSelected
-                  ? "bg-[#4F46E5] text-white shadow-sm shadow-[#4F46E5]/20"
+                  ? "bg-[#0070C2] text-white shadow-sm shadow-[#0070C2]/20"
                   : "bg-white text-[#4B5563] border border-[#E5E7EB] hover:bg-[#F3F4F6] hover:text-[#111827]"
               }`}
             >
@@ -119,7 +119,7 @@ export default function InteractiveWidgetBuilder() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         {/* Left: Step Description & Highlights */}
         <div className="lg:col-span-5 flex flex-col justify-center text-left">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#EEF2FF] text-[#4F46E5] text-xs font-semibold w-fit mb-3">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#EEF2FF] text-[#0070C2] text-xs font-semibold w-fit mb-3">
             <Icon className="w-3.5 h-3.5" />
             <span>Step {activeStep.step} of 04</span>
           </div>
@@ -135,7 +135,7 @@ export default function InteractiveWidgetBuilder() {
           <ul className="mt-5 space-y-2.5">
             {activeStep.highlights.map((h, i) => (
               <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#374151]">
-                <CheckCircle2 className="w-4 h-4 text-[#4F46E5] shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-[#0070C2] shrink-0 mt-0.5" />
                 <span>{h}</span>
               </li>
             ))}
@@ -145,7 +145,7 @@ export default function InteractiveWidgetBuilder() {
             <button
               type="button"
               onClick={() => setActiveIdx((activeIdx + 1) % STEPS.length)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#4F46E5] text-white text-xs sm:text-sm font-semibold hover:bg-[#4338CA] transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0070C2] text-white text-xs sm:text-sm font-semibold hover:bg-[#005DA3] transition-colors cursor-pointer"
             >
               <span>{activeIdx === STEPS.length - 1 ? "Review from Step 1" : "Next configuration step"}</span>
               <ChevronRight className="w-4 h-4" />

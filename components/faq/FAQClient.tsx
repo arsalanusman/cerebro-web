@@ -133,7 +133,7 @@ export default function FAQClient() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search frequently asked questions..."
-              className="w-full h-12 pl-12 pr-4 rounded-xl border border-[#DCDFE7] bg-white text-[#101426] placeholder-[#8A90A0] text-sm focus:outline-none focus:ring-2 focus:ring-[#4F46E5] shadow-sm transition-all"
+              className="w-full h-12 pl-12 pr-4 rounded-xl border border-[#DCDFE7] bg-white text-[#000000] placeholder-[#8A90A0] text-sm focus:outline-none focus:ring-2 focus:ring-[#0070C2] shadow-sm transition-all"
             />
             <svg
               width="18"
@@ -165,8 +165,8 @@ export default function FAQClient() {
                   onClick={() => setActiveTopic(idx)}
                   className={`px-4 py-2.5 rounded-xl text-left text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
                     activeTopic === idx
-                      ? "bg-[#EEF2FF] text-[#4F46E5] border border-[#C7D2FE] shadow-sm"
-                      : "text-[#5B6170] hover:text-[#101426] hover:bg-[#F3F4F6]"
+                      ? "bg-[#EEF2FF] text-[#0070C2] border border-[#BFD8F0] shadow-sm"
+                      : "text-[#5A6675] hover:text-[#000000] hover:bg-[#F3F4F6]"
                   }`}
                 >
                   {sec.topic}
@@ -179,7 +179,7 @@ export default function FAQClient() {
           <div className="flex-1 min-w-0 w-full space-y-4">
             {filteredSections.length === 0 ? (
               <div className="text-center py-12 border border-dashed border-[#DCDFE7] rounded-2xl">
-                <p className="text-base text-[#5B6170]">
+                <p className="text-base text-[#5A6675]">
                   No matching questions found for &ldquo;{searchQuery}&rdquo;.
                 </p>
                 <p className="text-sm text-[#8A90A0] mt-1">
@@ -187,7 +187,7 @@ export default function FAQClient() {
                 </p>
                 <Link
                   href="/contact"
-                  className="mt-4 inline-flex items-center text-sm font-semibold text-[#4F46E5] hover:underline"
+                  className="mt-4 inline-flex items-center text-sm font-semibold text-[#0070C2] hover:underline"
                 >
                   Contact support &rarr;
                 </Link>
@@ -199,7 +199,7 @@ export default function FAQClient() {
               ).map((section) => (
                 <div key={section.topic} className="space-y-4">
                   {searchQuery.trim() && (
-                    <h3 className="font-heading text-lg font-semibold text-[#101426] mb-2">
+                    <h3 className="font-heading text-lg font-semibold text-[#000000] mb-2">
                       {section.topic}
                     </h3>
                   )}
@@ -209,7 +209,7 @@ export default function FAQClient() {
                     return (
                       <div
                         key={itemKey}
-                        className="border border-[#E4E7EC] rounded-2xl bg-white overflow-hidden shadow-sm transition-all hover:border-[#A5B4FC]"
+                        className="border border-[#E2E8F0] rounded-2xl bg-white overflow-hidden shadow-sm transition-all hover:border-[#8EC5F0]"
                       >
                         <button
                           type="button"
@@ -217,12 +217,12 @@ export default function FAQClient() {
                           aria-expanded={isOpen}
                           className="w-full flex items-center justify-between p-5 text-left cursor-pointer gap-4 group"
                         >
-                          <span className="font-heading text-[16px] sm:text-[17px] font-semibold text-[#101426] group-hover:text-[#4F46E5] transition-colors">
+                          <span className="font-heading text-[16px] sm:text-[17px] font-semibold text-[#000000] group-hover:text-[#0070C2] transition-colors">
                             {item.q}
                           </span>
                           <span
-                            className={`w-7 h-7 rounded-full bg-[#F3F4F6] text-[#5B6170] flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                              isOpen ? "rotate-180 bg-[#EEF2FF] text-[#4F46E5]" : ""
+                            className={`w-7 h-7 rounded-full bg-[#F3F4F6] text-[#5A6675] flex items-center justify-center shrink-0 transition-transform duration-200 ${
+                              isOpen ? "rotate-180 bg-[#EEF2FF] text-[#0070C2]" : ""
                             }`}
                           >
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -232,7 +232,7 @@ export default function FAQClient() {
                         </button>
 
                         {isOpen && (
-                          <div className="px-5 pb-5 pt-0 text-[15px] leading-[1.65] text-[#5B6170] border-t border-[#EEF0F3] pt-4">
+                          <div className="px-5 pb-5 pt-0 text-[15px] leading-[1.65] text-[#5A6675] border-t border-[#EEF0F3] pt-4">
                             {item.a}
                           </div>
                         )}

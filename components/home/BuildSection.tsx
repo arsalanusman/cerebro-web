@@ -89,10 +89,10 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
     <section id="build" className="py-20 lg:py-[88px] bg-white">
       <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
         {/* Header */}
-        <h2 className="m-0 max-w-[760px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#101426]">
+        <h2 className="m-0 max-w-[760px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#000000]">
           {h2}
         </h2>
-        <p className="mt-4 m-0 max-w-[700px] text-lg leading-[1.55] text-[#5B6170]">
+        <p className="mt-4 m-0 max-w-[700px] text-lg leading-[1.55] text-[#5A6675]">
           {lead}
         </p>
 
@@ -113,8 +113,8 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                 onClick={() => setActiveTab(i)}
                 className={`min-h-[44px] px-4 sm:px-5 rounded-[10px] border text-[14.5px] font-semibold cursor-pointer shrink-0 whitespace-nowrap transition-all ${
                   selected
-                    ? "border-[#101426] bg-[#101426] text-white"
-                    : "border-[#DDE0E7] bg-white text-[#2B3040] hover:border-[#C9CDD6]"
+                    ? "border-[#000000] bg-[#000000] text-white"
+                    : "border-[#DDE0E7] bg-white text-[#1C2433] hover:border-[#C9CDD6]"
                 }`}
               >
                 {tool}
@@ -124,7 +124,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
         </div>
 
         {/* Outer Frame */}
-        <div className="mt-4 border border-[#E4E7EC] rounded-2xl bg-[#FAFAFC] p-5 sm:p-6 min-h-[520px] box-border shadow-sm">
+        <div className="mt-4 border border-[#E2E8F0] rounded-2xl bg-[#FAFAFC] p-5 sm:p-6 min-h-[520px] box-border shadow-sm">
           {/* ============================================================ */}
           {/* SUB-VIEW 0: DASHBOARDS */}
           {/* ============================================================ */}
@@ -132,10 +132,10 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
             <div className="animate-fadeIn">
               <div className="flex justify-between items-center gap-3 flex-wrap">
                 <div>
-                  <div className="text-base font-semibold text-[#101426]">
+                  <div className="text-base font-semibold text-[#000000]">
                     Executive overview
                   </div>
-                  <div className="text-[12.5px] text-[#6B7180] mt-0.5">
+                  <div className="text-[12.5px] text-[#6B7685] mt-0.5">
                     {editing
                       ? "Remove widgets, or add one from the library."
                       : "Widget-based. Click Edit dashboard to change it."}
@@ -148,8 +148,8 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                   aria-pressed={editing}
                   className={`min-h-[40px] px-4 rounded-[9px] border text-sm font-semibold cursor-pointer transition-all ${
                     editing
-                      ? "border-[#4F46E5] bg-[#4F46E5] text-white"
-                      : "border-[#DDE0E7] bg-white text-[#101426] hover:bg-[#F3F4F6]"
+                      ? "border-[#0070C2] bg-[#0070C2] text-white"
+                      : "border-[#DDE0E7] bg-white text-[#000000] hover:bg-[#F3F4F6]"
                   }`}
                 >
                   {editing ? "Done" : "Edit dashboard"}
@@ -166,11 +166,11 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                       <div
                         key={wKey}
                         className={`bg-white rounded-xl p-3.5 sm:p-4 min-h-[150px] border flex flex-col justify-between transition-all ${
-                          editing ? "border-[#C7CBF9] ring-2 ring-[#4F46E5]/10" : "border-[#E4E7EC]"
+                          editing ? "border-[#BFD8F0] ring-2 ring-[#0070C2]/10" : "border-[#E2E8F0]"
                         }`}
                       >
                         <div className="flex justify-between items-center gap-2">
-                          <span className="text-[13px] font-semibold text-[#101426]">
+                          <span className="text-[13px] font-semibold text-[#000000]">
                             {w.title}
                           </span>
                           {editing && (
@@ -178,7 +178,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                               type="button"
                               onClick={() => handleRemoveWidget(wKey)}
                               aria-label={`Remove ${w.title}`}
-                              className="w-8 h-8 rounded-lg border border-[#E4E7EC] bg-white hover:bg-[#FEE2E2] hover:text-[#991B1B] text-[#5B6170] inline-flex items-center justify-center cursor-pointer transition-colors"
+                              className="w-8 h-8 rounded-lg border border-[#E2E8F0] bg-white hover:bg-[#FEE2E2] hover:text-[#991B1B] text-[#5A6675] inline-flex items-center justify-center cursor-pointer transition-colors"
                             >
                               <svg
                                 width="14"
@@ -199,7 +199,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                         {/* KPI type */}
                         {w.type === "kpi" && (
                           <div className="my-auto py-2">
-                            <div className="text-[30px] font-semibold text-[#101426] tracking-tight">
+                            <div className="text-[30px] font-semibold text-[#000000] tracking-tight">
                               {w.value}
                             </div>
                             <div
@@ -224,14 +224,14 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                               <polyline
                                 points={smallPrev}
                                 fill="none"
-                                stroke="#8B9AE8"
+                                stroke="#3E8FD4"
                                 strokeWidth="1.8"
                                 strokeDasharray="3 3"
                               />
                               <polyline
                                 points={smallCur}
                                 fill="none"
-                                stroke="#2E2A82"
+                                stroke="#022771"
                                 strokeWidth="2"
                                 strokeLinejoin="round"
                               />
@@ -256,7 +256,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                                   cy="50"
                                   r="38"
                                   fill="none"
-                                  stroke="#2E2A82"
+                                  stroke="#022771"
                                   strokeWidth="14"
                                   strokeDasharray="148 238.8"
                                 />
@@ -265,7 +265,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                                   cy="50"
                                   r="38"
                                   fill="none"
-                                  stroke="#6B7FE8"
+                                  stroke="#3E8FD4"
                                   strokeWidth="14"
                                   strokeDasharray="83.6 238.8"
                                   strokeDashoffset="-148"
@@ -275,14 +275,14 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                                   cy="50"
                                   r="38"
                                   fill="none"
-                                  stroke="#A5B4FC"
+                                  stroke="#8EC5F0"
                                   strokeWidth="14"
                                   strokeDasharray="7.2 238.8"
                                   strokeDashoffset="-231.6"
                                 />
                               </g>
                             </svg>
-                            <div className="flex flex-col gap-1.5 text-[12.5px] text-[#2B3040]">
+                            <div className="flex flex-col gap-1.5 text-[12.5px] text-[#1C2433]">
                               <span>Awareness, PKR 3.6M</span>
                               <span>Traffic, PKR 2M</span>
                               <span>Sales, PKR 166K</span>
@@ -298,8 +298,8 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                                 key={idx}
                                 className="flex justify-between gap-3 py-1.5 border-t border-[#F0F1F4] first:border-t-0 text-[12.5px]"
                               >
-                                <span className="text-[#2B3040] truncate">{it.name}</span>
-                                <span className="text-[#101426] font-semibold shrink-0">
+                                <span className="text-[#1C2433] truncate">{it.name}</span>
+                                <span className="text-[#000000] font-semibold shrink-0">
                                   {it.value}
                                 </span>
                               </div>
@@ -333,11 +333,11 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                 {/* Library drawer when editing */}
                 {editing && (
                   <div className="w-full lg:w-[280px] shrink-0 border border-[#EEF0F3] rounded-xl p-4 bg-white shadow-sm flex flex-col gap-2.5">
-                    <div className="text-xs font-semibold text-[#6B7180]">
+                    <div className="text-xs font-semibold text-[#6B7685]">
                       Widget library (max 6)
                     </div>
                     {activeWidgets.length >= 6 ? (
-                      <div className="text-xs text-[#5B6170] italic py-2">
+                      <div className="text-xs text-[#5A6675] italic py-2">
                         Dashboard is full (6 of 6 widgets). Remove one to add another.
                       </div>
                     ) : (
@@ -347,20 +347,20 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                           return (
                             <div
                               key={wKey}
-                              className="flex items-center justify-between p-2 rounded-lg border border-[#E4E7EC] hover:border-[#4F46E5] bg-[#FAFAFC] transition-colors"
+                              className="flex items-center justify-between p-2 rounded-lg border border-[#E2E8F0] hover:border-[#0070C2] bg-[#FAFAFC] transition-colors"
                             >
                               <div className="flex flex-col">
-                                <span className="text-xs font-semibold text-[#101426]">
+                                <span className="text-xs font-semibold text-[#000000]">
                                   {item.title}
                                 </span>
-                                <span className="text-[10.5px] text-[#6B7180]">
+                                <span className="text-[10.5px] text-[#6B7685]">
                                   {item.kind}
                                 </span>
                               </div>
                               <button
                                 type="button"
                                 onClick={() => handleAddWidget(wKey)}
-                                className="h-7 px-2.5 rounded-md bg-[#4F46E5] text-white text-xs font-semibold hover:bg-[#4338CA] transition-colors"
+                                className="h-7 px-2.5 rounded-md bg-[#0070C2] text-white text-xs font-semibold hover:bg-[#005DA3] transition-colors"
                               >
                                 Add
                               </button>
@@ -384,7 +384,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
               <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center pb-4 border-b border-[#EEF0F3]">
                 {/* Dimensions */}
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-semibold text-[#6B7180]">Breakdown:</span>
+                  <span className="text-xs font-semibold text-[#6B7685]">Breakdown:</span>
                   <div className="inline-flex gap-1">
                     {[
                       { key: "platform", label: "Platform" },
@@ -398,8 +398,8 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                           onClick={() => setSelectedDim(d.key as "platform" | "campaign")}
                           className={`min-h-[34px] px-3 rounded-lg border text-xs font-semibold cursor-pointer transition-all ${
                             on
-                              ? "border-[#101426] bg-[#101426] text-white"
-                              : "border-[#DDE0E7] bg-white text-[#2B3040] hover:bg-[#F3F4F6]"
+                              ? "border-[#000000] bg-[#000000] text-white"
+                              : "border-[#DDE0E7] bg-white text-[#1C2433] hover:bg-[#F3F4F6]"
                           }`}
                         >
                           {d.label}
@@ -411,7 +411,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
 
                 {/* Metric Checkboxes */}
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-xs font-semibold text-[#6B7180] mr-1">Metrics:</span>
+                  <span className="text-xs font-semibold text-[#6B7685] mr-1">Metrics:</span>
                   {buildData.metricDefs.map((m) => {
                     const on = selectedMetrics[m.key];
                     return (
@@ -421,14 +421,14 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                         onClick={() => handleToggleMetric(m.key)}
                         className={`min-h-[32px] px-2.5 rounded-md border text-xs font-medium cursor-pointer inline-flex items-center gap-1.5 transition-all ${
                           on
-                            ? "border-[#C7CBF9] bg-[#F5F6FF] text-[#4F46E5] font-semibold"
-                            : "border-[#E4E7EC] bg-white text-[#5B6170] hover:border-[#C9CDD6]"
+                            ? "border-[#BFD8F0] bg-[#F3F8FE] text-[#0070C2] font-semibold"
+                            : "border-[#E2E8F0] bg-white text-[#5A6675] hover:border-[#C9CDD6]"
                         }`}
                       >
                         <span
                           className={`w-3.5 h-3.5 rounded-[3px] border inline-flex items-center justify-center text-[10px] ${
                             on
-                              ? "bg-[#4F46E5] border-[#4F46E5] text-white"
+                              ? "bg-[#0070C2] border-[#0070C2] text-white"
                               : "border-[#C9CDD6] bg-white"
                           }`}
                         >
@@ -448,7 +448,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                     <tr className="bg-[#F8F9FA] border-b border-[#EEF0F3]">
                       <th
                         scope="col"
-                        className="py-2.5 px-4 text-left font-semibold text-xs text-[#5B6170]"
+                        className="py-2.5 px-4 text-left font-semibold text-xs text-[#5A6675]"
                       >
                         {selectedDim === "platform" ? "Platform" : "Campaign"}
                       </th>
@@ -458,7 +458,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                           <th
                             key={m.key}
                             scope="col"
-                            className="py-2.5 px-4 text-right font-semibold text-xs text-[#5B6170]"
+                            className="py-2.5 px-4 text-right font-semibold text-xs text-[#5A6675]"
                           >
                             {m.label}
                           </th>
@@ -471,7 +471,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                         key={rIdx}
                         className="border-t border-[#F0F1F4] hover:bg-[#F9FAFB] transition-colors"
                       >
-                        <td className="py-3 px-4 font-medium text-[#101426]">
+                        <td className="py-3 px-4 font-medium text-[#000000]">
                           {row.name}
                         </td>
                         {buildData.metricDefs
@@ -480,7 +480,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                             <td
                               key={m.key}
                               className={`py-3 px-4 text-right ${
-                                m.key === "cpr" ? "font-semibold text-[#101426]" : "text-[#2B3040]"
+                                m.key === "cpr" ? "font-semibold text-[#000000]" : "text-[#1C2433]"
                               }`}
                             >
                               {(row as Record<string, string>)[m.key]}
@@ -511,8 +511,8 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                         onClick={() => setHierPath(crumb.to)}
                         className={`h-7 px-2.5 rounded-md border text-xs font-semibold cursor-pointer transition-all ${
                           isLast
-                            ? "border-[#101426] bg-[#101426] text-white"
-                            : "border-[#DDE0E7] bg-white text-[#2B3040] hover:bg-[#F3F4F6]"
+                            ? "border-[#000000] bg-[#000000] text-white"
+                            : "border-[#DDE0E7] bg-white text-[#1C2433] hover:bg-[#F3F4F6]"
                         }`}
                       >
                         {crumb.label}
@@ -529,37 +529,37 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                     <tr className="bg-[#F8F9FA] border-b border-[#EEF0F3]">
                       <th
                         scope="col"
-                        className="py-2.5 px-4 text-left font-semibold text-xs text-[#5B6170]"
+                        className="py-2.5 px-4 text-left font-semibold text-xs text-[#5A6675]"
                       >
                         {currentLevel}
                       </th>
                       <th
                         scope="col"
-                        className="py-2.5 px-4 text-right font-semibold text-xs text-[#5B6170]"
+                        className="py-2.5 px-4 text-right font-semibold text-xs text-[#5A6675]"
                       >
                         Spend
                       </th>
                       <th
                         scope="col"
-                        className="py-2.5 px-4 text-right font-semibold text-xs text-[#5B6170]"
+                        className="py-2.5 px-4 text-right font-semibold text-xs text-[#5A6675]"
                       >
                         Impressions
                       </th>
                       <th
                         scope="col"
-                        className="py-2.5 px-4 text-right font-semibold text-xs text-[#5B6170]"
+                        className="py-2.5 px-4 text-right font-semibold text-xs text-[#5A6675]"
                       >
                         Clicks
                       </th>
                       <th
                         scope="col"
-                        className="py-2.5 px-4 text-right font-semibold text-xs text-[#5B6170]"
+                        className="py-2.5 px-4 text-right font-semibold text-xs text-[#5A6675]"
                       >
                         CTR
                       </th>
                       <th
                         scope="col"
-                        className="py-2.5 px-4 text-right font-semibold text-xs text-[#5B6170]"
+                        className="py-2.5 px-4 text-right font-semibold text-xs text-[#5A6675]"
                       >
                         Cost per result
                       </th>
@@ -580,12 +580,12 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                           }}
                           className={`border-t border-[#F0F1F4] transition-colors ${
                             hasKids
-                              ? "cursor-pointer hover:bg-[#F5F6FF]"
+                              ? "cursor-pointer hover:bg-[#F3F8FE]"
                               : "hover:bg-[#F9FAFB]"
                           }`}
                         >
-                          <td className="py-3 px-4 font-medium text-[#101426] flex items-center gap-2">
-                            <span className={hasKids ? "text-[#4F46E5] font-semibold" : ""}>
+                          <td className="py-3 px-4 font-medium text-[#000000] flex items-center gap-2">
+                            <span className={hasKids ? "text-[#0070C2] font-semibold" : ""}>
                               {node.name}
                             </span>
                             {hasKids && (
@@ -594,7 +594,7 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                                 height="14"
                                 viewBox="0 0 24 24"
                                 fill="none"
-                                stroke="#4F46E5"
+                                stroke="#0070C2"
                                 strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -604,11 +604,11 @@ export default function BuildSection({ variant = "option-2" }: BuildSectionProps
                               </svg>
                             )}
                           </td>
-                          <td className="py-3 px-4 text-right text-[#2B3040]">{node.spend}</td>
-                          <td className="py-3 px-4 text-right text-[#2B3040]">{node.impr}</td>
-                          <td className="py-3 px-4 text-right text-[#2B3040]">{node.clicks}</td>
-                          <td className="py-3 px-4 text-right text-[#2B3040]">{node.ctr}</td>
-                          <td className="py-3 px-4 text-right font-semibold text-[#101426]">
+                          <td className="py-3 px-4 text-right text-[#1C2433]">{node.spend}</td>
+                          <td className="py-3 px-4 text-right text-[#1C2433]">{node.impr}</td>
+                          <td className="py-3 px-4 text-right text-[#1C2433]">{node.clicks}</td>
+                          <td className="py-3 px-4 text-right text-[#1C2433]">{node.ctr}</td>
+                          <td className="py-3 px-4 text-right font-semibold text-[#000000]">
                             {node.cpr}
                           </td>
                         </tr>

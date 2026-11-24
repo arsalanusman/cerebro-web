@@ -39,7 +39,7 @@ export default function CustomersStrip() {
       className="py-10 sm:py-12 border-b border-[#EEF0F3] bg-white"
     >
       <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border text-center">
-        <p className="m-0 mb-6 text-sm font-medium text-[#6B7180] tracking-wide">
+        <p className="m-0 mb-6 text-sm font-medium text-[#6B7685] tracking-wide">
           Trusted by marketing and analytics teams at
         </p>
         <div className="flex items-center justify-center gap-8 sm:gap-14 flex-wrap">

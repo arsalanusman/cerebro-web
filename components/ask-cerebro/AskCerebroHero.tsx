@@ -9,16 +9,16 @@ export default function AskCerebroHero() {
   const currentQ: AskCerebroQuestion = askCerebroContent.questions[tabIndex];
 
   return (
-    <section className="relative overflow-hidden pt-16 pb-20 sm:pt-[72px] sm:pb-[88px] bg-[#1C1A57]">
+    <section className="relative overflow-hidden pt-16 pb-20 sm:pt-[72px] sm:pb-[88px] bg-[#022771]">
       {/* Radial glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-[260px] -right-[200px] w-[720px] h-[720px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.9)_0,rgba(199,210,254,0.5)_2.5%,rgba(129,140,248,0.22)_12%,rgba(79,70,229,0.07)_30%,rgba(28,26,87,0)_58%)]"
+        className="pointer-events-none absolute -top-[260px] -right-[200px] w-[720px] h-[720px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.9)_0,rgba(199,210,254,0.5)_2.5%,rgba(129,140,248,0.22)_12%,rgba(0,112,194,0.07)_30%,rgba(2,39,113,0)_58%)]"
       />
 
       <div className="relative max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="text-[13px] text-[#A5B4FC]">
+        <nav aria-label="Breadcrumb" className="text-[13px] text-[#8EC5F0]">
           <Link href="/" className="text-[#C9CCF2] hover:text-white transition-colors">
             Home
           </Link>{" "}
@@ -29,20 +29,20 @@ export default function AskCerebroHero() {
         <div className="mt-9 flex flex-col lg:flex-row gap-12 lg:gap-14 items-center">
           {/* Left: Text */}
           <div className="flex-1 min-w-0">
-            <p className="m-0 mb-4.5 text-sm font-semibold text-[#A5B4FC]">
+            <p className="m-0 mb-4.5 text-sm font-semibold text-[#8EC5F0]">
               {askCerebroContent.hero.eyebrow}
             </p>
             <h1 className="m-0 font-display font-semibold text-[clamp(36px,4.2vw,60px)] leading-[1.04] tracking-[-0.03em] text-white">
               {askCerebroContent.hero.h1}
             </h1>
-            <p className="mt-5.5 m-0 max-w-[520px] text-lg sm:text-[19px] leading-[1.55] text-[#CDD0F3]">
+            <p className="mt-5.5 m-0 max-w-[520px] text-lg sm:text-[19px] leading-[1.55] text-[#C9DDF2]">
               {askCerebroContent.hero.lead}
             </p>
 
             <div className="mt-8 flex gap-3 flex-wrap">
               <Link
                 href={askCerebroContent.hero.primaryBtn.href}
-                className="inline-flex items-center justify-center min-h-[52px] px-6.5 rounded-[10px] bg-white text-[#1C1A57] hover:bg-[#F7F8FA] font-semibold text-base shadow-sm transition-colors"
+                className="inline-flex items-center justify-center min-h-[52px] px-6.5 rounded-[10px] bg-white text-[#022771] hover:bg-[#F6F8FB] font-semibold text-base shadow-sm transition-colors"
               >
                 {askCerebroContent.hero.primaryBtn.label}
               </Link>
@@ -56,17 +56,17 @@ export default function AskCerebroHero() {
           </div>
 
           {/* Right: Ask Cerebro Card Mockup */}
-          <div className="w-full lg:w-[520px] shrink-0 bg-white rounded-2xl shadow-[0_32px_80px_rgba(10,8,40,0.45)] overflow-hidden">
+          <div className="w-full lg:w-[520px] shrink-0 bg-white rounded-2xl shadow-[0_32px_80px_rgba(1,14,40,0.45)] overflow-hidden">
             {/* Panel Top */}
             <div className="flex justify-between items-center p-[16px_20px] border-b border-[#EEF0F3]">
-              <span className="flex items-center gap-2 text-[14.5px] font-semibold text-[#101426]">
-                <span className="w-6.5 h-6.5 rounded-lg bg-[#EEF0FF] inline-flex items-center justify-center p-1">
+              <span className="flex items-center gap-2 text-[14.5px] font-semibold text-[#000000]">
+                <span className="w-6.5 h-6.5 rounded-lg bg-[#E8F2FC] inline-flex items-center justify-center p-1">
                   <svg
                     width="15"
                     height="15"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="#4F46E5"
+                    stroke="#0070C2"
                     strokeWidth="1.8"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -77,7 +77,7 @@ export default function AskCerebroHero() {
                 </span>
                 Ask Cerebro
               </span>
-              <span className="text-[11.5px] text-[#6B7180]">
+              <span className="text-[11.5px] text-[#6B7685]">
                 Quillmere Textiles, last 30 days
               </span>
             </div>
@@ -99,8 +99,8 @@ export default function AskCerebroHero() {
                     onClick={() => setTabIndex(i)}
                     className={`min-h-[34px] px-3 rounded-full border text-[12.5px] font-semibold cursor-pointer transition-all ${
                       selected
-                        ? "border-[#C7CBF9] bg-[#EEF0FF] text-[#3730A3]"
-                        : "border-[#E1E4EA] bg-white text-[#2B3040] hover:border-[#C9CDD6]"
+                        ? "border-[#BFD8F0] bg-[#E8F2FC] text-[#004C87]"
+                        : "border-[#E1E4EA] bg-white text-[#1C2433] hover:border-[#C9CDD6]"
                     }`}
                   >
                     {q.label}
@@ -115,7 +115,7 @@ export default function AskCerebroHero() {
               className="p-[18px_20px_20px] min-h-[360px] box-border flex flex-col gap-3"
             >
               {/* Question bubble */}
-              <div className="self-end max-w-[340px] bg-[#F2F3F6] rounded-[12px_12px_4px_12px] p-[10px_13px] text-[13.5px] text-[#101426] leading-relaxed">
+              <div className="self-end max-w-[340px] bg-[#F2F3F6] rounded-[12px_12px_4px_12px] p-[10px_13px] text-[13.5px] text-[#000000] leading-relaxed">
                 {currentQ.question}
               </div>
 
@@ -125,7 +125,7 @@ export default function AskCerebroHero() {
                   {currentQ.steps.map((s, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center gap-2 text-xs text-[#5B6170]"
+                      className="flex items-center gap-2 text-xs text-[#5A6675]"
                     >
                       <svg
                         width="12"
@@ -156,7 +156,7 @@ export default function AskCerebroHero() {
                           <th
                             key={idx}
                             scope="col"
-                            className={`py-1 px-2 font-medium text-[#6B7180] ${
+                            className={`py-1 px-2 font-medium text-[#6B7685] ${
                               h.a === "right" ? "text-right" : "text-left"
                             }`}
                           >
@@ -171,7 +171,7 @@ export default function AskCerebroHero() {
                           {row.map((cell, cIdx) => {
                             const val = typeof cell === "string" ? cell : cell.v;
                             const align = typeof cell === "string" ? "left" : cell.a || "left";
-                            const color = typeof cell === "string" ? "#101426" : cell.c || "#101426";
+                            const color = typeof cell === "string" ? "#000000" : cell.c || "#000000";
                             const weight = typeof cell === "string" ? 400 : cell.w || 400;
                             return (
                               <td
@@ -193,7 +193,7 @@ export default function AskCerebroHero() {
               )}
 
               {/* Narrative */}
-              <p className="m-0 text-[13.5px] leading-relaxed text-[#2B3040]">
+              <p className="m-0 text-[13.5px] leading-relaxed text-[#1C2433]">
                 {currentQ.narrative}
               </p>
 
@@ -203,7 +203,7 @@ export default function AskCerebroHero() {
                   {currentQ.suggest.map((sg, idx) => (
                     <span
                       key={idx}
-                      className="inline-flex items-center min-h-[32px] px-3 rounded-full border border-[#DDE0E7] text-[12.5px] text-[#2B3040] bg-[#FCFCFD]"
+                      className="inline-flex items-center min-h-[32px] px-3 rounded-full border border-[#DDE0E7] text-[12.5px] text-[#1C2433] bg-[#FCFCFD]"
                     >
                       {sg}
                     </span>
@@ -215,7 +215,7 @@ export default function AskCerebroHero() {
         </div>
 
         {/* Hero caption */}
-        <p className="mt-6 m-0 text-[13px] text-[#A5B4FC]">
+        <p className="mt-6 m-0 text-[13px] text-[#8EC5F0]">
           {askCerebroContent.hero.caption}
         </p>
       </div>

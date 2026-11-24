@@ -167,8 +167,8 @@ export const heroData = {
     { mark: "M", color: "#1877F2", label: "Meta Ads", logo: "/brand/platforms/meta.png" },
     { mark: "G", color: "#15803D", label: "Google Ads", logo: "/brand/platforms/google.png" },
     { mark: "T", color: "#111827", label: "TikTok Ads", logo: "/brand/platforms/tiktok.png" },
-    { mark: "+", color: "#4F46E5", label: "Any platform" },
-    { mark: "↑", color: "#4F46E5", label: "CSV, Excel, Sheets" },
+    { mark: "+", color: "#0070C2", label: "Any platform" },
+    { mark: "↑", color: "#0070C2", label: "CSV, Excel, Sheets" },
   ],
 
   // Questions replayed in Hero Ask Cerebro
@@ -528,7 +528,7 @@ export const engineData = {
       name: "LinkedIn Ads",
       status: "Coming soon",
       pillBg: "#F3F4F6",
-      pillFg: "#5B6170",
+      pillFg: "#5A6675",
       logo: "/brand/platforms/linkedin.png",
     },
     {
@@ -537,7 +537,7 @@ export const engineData = {
       name: "Display & Video 360",
       status: "Coming soon",
       pillBg: "#F3F4F6",
-      pillFg: "#5B6170",
+      pillFg: "#5A6675",
       logo: "/brand/platforms/dv360.png",
     },
   ] as EngineNativeItem[],
@@ -689,7 +689,7 @@ export const askSectionData = {
           { v: "Accurate blended CPA", a: "right" },
         ],
         [
-          { v: "Low", c: "#5B6170" },
+          { v: "Low", c: "#5A6675" },
           "Pause 2 creative variants with CTR < 0.5%",
           { v: "Save PKR 120K waste", a: "right" },
         ],
@@ -811,7 +811,7 @@ export const buildData = {
       type: "kpi",
       value: "PKR 5.8M",
       delta: "↓ 5.23% vs last period",
-      deltaColor: "#5B6170",
+      deltaColor: "#5A6675",
     },
     kpiCpa: {
       title: "CPA",
@@ -879,9 +879,9 @@ export const buildData = {
   initialWidgets: ["kpiSpend", "kpiCpa", "trend", "donut"],
 
   funnelItems: [
-    { name: "Impressions", value: "39.1M", pct: "100%", color: "#2E2A82" },
-    { name: "Clicks", value: "422.1K", pct: "72%", color: "#4F46E5" },
-    { name: "Conversions", value: "12.3K", pct: "46%", color: "#6B7FE8" },
+    { name: "Impressions", value: "39.1M", pct: "100%", color: "#022771" },
+    { name: "Clicks", value: "422.1K", pct: "72%", color: "#0070C2" },
+    { name: "Conversions", value: "12.3K", pct: "46%", color: "#3E8FD4" },
   ],
 
   // Report builder metric and dimension choices

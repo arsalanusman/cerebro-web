@@ -20,12 +20,12 @@ export default function HeroSection({ variant = "option-2" }: HeroSectionProps) 
   return (
     <section
       id="top"
-      className="relative overflow-hidden pt-24 bg-[linear-gradient(to_bottom,#16144A_0,#1C1A57_60%,#FFFFFF_60%,#FFFFFF_100%)]"
+      className="relative overflow-hidden pt-24 bg-[linear-gradient(to_bottom,#16144A_0,#022771_60%,#FFFFFF_60%,#FFFFFF_100%)]"
     >
       {/* Radial glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-60 -right-40 w-[760px] h-[760px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.95)_0,rgba(199,210,254,0.6)_2.5%,rgba(129,140,248,0.25)_12%,rgba(79,70,229,0.08)_30%,rgba(28,26,87,0)_58%)] animate-pulse"
+        className="pointer-events-none absolute -top-60 -right-40 w-[760px] h-[760px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.95)_0,rgba(199,210,254,0.6)_2.5%,rgba(129,140,248,0.25)_12%,rgba(0,112,194,0.08)_30%,rgba(2,39,113,0)_58%)] animate-pulse"
         style={{ animationDuration: "8s" }}
       />
 
@@ -63,7 +63,7 @@ export default function HeroSection({ variant = "option-2" }: HeroSectionProps) 
         <div className="max-w-[960px] mx-auto text-center">
           {!isOption1 && (
             <ScrollReveal direction="down" distance={16} delay={0.1}>
-              <p className="m-0 mb-5 text-sm font-semibold text-[#A5B4FC] tracking-wide uppercase">
+              <p className="m-0 mb-5 text-sm font-semibold text-[#8EC5F0] tracking-wide uppercase">
                 {heroData.eyebrow2}
               </p>
             </ScrollReveal>
@@ -74,7 +74,7 @@ export default function HeroSection({ variant = "option-2" }: HeroSectionProps) 
           </h1>
 
           <ScrollReveal direction="up" distance={20} delay={0.35}>
-            <p className="mt-6 mx-auto max-w-[720px] text-lg sm:text-xl leading-[1.55] text-[#CDD0F3]">
+            <p className="mt-6 mx-auto max-w-[720px] text-lg sm:text-xl leading-[1.55] text-[#C9DDF2]">
               {lead}
             </p>
           </ScrollReveal>
@@ -85,7 +85,7 @@ export default function HeroSection({ variant = "option-2" }: HeroSectionProps) 
               <MagneticButton strength={0.2}>
                 <Link
                   href="/demo"
-                  className="inline-flex items-center justify-center min-h-[52px] px-8 rounded-[12px] bg-white hover:bg-[#F7F8FA] text-[#1C1A57] text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="inline-flex items-center justify-center min-h-[52px] px-8 rounded-[12px] bg-white hover:bg-[#F6F8FB] text-[#022771] text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
                 >
                   Book a demo
                 </Link>
