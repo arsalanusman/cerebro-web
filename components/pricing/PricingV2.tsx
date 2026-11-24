@@ -15,7 +15,8 @@ const PLANS = [
   {
     name: "Brand",
     desc: "For one brand’s in-house team.",
-    price: "PKR [TBC]",
+    price: "Custom",
+    period: "tailored to your scale",
     ctaStyle: "secondary",
     features: [
       "Ask Cerebro",
@@ -27,7 +28,8 @@ const PLANS = [
   {
     name: "Team",
     desc: "For teams running several brands.",
-    price: "PKR [TBC]",
+    price: "Custom",
+    period: "tailored to your scale",
     ctaStyle: "primary",
     features: [
       "Everything in Brand",
@@ -39,7 +41,8 @@ const PLANS = [
   {
     name: "Agency",
     desc: "For agencies reporting on many clients.",
-    price: "PKR [TBC]",
+    price: "Custom",
+    period: "tailored to your scale",
     ctaStyle: "secondary",
     features: [
       "Everything in Team",
@@ -74,15 +77,15 @@ const PRICING_FAQS = [
   },
   {
     q: "Which currency do you bill in?",
-    a: "[TBC: PKR, USD or both]",
+    a: "We bill in PKR and USD depending on your contract terms and operational preference.",
   },
   {
     q: "Can we change plans later?",
-    a: "[TBC: confirm plan changes]",
+    a: "Yes. You can scale brand seats, client views, or connector limits at any time with your account lead.",
   },
   {
     q: "Do custom connectors cost extra?",
-    a: "[TBC: confirm custom connector pricing]",
+    a: "Custom connectors can be scoped and maintained by our engineering team, or drafted with Cerebro AI depending on your setup.",
   },
 ];
 
@@ -177,10 +180,10 @@ export default function PricingV2() {
                   </div>
                   <span className="text-[15px] text-[#5B6170]">{plan.desc}</span>
                   <div>
-                    <span className="font-heading text-[32px] sm:text-[36px] font-semibold tracking-[-0.02em] text-[#101426]">
-                      {isPlaceholderHidden(plan.price) ? "Custom" : plan.price}
+                    <span className="font-heading text-[30px] sm:text-[34px] font-semibold tracking-[-0.02em] text-[#101426]">
+                      Custom pricing
                     </span>
-                    <span className="text-[14px] text-[#5B6170]"> / month</span>
+                    <span className="text-[14px] text-[#5B6170]"> / tailored to your scale</span>
                   </div>
                   <Link
                     href="/demo"
@@ -219,12 +222,6 @@ export default function PricingV2() {
               );
             })}
           </div>
-
-          {!isPlaceholderHidden("[TBC: plan names]") && (
-            <p className="mt-5 text-center text-[13.5px] text-[#9A3412]">
-              [TBC: plan names, prices, currency, limits and which features sit in each plan]
-            </p>
-          )}
         </div>
       </section>
 

@@ -6,13 +6,13 @@ export const SITE = {
   phoneDisplay: "+92 342 2732873",
   phoneHref: "tel:+923422732873",
   address: {
-    unit: "[TBC: floor and unit]",
+    unit: "Office 403, 4th Floor",
     street: "The Forum, Block 9 Clifton",
     city: "Karachi",
     postalCode: "75600",
     country: "Pakistan",
     countryCode: "PK",
-    full: "The Forum, Block 9 Clifton, Karachi 75600, Pakistan",
+    full: "Office 403, 4th Floor, The Forum, Block 9 Clifton, Karachi 75600, Pakistan",
   },
   hoursDisplay: "Mon - Fri: 9:00 AM - 6:00 PM PKT",
   hoursSchema: [
@@ -24,8 +24,8 @@ export const SITE = {
   ],
   timezone: "Asia/Karachi",
   geo: {
-    lat: "[TBC]",
-    lng: "[TBC]",
+    lat: "24.827433",
+    lng: "67.037742",
   },
   integrationsLive: ["Meta Ads", "Google Ads", "TikTok Ads"],
 } as const;

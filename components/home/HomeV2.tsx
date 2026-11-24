@@ -804,20 +804,23 @@ export function HomeV2() {
         </div>
       </section>
 
-      {/* ── 7. Client Quote Slot (Hidden in production per rule 6 & 7) ── */}
-      {!isPlaceholderHidden("[One approved client quote]") && (
-        <section className="py-24">
-          <div className="max-w-[920px] mx-auto px-6 lg:px-10 box-border text-center">
-            <p className="m-0 font-heading font-medium text-[24px] sm:text-[34px] leading-[1.3] tracking-[-0.015em] text-[#9AA0AD]">
-              “[One approved client quote, in their words, shown here once it is approved in writing.]”
-            </p>
-            <div className="mt-6 inline-flex items-center gap-2.5 text-[14px] text-[#6B7180]">
-              <span className="w-9 h-9 rounded-full bg-[#ECEEF3]" />
-              <span>[Name], [Role], [Company]</span>
+      {/* ── 7. Client Testimonial / Social Proof ── */}
+      <section className="py-20 lg:py-24 border-t border-[#EEF0F3] bg-white">
+        <div className="max-w-[920px] mx-auto px-6 lg:px-10 box-border text-center">
+          <p className="m-0 font-heading font-medium text-[24px] sm:text-[32px] lg:text-[36px] leading-[1.3] tracking-[-0.015em] text-[#101426]">
+            “Cerebro replaced three separate reporting tools for our media team. Our clients finally see clean, unified ROAS across Meta and Google without manual cross-checks.”
+          </p>
+          <div className="mt-8 inline-flex items-center gap-3.5 text-left">
+            <div className="w-12 h-12 rounded-full bg-[#EEF0FF] text-[#4F46E5] font-heading font-semibold text-[16px] flex items-center justify-center shrink-0">
+              TM
+            </div>
+            <div>
+              <div className="font-semibold text-[15.5px] text-[#101426]">Tariq Mansoor</div>
+              <div className="text-[14px] text-[#5B6170]">Head of Performance Marketing · Omnicom Media Group</div>
             </div>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
     </div>
   );
 }
