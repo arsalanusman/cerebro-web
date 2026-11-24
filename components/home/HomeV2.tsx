@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { isPlaceholderHidden } from "@/lib/site";
+import CustomersStrip from "@/components/home/CustomersStrip";
 
 interface AskTabItem {
   title: string;
@@ -231,8 +232,8 @@ export function HomeV2() {
               </div>
             </div>
 
-            {/* Floating Ask Cerebro Dialog Card */}
-            <div className="absolute -left-4 sm:-left-9 bottom-4 sm:bottom-12 w-[250px] bg-white rounded-[16px] shadow-[0_2px_6px_rgba(0,0,0,0.06),0_24px_56px_rgba(1,14,40,0.28)] p-3.5 sm:p-4 flex flex-col gap-2.5">
+            {/* Floating Ask Cerebro Dialog Card - Positioned cleanly below the TikTok node */}
+            <div className="absolute -left-3 sm:-left-8 lg:-left-12 -bottom-5 sm:-bottom-7 w-[240px] sm:w-[260px] bg-white rounded-[16px] shadow-[0_2px_6px_rgba(0,0,0,0.06),0_24px_56px_rgba(1,14,40,0.28)] p-3.5 sm:p-4 flex flex-col gap-2.5 z-10 transition-transform duration-200 hover:scale-[1.02]">
               <span className="self-end bg-[#F2F3F6] rounded-[12px_12px_4px_12px] py-1.5 px-3 text-[13px] text-[#000000]">
                 Why did CPA rise?
               </span>
@@ -248,6 +249,9 @@ export function HomeV2() {
           </div>
         </div>
       </section>
+
+      {/* ── Client Logo Marquee Strip (Samsung, Nestlé, Easypaisa, Fauji Foods) ── */}
+      <CustomersStrip />
 
       {/* ── 2. Three Ways: Every source. One clean model. ── */}
       <section id="ways" className="py-20 lg:py-28 lg:pb-24">
