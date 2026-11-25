@@ -1401,38 +1401,6 @@ export function HomeV2() {
           </div>
         </div>
       </section>
-
-      {/* ── 8. Panoramic Final Launchpad CTA ── */}
-      <section className="py-20 lg:py-24 bg-gradient-to-b from-white via-[#F4F8FC] to-[#EEF5FC] border-t border-[#BFD8F0]">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8F2FC] text-[#004C87] text-[12px] font-bold border border-[#BFD8F0] mb-4">
-            <span>GET STARTED TODAY</span>
-          </div>
-          <h2 className="m-0 font-heading font-bold text-[36px] sm:text-[48px] lg:text-[56px] leading-[1.08] tracking-[-0.03em] text-[#000000]">
-            Deploy Cerebro dNano across your ad stack.
-          </h2>
-          <p className="mt-4 max-w-[620px] mx-auto text-[17px] lg:text-[19px] leading-relaxed text-[#5A6675]">
-            Connect your Meta, Google, and TikTok accounts in minutes. Zero tracking cookies required.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/demo"
-              className="inline-flex items-center justify-center gap-2 h-13 px-8 rounded-full bg-[#0070C2] hover:bg-[#005DA3] text-white text-[16px] font-semibold transition-all shadow-[0_4px_18px_rgba(0,112,194,0.3)] hover:shadow-[0_6px_28px_rgba(0,112,194,0.45)] hover:-translate-y-0.5 active:translate-y-0"
-            >
-              <span>Book a demo</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <Link
-              href="/platform/data-engine"
-              className="inline-flex items-center justify-center h-13 px-8 rounded-full bg-white hover:bg-[#F6F8FB] border border-[#CBD5E1] text-[#1C2433] text-[16px] font-semibold transition-all hover:border-[#0070C2] hover:-translate-y-0.5 active:translate-y-0 shadow-xs"
-            >
-              Explore the data engine
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
