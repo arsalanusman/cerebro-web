@@ -361,6 +361,7 @@ export function SiteHeader() {
 
   const navTriggers = [
     { key: "platform", label: "Platform", isMenu: true },
+    { key: "ai-first", label: "AI first", isMenu: false, href: "/ai-first" },
     { key: "solutions", label: "Solutions", isMenu: true },
     { key: "integrations", label: "Integrations", isMenu: false, href: "/integrations" },
     { key: "pricing", label: "Pricing", isMenu: false, href: "/pricing" },
@@ -403,29 +404,7 @@ export function SiteHeader() {
 
         {/* Navigation items */}
         <nav aria-label="Main" className="flex items-center gap-0.5 xl:gap-1.5 flex-1 min-w-0 justify-center">
-          {/* AI first link (requested by user) */}
-          <Link
-            href="/ai-first"
-            className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 min-h-[36px] xl:min-h-[38px] px-2.5 xl:px-3 rounded-[19px] bg-[#E8F2FC] hover:bg-[#D6E8F8] text-[#004C87] font-semibold text-[13px] xl:text-[15px] transition-colors"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-              className="shrink-0"
-            >
-              <path d={ICONS.spark} />
-            </svg>
-            <span>AI first</span>
-          </Link>
-
-          {/* Ask Cerebro pill button */}
+          {/* Ask Cerebro pill button (sole highlighted pill) */}
           <Link
             href="/ask-cerebro"
             className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 min-h-[36px] xl:min-h-[38px] px-2.5 xl:px-3 rounded-[19px] bg-[#E8F2FC] hover:bg-[#D6E8F8] text-[#004C87] font-semibold text-[13px] xl:text-[15px] transition-colors"
@@ -725,34 +704,12 @@ export function SiteHeader() {
           aria-label="Main"
           className="lg:hidden absolute left-0 right-0 top-16 bg-white border-t border-[#EEF0F3] shadow-[0_24px_48px_rgba(0,0,0,0.14)] px-6 py-4 pb-7 z-50 max-h-[calc(100vh-64px)] overflow-y-auto animate-in slide-in-from-top-2 duration-150"
         >
-          {/* AI first and Ask Cerebro 2-column quick access */}
-          <div className="grid grid-cols-2 gap-2.5 mb-3.5">
-            <Link
-              href="/ai-first"
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center gap-1.5 min-h-[42px] px-3 rounded-full bg-[#E8F2FC] hover:bg-[#D6E8F8] text-[#004C87] font-semibold text-[14.5px] transition-colors whitespace-nowrap"
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-                className="shrink-0"
-              >
-                <path d={ICONS.spark} />
-              </svg>
-              <span>AI first</span>
-            </Link>
-
+          {/* Ask Cerebro quick access pill */}
+          <div className="mb-3.5">
             <Link
               href="/ask-cerebro"
               onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center gap-1.5 min-h-[42px] px-3 rounded-full bg-[#E8F2FC] hover:bg-[#D6E8F8] text-[#004C87] font-semibold text-[14.5px] transition-colors whitespace-nowrap"
+              className="flex items-center justify-center gap-1.5 min-h-[42px] w-full px-3 rounded-full bg-[#E8F2FC] hover:bg-[#D6E8F8] text-[#004C87] font-semibold text-[14.5px] transition-colors whitespace-nowrap"
             >
               <svg
                 width="14"
@@ -829,6 +786,15 @@ export function SiteHeader() {
               </Link>
             </div>
           </details>
+
+          {/* AI first link beside Platform */}
+          <Link
+            href="/ai-first"
+            onClick={() => setMobileOpen(false)}
+            className="min-h-[54px] flex items-center border-b border-[#EEF0F3] text-[17px] font-semibold text-[#000000]"
+          >
+            AI first
+          </Link>
 
           {/* Solutions Accordion */}
           <details className="border-b border-[#EEF0F3] group">
