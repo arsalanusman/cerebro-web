@@ -282,7 +282,7 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
           </div>
 
           {/* Column 2: Cerebro AI Engine */}
-          <div className="flex-[1.2] min-w-0 rounded-xl p-5 bg-[#022771] text-white flex flex-col">
+          <div className="flex-[1.2] min-w-0 rounded-xl p-5 bg-[#011640] border border-white/10 text-white flex flex-col">
             <div className="flex items-center gap-2 text-xs font-semibold text-[#8EC5F0]">
               <svg
                 width="14"

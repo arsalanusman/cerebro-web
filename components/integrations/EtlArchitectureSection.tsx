@@ -206,21 +206,21 @@ export default function EtlArchitectureSection() {
                 </div>
 
                 {/* 2. Cerebro Processing Core Card */}
-                <div className="bg-[#022771] border border-[#818CF8]/40 rounded-xl p-4 flex flex-col gap-3 shadow-[0_0_20px_rgba(0,112,194,0.15)] relative">
+                <div className="bg-[#011640] border border-[#0070C2]/40 rounded-xl p-4 flex flex-col gap-3 shadow-[0_0_20px_rgba(0,112,194,0.15)] relative">
                   <div className="text-xs font-semibold text-[#8EC5F0] uppercase tracking-wide flex items-center justify-between">
                     <span>2. Cerebro Engine</span>
-                    <span className="w-2 h-2 rounded-full bg-[#818CF8] animate-ping" />
+                    <span className="w-2 h-2 rounded-full bg-[#0070C2] animate-ping" />
                   </div>
                   <div className="flex flex-col gap-2 text-[11.5px]">
-                    <div className="bg-white/[0.08] rounded-lg p-2 border border-white/[0.1] text-[#E0E7FF]">
+                    <div className="bg-white/[0.08] rounded-lg p-2 border border-white/[0.1] text-[#C9DDF2]">
                       <span className="text-[10px] text-[#8EC5F0] block font-mono">DEDUPLICATION</span>
                       Unified click &amp; impression metrics
                     </div>
-                    <div className="bg-white/[0.08] rounded-lg p-2 border border-white/[0.1] text-[#E0E7FF]">
+                    <div className="bg-white/[0.08] rounded-lg p-2 border border-white/[0.1] text-[#C9DDF2]">
                       <span className="text-[10px] text-[#8EC5F0] block font-mono">CURRENCY FX</span>
                       USD/AED auto-converted to PKR
                     </div>
-                    <div className="bg-white/[0.08] rounded-lg p-2 border border-white/[0.1] text-[#E0E7FF]">
+                    <div className="bg-white/[0.08] rounded-lg p-2 border border-white/[0.1] text-[#C9DDF2]">
                       <span className="text-[10px] text-[#8EC5F0] block font-mono">OBJECTIVE MODEL</span>
                       Traffic, Leads, App, Video
                     </div>

@@ -9,11 +9,11 @@ export default function AskCerebroHero() {
   const currentQ: AskCerebroQuestion = askCerebroContent.questions[tabIndex];
 
   return (
-    <section className="relative overflow-hidden pt-16 pb-20 sm:pt-[72px] sm:pb-[88px] bg-[#022771]">
+    <section className="relative overflow-hidden pt-16 pb-20 sm:pt-[72px] sm:pb-[88px] bg-[#011640]">
       {/* Radial glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-[260px] -right-[200px] w-[720px] h-[720px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.9)_0,rgba(199,210,254,0.5)_2.5%,rgba(129,140,248,0.22)_12%,rgba(0,112,194,0.07)_30%,rgba(2,39,113,0)_58%)]"
+        className="pointer-events-none absolute -top-[260px] -right-[200px] w-[720px] h-[720px] rounded-full bg-[radial-gradient(circle,rgba(0,112,194,0.52)_0%,rgba(0,112,194,0.18)_36%,rgba(1,22,64,0)_68%)]"
       />
 
       <div className="relative max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
@@ -42,7 +42,7 @@ export default function AskCerebroHero() {
             <div className="mt-8 flex gap-3 flex-wrap">
               <Link
                 href={askCerebroContent.hero.primaryBtn.href}
-                className="inline-flex items-center justify-center min-h-[52px] px-6.5 rounded-[10px] bg-white text-[#022771] hover:bg-[#F6F8FB] font-semibold text-base shadow-sm transition-colors"
+                className="inline-flex items-center justify-center min-h-[52px] px-6.5 rounded-[10px] bg-white text-[#011640] hover:bg-[#F6F8FB] font-semibold text-base shadow-sm transition-colors"
               >
                 {askCerebroContent.hero.primaryBtn.label}
               </Link>

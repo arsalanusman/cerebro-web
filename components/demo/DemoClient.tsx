@@ -336,7 +336,7 @@ export default function DemoClient() {
 
             {/* Right: What happens next + Quick contact */}
             <div className="lg:w-[380px] shrink-0 w-full flex flex-col gap-5">
-              <div className="bg-[#022771] rounded-2xl p-7 text-white shadow-[0_12px_36px_rgba(2,39,113,0.12)]">
+              <div className="bg-[#011640] border border-white/10 rounded-2xl p-7 text-white shadow-[0_12px_36px_rgba(1,22,64,0.2)]">
                 <h2 className="m-0 font-heading text-[22px] font-semibold text-white">
                   What happens next
                 </h2>

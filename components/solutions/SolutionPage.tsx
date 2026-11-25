@@ -276,7 +276,7 @@ export default function SolutionPage({ data }: SolutionPageProps) {
             </div>
 
             {/* Feature 4: AI Box (Navy) */}
-            <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-center bg-[#022771] rounded-2xl p-7 sm:p-9 text-white">
+            <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-center bg-[#011640] border border-white/10 rounded-2xl p-7 sm:p-9 text-white">
               <div className="flex-1 min-w-0">
                 <p className="m-0 mb-2.5 text-[13px] font-semibold text-[#8EC5F0]">
                   Cerebro AI
