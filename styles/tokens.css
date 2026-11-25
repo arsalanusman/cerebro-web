@@ -78,8 +78,8 @@
   --brand-gradient: radial-gradient(circle at 40% 32%, #6CC0F5 0, #0070C2 45%, #022771 100%);
 
   /* Layout */
-  --container: 1240px;
-  --gutter: 40px;
+  --container: 1440px;
+  --gutter: 48px;
   --gutter-mobile: 24px;
   --section-y: 104px;
   --section-y-mobile: 64px;

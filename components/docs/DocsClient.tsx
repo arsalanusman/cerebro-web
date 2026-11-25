@@ -30,7 +30,7 @@ export default function DocsClient({ initialSlug = "getting-started" }: DocsClie
 
   return (
     <div className="font-sans text-[#1C2433] bg-white tabular-nums">
-      <div className="max-w-[1320px] mx-auto px-6 sm:px-8 flex flex-col lg:flex-row gap-10 items-start">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 flex flex-col lg:flex-row gap-10 items-start">
         {/* Left Nav Sidebar */}
         <nav
           aria-label="Documentation"

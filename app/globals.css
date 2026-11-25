@@ -57,6 +57,35 @@ html.lenis, html.lenis body {
   height: auto;
 }
 
+/* Container normalization for 1440px alignment across all pages */
+div[style*="max-width: 1440px"],
+div[style*="max-width:1440px"],
+div[style*="max-width: 1240px"],
+div[style*="max-width:1240px"] {
+  max-width: 1440px !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 1023px) {
+  div[style*="max-width: 1440px"],
+  div[style*="max-width:1440px"],
+  div[style*="max-width: 1240px"],
+  div[style*="max-width:1240px"] {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+}
+
+@media (max-width: 639px) {
+  div[style*="max-width: 1440px"],
+  div[style*="max-width:1440px"],
+  div[style*="max-width: 1240px"],
+  div[style*="max-width:1240px"] {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }

@@ -29,7 +29,7 @@ export default function HomePresentPage() {
         aria-label="Presentation controls"
         className="sticky top-16 z-40 bg-[#000000] text-white shadow-[0_8px_24px_rgba(1,14,40,0.25)] border-b border-white/10"
       >
-        <div className="max-w-[1240px] mx-auto px-6 sm:px-10 py-2.5 box-border flex items-center gap-4 flex-wrap">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 py-2.5 box-border flex items-center gap-4 flex-wrap">
           <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#8EC5F0]">
             <svg
               width="16"
