@@ -130,29 +130,29 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
         </div>
       </section>
 
-      {/* ── Call To Action Section (Clean & Impactful) ── */}
+      {/* ── Call To Action Section (Deep Cosmic Navy & Bottom-Left Radiant Blue Aura) ── */}
       {showCta && (
-        <section className="relative overflow-hidden py-16 lg:py-[104px] bg-[#022771] text-white">
-          {/* Subtle glow circle */}
+        <section className="relative overflow-hidden py-16 lg:py-[104px] bg-[#011640] text-white">
+          {/* Ambient luminous electric blue glow in bottom-left corner matching reference */}
           <div
             aria-hidden="true"
-            className="absolute -bottom-80 left-1/2 -ml-[380px] w-[760px] h-[760px] rounded-full pointer-events-none"
+            className="absolute -bottom-[200px] left-[-120px] sm:left-[max(-80px,calc(50%-760px))] w-[600px] sm:w-[720px] h-[600px] sm:h-[720px] rounded-full pointer-events-none"
             style={{
               background:
-                "radial-gradient(circle, rgba(142,197,240,0.35) 0, rgba(0,112,194,0.12) 25%, rgba(2,39,113,0) 60%)",
+                "radial-gradient(circle, rgba(0,112,194,0.52) 0%, rgba(0,112,194,0.18) 36%, rgba(1,22,64,0) 68%)",
             }}
           />
           <div className="relative max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 box-border text-center">
             <h2 className="m-0 mx-auto max-w-[760px] font-heading font-semibold text-[34px] sm:text-[44px] lg:text-[54px] leading-[1.08] tracking-[-0.025em] text-white">
               Ask your own campaigns a question.
             </h2>
-            <p className="mt-5 mx-auto max-w-[620px] text-[16px] sm:text-[18px] lg:text-[19px] leading-[1.55] text-[#D4D6F2]">
+            <p className="mt-5 mx-auto max-w-[620px] text-[16px] sm:text-[18px] lg:text-[19px] leading-[1.55] text-[#C9DDF2]">
               Book a personalized demo. We’ll connect your platforms or load your sheets, and you ask Cerebro the questions.
             </p>
             <div className="mt-9 flex gap-3.5 justify-center flex-wrap items-center">
               <Link
                 href="/demo"
-                className="whitespace-nowrap shrink-0 inline-flex items-center justify-center min-h-[46px] px-7 rounded-full bg-white hover:bg-[#F3F4F6] text-[#022771] text-[15.5px] font-semibold transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
+                className="whitespace-nowrap shrink-0 inline-flex items-center justify-center min-h-[46px] px-7 rounded-full bg-white hover:bg-[#F3F4F6] text-[#011640] text-[15.5px] font-semibold transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
               >
                 Book a demo
               </Link>
