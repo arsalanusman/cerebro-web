@@ -1,53 +1,54 @@
-/* Cerebro DNano design tokens. Values match design/UIStates.dc.html and every page design. */
+/* Cerebro dNano design tokens (v2, logo-derived brand palette). Values match ANTIGRAVITY-MASTER-PLAN.md Section A */
 :root {
-  /* Surfaces and text */
-  --bg: #FFFFFF;
-  --surface: #F7F8FA;
-  --surface-2: #EEF0F4;
-  --surface-app: #FAFAFC;
-  --border: #E4E7EC;
-  --border-strong: #D5D8E0;
-  --border-hover: #C9CDD6;
-  --ink: #101426;
-  --text: #2B3040;
-  --muted: #5B6170;
-  --subtle: #6B7180;
+  /* Brand colors (from the logo, no violet anywhere) */
+  --logo-navy: #022771;
+  --logo-blue: #0070C2;
+  --logo-black: #000000;
 
-  /* Brand */
-  --brand: #4F46E5;
-  --brand-hover: #4338CA;
-  --brand-pressed: #3730A3;
-  --brand-soft: #EEF0FF;
-  --brand-soft-hover: #E0E3FF;
-  --brand-tint: #F5F6FF;
-  --brand-border: #C7CBF9;
-  --navy: #1C1A57;
-  --navy-deep: #16144A;
-  --on-navy: #CDD0F3;
-  --on-navy-accent: #A5B4FC;
+  /* Primary Action & Brand states */
+  --brand: #0070C2;
+  --brand-hover: #005DA3;
+  --brand-pressed: #004C87;
+  --brand-soft: #E8F2FC;
+  --brand-soft-hover: #D6E8F8;
+  --brand-tint: #F3F8FE;
+  --brand-border: #BFD8F0;
+  --brand-light: #8EC5F0;
+  --sky: #8EC5F0;
+
+  /* Fields & Canvas */
+  --deep-navy: #011640;
+  --navy: #022771;
+  --ice: #EEF5FC;
+  --lavender: #EEF5FC; /* Aliased to ice */
+  --surface: #F6F8FB;
+  --surface-app: #FAFBFD;
+  --on-navy: #C9DDF2;
+
+  /* Text & Lines */
+  --ink: #000000;
+  --text: #1C2433;
+  --muted: #5A6675;
+  --subtle: #6B7685;
+  --border: #E2E8F0;
+  --border-strong: #CBD5E1;
+  --border-hover: #B8C4D4;
 
   /* Charts */
-  --chart-1: #2E2A82;
-  --chart-2: #6B7FE8;
-  --chart-3: #A5B4FC;
+  --chart-1: #022771;
+  --chart-2: #3E8FD4;
+  --chart-3: #8EC5F0;
 
-  /* Status */
-  --positive: #15803D;
-  --positive-bg: #DCFCE7;
-  --positive-text: #166534;
-  --negative: #B91C1C;
-  --negative-bg: #FEE2E2;
-  --negative-text: #991B1B;
-  --warning-text: #9A3412;
-  --warning-bg: #FFF7ED;
-  --warning-border: #F5D9C0;
-  --neutral-pill-bg: #F1F2F5;
-  --neutral-pill-text: #4B5160;
+  /* Status (inside UI moments only) */
+  --positive: #15803D;  --positive-bg: #DCFCE7;  --positive-text: #166534;
+  --negative: #B91C1C;  --negative-bg: #FEE2E2;  --negative-text: #991B1B;
+  --warning: #C2410C;   --warning-bg: #FFF7ED;   --warning-text: #9A3412;
+  --neutral-bg: #F1F2F5; --neutral-text: #4B5160;
 
-  /* Platform marks (only inside platform badges) */
-  --platform-meta: #1877F2;
+  /* Platform marks (inside platform badges only) */
+  --platform-meta: #0081FB;
   --platform-google: #15803D;
-  --platform-tiktok: #111827;
+  --platform-tiktok: #000000;
   --platform-soon: #7A8296;
 
   /* Type */
@@ -56,38 +57,43 @@
   --font-mono: 'Geist Mono', ui-monospace, monospace;
 
   /* Radius */
-  --radius-control: 8px;
-  --radius-button: 10px;
-  --radius-card: 12px;
-  --radius-card-lg: 14px;
-  --radius-panel: 16px;
+  --radius-control: 10px;
+  --radius-card: 18px;
+  --radius-panel: 20px;
+  --radius-tile: 24px;
+  --radius-tile-lg: 28px;
   --radius-pill: 999px;
 
+  /* Buttons */
+  --button-h: 44px;          /* page buttons */
+  --button-h-header: 40px;   /* header button */
+
   /* Shadows and focus */
-  --shadow-card-hover: 0 12px 32px rgba(16, 20, 38, 0.08);
-  --shadow-menu: 0 24px 48px rgba(16, 20, 38, 0.12);
-  --shadow-frame: 0 30px 70px rgba(10, 8, 40, 0.35);
-  --shadow-panel-ai: 0 2px 6px rgba(16, 20, 38, 0.08), 0 32px 80px rgba(10, 8, 40, 0.4);
-  --ring: 0 0 0 3px rgba(79, 70, 229, 0.35);
-  --ring-on-navy: 0 0 0 3px rgba(255, 255, 255, 0.5);
-  --ring-input: 0 0 0 3px rgba(79, 70, 229, 0.18);
+  --shadow-card: 0 2px 6px rgba(0,0,0,0.04), 0 20px 48px rgba(2,39,113,0.12);
+  --shadow-menu: 0 24px 48px rgba(0,0,0,0.12);
+  --shadow-float: 0 2px 6px rgba(0,0,0,0.05), 0 24px 56px rgba(1,22,64,0.22);
+  --ring: 0 0 0 3px rgba(0,112,194,0.35);
+  --ring-on-navy: 0 0 0 3px rgba(255,255,255,0.5);
+  --ring-input: 0 0 0 3px rgba(0,112,194,0.18);
+  --brand-gradient: radial-gradient(circle at 40% 32%, #6CC0F5 0, #0070C2 45%, #022771 100%);
 
   /* Layout */
-  --container: 1240px;
-  --gutter: 40px;
+  --container: 1440px;
+  --gutter: 48px;
   --gutter-mobile: 24px;
-  --section-y: 88px;
+  --section-y: 104px;
   --section-y-mobile: 64px;
   --header-h: 72px;
   --mobile-menu-breakpoint: 1024px;
 
   /* Motion */
   --dur-fast: 150ms;
-  --dur-base: 200ms;
-  --dur-slow: 500ms;
-  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-base: 250ms;
+  --dur-reveal: 700ms;
+  --dur-hero: 1400ms;
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 @media (prefers-reduced-motion: reduce) {
-  :root { --dur-fast: 0ms; --dur-base: 0ms; --dur-slow: 0ms; }
+  :root { --dur-fast: 0ms; --dur-base: 0ms; --dur-reveal: 0ms; --dur-hero: 0ms; }
 }

@@ -1,14 +1,21 @@
 import React from "react";
-import SolutionPage from "@/components/solutions/SolutionPage";
-import { solutionsData } from "@/content/solutions";
+import IndTelecomV2 from "@/components/industries/IndTelecomV2";
+import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: solutionsData.telecom.seoTitle,
-  description: solutionsData.telecom.seoDesc,
+  title: "Cerebro for telecom - Always-on campaigns, always in view",
+  description: "High-volume paid media reporting across prepaid, postpaid, and enterprise services.",
   path: "/industries/telecom",
 });
 
-export default function TelecomPage() {
-  return <SolutionPage data={solutionsData.telecom} />;
+export default function Page() {
+  return (
+    <>
+      <BreadcrumbListJsonLd
+        items={[{"name":"Home","path":"/"},{"name":"Industries","path":"/industries/telecom"},{"name":"Telecom","path":"/industries/telecom"}]}
+      />
+      <IndTelecomV2 />
+    </>
+  );
 }

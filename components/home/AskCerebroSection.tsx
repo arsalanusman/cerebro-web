@@ -9,12 +9,12 @@ export default function AskCerebroSection() {
 
   return (
     <section id="ask" className="py-20 lg:py-[88px] bg-white">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
         {/* Header */}
-        <h2 className="m-0 max-w-[760px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#101426]">
+        <h2 className="m-0 max-w-[760px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#000000]">
           {askSectionData.h2}
         </h2>
-        <p className="mt-4 m-0 max-w-[680px] text-lg leading-[1.55] text-[#5B6170]">
+        <p className="mt-4 m-0 max-w-[680px] text-lg leading-[1.55] text-[#5A6675]">
           {askSectionData.lead}
         </p>
 
@@ -38,8 +38,8 @@ export default function AskCerebroSection() {
                   onClick={() => setActiveIdx(i)}
                   className={`text-left min-h-[64px] p-3.5 sm:p-4 rounded-xl border font-sans cursor-pointer flex gap-3 items-start transition-all ${
                     selected
-                      ? "border-[#4F46E5] bg-[#EEF0FF]"
-                      : "border-[#E4E7EC] bg-white hover:border-[#C9CDD6]"
+                      ? "border-[#0070C2] bg-[#E8F2FC]"
+                      : "border-[#E2E8F0] bg-white hover:border-[#C9CDD6]"
                   }`}
                 >
                   <svg
@@ -47,7 +47,7 @@ export default function AskCerebroSection() {
                     height="18"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke={selected ? "#4F46E5" : "#6B7180"}
+                    stroke={selected ? "#0070C2" : "#6B7685"}
                     strokeWidth="1.8"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -57,10 +57,10 @@ export default function AskCerebroSection() {
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                   </svg>
                   <span className="flex flex-col gap-1">
-                    <span className="text-[15px] font-semibold text-[#101426] leading-snug">
+                    <span className="text-[15px] font-semibold text-[#000000] leading-snug">
                       {q.q}
                     </span>
-                    <span className="text-[13px] text-[#5B6170]">{q.kind}</span>
+                    <span className="text-[13px] text-[#5A6675]">{q.kind}</span>
                   </span>
                 </button>
               );
@@ -70,18 +70,18 @@ export default function AskCerebroSection() {
           {/* Right: Answer Panel */}
           <div
             aria-live="polite"
-            className="flex-1 min-w-0 border border-[#E4E7EC] rounded-2xl bg-white p-6 sm:p-7 shadow-[0_16px_40px_rgba(16,20,38,0.06)] flex flex-col"
+            className="flex-1 min-w-0 border border-[#E2E8F0] rounded-2xl bg-white p-6 sm:p-7 shadow-[0_16px_40px_rgba(0,0,0,0.06)] flex flex-col"
           >
             {/* User Bubble */}
             <div className="flex justify-end">
-              <div className="max-w-[420px] bg-[#F2F3F6] rounded-[14px_14px_4px_14px] p-[11px_14px] text-[14.5px] text-[#101426] leading-relaxed">
+              <div className="max-w-[420px] bg-[#F2F3F6] rounded-[14px_14px_4px_14px] p-[11px_14px] text-[14.5px] text-[#000000] leading-relaxed">
                 {currentItem.q}
               </div>
             </div>
 
             {/* Answer Table */}
             <div className="mt-5 border border-[#E8EAEF] rounded-xl p-4 overflow-x-auto bg-white">
-              <div className="text-xs text-[#6B7180]">{currentItem.dateLine}</div>
+              <div className="text-xs text-[#6B7685]">{currentItem.dateLine}</div>
               <table className="w-full min-w-[420px] border-collapse mt-2 text-[13.5px]">
                 <thead>
                   <tr>
@@ -89,7 +89,7 @@ export default function AskCerebroSection() {
                       <th
                         key={i}
                         scope="col"
-                        className={`font-medium text-xs text-[#6B7180] py-1.5 px-2.5 ${
+                        className={`font-medium text-xs text-[#6B7685] py-1.5 px-2.5 ${
                           h.a === "right" ? "text-right" : "text-left"
                         }`}
                       >
@@ -104,7 +104,7 @@ export default function AskCerebroSection() {
                       {row.map((cell, cIdx) => {
                         const val = typeof cell === "string" ? cell : cell.v;
                         const align = typeof cell === "string" ? "left" : cell.a || "left";
-                        const color = typeof cell === "string" ? "#101426" : cell.c || "#101426";
+                        const color = typeof cell === "string" ? "#000000" : cell.c || "#000000";
                         const weight = typeof cell === "string" ? 400 : cell.w || 400;
                         return (
                           <td
@@ -126,7 +126,7 @@ export default function AskCerebroSection() {
               <div className="mt-3 flex gap-4 text-[12.5px]">
                 <button
                   type="button"
-                  className="text-[#4F46E5] font-semibold hover:underline bg-transparent border-0 p-0 cursor-pointer"
+                  className="text-[#0070C2] font-semibold hover:underline bg-transparent border-0 p-0 cursor-pointer"
                   onClick={() => {
                     const csv = currentItem.rows
                       .map((r) =>
@@ -138,15 +138,15 @@ export default function AskCerebroSection() {
                 >
                   Copy as CSV
                 </button>
-                <span className="text-[#4F46E5] font-semibold cursor-pointer hover:underline">
+                <span className="text-[#0070C2] font-semibold cursor-pointer hover:underline">
                   Download CSV
                 </span>
-                <span className="text-[#5B6170]">Sources and data details</span>
+                <span className="text-[#5A6675]">Sources and data details</span>
               </div>
             </div>
 
             {/* Narrative */}
-            <p className="mt-4.5 m-0 text-[15px] leading-relaxed text-[#2B3040]">
+            <p className="mt-4.5 m-0 text-[15px] leading-relaxed text-[#1C2433]">
               {currentItem.narrative}
             </p>
 
@@ -177,7 +177,7 @@ export default function AskCerebroSection() {
                 {currentItem.suggest.map((sg, i) => (
                   <span
                     key={i}
-                    className="inline-flex items-center min-h-[34px] px-3 rounded-full border border-[#DDE0E7] text-[13px] text-[#2B3040] bg-white"
+                    className="inline-flex items-center min-h-[34px] px-3 rounded-full border border-[#DDE0E7] text-[13px] text-[#1C2433] bg-white"
                   >
                     {sg}
                   </span>
@@ -186,7 +186,7 @@ export default function AskCerebroSection() {
             )}
 
             {/* Caption */}
-            <p className="mt-5 m-0 text-[12.5px] text-[#6B7180]">
+            <p className="mt-5 m-0 text-[12.5px] text-[#6B7685]">
               {askSectionData.caption}
             </p>
           </div>

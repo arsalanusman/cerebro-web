@@ -1,25 +1,21 @@
 import React from "react";
-import IntegrationsClient from "@/components/integrations/IntegrationsClient";
+import PlatIntegrationsV2 from "@/components/platform/PlatIntegrationsV2";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
-import { integrationsData } from "@/content/integrations";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: integrationsData.seoTitle,
-  description: integrationsData.seoDesc,
+  title: "Integrations - Every marketing source, connected",
+  description: "Native connectors, AI-built connectors, sheet upload and sales data.",
   path: "/integrations",
 });
 
-export default function IntegrationsPage() {
+export default function Page() {
   return (
     <>
       <BreadcrumbListJsonLd
-        items={[
-          { name: "Home", path: "/" },
-          { name: "Integrations", path: "/integrations" },
-        ]}
+        items={[{"name":"Home","path":"/"},{"name":"Platform","path":"/features"},{"name":"Integrations","path":"/integrations"}]}
       />
-      <IntegrationsClient />
+      <PlatIntegrationsV2 />
     </>
   );
 }

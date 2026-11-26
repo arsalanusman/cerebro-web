@@ -1,13 +1,20 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { SITE } from "@/lib/site";
+import { usePathname } from "next/navigation";
+import { SITE, isPlaceholderHidden } from "@/lib/site";
 
 export interface SiteFooterProps {
   cta?: boolean;
 }
 
 export function SiteFooter({ cta = true }: SiteFooterProps) {
+  const pathname = usePathname();
+  const isExcludedPath = pathname === "/demo" || pathname === "/contact";
+  const showCta = cta && !isExcludedPath;
+
   const trustItems = [
     {
       label: "Role-based access",
@@ -31,14 +38,12 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
     {
       title: "Platform",
       links: [
-        { label: "AI first experience", href: "/ai-first" },
-        { label: "Data integration", href: "/platform/data-integration" },
-        { label: "Objective-based reporting", href: "/platform/objective-reporting" },
-        { label: "Dashboards & hierarchy", href: "/platform/dashboards" },
-        { label: "Reports & builder", href: "/platform/reports" },
-        { label: "Ask Cerebro AI", href: "/ask-cerebro" },
-        { label: "Integrations directory", href: "/integrations" },
-        { label: "All platform features", href: "/features" },
+        { label: "Ask Cerebro", href: "/ask-cerebro" },
+        { label: "AI data engine", href: "/platform/data-integration" },
+        { label: "Dashboards", href: "/platform/dashboards" },
+        { label: "Report builder", href: "/platform/reports" },
+        { label: "Objective engine", href: "/platform/objective-reporting" },
+        { label: "Integrations", href: "/integrations" },
       ],
     },
     {
@@ -56,43 +61,42 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
       title: "Resources",
       links: [
         { label: "Blog", href: "/blog" },
-        { label: "Documentation", href: "/docs" },
+        { label: "Docs", href: "/docs" },
         { label: "FAQ", href: "/faq" },
-        { label: "Security & privacy", href: "/security" },
-        { label: "Pricing & tiers", href: "/pricing" },
+        { label: "Security", href: "/security" },
+        { label: "Pricing", href: "/pricing" },
       ],
     },
     {
       title: "Company",
       links: [
-        { label: "About Cerebro", href: "/about" },
-        { label: "Contact us", href: "/contact" },
+        { label: "About", href: "/about" },
+        { label: "Contact", href: "/contact" },
         { label: "Book a demo", href: "/demo" },
       ],
     },
   ];
 
   return (
-    <div className="font-sans text-[#2B3040] bg-white">
-      {/* ── Trust Strip ── */}
+    <div className="font-sans text-[#1C2433] bg-white">
+      {/* ── Trust Section ── */}
       <section aria-label="Trust" className="border-t border-[#EEF0F3] bg-white">
-        <div className="max-w-[1240px] mx-auto px-6 lg:px-10 py-9 flex gap-7 items-center justify-between flex-wrap">
-          <span className="font-heading text-[18px] font-semibold text-[#101426]">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 py-9 box-border flex gap-7 items-center flex-wrap">
+          <span className="font-heading text-[18px] font-semibold text-[#000000]">
             Built to be trusted with client data
           </span>
-
-          <div className="flex-1 min-w-[300px] flex gap-5 lg:gap-6 flex-wrap items-center">
+          <div className="flex-1 min-w-[280px] lg:min-w-[520px] flex gap-5 lg:gap-[22px] flex-wrap items-center">
             {trustItems.map((t, idx) => (
               <span
                 key={idx}
-                className="inline-flex items-center gap-2 text-[14px] text-[#2B3040]"
+                className="inline-flex items-center gap-2 text-[14px] text-[#1C2433]"
               >
                 <svg
                   width="16"
                   height="16"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="#4F46E5"
+                  stroke="#0070C2"
                   strokeWidth="1.9"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -100,14 +104,13 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
                 >
                   <path d={t.d} />
                 </svg>
-                {t.label}
+                <span>{t.label}</span>
               </span>
             ))}
           </div>
-
           <Link
             href="/security"
-            className="inline-flex items-center gap-1.5 min-h-[44px] text-[14.5px] font-semibold text-[#4F46E5] hover:text-[#4338CA] transition-colors"
+            className="inline-flex items-center gap-1.5 min-h-[44px] text-[14.5px] font-semibold text-[#0070C2] hover:text-[#005DA3] transition-colors"
           >
             <span>Read about security</span>
             <svg
@@ -127,35 +130,35 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
         </div>
       </section>
 
-      {/* ── Book a Demo Navy Band (prop cta) ── */}
-      {cta && (
-        <section className="relative overflow-hidden py-24 sm:py-28 bg-[#1C1A57] text-white">
+      {/* ── Call To Action Section (Deep Cosmic Navy & Bottom-Left Radiant Blue Aura) ── */}
+      {showCta && (
+        <section className="relative overflow-hidden py-16 lg:py-[104px] bg-[#011640] text-white">
+          {/* Ambient luminous electric blue glow in bottom-left corner matching reference */}
           <div
             aria-hidden="true"
-            className="absolute -bottom-[320px] left-1/2 -ml-[380px] w-[760px] h-[760px] rounded-full pointer-events-none"
+            className="absolute -bottom-[200px] left-[-120px] sm:left-[max(-80px,calc(50%-760px))] w-[600px] sm:w-[720px] h-[600px] sm:h-[720px] rounded-full pointer-events-none"
             style={{
               background:
-                "radial-gradient(circle, rgba(165,180,252,0.35) 0, rgba(79,70,229,0.12) 25%, rgba(28,26,87,0) 60%)",
+                "radial-gradient(circle, rgba(0,112,194,0.52) 0%, rgba(0,112,194,0.18) 36%, rgba(1,22,64,0) 68%)",
             }}
           />
-          <div className="relative max-w-[1240px] mx-auto px-6 lg:px-10 text-center">
-            <h2 className="mx-auto max-w-[760px] font-heading font-semibold text-[32px] sm:text-[44px] lg:text-[52px] leading-[1.08] tracking-tight text-white">
+          <div className="relative max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 box-border text-center">
+            <h2 className="m-0 mx-auto max-w-[760px] font-heading font-semibold text-[34px] sm:text-[44px] lg:text-[54px] leading-[1.08] tracking-[-0.025em] text-white">
               Ask your own campaigns a question.
             </h2>
-            <p className="mt-5 mx-auto max-w-[600px] text-[18px] leading-relaxed text-[#D4D6F2]">
-              Book a personalized demo. We’ll connect your platforms or load your
-              sheets, and you ask Cerebro the questions.
+            <p className="mt-5 mx-auto max-w-[620px] text-[16px] sm:text-[18px] lg:text-[19px] leading-[1.55] text-[#C9DDF2]">
+              Book a personalized demo. We’ll connect your platforms or load your sheets, and you ask Cerebro the questions.
             </p>
-            <div className="mt-9 flex gap-3 justify-center flex-wrap">
+            <div className="mt-9 flex gap-3.5 justify-center flex-wrap items-center">
               <Link
                 href="/demo"
-                className="inline-flex items-center justify-center min-h-[52px] px-7 rounded-[10px] bg-white text-[#1C1A57] hover:bg-slate-50 text-[16px] font-semibold transition-colors shadow-sm"
+                className="whitespace-nowrap shrink-0 inline-flex items-center justify-center min-h-[46px] px-7 rounded-full bg-white hover:bg-[#F3F4F6] text-[#011640] text-[15.5px] font-semibold transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
               >
                 Book a demo
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center min-h-[52px] px-7 rounded-[10px] border border-white/40 text-white hover:bg-white/10 text-[16px] font-semibold transition-colors"
+                className="whitespace-nowrap shrink-0 inline-flex items-center justify-center min-h-[46px] px-7 rounded-full border border-white/40 hover:border-white/70 hover:bg-white/5 text-white text-[15.5px] font-semibold transition-all hover:-translate-y-0.5 active:translate-y-0"
               >
                 Talk to sales
               </Link>
@@ -164,97 +167,111 @@ export function SiteFooter({ cta = true }: SiteFooterProps) {
         </section>
       )}
 
-      {/* ── Footer Navigation ── */}
-      <footer className="py-16 sm:py-20 pb-10 bg-white border-t border-[#EEF0F3]">
-        <div className="max-w-[1240px] mx-auto px-6 lg:px-10">
-          <div className="flex gap-12 flex-wrap">
-            {/* Brand & Address Column */}
-            <div className="flex-1 min-w-[280px]">
-              <Link href="/">
+      {/* ── Main Footer ── */}
+      <footer className="py-12 lg:py-16 pb-9 bg-white border-t border-[#EEF0F3]">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 box-border">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 justify-between">
+            {/* Identity & Address */}
+            <div className="w-full lg:w-[280px] shrink-0">
+              <span
+                role="img"
+                aria-label="Cerebro dNano"
+                className="inline-flex items-center gap-3"
+              >
                 <Image
-                  src="/brand/logo.png"
-                  alt={SITE.name}
-                  width={180}
-                  height={56}
-                  className="h-[48px] sm:h-[56px] w-auto object-contain block"
+                  src="/brand/cerebro-mark.svg"
+                  alt="Cerebro mark"
+                  width={52}
+                  height={52}
+                  className="h-12 w-auto block shrink-0"
                 />
-              </Link>
-              <p className="mt-4 max-w-[300px] text-[14.5px] leading-relaxed text-[#5B6170]">
-                Cerebro AI, the data engine for paid media reporting, for agencies
-                and brands.
+                <Image
+                  src="/brand/cerebro-wordmark.svg"
+                  alt="Cerebro dNano"
+                  width={208}
+                  height={32}
+                  className="h-[32px] w-auto block shrink-0"
+                />
+              </span>
+              <p className="mt-4 max-w-[280px] text-[14.5px] leading-[1.55] text-[#5A6675]">
+                Cerebro AI, the data engine for paid media reporting, for agencies and brands.
               </p>
-              <address className="mt-6 not-italic text-[14px] leading-relaxed text-[#2B3040]">
-                <span className="font-semibold">{SITE.name}</span>
-                <br />
-                {SITE.address.unit}
-                <br />
-                {SITE.address.street}
-                <br />
-                {SITE.address.city} {SITE.address.postalCode}, {SITE.address.country}
-                <br />
-                <a
-                  href={SITE.phoneHref}
-                  className="text-[#4F46E5] hover:text-[#4338CA] transition-colors"
-                >
-                  {SITE.phoneDisplay}
-                </a>
-                <br />
-                <a
-                  href={`mailto:${SITE.email}`}
-                  className="text-[#4F46E5] hover:text-[#4338CA] transition-colors"
-                >
-                  {SITE.email}
-                </a>
-                <br />
-                <span className="text-[#5B6170]">{SITE.hoursDisplay}</span>
+              <address className="mt-[22px] not-italic text-[14px] leading-[1.7] text-[#1C2433]">
+                <div className="font-semibold text-[#000000]">{SITE.name}</div>
+                {!isPlaceholderHidden(SITE.address.unit) && (
+                  <div className="text-[#6B7685]">{SITE.address.unit}</div>
+                )}
+                <div>{SITE.address.street}</div>
+                <div>
+                  {SITE.address.city} {SITE.address.postalCode}, {SITE.address.country}
+                </div>
+                <div>
+                  <a
+                    href={SITE.phoneHref}
+                    className="text-[#0070C2] hover:text-[#005DA3] transition-colors"
+                  >
+                    {SITE.phoneDisplay}
+                  </a>
+                </div>
+                <div>
+                  <a
+                    href={`mailto:${SITE.email}`}
+                    className="text-[#0070C2] hover:text-[#005DA3] transition-colors"
+                  >
+                    {SITE.email}
+                  </a>
+                </div>
+                <div className="text-[#5A6675] mt-1">{SITE.hoursDisplay}</div>
               </address>
             </div>
 
-            {/* 4 Link Columns */}
-            {columns.map((col, idx) => (
-              <nav key={idx} aria-label={col.title} className="flex-1 min-w-[140px]">
-                <div className="text-[13px] font-semibold text-[#101426] mb-3.5">
-                  {col.title}
-                </div>
-                <ul className="m-0 p-0 list-none flex flex-col gap-2.5">
-                  {col.links.map((lnk, lIdx) => (
-                    <li key={lIdx}>
-                      <Link
-                        href={lnk.href}
-                        className="text-[14px] text-[#5B6170] hover:text-[#101426] transition-colors"
-                      >
-                        {lnk.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            ))}
+            {/* Navigation Columns (Platform, Solutions, Resources, Company) */}
+            <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-10 min-w-0">
+              {columns.map((col, idx) => (
+                <nav key={idx} aria-label={col.title}>
+                  <div className="text-[13px] font-semibold text-[#000000]">
+                    {col.title}
+                  </div>
+                  <ul className="mt-3.5 p-0 list-none flex flex-col gap-2.5">
+                    {col.links.map((lnk, lIdx) => (
+                      <li key={lIdx}>
+                        <Link
+                          href={lnk.href}
+                          className="text-[14px] text-[#5A6675] hover:text-[#000000] transition-colors"
+                        >
+                          {lnk.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              ))}
+            </div>
           </div>
 
-          {/* Bottom Legal & Copyright Bar */}
-          <div className="mt-12 pt-6 border-t border-[#EEF0F3] flex justify-between gap-4 flex-wrap text-[13px] text-[#5B6170]">
-            <span>© 2026 {SITE.name}</span>
-            <span className="flex gap-5 flex-wrap">
+          {/* Sub-footer Legal Bar */}
+          <div className="mt-12 pt-[22px] border-t border-[#EEF0F3] flex justify-between gap-4 flex-wrap text-[13px] text-[#5A6675]">
+            <span>© 2026 Cerebro dNano</span>
+            <div className="flex gap-5 flex-wrap">
               <Link
                 href="/privacy-policy"
-                className="text-[#5B6170] hover:text-[#101426] transition-colors"
+                className="text-[#5A6675] hover:text-[#000000] transition-colors"
               >
                 Privacy policy
               </Link>
               <Link
                 href="/terms-of-service"
-                className="text-[#5B6170] hover:text-[#101426] transition-colors"
+                className="text-[#5A6675] hover:text-[#000000] transition-colors"
               >
                 Terms of service
               </Link>
               <Link
                 href="/data-deletion"
-                className="text-[#5B6170] hover:text-[#101426] transition-colors"
+                className="text-[#5A6675] hover:text-[#000000] transition-colors"
               >
                 Data deletion
               </Link>
-            </span>
+            </div>
           </div>
         </div>
       </footer>

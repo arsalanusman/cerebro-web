@@ -56,14 +56,14 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
     variant === "option-1" ? engineData.leadOption1 : engineData.leadOption2;
 
   return (
-    <section id="engine" className="py-20 lg:py-[88px] bg-[#F7F8FA]">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+    <section id="engine" className="py-20 lg:py-[88px] bg-[#F6F8FB]">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
         {/* Header */}
         <ScrollReveal direction="down" distance={20}>
-          <h2 className="m-0 max-w-[760px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#101426]">
+          <h2 className="m-0 max-w-[760px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#000000]">
             {h2}
           </h2>
-          <p className="mt-4 m-0 max-w-[700px] text-lg leading-[1.55] text-[#5B6170]">
+          <p className="mt-4 m-0 max-w-[700px] text-lg leading-[1.55] text-[#5A6675]">
             {lead}
           </p>
         </ScrollReveal>
@@ -86,8 +86,8 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
                   onClick={() => playSource(i)}
                   className={`min-h-[44px] px-4 sm:px-5 rounded-lg border-0 text-[14.5px] font-semibold cursor-pointer inline-flex items-center gap-2 shrink-0 whitespace-nowrap transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] ${
                     selected
-                      ? "bg-white text-[#101426] shadow-sm"
-                      : "bg-transparent text-[#5B6170] hover:text-[#101426]"
+                      ? "bg-white text-[#000000] shadow-sm"
+                      : "bg-transparent text-[#5A6675] hover:text-[#000000]"
                   }`}
                 >
                   <svg
@@ -112,14 +112,14 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
 
         {/* Pipeline Container */}
         <ScrollReveal direction="up" distance={24} delay={0.25}>
-          <div className="mt-5 bg-white border border-[#E4E7EC] rounded-2xl p-6 sm:p-7 flex flex-col lg:flex-row gap-4 items-stretch shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div className="mt-5 bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-7 flex flex-col lg:flex-row gap-4 items-stretch shadow-sm hover:shadow-md transition-shadow duration-300">
           {/* Column 1: Source */}
           <div className="flex-1 min-w-0 border border-[#EEF0F3] rounded-xl p-5 bg-[#FCFCFD] flex flex-col">
-            <div className="text-xs font-semibold text-[#6B7180]">Source</div>
+            <div className="text-xs font-semibold text-[#6B7685]">Source</div>
 
             {srcIndex === 0 && (
               <div className="animate-fadeIn flex flex-col flex-1">
-                <div className="mt-2.5 text-base font-semibold text-[#101426]">
+                <div className="mt-2.5 text-base font-semibold text-[#000000]">
                   Native connectors
                 </div>
                 <div className="mt-3.5 flex flex-col gap-2">
@@ -129,7 +129,7 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
                       className="flex items-center gap-2.5 bg-white border border-[#EEF0F3] rounded-lg p-2 sm:px-2.5"
                     >
                       {x.logo ? (
-                        <span className="w-[22px] h-[22px] rounded-md bg-white border border-[#E4E7EC] flex items-center justify-center p-0.5 shrink-0 overflow-hidden shadow-xs">
+                        <span className="w-[22px] h-[22px] rounded-md bg-white border border-[#E2E8F0] flex items-center justify-center p-0.5 shrink-0 overflow-hidden shadow-xs">
                           <Image
                             src={x.logo}
                             alt={x.name}
@@ -146,7 +146,7 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
                           {x.mark}
                         </span>
                       )}
-                      <span className="flex-1 text-[13px] text-[#101426]">
+                      <span className="flex-1 text-[13px] text-[#000000]">
                         {x.name}
                       </span>
                       <span
@@ -158,7 +158,7 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
                     </div>
                   ))}
                 </div>
-                <p className="mt-auto pt-3.5 m-0 text-[12.5px] leading-relaxed text-[#5B6170]">
+                <p className="mt-auto pt-3.5 m-0 text-[12.5px] leading-relaxed text-[#5A6675]">
                   Maintained by Cerebro. Syncs on a schedule, or on demand.
                 </p>
               </div>
@@ -166,23 +166,23 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
 
             {srcIndex === 1 && (
               <div className="animate-fadeIn flex flex-col flex-1">
-                <div className="mt-2.5 text-base font-semibold text-[#101426]">
+                <div className="mt-2.5 text-base font-semibold text-[#000000]">
                   Add a connector
                 </div>
-                <div className="mt-3.5 text-xs text-[#5B6170]">Platform</div>
-                <div className="mt-1.5 border border-[#DDE0E7] rounded-lg p-[9px_10px] text-[13px] text-[#101426] bg-white">
+                <div className="mt-3.5 text-xs text-[#5A6675]">Platform</div>
+                <div className="mt-1.5 border border-[#DDE0E7] rounded-lg p-[9px_10px] text-[13px] text-[#000000] bg-white">
                   Local publisher network
                 </div>
-                <div className="mt-3 text-xs text-[#5B6170]">
+                <div className="mt-3 text-xs text-[#5A6675]">
                   API docs or a sample export
                 </div>
-                <div className="mt-1.5 border border-[#DDE0E7] rounded-lg p-[9px_10px] text-[13px] text-[#101426] bg-white flex items-center gap-2">
+                <div className="mt-1.5 border border-[#DDE0E7] rounded-lg p-[9px_10px] text-[13px] text-[#000000] bg-white flex items-center gap-2">
                   <svg
                     width="14"
                     height="14"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="#5B6170"
+                    stroke="#5A6675"
                     strokeWidth="1.8"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -192,10 +192,10 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
                   </svg>
                   publisher_api_docs.pdf
                 </div>
-                <div className="mt-3.5 rounded-lg bg-[#EEF0FF] p-3 text-[12.5px] leading-relaxed text-[#2E2A82]">
+                <div className="mt-3.5 rounded-lg bg-[#E8F2FC] p-3 text-[12.5px] leading-relaxed text-[#022771]">
                   Connector drafted by AI. 3 field mappings to review.
                 </div>
-                <p className="mt-auto pt-3 m-0 text-[12.5px] leading-relaxed text-[#5B6170]">
+                <p className="mt-auto pt-3 m-0 text-[12.5px] leading-relaxed text-[#5A6675]">
                   Prefer not to build it? Our team can set it up for you.
                 </p>
               </div>
@@ -203,7 +203,7 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
 
             {srcIndex === 2 && (
               <div className="animate-fadeIn flex flex-col flex-1">
-                <div className="mt-2.5 text-base font-semibold text-[#101426]">
+                <div className="mt-2.5 text-base font-semibold text-[#000000]">
                   Upload a sheet
                 </div>
                 <div className="mt-3.5 flex items-center gap-2.5 border border-[#DDE0E7] rounded-lg p-2.5 bg-white">
@@ -223,10 +223,10 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
                     </svg>
                   </span>
                   <span className="flex flex-col text-[12.5px]">
-                    <span className="text-[#101426] font-medium">
+                    <span className="text-[#000000] font-medium">
                       publisher_report_oct.xlsx
                     </span>
-                    <span className="text-[#6B7180]">412 rows</span>
+                    <span className="text-[#6B7685]">412 rows</span>
                   </span>
                 </div>
                 <div className="mt-3 border border-[#EEF0F3] rounded-lg bg-white overflow-hidden">
@@ -235,7 +235,7 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
                       key={idx}
                       className="flex items-center gap-2 p-2 px-2.5 border-t first:border-t-0 border-[#F3F4F6] text-[12.5px]"
                     >
-                      <span className="flex-1 text-[#5B6170] truncate">{m.from}</span>
+                      <span className="flex-1 text-[#5A6675] truncate">{m.from}</span>
                       <svg
                         width="12"
                         height="12"
@@ -249,13 +249,13 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
                       >
                         <path d="M5 12h14M13 6l6 6-6 6" />
                       </svg>
-                      <span className="flex-1 text-[#101426] font-medium truncate text-right">
+                      <span className="flex-1 text-[#000000] font-medium truncate text-right">
                         {m.to}
                       </span>
                     </div>
                   ))}
                 </div>
-                <p className="mt-auto pt-3 m-0 text-[12.5px] leading-relaxed text-[#5B6170]">
+                <p className="mt-auto pt-3 m-0 text-[12.5px] leading-relaxed text-[#5A6675]">
                   CSV, Excel and Google Sheets.
                 </p>
               </div>
@@ -264,13 +264,13 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
 
           {/* Arrow 1 */}
           <div className="hidden lg:flex items-center shrink-0">
-            <span className="w-8 h-8 rounded-full border border-[#E4E7EC] bg-white inline-flex items-center justify-center">
+            <span className="w-8 h-8 rounded-full border border-[#E2E8F0] bg-white inline-flex items-center justify-center">
               <svg
                 width="14"
                 height="14"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#5B6170"
+                stroke="#5A6675"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -282,8 +282,8 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
           </div>
 
           {/* Column 2: Cerebro AI Engine */}
-          <div className="flex-[1.2] min-w-0 rounded-xl p-5 bg-[#1C1A57] text-white flex flex-col">
-            <div className="flex items-center gap-2 text-xs font-semibold text-[#A5B4FC]">
+          <div className="flex-[1.2] min-w-0 rounded-xl p-5 bg-[#011640] border border-white/10 text-white flex flex-col">
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#8EC5F0]">
               <svg
                 width="14"
                 height="14"
@@ -312,7 +312,7 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
                     <span
                       className="shrink-0 w-[22px] h-[22px] rounded-full inline-flex items-center justify-center mt-0.5 transition-colors duration-300"
                       style={{
-                        background: isActive ? "#4F46E5" : "rgba(255,255,255,0.25)",
+                        background: isActive ? "#0070C2" : "rgba(255,255,255,0.25)",
                       }}
                     >
                       <svg
@@ -345,13 +345,13 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
 
           {/* Arrow 2 */}
           <div className="hidden lg:flex items-center shrink-0">
-            <span className="w-8 h-8 rounded-full border border-[#E4E7EC] bg-white inline-flex items-center justify-center">
+            <span className="w-8 h-8 rounded-full border border-[#E2E8F0] bg-white inline-flex items-center justify-center">
               <svg
                 width="14"
                 height="14"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#5B6170"
+                stroke="#5A6675"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -364,14 +364,14 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
 
           {/* Column 3: Ready in Cerebro */}
           <div className="flex-[0.9] min-w-0 border border-[#EEF0F3] rounded-xl p-5 bg-[#FCFCFD] flex flex-col gap-2.5">
-            <div className="text-xs font-semibold text-[#6B7180]">Ready in Cerebro</div>
+            <div className="text-xs font-semibold text-[#6B7685]">Ready in Cerebro</div>
 
             <div className="flex flex-col gap-2.5 flex-1 justify-center">
               {engineData.outputs.map((o, idx) => (
                 <div
                   key={idx}
                   className={`flex items-center gap-2.5 bg-white rounded-[9px] p-[10px_12px] border transition-all duration-300 ${
-                    eDone ? "border-[#C7CBF9] opacity-100" : "border-[#EEF0F3] opacity-50"
+                    eDone ? "border-[#BFD8F0] opacity-100" : "border-[#EEF0F3] opacity-50"
                   }`}
                 >
                   <svg
@@ -379,7 +379,7 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
                     height="16"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="#4F46E5"
+                    stroke="#0070C2"
                     strokeWidth="1.8"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -387,12 +387,12 @@ export default function AiDataEngine({ variant = "option-2" }: AiDataEngineProps
                   >
                     <path d={o.d} />
                   </svg>
-                  <span className="flex-1 text-[13px] font-medium text-[#101426]">
+                  <span className="flex-1 text-[13px] font-medium text-[#000000]">
                     {o.label}
                   </span>
                   <span
                     className={`text-[11px] font-semibold transition-colors duration-300 ${
-                      eDone ? "text-[#15803D]" : "text-[#6B7180]"
+                      eDone ? "text-[#15803D]" : "text-[#6B7685]"
                     }`}
                   >
                     {eDone ? "Ready" : "Waiting"}

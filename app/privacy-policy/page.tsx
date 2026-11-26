@@ -1,15 +1,21 @@
 import React from "react";
-import LegalPage from "@/components/legal/LegalPage";
-import { legalDocs } from "@/content/legal";
+import PgPrivacyV2 from "@/components/legal/PgPrivacyV2";
+import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Privacy Policy | Cerebro DNano",
-  description:
-    "Learn how Cerebro DNano collects, processes, and protects your marketing data and advertising account credentials.",
+  title: "Privacy Policy - Cerebro dNano",
+  description: "How we collect, store, and protect your data.",
   path: "/privacy-policy",
 });
 
-export default function PrivacyPolicyPage() {
-  return <LegalPage doc={legalDocs["privacy-policy"]} />;
+export default function Page() {
+  return (
+    <>
+      <BreadcrumbListJsonLd
+        items={[{"name":"Home","path":"/"},{"name":"Privacy Policy","path":"/privacy-policy"}]}
+      />
+      <PgPrivacyV2 />
+    </>
+  );
 }

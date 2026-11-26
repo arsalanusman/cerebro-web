@@ -78,7 +78,7 @@ export default function HeroDashboard() {
     <div className="w-full max-w-full overflow-hidden">
       <div className="flex flex-col lg:flex-row items-stretch lg:items-start justify-center gap-6 lg:gap-0 mt-12 lg:mt-16 max-w-full">
         {/* 1. Dashboard Mockup */}
-        <div className="flex-1 min-w-0 max-w-full overflow-x-auto rounded-2xl shadow-[0_30px_70px_rgba(10,8,40,0.35)] border border-[#DCDFE7] bg-white">
+        <div className="flex-1 min-w-0 max-w-full overflow-x-auto rounded-2xl shadow-[0_30px_70px_rgba(1,14,40,0.35)] border border-[#DCDFE7] bg-white">
           <div className="min-w-[720px] lg:min-w-[760px] h-[600px] flex overflow-hidden">
             {/* Sidebar */}
             <div className="w-[172px] shrink-0 border-r border-[#EEF0F3] p-[18px_10px] flex flex-col gap-4 bg-white">
@@ -99,8 +99,8 @@ export default function HeroDashboard() {
                     key={i}
                     className={`flex items-center gap-2.5 px-2 py-1.5 rounded-md text-xs ${
                       n.active
-                        ? "bg-[#EEF0FF] text-[#4F46E5] font-semibold"
-                        : "text-[#5B6170] hover:text-[#101426] font-normal"
+                        ? "bg-[#E8F2FC] text-[#0070C2] font-semibold"
+                        : "text-[#5A6675] hover:text-[#000000] font-normal"
                     }`}
                   >
                     <svg
@@ -122,12 +122,12 @@ export default function HeroDashboard() {
               </div>
 
               <div className="mt-auto flex items-center gap-2 p-2 border-t border-[#EEF0F3]">
-                <span className="w-6 h-6 rounded-full bg-[#4F46E5] text-white text-[11px] font-semibold flex items-center justify-center">
+                <span className="w-6 h-6 rounded-full bg-[#0070C2] text-white text-[11px] font-semibold flex items-center justify-center">
                   A
                 </span>
                 <span className="flex flex-col text-[11px] leading-tight">
-                  <span className="text-[#101426] font-semibold">Ayesha Khan</span>
-                  <span className="text-[#6B7180]">Sample Agency</span>
+                  <span className="text-[#000000] font-semibold">Ayesha Khan</span>
+                  <span className="text-[#6B7685]">Sample Agency</span>
                 </span>
               </div>
             </div>
@@ -137,14 +137,14 @@ export default function HeroDashboard() {
               {/* Dashboard Topbar */}
               <div className="flex items-center justify-between px-5 py-3.5 bg-white border-b border-[#EEF0F3]">
                 <div>
-                  <div className="text-[14.5px] font-semibold text-[#101426]">
+                  <div className="text-[14.5px] font-semibold text-[#000000]">
                     Executive overview
                   </div>
-                  <div className="text-[11px] text-[#6B7180] mt-0.5">
+                  <div className="text-[11px] text-[#6B7685] mt-0.5">
                     Quillmere Textiles, data up to 18 Nov 2026
                   </div>
                 </div>
-                <span className="inline-flex items-center h-7 px-3 rounded-md bg-[#4F46E5] text-white text-[11.5px] font-semibold shadow-sm cursor-default">
+                <span className="inline-flex items-center h-7 px-3 rounded-md bg-[#0070C2] text-white text-[11.5px] font-semibold shadow-sm cursor-default">
                   Edit dashboard
                 </span>
               </div>
@@ -158,12 +158,12 @@ export default function HeroDashboard() {
                       key={i}
                       className={`bg-white rounded-lg p-[11px_13px] border transition-all duration-300 ${
                         isHighlighted
-                          ? "border-[#4F46E5] ring-2 ring-[#4F46E5]/30 bg-[#EEF0FF]/40"
+                          ? "border-[#0070C2] ring-2 ring-[#0070C2]/30 bg-[#E8F2FC]/40"
                           : "border-[#E8EAEF]"
                       }`}
                     >
                       <div className="flex justify-between items-center gap-1.5">
-                        <span className="text-[11px] text-[#5B6170]">{k.label}</span>
+                        <span className="text-[11px] text-[#5A6675]">{k.label}</span>
                         <span
                           className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${
                             k.tone === "positive"
@@ -176,10 +176,10 @@ export default function HeroDashboard() {
                           {k.delta}
                         </span>
                       </div>
-                      <div className="mt-1 text-xl font-semibold text-[#101426] tracking-tight">
+                      <div className="mt-1 text-xl font-semibold text-[#000000] tracking-tight">
                         {k.value}
                       </div>
-                      <div className="mt-0.5 text-[10.5px] text-[#6B7180]">{k.sub}</div>
+                      <div className="mt-0.5 text-[10.5px] text-[#6B7685]">{k.sub}</div>
                     </div>
                   );
                 })}
@@ -190,13 +190,13 @@ export default function HeroDashboard() {
                 {/* Spend Trend Sparkline */}
                 <div className="flex-1 min-w-0 bg-white border border-[#E8EAEF] rounded-lg p-3 flex flex-col">
                   <div className="flex justify-between items-center">
-                    <span className="text-xs font-semibold text-[#101426]">Spend trend</span>
-                    <span className="flex gap-2.5 text-[10px] text-[#5B6170]">
+                    <span className="text-xs font-semibold text-[#000000]">Spend trend</span>
+                    <span className="flex gap-2.5 text-[10px] text-[#5A6675]">
                       <span className="inline-flex items-center gap-1">
-                        <span className="w-3 h-0.5 bg-[#2E2A82]"></span>Current
+                        <span className="w-3 h-0.5 bg-[#022771]"></span>Current
                       </span>
                       <span className="inline-flex items-center gap-1">
-                        <span className="w-3 border-t-2 border-dotted border-[#8B9AE8]"></span>
+                        <span className="w-3 border-t-2 border-dotted border-[#3E8FD4]"></span>
                         Previous
                       </span>
                     </span>
@@ -213,7 +213,7 @@ export default function HeroDashboard() {
                     <polyline
                       points={prevPts}
                       fill="none"
-                      stroke="#8B9AE8"
+                      stroke="#3E8FD4"
                       strokeWidth="2"
                       strokeDasharray="3 4"
                       strokeLinecap="round"
@@ -221,7 +221,7 @@ export default function HeroDashboard() {
                     <polyline
                       points={curPts}
                       fill="none"
-                      stroke="#2E2A82"
+                      stroke="#022771"
                       strokeWidth="2.25"
                       strokeLinejoin="round"
                       strokeLinecap="round"
@@ -231,18 +231,18 @@ export default function HeroDashboard() {
 
                 {/* Platform Mix */}
                 <div className="w-[188px] shrink-0 bg-white border border-[#E8EAEF] rounded-lg p-3 flex flex-col gap-2">
-                  <span className="text-xs font-semibold text-[#101426]">Platform mix</span>
+                  <span className="text-xs font-semibold text-[#000000]">Platform mix</span>
                   {heroData.platformMix.map((m, i) => {
                     const isHighlighted = isDone && currentQ.mix.includes(m.name);
                     return (
                       <div
                         key={i}
                         className={`p-1.5 -mx-1.5 rounded-md transition-colors duration-300 ${
-                          isHighlighted ? "bg-[#EEF0FF]" : "bg-transparent"
+                          isHighlighted ? "bg-[#E8F2FC]" : "bg-transparent"
                         }`}
                       >
                         <div className="flex justify-between items-center text-[11px]">
-                          <span className="text-[#2B3040] flex items-center gap-1.5">
+                          <span className="text-[#1C2433] flex items-center gap-1.5">
                             {m.logo && (
                               <Image
                                 src={m.logo}
@@ -254,7 +254,7 @@ export default function HeroDashboard() {
                             )}
                             <span>{m.name}</span>
                           </span>
-                          <span className="text-[#101426] font-semibold">{m.spend}</span>
+                          <span className="text-[#000000] font-semibold">{m.spend}</span>
                         </div>
                         <div className="mt-1 h-1.5 rounded-full bg-[#F0F1F4] overflow-hidden">
                           <div
@@ -278,17 +278,17 @@ export default function HeroDashboard() {
         </div>
 
         {/* 2. Docked Ask Cerebro Panel */}
-        <div className="w-full lg:w-[400px] shrink-0 lg:-ml-7 relative z-10 h-auto lg:h-[656px] bg-white border border-[#DCDFE7] rounded-2xl flex flex-col shadow-[0_2px_6px_rgba(16,20,38,0.08),0_32px_80px_rgba(10,8,40,0.4)]">
+        <div className="w-full lg:w-[400px] shrink-0 lg:-ml-7 relative z-10 h-auto lg:h-[656px] bg-white border border-[#DCDFE7] rounded-2xl flex flex-col shadow-[0_2px_6px_rgba(0,0,0,0.08),0_32px_80px_rgba(1,14,40,0.4)]">
           {/* Header */}
           <div className="flex justify-between items-center p-[16px_18px_12px]">
-            <span className="flex items-center gap-2 text-[14.5px] font-semibold text-[#101426]">
-              <span className="w-6.5 h-6.5 rounded-lg bg-[#EEF0FF] inline-flex items-center justify-center p-1">
+            <span className="flex items-center gap-2 text-[14.5px] font-semibold text-[#000000]">
+              <span className="w-6.5 h-6.5 rounded-lg bg-[#E8F2FC] inline-flex items-center justify-center p-1">
                 <svg
                   width="15"
                   height="15"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="#4F46E5"
+                  stroke="#0070C2"
                   strokeWidth="1.8"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -299,7 +299,7 @@ export default function HeroDashboard() {
               </span>
               Ask Cerebro
             </span>
-            <span className="text-[11px] text-[#6B7180]">Quillmere Textiles</span>
+            <span className="text-[11px] text-[#6B7685]">Quillmere Textiles</span>
           </div>
 
           {/* Question Tabs */}
@@ -319,8 +319,8 @@ export default function HeroDashboard() {
                   onClick={() => playQuestion(i)}
                   className={`min-h-[32px] px-2.5 rounded-full border text-xs font-semibold cursor-pointer transition-all ${
                     selected
-                      ? "border-[#4F46E5] bg-[#EEF0FF] text-[#4F46E5]"
-                      : "border-[#DDE0E7] bg-white text-[#2B3040] hover:border-[#C9CDD6]"
+                      ? "border-[#0070C2] bg-[#E8F2FC] text-[#0070C2]"
+                      : "border-[#DDE0E7] bg-white text-[#1C2433] hover:border-[#C9CDD6]"
                   }`}
                 >
                   {t.label}
@@ -335,7 +335,7 @@ export default function HeroDashboard() {
             className="flex-1 min-h-0 overflow-y-auto p-[16px_18px] flex flex-col gap-3"
           >
             {/* User Question Bubble */}
-            <div className="self-end max-w-[280px] bg-[#F2F3F6] rounded-[12px_12px_4px_12px] p-[9px_12px] text-[12.5px] text-[#101426] leading-relaxed">
+            <div className="self-end max-w-[280px] bg-[#F2F3F6] rounded-[12px_12px_4px_12px] p-[9px_12px] text-[12.5px] text-[#000000] leading-relaxed">
               {currentQ.question}
             </div>
 
@@ -344,7 +344,7 @@ export default function HeroDashboard() {
               {visibleSteps.map((step, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-2 text-[11.5px] text-[#5B6170] animate-fadeIn"
+                  className="flex items-center gap-2 text-[11.5px] text-[#5A6675] animate-fadeIn"
                 >
                   <svg
                     width="12"
@@ -364,8 +364,8 @@ export default function HeroDashboard() {
               ))}
 
               {isWorking && (
-                <div className="flex items-center gap-2 text-[11.5px] text-[#4F46E5] font-medium">
-                  <span className="w-2 h-2 rounded-full bg-[#4F46E5] animate-ping" />
+                <div className="flex items-center gap-2 text-[11.5px] text-[#0070C2] font-medium">
+                  <span className="w-2 h-2 rounded-full bg-[#0070C2] animate-ping" />
                   Working through your data
                 </div>
               )}
@@ -375,7 +375,7 @@ export default function HeroDashboard() {
             {isDone && (
               <div className="animate-fadeIn flex flex-col gap-3">
                 <div className="border border-[#E8EAEF] rounded-lg p-[11px_12px] bg-white">
-                  <div className="text-[10.5px] text-[#6B7180]">{currentQ.dateLine}</div>
+                  <div className="text-[10.5px] text-[#6B7685]">{currentQ.dateLine}</div>
                   <table className="w-full border-collapse mt-1.5 text-[11.5px]">
                     <thead>
                       <tr>
@@ -383,7 +383,7 @@ export default function HeroDashboard() {
                           <th
                             key={i}
                             scope="col"
-                            className={`font-medium text-[#6B7180] py-1 px-1.5 ${
+                            className={`font-medium text-[#6B7685] py-1 px-1.5 ${
                               h.a === "right" ? "text-right" : "text-left"
                             }`}
                           >
@@ -398,7 +398,7 @@ export default function HeroDashboard() {
                           {row.map((cell, cIdx) => {
                             const val = typeof cell === "string" ? cell : cell.v;
                             const align = typeof cell === "string" ? "left" : cell.a || "left";
-                            const color = typeof cell === "string" ? "#101426" : cell.c || "#101426";
+                            const color = typeof cell === "string" ? "#000000" : cell.c || "#000000";
                             const weight = typeof cell === "string" ? 400 : cell.w || 400;
                             return (
                               <td
@@ -418,7 +418,7 @@ export default function HeroDashboard() {
                   </table>
                 </div>
 
-                <p className="m-0 text-[12.5px] leading-relaxed text-[#2B3040]">
+                <p className="m-0 text-[12.5px] leading-relaxed text-[#1C2433]">
                   {currentQ.narrative}
                 </p>
               </div>
@@ -427,7 +427,7 @@ export default function HeroDashboard() {
 
           {/* Footer Input Area */}
           <div className="p-[12px_14px] border-t border-[#EEF0F3] bg-white rounded-b-2xl">
-            <div className="flex items-center gap-2 border border-[#DDE0E7] rounded-lg p-[6px_6px_6px_12px] focus-within:border-[#4F46E5] focus-within:ring-2 focus-within:ring-[#4F46E5]/20">
+            <div className="flex items-center gap-2 border border-[#DDE0E7] rounded-lg p-[6px_6px_6px_12px] focus-within:border-[#0070C2] focus-within:ring-2 focus-within:ring-[#0070C2]/20">
               <label htmlFor="hero-ask" className="sr-only">
                 Ask a question about your data
               </label>
@@ -435,12 +435,12 @@ export default function HeroDashboard() {
                 id="hero-ask"
                 type="text"
                 placeholder="Ask about spend, CPA, audiences…"
-                className="flex-1 min-w-0 border-0 outline-none text-[12.5px] text-[#101426] placeholder:text-[#6B7180] bg-transparent"
+                className="flex-1 min-w-0 border-0 outline-none text-[12.5px] text-[#000000] placeholder:text-[#6B7685] bg-transparent"
               />
               <a
                 href="/demo"
                 aria-label="Send question in demo"
-                className="w-8 h-8 rounded-lg bg-[#4F46E5] hover:bg-[#4338CA] text-white inline-flex items-center justify-center cursor-pointer transition-colors"
+                className="w-8 h-8 rounded-lg bg-[#0070C2] hover:bg-[#005DA3] text-white inline-flex items-center justify-center cursor-pointer transition-colors"
               >
                 <svg
                   width="14"
@@ -462,7 +462,7 @@ export default function HeroDashboard() {
       </div>
 
       {/* Caption */}
-      <p className="m-0 pt-5 pb-10 text-center text-[13px] text-[#5B6170]">
+      <p className="m-0 pt-5 pb-10 text-center text-[13px] text-[#5A6675]">
         {heroData.caption}
       </p>
     </div>

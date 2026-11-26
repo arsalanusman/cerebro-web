@@ -34,7 +34,7 @@ export const legalDocs: Record<string, LegalDoc> = {
     slug: "privacy-policy",
     title: "Privacy policy",
     intro:
-      "This policy explains what information Cerebro DNano collects, how we use it, and the choices you have. It is Cerebro DNano’s own policy and covers our website, the Cerebro platform and Cerebro AI.",
+      "This policy explains what information Cerebro dNano collects, how we use it, and the choices you have. It is Cerebro dNano’s own policy and covers our website, the Cerebro platform and Cerebro AI.",
     sections: S([
       [
         "Who we are",
@@ -91,7 +91,7 @@ export const legalDocs: Record<string, LegalDoc> = {
     slug: "terms-of-service",
     title: "Terms of service",
     intro:
-      "These terms govern your use of Cerebro DNano. By using the platform, your organization agrees to them.",
+      "These terms govern your use of Cerebro dNano. By using the platform, your organization agrees to them.",
     sections: S([
       ["Parties and acceptance", "Who the agreement is between.", "// LEGAL: contracting entity"],
       [
@@ -121,7 +121,7 @@ export const legalDocs: Record<string, LegalDoc> = {
     slug: "data-deletion",
     title: "Delete your data",
     intro:
-      "You can disconnect your accounts from Cerebro DNano and ask us to delete your data at any time. This page is public and is the data deletion page for our platform apps.",
+      "You can disconnect your accounts from Cerebro dNano and ask us to delete your data at any time. This page is public and is the data deletion page for our platform apps.",
     sections: S([
       [
         "Disconnect inside Cerebro",

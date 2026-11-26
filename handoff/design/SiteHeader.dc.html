@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Site header</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<header onMouseLeave="{{leaveHeader}}" onKeyDown="{{onKey}}" style="position: relative; z-index: 60; font-family: Inter, system-ui, sans-serif; color: #2B3040; background: #FFFFFF; border-bottom: 1px solid #E4E7EC">
+<div style="max-width: 1240px; margin: 0 auto; padding: 0 40px; min-height: 72px; box-sizing: border-box; display: flex; align-items: center; gap: 28px; flex-wrap: wrap">
+<a href="Home3.dc.html" aria-label="Cerebro DNano home" style="display: flex; align-items: center"><span role="img" aria-label="Cerebro DNano" style="display: inline-flex; align-items: center; gap: 9px"><img src="/_blob/43283f03c4d43f04640c058460029561" alt="" style="height: 28px; width: auto; display: block"><img src="/_blob/e07c3f2e1692e3cb785a530b2aec79eb" alt="" style="height: 17px; width: auto; display: block"></span></a>
+<nav aria-label="Main" style="display: flex; gap: 4px; flex: 1 1 auto; flex-wrap: wrap; align-items: center">
+<a href="PlatAsk.dc.html" onMouseEnter="{{ask.enter}}" onMouseLeave="{{ask.leave}}" style="display: inline-flex; align-items: center; gap: 6px; min-height: 38px; padding: 0 12px; margin-right: 8px; border-radius: 19px; background: {{ask.bg}}; color: #3730A3; text-decoration: none; font-size: 15px; font-weight: 600; transition: background 0.15s ease"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9zM19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"></path></svg>Ask Cerebro</a>
+<sc-for list="{{top}}" as="t" hint-placeholder-count="5">
+<sc-if value="{{t.isMenu}}" hint-placeholder-val="{{true}}">
+<button type="button" aria-expanded="{{t.open}}" aria-controls="{{t.panelId}}" onMouseEnter="{{t.enter}}" onClick="{{t.toggle}}" style="display: inline-flex; align-items: center; gap: 6px; min-height: 38px; padding: 0 12px; border-radius: 8px; border: 0; background: {{t.bg}}; color: {{t.fg}}; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.15s ease, color 0.15s ease">{{t.label}}<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="transform: rotate({{t.rot}}); transition: transform 0.15s ease"><path d="m6 9 6 6 6-6"></path></svg></button>
+</sc-if>
+<sc-if value="{{t.isLink}}" hint-placeholder-val="{{false}}">
+<a href="{{t.href}}" onMouseEnter="{{t.enter}}" onMouseLeave="{{t.leave}}" style="display: inline-flex; align-items: center; min-height: 38px; padding: 0 12px; border-radius: 8px; background: {{t.bg}}; color: {{t.fg}}; text-decoration: none; font-size: 15px; font-weight: 500; transition: background 0.15s ease, color 0.15s ease">{{t.label}}</a>
+</sc-if>
+</sc-for>
+</nav>
+<div style="display: flex; align-items: center; gap: 8px">
+<a href="PgContact.dc.html" onMouseEnter="{{contact.enter}}" onMouseLeave="{{contact.leave}}" style="display: inline-flex; align-items: center; min-height: 38px; padding: 0 12px; border-radius: 8px; background: {{contact.bg}}; color: #2B3040; text-decoration: none; font-size: 15px; font-weight: 500; transition: background 0.15s ease">Contact</a>
+<a href="PgDemo.dc.html" onMouseEnter="{{demo.enter}}" onMouseLeave="{{demo.leave}}" style="display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; border-radius: 20px; background: {{demo.bg}}; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600; transition: background 0.15s ease">Book a demo</a>
+</div>
+</div>
+
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}">
+<div id="{{panel.id}}" role="region" aria-label="{{panel.label}}" style="position: absolute; left: 0; right: 0; top: 100%; background: #FFFFFF; border-top: 1px solid #EEF0F3; border-bottom: 1px solid #E4E7EC; box-shadow: 0 24px 48px rgba(16,20,38,0.12)">
+<div style="max-width: 1240px; margin: 0 auto; padding: 28px 40px 32px; box-sizing: border-box; display: flex; gap: 32px; flex-wrap: wrap">
+<sc-for list="{{panel.cols}}" as="col" hint-placeholder-count="2">
+<div style="flex: 1 1 260px; min-width: 0">
+<div style="font-size: 12px; font-weight: 600; color: #6B7180; padding: 0 12px">{{col.title}}</div>
+<div style="margin-top: 8px; display: flex; flex-direction: column; gap: 2px">
+<sc-for list="{{col.items}}" as="it" hint-placeholder-count="4">
+<a href="{{it.href}}" onMouseEnter="{{it.enter}}" onMouseLeave="{{it.leave}}" style="display: flex; gap: 12px; align-items: flex-start; padding: 10px 12px; border-radius: 10px; background: {{it.bg}}; text-decoration: none; transition: background 0.15s ease">
+<span style="flex: 0 0 auto; width: 34px; height: 34px; border-radius: 9px; background: {{it.iconBg}}; display: inline-flex; align-items: center; justify-content: center; transition: background 0.15s ease"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{it.d}}"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14.5px; font-weight: 600; color: {{it.fg}}; transition: color 0.15s ease">{{it.label}}</span><span style="font-size: 13px; line-height: 1.4; color: #5B6170">{{it.text}}</span></span>
+</a>
+</sc-for>
+</div>
+</div>
+</sc-for>
+<a href="{{panel.feature.href}}" style="flex: 0 1 300px; min-width: 0; border-radius: 14px; background: {{panel.feature.bg}}; border: 1px solid {{panel.feature.bd}}; padding: 22px; text-decoration: none; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; color: {{panel.feature.kicker}}">{{panel.feature.eyebrow}}</span>
+<span style="font-family: Geist, Inter, sans-serif; font-size: 18px; line-height: 1.3; font-weight: 600; color: {{panel.feature.title}}">{{panel.feature.heading}}</span>
+<span style="font-size: 13.5px; line-height: 1.5; color: {{panel.feature.body}}">{{panel.feature.text}}</span>
+<span style="margin-top: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: {{panel.feature.link}}">{{panel.feature.cta}}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</div>
+</div>
+</sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":72}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { open: null, hover: null }; }
+  menus() {
+    var I = {
+      spark: 'M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z',
+      engine: 'M4 6h16M4 12h16M4 18h16M8 4v4M16 10v4M11 16v4',
+      plug: 'M12 22v-5M9 8V2M15 8V2M18 8v5a6 6 0 0 1-12 0V8z',
+      sheet: 'M3 4h18v16H3zM3 10h18M3 15h18M9 4v16',
+      dash: 'M3 3h7v9H3zM14 3h7v5h-7zM14 12h7v9h-7zM3 16h7v5H3z',
+      table: 'M3 4h18v16H3zM3 10h18M9 4v16',
+      layers: 'M12 2 2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5',
+      grid: 'M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z',
+      users: 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
+      brand: 'M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8zM7.5 7.5h.01',
+      bank: 'M3 21h18M5 21V10M19 21V10M9 21V10M15 21V10M12 3l9 5H3z',
+      signal: 'M2 20h.01M7 20v-4M12 20v-8M17 20V8M22 20V4',
+      cart: 'M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 7H6M10 21h.01M18 21h.01',
+      box: 'M21 8 12 3 3 8v8l9 5 9-5zM3 8l9 5 9-5M12 13v8',
+      book: 'M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z',
+      doc: 'M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6M8 13h8M8 17h6',
+      shield: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z',
+      info: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 11v5M12 8h.01',
+      mail: 'M3 5h18v14H3zM3 6l9 7 9-7'
+    };
+    return {
+      platform: { label: 'Platform menu', cols: [
+        { title: 'Cerebro AI', items: [
+          { id: 'p1', label: 'Ask Cerebro', text: 'Your AI analyst, answering from your data', href: 'PlatAsk.dc.html', d: I.spark },
+          { id: 'p2', label: 'AI data engine', text: 'Clean, standardize and check every source', href: 'PlatData.dc.html', d: I.engine },
+          { id: 'p3', label: 'AI connectors', text: 'Connect any marketing platform', href: 'PlatIntegrations.dc.html', d: I.plug },
+          { id: 'p4', label: 'AI sheet mapping', text: 'CSV, Excel and Google Sheets', href: 'PlatIntegrations.dc.html', d: I.sheet } ] },
+        { title: 'Build and report', items: [
+          { id: 'p5', label: 'Dashboards', text: 'Widget-based and fully editable', href: 'PlatDashboards.dc.html', d: I.dash },
+          { id: 'p6', label: 'Report builder', text: 'Any cut of the data, saved and shared', href: 'PlatReports.dc.html', d: I.table },
+          { id: 'p7', label: 'Objective engine', text: 'Every campaign judged by its goal', href: 'PlatObjective.dc.html', d: I.layers },
+          { id: 'p8', label: 'Integrations', text: 'Native, custom and sheet uploads', href: 'PlatIntegrations.dc.html', d: I.grid } ] } ],
+        feature: { href: 'PgDemo.dc.html', bg: '#1C1A57', bd: '#1C1A57', kicker: '#A5B4FC', title: '#FFFFFF', body: '#CDD0F3', link: '#FFFFFF', eyebrow: 'Book a demo', heading: 'See Cerebro AI on your own campaigns', text: 'We connect your platforms or load your sheets, and you ask the questions.', cta: 'Book a demo' } },
+      solutions: { label: 'Solutions menu', cols: [
+        { title: 'By team', items: [
+          { id: 's1', label: 'Agencies', text: 'Every client from one workspace', href: 'SolAgencies.dc.html', d: I.users },
+          { id: 's2', label: 'Brands', text: 'One view for marketing and leadership', href: 'SolBrands.dc.html', d: I.brand } ] },
+        { title: 'By industry', items: [
+          { id: 's3', label: 'Banking and finance', text: 'Reporting with tight access control', href: 'IndBanking.dc.html', d: I.bank },
+          { id: 's4', label: 'Telecom', text: 'Always-on campaigns in one view', href: 'IndTelecom.dc.html', d: I.signal },
+          { id: 's5', label: 'FMCG', text: 'Brands judged on the right goal', href: 'IndFMCG.dc.html', d: I.box },
+          { id: 's6', label: 'E-commerce', text: 'What your ads really earn', href: 'IndEcommerce.dc.html', d: I.cart } ] } ],
+        feature: { href: 'SolAgencies.dc.html', bg: '#F5F6FF', bd: '#E0E3FF', kicker: '#4F46E5', title: '#101426', body: '#5B6170', link: '#4F46E5', eyebrow: 'For agencies', heading: 'Report on every client from one workspace', text: 'Client-level access, shared widgets and Ask Cerebro for every client.', cta: 'Explore agencies' } },
+      resources: { label: 'Resources menu', cols: [
+        { title: 'Learn', items: [
+          { id: 'r1', label: 'Blog', text: 'Guides on paid media reporting', href: 'PgBlog.dc.html', d: I.book },
+          { id: 'r2', label: 'Docs', text: 'Set up and use Cerebro', href: 'PgDocs.dc.html', d: I.doc },
+          { id: 'r6', label: 'FAQ', text: 'Quick answers to common questions', href: 'PgFAQ.dc.html', d: I.info } ] },
+        { title: 'Company', items: [
+          { id: 'r3', label: 'About', text: 'Who we are and how we work', href: 'PgAbout.dc.html', d: I.info },
+          { id: 'r4', label: 'Security', text: 'How we protect client data', href: 'PgSecurity.dc.html', d: I.shield },
+          { id: 'r5', label: 'Contact', text: 'Talk to the team in Karachi', href: 'PgContact.dc.html', d: I.mail } ] } ],
+        feature: { href: 'PgArticle.dc.html', bg: '#FFFFFF', bd: '#E4E7EC', kicker: '#4F46E5', title: '#101426', body: '#5B6170', link: '#4F46E5', eyebrow: 'Latest article', heading: 'Blended ROAS vs platform ROAS: which number should you trust?', text: 'Why platform totals never add up, and how to report both honestly.', cta: 'Read the article' } }
+    };
+  }
+  renderVals() {
+    var self = this, st = this.state;
+    function hov(key) { return { enter: function () { self.setState({ hover: key }); }, leave: function () { if (self.state.hover === key) self.setState({ hover: null }); } }; }
+    var topDefs = [
+      { key: 'platform', label: 'Platform', menu: true },
+      { key: 'solutions', label: 'Solutions', menu: true },
+      { key: 'integrations', label: 'Integrations', href: 'PlatIntegrations.dc.html' },
+      { key: 'pricing', label: 'Pricing', href: 'PgPricing.dc.html' },
+      { key: 'resources', label: 'Resources', menu: true }
+    ];
+    var top = topDefs.map(function (t) {
+      var open = st.open === t.key, hv = st.hover === t.key;
+      var h = hov(t.key);
+      return {
+        label: t.label, isMenu: !!t.menu, isLink: !t.menu, href: t.href || '#', panelId: 'menu-' + t.key, open: open,
+        rot: open ? '180deg' : '0deg',
+        bg: open ? '#EEF0FF' : (hv ? '#F3F4F6' : 'transparent'),
+        fg: open ? '#3730A3' : '#2B3040',
+        enter: t.menu ? function () { self.setState({ open: t.key, hover: t.key }); } : function () { self.setState({ open: null, hover: t.key }); },
+        leave: h.leave,
+        toggle: function () { self.setState({ open: self.state.open === t.key ? null : t.key }); }
+      };
+    });
+    var menus = this.menus();
+    var panel = null;
+    if (st.open && menus[st.open]) {
+      var m = menus[st.open];
+      panel = {
+        id: 'menu-' + st.open, label: m.label, feature: m.feature,
+        cols: m.cols.map(function (c) {
+          return { title: c.title, items: c.items.map(function (it) {
+            var on = st.hover === it.id, h = hov(it.id);
+            return Object.assign({}, it, { enter: h.enter, leave: function () { if (self.state.hover === it.id) self.setState({ hover: st.open }); }, bg: on ? '#F5F6FF' : 'transparent', iconBg: on ? '#E0E3FF' : '#EEF0FF', fg: on ? '#3730A3' : '#101426' });
+          }) };
+        })
+      };
+    }
+    var a = hov('ask'), c = hov('contact'), d = hov('demo');
+    return {
+      top: top,
+      menuOpen: !!panel,
+      panel: panel || { id: '', label: '', cols: [], feature: menus.platform.feature },
+      ask: { enter: a.enter, leave: a.leave, bg: st.hover === 'ask' ? '#E0E3FF' : '#EEF0FF' },
+      contact: { enter: function () { self.setState({ open: null, hover: 'contact' }); }, leave: c.leave, bg: st.hover === 'contact' ? '#F3F4F6' : 'transparent' },
+      demo: { enter: function () { self.setState({ open: null, hover: 'demo' }); }, leave: d.leave, bg: st.hover === 'demo' ? '#4338CA' : '#4F46E5' },
+      leaveHeader: function () { self.setState({ open: null, hover: null }); },
+      onKey: function (e) { if (e && e.key === 'Escape') self.setState({ open: null }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

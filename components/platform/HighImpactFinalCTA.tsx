@@ -14,9 +14,9 @@ export default function HighImpactFinalCTA() {
           <ellipse cx="600" cy="550" rx="400" ry="180" stroke="url(#ctaGrad)" strokeWidth="1" />
           <defs>
             <linearGradient id="ctaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#4F46E5" stopOpacity="0.2" />
+              <stop offset="0%" stopColor="#0070C2" stopOpacity="0.2" />
               <stop offset="50%" stopColor="#818CF8" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#4F46E5" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="#0070C2" stopOpacity="0.2" />
             </linearGradient>
           </defs>
         </svg>

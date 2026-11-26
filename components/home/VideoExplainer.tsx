@@ -78,29 +78,29 @@ export default function VideoExplainer({
 
   return (
     <section className="py-16 sm:py-20 bg-white" ref={containerRef}>
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
         {/* Header */}
         <ScrollReveal direction="down" distance={20}>
           <div className="text-center max-w-[760px] mx-auto">
-            <p className="m-0 mb-3 text-sm font-semibold text-[#4F46E5]">
+            <p className="m-0 mb-3 text-sm font-semibold text-[#0070C2]">
               PRODUCT WALKTHROUGH
             </p>
-            <h2 className="m-0 font-display font-semibold text-[clamp(28px,3vw,42px)] leading-[1.1] tracking-[-0.02em] text-[#101426]">
+            <h2 className="m-0 font-display font-semibold text-[clamp(28px,3vw,42px)] leading-[1.1] tracking-[-0.02em] text-[#000000]">
               See how every platform comes together in two minutes.
             </h2>
-            <p className="mt-3.5 m-0 text-base sm:text-lg leading-[1.55] text-[#5B6170]">
-              Watch how Cerebro DNano connects to Meta, Google and TikTok APIs, unifies multi-channel data, and answers performance questions.
+            <p className="mt-3.5 m-0 text-base sm:text-lg leading-[1.55] text-[#5A6675]">
+              Watch how Cerebro dNano connects to Meta, Google and TikTok APIs, unifies multi-channel data, and answers performance questions.
             </p>
           </div>
         </ScrollReveal>
 
         {/* Video Player Frame */}
         <ScrollReveal direction="zoom" distance={24} delay={0.2} duration={0.8}>
-          <div className="mt-10 max-w-[1020px] mx-auto relative rounded-2xl border border-[#DCDFE7] bg-[#101426] overflow-hidden shadow-[0_24px_60px_rgba(16,20,38,0.12)] group">
+          <div className="mt-10 max-w-[1020px] mx-auto relative rounded-2xl border border-[#DCDFE7] bg-[#000000] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.12)] group">
           {/* Subtle atmospheric glow */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#4F46E5]/15 blur-3xl"
+            className="pointer-events-none absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#0070C2]/15 blur-3xl"
           />
 
           <div className="relative aspect-video w-full flex items-center justify-center bg-[#0F1222]">

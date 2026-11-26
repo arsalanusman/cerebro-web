@@ -21,15 +21,15 @@ export default function ObjectiveToggle({ variant = "option-2" }: ObjectiveToggl
       : objectiveData.leadOption2;
 
   return (
-    <section className="py-20 lg:py-[88px] bg-[#F7F8FA]">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 box-border">
+    <section className="py-20 lg:py-[88px] bg-[#F6F8FB]">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 box-border">
         {/* Header and Toggle Row */}
         <div className="flex gap-8 justify-between items-end flex-wrap">
           <div>
-            <h2 className="m-0 max-w-[680px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#101426]">
+            <h2 className="m-0 max-w-[680px] font-display font-semibold text-[clamp(30px,3.2vw,44px)] leading-[1.1] tracking-[-0.02em] text-[#000000]">
               {h2}
             </h2>
-            <p className="mt-4 m-0 max-w-[620px] text-lg leading-[1.55] text-[#5B6170]">
+            <p className="mt-4 m-0 max-w-[620px] text-lg leading-[1.55] text-[#5A6675]">
               {lead}
             </p>
           </div>
@@ -49,8 +49,8 @@ export default function ObjectiveToggle({ variant = "option-2" }: ObjectiveToggl
                   onClick={() => setActiveIdx(i)}
                   className={`min-h-[44px] px-4 sm:px-5 rounded-[9px] border-0 text-[14.5px] font-semibold cursor-pointer shrink-0 whitespace-nowrap transition-all ${
                     selected
-                      ? "bg-white text-[#101426] shadow-sm"
-                      : "bg-transparent text-[#5B6170] hover:text-[#101426]"
+                      ? "bg-white text-[#000000] shadow-sm"
+                      : "bg-transparent text-[#5A6675] hover:text-[#000000]"
                   }`}
                 >
                   {opt.tab}
@@ -61,7 +61,7 @@ export default function ObjectiveToggle({ variant = "option-2" }: ObjectiveToggl
         </div>
 
         {/* Card Comparison */}
-        <div className="mt-8 bg-white border border-[#E4E7EC] rounded-2xl p-7 sm:p-9 flex flex-col md:flex-row gap-10 lg:gap-12 items-center shadow-sm">
+        <div className="mt-8 bg-white border border-[#E2E8F0] rounded-2xl p-7 sm:p-9 flex flex-col md:flex-row gap-10 lg:gap-12 items-center shadow-sm">
           {/* Left: Verdict */}
           <div className="flex-1 min-w-0">
             <div
@@ -70,13 +70,13 @@ export default function ObjectiveToggle({ variant = "option-2" }: ObjectiveToggl
             >
               {currentOption.label}
             </div>
-            <div className="mt-3 font-display text-[clamp(24px,2.6vw,34px)] leading-[1.2] font-semibold tracking-[-0.015em] text-[#101426]">
+            <div className="mt-3 font-display text-[clamp(24px,2.6vw,34px)] leading-[1.2] font-semibold tracking-[-0.015em] text-[#000000]">
               {currentOption.verdict}
             </div>
-            <p className="mt-3.5 m-0 text-[15px] leading-relaxed text-[#5B6170]">
+            <p className="mt-3.5 m-0 text-[15px] leading-relaxed text-[#5A6675]">
               {currentOption.explain}
             </p>
-            <p className="mt-5 m-0 text-[12.5px] text-[#6B7180]">
+            <p className="mt-5 m-0 text-[12.5px] text-[#6B7685]">
               Demo data, TikTok Ads, last 30 days. Mostly awareness spend.
             </p>
           </div>
@@ -87,12 +87,12 @@ export default function ObjectiveToggle({ variant = "option-2" }: ObjectiveToggl
               <div key={i}>
                 <div className="flex justify-between text-sm">
                   <span
-                    className="text-[#101426]"
+                    className="text-[#000000]"
                     style={{ fontWeight: b.w }}
                   >
                     {b.name}
                   </span>
-                  <span className="text-[#101426] font-semibold">
+                  <span className="text-[#000000] font-semibold">
                     {b.value}
                   </span>
                 </div>
@@ -107,7 +107,7 @@ export default function ObjectiveToggle({ variant = "option-2" }: ObjectiveToggl
                 </div>
               </div>
             ))}
-            <div className="text-[12.5px] text-[#6B7180]">
+            <div className="text-[12.5px] text-[#6B7685]">
               {currentOption.scale}
             </div>
           </div>

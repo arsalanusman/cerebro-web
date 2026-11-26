@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Components and states</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700&amp;family=Geist+Mono:wght@400;500&amp;family=Inter:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #2B3040; background: #F7F8FA; min-width: 0; padding-bottom: 96px">
+
+<div style="background: #1C1A57; color: #FFFFFF">
+<div style="max-width: 1240px; margin: 0 auto; padding: 56px 40px; box-sizing: border-box">
+<p style="margin: 0; font-size: 14px; font-weight: 600; color: #A5B4FC">Cerebro DNano website, for development</p>
+<h1 style="margin: 12px 0 0; font-family: Geist, Inter, sans-serif; font-size: clamp(36px, 4vw, 54px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.05">Components and states</h1>
+<p style="margin: 16px 0 0; max-width: 760px; font-size: 17px; line-height: 1.6; color: #CDD0F3">Every interactive element in its default, hover, focus, pressed and disabled states, plus the open menus, the mobile menu, motion timings and design tokens. The live header on every page uses these exact values.</p>
+</div>
+</div>
+
+<div style="max-width: 1240px; margin: 0 auto; padding: 0 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+
+<section style="margin-top: 40px; background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 16px; padding: 32px">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: 26px; font-weight: 600; color: #101426">1. Navigation</h2>
+<p style="margin: 8px 0 0; font-size: 15px; color: #5B6170">Top-level items. Menu items open their mega menu on hover (after a 120ms pause) or on click, close 200ms after the pointer leaves, and close on Escape, returning focus to the trigger.</p>
+<div style="margin-top: 24px; display: flex; gap: 28px; flex-wrap: wrap; align-items: flex-end">
+<sc-for list="{{navStates}}" as="n" hint-placeholder-count="5">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; color: #6B7180">{{n.state}}</span>
+<span style="display: inline-flex; align-items: center; gap: 6px; min-height: 38px; padding: 0 12px; border-radius: 8px; background: {{n.bg}}; color: {{n.fg}}; box-shadow: {{n.sh}}; font-size: 15px; font-weight: 500; border-bottom: {{n.bb}}">Platform<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="transform: rotate({{n.rot}})"><path d="m6 9 6 6 6-6"></path></svg></span>
+</div>
+</sc-for>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; color: #6B7180">Ask Cerebro, default and hover</span>
+<span style="display: flex; gap: 8px"><span style="display: inline-flex; align-items: center; min-height: 38px; padding: 0 12px; border-radius: 19px; background: #EEF0FF; color: #3730A3; font-size: 15px; font-weight: 600">Ask Cerebro</span><span style="display: inline-flex; align-items: center; min-height: 38px; padding: 0 12px; border-radius: 19px; background: #E0E3FF; color: #3730A3; font-size: 15px; font-weight: 600">Ask Cerebro</span></span>
+</div>
+</div>
+
+<h3 style="margin: 36px 0 0; font-size: 17px; font-weight: 600; color: #101426">Mega menus, open</h3>
+<p style="margin: 6px 0 0; font-size: 14px; color: #5B6170">Full-width panel under the header. Item hover: background #F5F6FF, icon tile #E0E3FF, title #3730A3. Shown here with the first item hovered.</p>
+<div style="margin-top: 16px; display: flex; flex-direction: column; gap: 16px">
+<sc-for list="{{menus}}" as="m" hint-placeholder-count="3">
+<div style="border: 1px solid #E4E7EC; border-radius: 14px; overflow: hidden">
+<div style="padding: 10px 20px; background: #FAFAFC; border-bottom: 1px solid #EEF0F3; font-size: 13px; font-weight: 600; color: #101426">{{m.name}}</div>
+<div style="padding: 24px 20px; display: flex; gap: 24px; flex-wrap: wrap; box-shadow: inset 0 -1px 0 #EEF0F3">
+<sc-for list="{{m.cols}}" as="col" hint-placeholder-count="2">
+<div style="flex: 1 1 240px; min-width: 0">
+<div style="font-size: 12px; font-weight: 600; color: #6B7180; padding: 0 12px">{{col.title}}</div>
+<div style="margin-top: 8px; display: flex; flex-direction: column; gap: 2px">
+<sc-for list="{{col.items}}" as="it" hint-placeholder-count="3">
+<div style="display: flex; gap: 12px; align-items: flex-start; padding: 10px 12px; border-radius: 10px; background: {{it.bg}}">
+<span style="flex: 0 0 auto; width: 34px; height: 34px; border-radius: 9px; background: {{it.iconBg}}; display: inline-flex; align-items: center; justify-content: center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{it.d}}"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14.5px; font-weight: 600; color: {{it.fg}}">{{it.label}}</span><span style="font-size: 13px; color: #5B6170">{{it.text}}</span></span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+<div style="flex: 0 1 280px; min-width: 0; border-radius: 14px; background: {{m.fBg}}; border: 1px solid {{m.fBd}}; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; font-weight: 600; color: {{m.fKicker}}">{{m.fEyebrow}}</span>
+<span style="font-family: Geist, Inter, sans-serif; font-size: 17px; line-height: 1.3; font-weight: 600; color: {{m.fTitle}}">{{m.fHeading}}</span>
+<span style="margin-top: auto; font-size: 14px; font-weight: 600; color: {{m.fLink}}">{{m.fCta}}</span>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+
+<h3 style="margin: 36px 0 0; font-size: 17px; font-weight: 600; color: #101426">Mobile header, below 1024px</h3>
+<p style="margin: 6px 0 0; font-size: 14px; color: #5B6170">Menu opens full screen with a focus trap. Groups expand as accordions. Escape or the close button closes it.</p>
+<div style="margin-top: 16px; display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start">
+<div style="flex: 0 0 390px; max-width: 100%; border: 1px solid #E4E7EC; border-radius: 20px; overflow: hidden; background: #FFFFFF">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: 64px; border-bottom: 1px solid #E4E7EC"><span role="img" aria-label="Cerebro DNano" style="display: inline-flex; align-items: center; gap: 8px"><img src="/_blob/43283f03c4d43f04640c058460029561" alt="" style="height: 24px; width: auto; display: block"><img src="/_blob/e07c3f2e1692e3cb785a530b2aec79eb" alt="" style="height: 15px; width: auto; display: block"></span><button type="button" aria-label="Open menu" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid #E4E7EC; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101426" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button></div>
+<div style="padding: 28px 20px; font-family: Geist, Inter, sans-serif; font-size: 30px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #101426">Your AI analyst for every ad platform.</div>
+<div style="padding: 0 20px 24px"><span style="display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 24px; background: #4F46E5; color: #FFFFFF; font-size: 15px; font-weight: 600">Book a demo</span></div>
+</div>
+<div style="flex: 0 0 390px; max-width: 100%; border: 1px solid #E4E7EC; border-radius: 20px; overflow: hidden; background: #FFFFFF">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: 64px; border-bottom: 1px solid #E4E7EC"><span role="img" aria-label="Cerebro DNano" style="display: inline-flex; align-items: center; gap: 8px"><img src="/_blob/43283f03c4d43f04640c058460029561" alt="" style="height: 24px; width: auto; display: block"><img src="/_blob/e07c3f2e1692e3cb785a530b2aec79eb" alt="" style="height: 15px; width: auto; display: block"></span><button type="button" aria-label="Close menu" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid #E4E7EC; background: #F3F4F6; display: inline-flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#101426" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button></div>
+<div style="padding: 16px 20px; display: flex; flex-direction: column">
+<span style="display: inline-flex; align-self: flex-start; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 20px; background: #EEF0FF; color: #3730A3; font-size: 16px; font-weight: 600; margin-bottom: 8px">Ask Cerebro</span>
+<div style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-bottom: 1px solid #EEF0F3; font-size: 17px; font-weight: 600; color: #3730A3">Platform<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m18 15-6-6-6 6"></path></svg></div>
+<div style="padding: 8px 0 12px 8px; display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid #EEF0F3">
+<sc-for list="{{mobilePlatform}}" as="mp" hint-placeholder-count="5">
+<span style="min-height: 40px; display: flex; align-items: center; font-size: 15px; color: #2B3040">{{mp}}</span>
+</sc-for>
+</div>
+<sc-for list="{{mobileRest}}" as="mr" hint-placeholder-count="4">
+<div style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-bottom: 1px solid #EEF0F3; font-size: 17px; font-weight: 600; color: #101426">{{mr.label}}<sc-if value="{{mr.menu}}" hint-placeholder-val="{{true}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></sc-if></div>
+</sc-for>
+<span style="margin-top: 20px; display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 24px; background: #4F46E5; color: #FFFFFF; font-size: 15px; font-weight: 600">Book a demo</span>
+</div>
+</div>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 16px; padding: 32px">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: 26px; font-weight: 600; color: #101426">2. Buttons and links</h2>
+<p style="margin: 8px 0 0; font-size: 15px; color: #5B6170">Pill buttons, fully rounded: 44px tall on pages, 40px in the header. One primary per screen. Focus ring is 3px, shown for keyboard focus only (focus-visible).</p>
+<div style="margin-top: 20px; overflow-x: auto">
+<div style="min-width: 980px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; gap: 12px; padding: 0 16px; font-size: 12px; font-weight: 600; color: #6B7180"><span style="flex: 0 0 170px">Variant</span><sc-for list="{{stateNames}}" as="sn" hint-placeholder-count="5"><span style="flex: 1 1 0">{{sn}}</span></sc-for></div>
+<sc-for list="{{btnRows}}" as="row" hint-placeholder-count="5">
+<div style="display: flex; gap: 12px; align-items: center; padding: 16px; border-radius: 12px; background: {{row.bg}}">
+<span style="flex: 0 0 170px; font-size: 13.5px; font-weight: 600; color: {{row.labelColor}}">{{row.name}}</span>
+<sc-for list="{{row.cells}}" as="c" hint-placeholder-count="5">
+<span style="flex: 1 1 0; display: flex"><button type="button" disabled="{{c.dis}}" style="min-height: 44px; padding: {{c.pad}}; border-radius: 22px; border: {{c.bd}}; background: {{c.bg}}; color: {{c.fg}}; box-shadow: {{c.sh}}; transform: {{c.tf}}; text-decoration: {{c.td}}; font: inherit; font-size: 14.5px; font-weight: 600; cursor: {{c.cur}}">{{row.text}}</button></span>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 16px; padding: 32px">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: 26px; font-weight: 600; color: #101426">3. Tabs, toggles and chips</h2>
+<div style="margin-top: 20px; display: flex; flex-direction: column; gap: 22px">
+<sc-for list="{{tabRows}}" as="tr" hint-placeholder-count="4">
+<div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center">
+<span style="flex: 0 0 200px; font-size: 13.5px; font-weight: 600; color: #101426">{{tr.name}}<span style="display: block; margin-top: 2px; font-size: 12.5px; font-weight: 400; color: #6B7180">{{tr.where}}</span></span>
+<sc-for list="{{tr.cells}}" as="c" hint-placeholder-count="4">
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; color: #6B7180">{{c.state}}</span><span style="display: inline-flex; align-items: center; min-height: {{tr.h}}; padding: 0 16px; border-radius: {{tr.r}}; border: {{c.bd}}; background: {{c.bg}}; color: {{c.fg}}; box-shadow: {{c.sh}}; font-size: 14px; font-weight: 600">{{tr.text}}</span></span>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 16px; padding: 32px">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: 26px; font-weight: 600; color: #101426">4. Form fields and dropdowns</h2>
+<p style="margin: 8px 0 0; font-size: 15px; color: #5B6170">Labels always visible above the field. Errors appear under the field, are announced to screen readers and keep what the visitor typed.</p>
+<div style="margin-top: 20px; display: flex; gap: 20px; flex-wrap: wrap">
+<sc-for list="{{inputs}}" as="f" hint-placeholder-count="6">
+<div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 600; color: #6B7180">{{f.state}}</span>
+<label for="{{f.id}}" style="font-size: 14px; font-weight: 600; color: {{f.labelColor}}">Work email</label>
+<input id="{{f.id}}" type="email" value="{{f.value}}" placeholder="name@company.com" disabled="{{f.dis}}" aria-invalid="{{f.invalid}}" style="min-height: 46px; border: 1px solid {{f.bd}}; border-radius: 9px; padding: 0 12px; font: inherit; font-size: 15px; color: #101426; background: {{f.bg}}; box-shadow: {{f.sh}}; outline: none">
+<span style="font-size: 13px; color: {{f.helpColor}}; min-height: 18px">{{f.help}}</span>
+</div>
+</sc-for>
+</div>
+<div style="margin-top: 28px; display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start">
+<div style="flex: 0 1 300px; min-width: 0">
+<span style="font-size: 12px; font-weight: 600; color: #6B7180">Select, open</span>
+<div style="margin-top: 8px; display: flex; align-items: center; justify-content: space-between; min-height: 46px; border: 1px solid #4F46E5; box-shadow: 0 0 0 3px rgba(79,70,229,0.18); border-radius: 9px; padding: 0 12px; font-size: 15px; color: #101426">Agency<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#101426" stroke-width="2" aria-hidden="true"><path d="m18 15-6-6-6 6"></path></svg></div>
+<div style="margin-top: 6px; border: 1px solid #E4E7EC; border-radius: 10px; box-shadow: 0 16px 32px rgba(16,20,38,0.12); padding: 6px; background: #FFFFFF">
+<sc-for list="{{selectOpts}}" as="o" hint-placeholder-count="5">
+<div style="display: flex; justify-content: space-between; align-items: center; min-height: 40px; padding: 0 10px; border-radius: 7px; background: {{o.bg}}; font-size: 14.5px; color: {{o.fg}}; font-weight: {{o.w}}">{{o.label}}<sc-if value="{{o.sel}}" hint-placeholder-val="{{false}}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></sc-if></div>
+</sc-for>
+</div>
+<span style="display: block; margin-top: 8px; font-size: 12.5px; color: #6B7180">Option hover #F3F4F6. Selected: #F5F6FF, text #3730A3, check.</span>
+</div>
+<div style="flex: 1 1 520px; min-width: 0">
+<span style="font-size: 12px; font-weight: 600; color: #6B7180">Checkbox and choice chips</span>
+<div style="margin-top: 10px; display: flex; gap: 24px; flex-wrap: wrap">
+<sc-for list="{{checks}}" as="c" hint-placeholder-count="5">
+<span style="display: flex; flex-direction: column; gap: 8px; align-items: flex-start"><span style="font-size: 12px; color: #6B7180">{{c.state}}</span><span style="width: 20px; height: 20px; border-radius: 5px; border: 1.5px solid {{c.bd}}; background: {{c.bg}}; box-shadow: {{c.sh}}; display: inline-flex; align-items: center; justify-content: center"><sc-if value="{{c.on}}" hint-placeholder-val="{{false}}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></sc-if></span></span>
+</sc-for>
+</div>
+<div style="margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap">
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="3">
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; color: #6B7180">{{c.state}}</span><span style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid {{c.bd}}; background: {{c.bg}}; font-size: 14px; color: {{c.fg}}">Meta Ads</span></span>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 16px; padding: 32px">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: 26px; font-weight: 600; color: #101426">5. Cards and accordions</h2>
+<p style="margin: 8px 0 0; font-size: 15px; color: #5B6170">Clickable cards lift 2px on hover with a soft shadow and a brand-tinted border. Static cards do not react.</p>
+<div style="margin-top: 20px; display: flex; gap: 20px; flex-wrap: wrap">
+<sc-for list="{{cards}}" as="c" hint-placeholder-count="3">
+<div style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; font-weight: 600; color: #6B7180">{{c.state}}</span>
+<div style="border: 1px solid {{c.bd}}; border-radius: 14px; padding: 22px; background: {{c.bg}}; box-shadow: {{c.sh}}; transform: {{c.tf}}">
+<div style="font-size: 17px; font-weight: 600; color: {{c.titleColor}}">AI connectors</div>
+<p style="margin: 6px 0 0; font-size: 14.5px; line-height: 1.55; color: #5B6170">Drafts a connector for any marketing platform from its API docs.</p>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="margin-top: 28px; display: flex; flex-direction: column; gap: 10px; max-width: 760px">
+<sc-for list="{{accordion}}" as="a" hint-placeholder-count="3">
+<div>
+<span style="font-size: 12px; font-weight: 600; color: #6B7180">{{a.state}}</span>
+<div style="margin-top: 6px; border: 1px solid {{a.bd}}; border-radius: 12px; background: {{a.bg}}; padding: 0 20px">
+<div style="min-height: 58px; display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 600; color: #101426">What data does Ask Cerebro use?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B6170" stroke-width="2" aria-hidden="true" style="transform: rotate({{a.rot}})"><path d="m6 9 6 6 6-6"></path></svg></div>
+<sc-if value="{{a.open}}" hint-placeholder-val="{{false}}"><p style="margin: 0 0 18px; font-size: 15px; line-height: 1.6; color: #5B6170">Only the data in your workspace: the platforms you connect and the sheets you upload, for the clients you can access.</p></sc-if>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 16px; padding: 32px">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: 26px; font-weight: 600; color: #101426">6. Badges, tooltips and messages</h2>
+<div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap">
+<sc-for list="{{badges}}" as="b" hint-placeholder-count="8">
+<span style="display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 13px; background: {{b.bg}}; color: {{b.fg}}; font-size: 12.5px; font-weight: 600">{{b.label}}</span>
+</sc-for>
+</div>
+<div style="margin-top: 28px; display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start">
+<div style="flex: 0 1 300px">
+<span style="font-size: 12px; font-weight: 600; color: #6B7180">Tooltip on hover or focus of an info icon</span>
+<div style="margin-top: 12px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px">
+<div role="tooltip" style="max-width: 260px; background: #101426; color: #FFFFFF; border-radius: 8px; padding: 8px 10px; font-size: 13px; line-height: 1.45">CPA is spend divided by conversions. Lower is better.</div>
+<span style="margin-left: 16px; display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: #5B6170">CPA<span style="width: 18px; height: 18px; border-radius: 9px; border: 1.5px solid #4F46E5; color: #4F46E5; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">i</span></span>
+</div>
+</div>
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{messages}}" as="m" hint-placeholder-count="3">
+<div style="display: flex; gap: 10px; align-items: flex-start; border-radius: 10px; background: {{m.bg}}; border: 1px solid {{m.bd}}; padding: 12px 14px; font-size: 14px; line-height: 1.5; color: {{m.fg}}"><strong style="flex: 0 0 auto">{{m.kind}}</strong><span>{{m.text}}</span></div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 16px; padding: 32px">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: 26px; font-weight: 600; color: #101426">7. Motion</h2>
+<p style="margin: 8px 0 0; font-size: 15px; color: #5B6170">With reduced motion turned on, every transition is instant and playbacks show their final state.</p>
+<div style="margin-top: 16px; overflow-x: auto; border: 1px solid #EEF0F3; border-radius: 12px">
+<table style="width: 100%; min-width: 760px; border-collapse: collapse; font-size: 14px">
+<thead><tr><th scope="col" style="text-align: left; padding: 12px 16px; font-size: 12px; font-weight: 500; color: #6B7180; background: #FAFAFC">Interaction</th><th scope="col" style="text-align: left; padding: 12px 16px; font-size: 12px; font-weight: 500; color: #6B7180; background: #FAFAFC">Timing</th><th scope="col" style="text-align: left; padding: 12px 16px; font-size: 12px; font-weight: 500; color: #6B7180; background: #FAFAFC">What changes</th></tr></thead>
+<tbody>
+<sc-for list="{{motion}}" as="m" hint-placeholder-count="10">
+<tr><td style="padding: 12px 16px; border-top: 1px solid #EEF0F3; font-weight: 600; color: #101426">{{m.what}}</td><td style="padding: 12px 16px; border-top: 1px solid #EEF0F3; font-family: 'Geist Mono', monospace; font-size: 13px; color: #2E2A82">{{m.time}}</td><td style="padding: 12px 16px; border-top: 1px solid #EEF0F3; color: #5B6170">{{m.change}}</td></tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 16px; padding: 32px">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: 26px; font-weight: 600; color: #101426">8. Design tokens</h2>
+<h3 style="margin: 20px 0 0; font-size: 15px; font-weight: 600; color: #101426">Color</h3>
+<div style="margin-top: 12px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{colors}}" as="c" hint-placeholder-count="18">
+<div style="border: 1px solid #EEF0F3; border-radius: 10px; overflow: hidden"><div style="height: 52px; background: {{c.hex}}"></div><div style="padding: 8px 10px"><div style="font-size: 12.5px; font-weight: 600; color: #101426">{{c.name}}</div><div style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #5B6170">{{c.hex}}</div></div></div>
+</sc-for>
+</div>
+<h3 style="margin: 28px 0 0; font-size: 15px; font-weight: 600; color: #101426">Type</h3>
+<div style="margin-top: 12px; display: flex; flex-direction: column">
+<sc-for list="{{type}}" as="t" hint-placeholder-count="8">
+<div style="display: flex; gap: 20px; align-items: baseline; padding: 12px 0; border-top: 1px solid #EEF0F3; flex-wrap: wrap"><span style="flex: 0 0 220px; font-family: 'Geist Mono', monospace; font-size: 12.5px; color: #5B6170">{{t.spec}}</span><span style="flex: 1 1 400px; min-width: 0; font-family: {{t.family}}; font-size: {{t.size}}; font-weight: {{t.weight}}; letter-spacing: {{t.ls}}; line-height: 1.15; color: #101426">{{t.sample}}</span></div>
+</sc-for>
+</div>
+<div style="margin-top: 28px; display: flex; gap: 32px; flex-wrap: wrap">
+<div style="flex: 1 1 300px"><h3 style="margin: 0; font-size: 15px; font-weight: 600; color: #101426">Radius</h3><div style="margin-top: 12px; display: flex; gap: 14px; flex-wrap: wrap"><sc-for list="{{radii}}" as="r" hint-placeholder-count="5"><span style="display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 12px; color: #5B6170"><span style="width: 56px; height: 56px; border: 2px solid #4F46E5; border-radius: {{r.v}}; background: #F5F6FF"></span>{{r.label}}</span></sc-for></div></div>
+<div style="flex: 1 1 400px"><h3 style="margin: 0; font-size: 15px; font-weight: 600; color: #101426">Shadows</h3><div style="margin-top: 12px; display: flex; gap: 20px; flex-wrap: wrap"><sc-for list="{{shadows}}" as="s" hint-placeholder-count="3"><span style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: #5B6170"><span style="width: 120px; height: 64px; border-radius: 12px; background: #FFFFFF; border: 1px solid #EEF0F3; box-shadow: {{s.v}}"></span>{{s.label}}</span></sc-for></div></div>
+</div>
+<div style="margin-top: 28px; font-size: 14px; line-height: 1.7; color: #2B3040"><strong>Layout:</strong> container 1240px, side padding 40px desktop and 24px mobile, section padding 104px desktop and 64px mobile, art tiles 24px corners (hero art 28px), spacing scale 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 88. Header switches to the mobile menu below 1024px. Touch targets at least 44px.</div>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7800}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var RING = '0 0 0 3px rgba(79,70,229,0.35)';
+    var I = { spark: 'M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z', engine: 'M4 6h16M4 12h16M4 18h16M8 4v4M16 10v4M11 16v4', plug: 'M12 22v-5M9 8V2M15 8V2M18 8v5a6 6 0 0 1-12 0V8z', sheet: 'M3 4h18v16H3zM3 10h18M3 15h18M9 4v16', dash: 'M3 3h7v9H3zM14 3h7v5h-7zM14 12h7v9h-7zM3 16h7v5H3z', table: 'M3 4h18v16H3zM3 10h18M9 4v16', layers: 'M12 2 2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5', users: 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z', bank: 'M3 21h18M5 21V10M19 21V10M9 21V10M15 21V10M12 3l9 5H3z', book: 'M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z', doc: 'M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6', shield: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z' };
+    function items(list) { return list.map(function (x, i) { var hv = i === 0; return { label: x[0], text: x[1], d: x[2], bg: hv ? '#F5F6FF' : 'transparent', iconBg: hv ? '#E0E3FF' : '#EEF0FF', fg: hv ? '#3730A3' : '#101426' }; }); }
+    function btn(bg, fg, bd, sh, tf, td, dis, pad) { return { bg: bg, fg: fg, bd: bd, sh: sh || 'none', tf: tf || 'none', td: td || 'none', dis: !!dis, cur: dis ? 'not-allowed' : 'pointer', pad: pad || '0 20px' }; }
+    return {
+      navStates: [
+        { state: 'Default', bg: 'transparent', fg: '#2B3040', sh: 'none', rot: '0deg', bb: '0' },
+        { state: 'Hover', bg: '#F3F4F6', fg: '#2B3040', sh: 'none', rot: '0deg', bb: '0' },
+        { state: 'Open', bg: '#EEF0FF', fg: '#3730A3', sh: 'none', rot: '180deg', bb: '0' },
+        { state: 'Keyboard focus', bg: 'transparent', fg: '#2B3040', sh: RING, rot: '0deg', bb: '0' },
+        { state: 'Current section', bg: 'transparent', fg: '#101426', sh: 'inset 0 -2px 0 #4F46E5', rot: '0deg', bb: '0' }
+      ],
+      menus: [
+        { name: 'Platform menu', cols: [{ title: 'Cerebro AI', items: items([['Ask Cerebro', 'Your AI analyst, answering from your data', I.spark], ['AI data engine', 'Clean, standardize and check every source', I.engine], ['AI connectors', 'Connect any marketing platform', I.plug], ['AI sheet mapping', 'CSV, Excel and Google Sheets', I.sheet]]) }, { title: 'Build and report', items: items([['Dashboards', 'Widget-based and fully editable', I.dash], ['Report builder', 'Any cut of the data, saved and shared', I.table], ['Objective engine', 'Every campaign judged by its goal', I.layers]]) }],
+          fBg: '#1C1A57', fBd: '#1C1A57', fKicker: '#A5B4FC', fTitle: '#FFFFFF', fLink: '#FFFFFF', fEyebrow: 'Book a demo', fHeading: 'See Cerebro AI on your own campaigns', fCta: 'Book a demo' },
+        { name: 'Solutions menu', cols: [{ title: 'By team', items: items([['Agencies', 'Every client from one workspace', I.users], ['Brands', 'One view for marketing and leadership', I.users]]) }, { title: 'By industry', items: items([['Banking and finance', 'Reporting with tight access control', I.bank], ['Telecom', 'Always-on campaigns in one view', I.layers], ['FMCG', 'Brands judged on the right goal', I.dash], ['E-commerce', 'Spend through to conversions', I.table]]) }],
+          fBg: '#F5F6FF', fBd: '#E0E3FF', fKicker: '#4F46E5', fTitle: '#101426', fLink: '#4F46E5', fEyebrow: 'For agencies', fHeading: 'Report on every client from one workspace', fCta: 'Explore agencies' },
+        { name: 'Resources menu', cols: [{ title: 'Learn', items: items([['Blog', 'Guides on paid media reporting', I.book], ['Docs', 'Set up and use Cerebro', I.doc], ['FAQ', 'Quick answers to common questions', I.doc]]) }, { title: 'Company', items: items([['About', 'Who we are and how we work', I.users], ['Security', 'How we protect client data', I.shield], ['Contact', 'Talk to the team in Karachi', I.doc]]) }],
+          fBg: '#FFFFFF', fBd: '#E4E7EC', fKicker: '#4F46E5', fTitle: '#101426', fLink: '#4F46E5', fEyebrow: 'Latest article', fHeading: 'Blended ROAS vs platform ROAS: which number should you trust?', fCta: 'Read the article' }
+      ],
+      mobilePlatform: ['Ask Cerebro', 'AI data engine', 'AI connectors', 'Dashboards', 'Report builder'],
+      mobileRest: [{ label: 'Solutions', menu: true }, { label: 'Integrations', menu: false }, { label: 'Pricing', menu: false }, { label: 'Resources', menu: true }, { label: 'Contact', menu: false }],
+      stateNames: ['Default', 'Hover', 'Keyboard focus', 'Pressed', 'Disabled'],
+      btnRows: [
+        { name: 'Primary', text: 'Book a demo', bg: '#FFFFFF', labelColor: '#101426', cells: [btn('#4F46E5', '#FFFFFF', '0'), btn('#4338CA', '#FFFFFF', '0'), btn('#4F46E5', '#FFFFFF', '0', RING), btn('#3730A3', '#FFFFFF', '0', 'none', 'translateY(1px)'), btn('#C7CBF9', '#FFFFFF', '0', 'none', 'none', 'none', true)] },
+        { name: 'Secondary', text: 'See how it works', bg: '#FFFFFF', labelColor: '#101426', cells: [btn('#FFFFFF', '#101426', '1px solid #D5D8E0'), btn('#F7F8FA', '#101426', '1px solid #C9CDD6'), btn('#FFFFFF', '#101426', '1px solid #D5D8E0', RING), btn('#EEF0F4', '#101426', '1px solid #C9CDD6', 'none', 'translateY(1px)'), btn('#FFFFFF', '#9AA0AD', '1px solid #E4E7EC', 'none', 'none', 'none', true)] },
+        { name: 'Primary on navy', text: 'Book a demo', bg: '#1C1A57', labelColor: '#FFFFFF', cells: [btn('#FFFFFF', '#1C1A57', '0'), btn('#EEF0FF', '#1C1A57', '0'), btn('#FFFFFF', '#1C1A57', '0', '0 0 0 3px rgba(255,255,255,0.5)'), btn('#E0E3FF', '#1C1A57', '0', 'none', 'translateY(1px)'), btn('rgba(255,255,255,0.35)', '#1C1A57', '0', 'none', 'none', 'none', true)] },
+        { name: 'Secondary on navy', text: 'Talk to sales', bg: '#1C1A57', labelColor: '#FFFFFF', cells: [btn('transparent', '#FFFFFF', '1px solid rgba(255,255,255,0.35)'), btn('rgba(255,255,255,0.08)', '#FFFFFF', '1px solid rgba(255,255,255,0.55)'), btn('transparent', '#FFFFFF', '1px solid rgba(255,255,255,0.35)', '0 0 0 3px rgba(255,255,255,0.5)'), btn('rgba(255,255,255,0.14)', '#FFFFFF', '1px solid rgba(255,255,255,0.55)', 'none', 'translateY(1px)'), btn('transparent', 'rgba(255,255,255,0.45)', '1px solid rgba(255,255,255,0.2)', 'none', 'none', 'none', true)] },
+        { name: 'Text link', text: 'Read about security', bg: '#FFFFFF', labelColor: '#101426', cells: [btn('transparent', '#4F46E5', '0', 'none', 'none', 'none', false, '0 4px'), btn('transparent', '#4338CA', '0', 'none', 'none', 'underline', false, '0 4px'), btn('transparent', '#4F46E5', '0', RING, 'none', 'none', false, '0 4px'), btn('transparent', '#3730A3', '0', 'none', 'none', 'underline', false, '0 4px'), btn('transparent', '#9AA0AD', '0', 'none', 'none', 'none', true, '0 4px')] }
+      ],
+      tabRows: [
+        { name: 'Segmented control', where: 'Data source, objective lens, legal tabs', text: 'Upload a sheet', h: '44px', r: '9px', cells: [{ state: 'Default', bg: '#ECEEF3', fg: '#5B6170', bd: '0', sh: 'none' }, { state: 'Hover', bg: '#E2E5EC', fg: '#2B3040', bd: '0', sh: 'none' }, { state: 'Selected', bg: '#FFFFFF', fg: '#101426', bd: '0', sh: '0 1px 3px rgba(16,20,38,0.12)' }, { state: 'Keyboard focus', bg: '#FFFFFF', fg: '#101426', bd: '0', sh: RING }] },
+        { name: 'Pill tabs', where: 'Solutions, Ask Cerebro questions', text: 'Agencies', h: '44px', r: '22px', cells: [{ state: 'Default', bg: '#FFFFFF', fg: '#2B3040', bd: '1px solid #DDE0E7', sh: 'none' }, { state: 'Hover', bg: '#F7F8FA', fg: '#101426', bd: '1px solid #C9CDD6', sh: 'none' }, { state: 'Selected', bg: '#4F46E5', fg: '#FFFFFF', bd: '1px solid #4F46E5', sh: 'none' }, { state: 'Keyboard focus', bg: '#4F46E5', fg: '#FFFFFF', bd: '1px solid #4F46E5', sh: RING }] },
+        { name: 'Dark tabs', where: 'Build section, breadcrumbs', text: 'Report builder', h: '44px', r: '10px', cells: [{ state: 'Default', bg: '#FFFFFF', fg: '#2B3040', bd: '1px solid #DDE0E7', sh: 'none' }, { state: 'Hover', bg: '#F7F8FA', fg: '#101426', bd: '1px solid #C9CDD6', sh: 'none' }, { state: 'Selected', bg: '#101426', fg: '#FFFFFF', bd: '1px solid #101426', sh: 'none' }, { state: 'Keyboard focus', bg: '#101426', fg: '#FFFFFF', bd: '1px solid #101426', sh: RING }] },
+        { name: 'Question chips', where: 'Ask Cerebro panels', text: 'Why did CPA rise?', h: '34px', r: '17px', cells: [{ state: 'Default', bg: '#FFFFFF', fg: '#2B3040', bd: '1px solid #E1E4EA', sh: 'none' }, { state: 'Hover', bg: '#F7F8FA', fg: '#101426', bd: '1px solid #C9CDD6', sh: 'none' }, { state: 'Selected', bg: '#EEF0FF', fg: '#3730A3', bd: '1px solid #C7CBF9', sh: 'none' }, { state: 'Keyboard focus', bg: '#EEF0FF', fg: '#3730A3', bd: '1px solid #C7CBF9', sh: RING }] }
+      ],
+      inputs: [
+        { id: 'ui-in-1', state: 'Default', value: '', bd: '#D5D8E0', bg: '#FFFFFF', sh: 'none', labelColor: '#101426', help: '', helpColor: '#6B7180', dis: false, invalid: 'false' },
+        { id: 'ui-in-2', state: 'Hover', value: '', bd: '#B9BECA', bg: '#FFFFFF', sh: 'none', labelColor: '#101426', help: '', helpColor: '#6B7180', dis: false, invalid: 'false' },
+        { id: 'ui-in-3', state: 'Focus', value: 'ayesha@', bd: '#4F46E5', bg: '#FFFFFF', sh: '0 0 0 3px rgba(79,70,229,0.18)', labelColor: '#101426', help: '', helpColor: '#6B7180', dis: false, invalid: 'false' },
+        { id: 'ui-in-4', state: 'Filled', value: 'ayesha@agency.example', bd: '#D5D8E0', bg: '#FFFFFF', sh: 'none', labelColor: '#101426', help: '', helpColor: '#6B7180', dis: false, invalid: 'false' },
+        { id: 'ui-in-5', state: 'Error', value: 'ayesha@agency', bd: '#B91C1C', bg: '#FFFFFF', sh: '0 0 0 3px rgba(185,28,28,0.12)', labelColor: '#101426', help: 'Enter a full email address, like name@company.com.', helpColor: '#B91C1C', dis: false, invalid: 'true' },
+        { id: 'ui-in-6', state: 'Disabled', value: '', bd: '#E4E7EC', bg: '#F3F4F6', sh: 'none', labelColor: '#9AA0AD', help: '', helpColor: '#6B7180', dis: true, invalid: 'false' }
+      ],
+      selectOpts: [
+        { label: 'Marketing leadership', bg: 'transparent', fg: '#101426', w: 400, sel: false },
+        { label: 'Marketing or media team', bg: '#F3F4F6', fg: '#101426', w: 400, sel: false },
+        { label: 'Agency', bg: '#F5F6FF', fg: '#3730A3', w: 600, sel: true },
+        { label: 'Analyst', bg: 'transparent', fg: '#101426', w: 400, sel: false },
+        { label: 'Other', bg: 'transparent', fg: '#101426', w: 400, sel: false }
+      ],
+      checks: [
+        { state: 'Unchecked', bd: '#C9CDD6', bg: '#FFFFFF', sh: 'none', on: false },
+        { state: 'Hover', bd: '#4F46E5', bg: '#FFFFFF', sh: 'none', on: false },
+        { state: 'Checked', bd: '#4F46E5', bg: '#4F46E5', sh: 'none', on: true },
+        { state: 'Focus', bd: '#4F46E5', bg: '#4F46E5', sh: RING, on: true },
+        { state: 'Disabled', bd: '#E4E7EC', bg: '#F3F4F6', sh: 'none', on: false }
+      ],
+      chips: [
+        { state: 'Default', bd: '#D5D8E0', bg: '#FFFFFF', fg: '#101426' },
+        { state: 'Hover', bd: '#B9BECA', bg: '#F7F8FA', fg: '#101426' },
+        { state: 'Selected', bd: '#4F46E5', bg: '#F5F6FF', fg: '#3730A3' }
+      ],
+      cards: [
+        { state: 'Clickable, default', bd: '#E4E7EC', bg: '#FFFFFF', sh: 'none', tf: 'none', titleColor: '#101426' },
+        { state: 'Clickable, hover', bd: '#C7CBF9', bg: '#FFFFFF', sh: '0 12px 32px rgba(16,20,38,0.08)', tf: 'translateY(-2px)', titleColor: '#3730A3' },
+        { state: 'Selected', bd: '#A5B4FC', bg: '#F5F6FF', sh: 'none', tf: 'none', titleColor: '#101426' }
+      ],
+      accordion: [
+        { state: 'Collapsed', bd: '#E4E7EC', bg: '#FFFFFF', rot: '0deg', open: false },
+        { state: 'Hover', bd: '#C9CDD6', bg: '#FAFAFC', rot: '0deg', open: false },
+        { state: 'Expanded', bd: '#E4E7EC', bg: '#FFFFFF', rot: '180deg', open: true }
+      ],
+      badges: [
+        { label: 'Live', bg: '#DCFCE7', fg: '#166534' }, { label: 'Healthy', bg: '#DCFCE7', fg: '#166534' }, { label: 'Ready', bg: '#DCFCE7', fg: '#166534' },
+        { label: 'Coming soon', bg: '#F1F2F5', fg: '#4B5160' }, { label: 'Draft', bg: '#F1F2F5', fg: '#4B5160' },
+        { label: 'Needs review', bg: '#FFF7ED', fg: '#9A3412' }, { label: 'To confirm before launch', bg: '#FFF7ED', fg: '#9A3412' },
+        { label: 'Mapped by AI', bg: '#EEF0FF', fg: '#3730A3' }, { label: '↑ 16.97%', bg: '#FEE2E2', fg: '#991B1B' }, { label: '↓ 10.16%', bg: '#DCFCE7', fg: '#166534' }
+      ],
+      messages: [
+        { kind: 'Success', text: 'Thanks, we have your request. We’ll reply within one business day.', bg: '#F0FDF4', bd: '#BBF7D0', fg: '#166534' },
+        { kind: 'Warning', text: 'USD 23.6K of spend has no stored exchange rate, so PKR totals are understated.', bg: '#FFF7ED', bd: '#F5D9C0', fg: '#9A3412' },
+        { kind: 'Error', text: 'Your message did not send. Check your connection and try again. Your text is kept.', bg: '#FEF2F2', bd: '#FECACA', fg: '#991B1B' }
+      ],
+      motion: [
+        { what: 'Hover and press', time: '150ms ease-out', change: 'Background, color and border. Press moves 1px down.' },
+        { what: 'Mega menu', time: 'open 120ms intent, 150ms in; close 200ms after leave', change: 'Fade in and rise 4px. Escape closes and returns focus to the trigger.' },
+        { what: 'Select dropdown', time: '120ms', change: 'Fade in.' },
+        { what: 'Card hover', time: '200ms ease-out', change: 'Border tint, shadow, lift 2px.' },
+        { what: 'Tabs content', time: '200ms', change: 'Crossfade between panels.' },
+        { what: 'Accordion', time: '200ms ease', change: 'Height and chevron rotation.' },
+        { what: 'Ask Cerebro playback', time: '25ms per character, max 1.2s; steps every 450ms; answer 200ms', change: 'Question types in, steps check off, answer fades in, dashboard highlights.' },
+        { what: 'AI engine steps', time: 'every 380ms', change: 'Each step lights up, then outputs switch to Ready.' },
+        { what: 'Bars and toggles', time: '500ms ease', change: 'Bar width and color when the objective lens switches.' },
+        { what: 'Hero load', time: '60ms stagger, 8px rise; frame 200ms later', change: 'Only entrance animation on the page.' }
+      ],
+      colors: [
+        { name: 'Ink', hex: '#101426' }, { name: 'Text', hex: '#2B3040' }, { name: 'Muted', hex: '#5B6170' }, { name: 'Subtle', hex: '#6B7180' }, { name: 'Border', hex: '#E4E7EC' }, { name: 'Surface', hex: '#F7F8FA' },
+        { name: 'Logo navy', hex: '#022771' }, { name: 'Logo blue', hex: '#0070C2' }, { name: 'Deep navy', hex: '#141244' }, { name: 'Lavender', hex: '#F1F2FF' }, { name: 'Brand', hex: '#4F46E5' }, { name: 'Brand hover', hex: '#4338CA' }, { name: 'Brand pressed', hex: '#3730A3' }, { name: 'Brand soft', hex: '#EEF0FF' }, { name: 'Brand tint', hex: '#F5F6FF' }, { name: 'Navy', hex: '#1C1A57' },
+        { name: 'Chart 1', hex: '#2E2A82' }, { name: 'Chart 2', hex: '#6B7FE8' }, { name: 'Chart 3', hex: '#A5B4FC' }, { name: 'Positive', hex: '#15803D' }, { name: 'Negative', hex: '#B91C1C' }, { name: 'Warning', hex: '#9A3412' }
+      ],
+      type: [
+        { spec: 'Display, Geist 600, 72/1.02, -0.035em', family: 'Geist, Inter, sans-serif', size: '56px', weight: 600, ls: '-0.035em', sample: 'Your AI analyst' },
+        { spec: 'H1, Geist 600, 56/1.05, -0.03em', family: 'Geist, Inter, sans-serif', size: '44px', weight: 600, ls: '-0.03em', sample: 'Report on every client' },
+        { spec: 'H2, Geist 600, 44/1.1, -0.02em', family: 'Geist, Inter, sans-serif', size: '34px', weight: 600, ls: '-0.02em', sample: 'AI at every step' },
+        { spec: 'H3, Geist 600, 22 to 26', family: 'Geist, Inter, sans-serif', size: '24px', weight: 600, ls: '-0.015em', sample: 'Custom connectors' },
+        { spec: 'Body large, Inter 400, 18 to 20/1.55', family: 'Inter, sans-serif', size: '19px', weight: 400, ls: '0', sample: 'Cerebro AI cleans and standardizes your data.' },
+        { spec: 'Body, Inter 400, 16/1.6', family: 'Inter, sans-serif', size: '16px', weight: 400, ls: '0', sample: 'Every answer shows the numbers behind it.' },
+        { spec: 'Small, Inter 400 to 600, 14', family: 'Inter, sans-serif', size: '14px', weight: 500, ls: '0', sample: 'Data up to 18 Nov 2026' },
+        { spec: 'Numbers, Inter 600, tabular', family: 'Inter, sans-serif', size: '28px', weight: 600, ls: '-0.01em', sample: 'PKR 468.81' }
+      ],
+      radii: [{ label: '10 fields', v: '10px' }, { label: '18 cards', v: '18px' }, { label: '24 art tiles', v: '24px' }, { label: '28 hero art', v: '28px' }, { label: 'Pill buttons', v: '999px' }],
+      shadows: [{ label: 'Card hover', v: '0 12px 32px rgba(16,20,38,0.08)' }, { label: 'Menu', v: '0 24px 48px rgba(16,20,38,0.12)' }, { label: 'Product frame', v: '0 30px 70px rgba(10,8,40,0.35)' }]
+    };
+  }
+}
+</script>
+</body>
+</html>

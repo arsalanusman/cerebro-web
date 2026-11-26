@@ -42,7 +42,7 @@ export default function DashboardsStatsBanner() {
           <circle cx="500" cy="500" r="180" stroke="url(#dashGlow)" strokeWidth="1" strokeDasharray="4 4" />
           <defs>
             <linearGradient id="dashGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#4F46E5" />
+              <stop offset="0%" stopColor="#0070C2" />
               <stop offset="100%" stopColor="#38BDF8" />
             </linearGradient>
           </defs>

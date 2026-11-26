@@ -17,7 +17,7 @@ export function buildMetadata({
   noIndex = false,
 }: BuildMetadataOptions): Metadata {
   const SUFFIX = ` | ${SITE.name}`;
-  // Ensure title stays under 60 characters ending in " | Cerebro DNano"
+  // Ensure title stays under 60 characters ending in " | Cerebro dNano"
   let fullTitle = title.includes(SITE.name) ? title : `${title}${SUFFIX}`;
   if (fullTitle.length > 60) {
     const maxPrefixLen = 60 - SUFFIX.length;

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Style library 03: UI moments and section patterns</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #2B3040; background: #FFFFFF; min-width: 0; font-variant-numeric: tabular-nums">
+
+<div style="position: relative; overflow: hidden; background: #1C1A57; color: #FFFFFF">
+<div aria-hidden="true" style="position: absolute; left: 50%; bottom: -380px; width: 760px; height: 760px; margin-left: -380px; border-radius: 50%; background: radial-gradient(circle, rgba(165,180,252,0.4) 0, rgba(79,70,229,0.12) 26%, rgba(28,26,87,0) 60%)"></div>
+<div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 72px 40px; box-sizing: border-box">
+<p style="margin: 0; font-size: 14px; font-weight: 600; color: #A5B4FC">Cerebro style library</p>
+<h1 style="margin: 14px 0 0; font-family: Geist, Inter, sans-serif; font-size: 64px; line-height: 1.02; font-weight: 600; letter-spacing: -0.035em">UI moments and patterns</h1>
+<p style="margin: 14px 0 0; max-width: 640px; font-size: 18px; line-height: 1.5; color: #CDD0F3">03: how the product appears on the site, the eight section patterns, and the minimal homepage built from them.</p>
+</div>
+</div>
+
+<div style="max-width: 1240px; margin: 0 auto; padding: 0 40px; box-sizing: border-box">
+
+<section style="padding: 80px 0 0">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; color: #101426">UI moments</h2>
+<p style="margin: 10px 0 0; font-size: 16px; color: #5B6170">The product, simplified to one moment. Four values at most, on a lavender tile.</p>
+<div style="margin-top: 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+
+<div><div style="height: 240px; border-radius: 22px; background: #F1F2FF; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 14px">
+<sc-for list="{{kpis}}" as="k" hint-placeholder-count="3"><div style="flex: 1 1 0; min-width: 0; background: #FFFFFF; border-radius: 12px; padding: 12px; box-shadow: 0 10px 24px rgba(28,26,87,0.10)"><div style="font-size: 11px; color: #5B6170">{{k.l}}</div><div style="margin-top: 4px; font-size: 16px; font-weight: 600; color: #101426">{{k.v}}</div><div style="margin-top: 2px; font-size: 11px; font-weight: 600; color: {{k.c}}">{{k.d}}</div></div></sc-for>
+</div><div style="margin-top: 8px; font-size: 14px; font-weight: 600; color: #101426">KPI trio</div></div>
+
+<div><div style="height: 240px; border-radius: 22px; background: #F1F2FF; display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 0 22px">
+<span style="align-self: flex-end; background: #FFFFFF; border-radius: 14px 14px 4px 14px; padding: 9px 12px; font-size: 13px; color: #101426; box-shadow: 0 8px 20px rgba(28,26,87,0.10)">Best audience on Meta?</span>
+<span style="align-self: flex-start; display: inline-flex; gap: 8px; align-items: center; background: #1C1A57; color: #FFFFFF; border-radius: 14px 14px 14px 4px; padding: 10px 13px; font-size: 13px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#A5B4FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"></path></svg>Women 25–34, PKR 312 CPA</span>
+</div><div style="margin-top: 8px; font-size: 14px; font-weight: 600; color: #101426">Ask chat</div></div>
+
+<div><div style="height: 240px; border-radius: 22px; background: #F1F2FF; display: flex; align-items: center; justify-content: center"><div style="width: 220px; background: #FFFFFF; border-radius: 14px; box-shadow: 0 12px 28px rgba(28,26,87,0.12); padding: 6px 0">
+<sc-for list="{{conns}}" as="c" hint-placeholder-count="3"><div style="display: flex; align-items: center; gap: 10px; padding: 9px 14px"><span style="width: 22px; height: 22px; border-radius: 6px; background: {{c.color}}; color: #FFFFFF; font-size: 10px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">{{c.mark}}</span><span style="flex: 1 1 auto; font-size: 13px; font-weight: 500; color: #101426">{{c.name}}</span><span style="width: 8px; height: 8px; border-radius: 4px; background: #15803D"></span></div></sc-for>
+</div></div><div style="margin-top: 8px; font-size: 14px; font-weight: 600; color: #101426">Connections</div></div>
+
+<div><div style="height: 240px; border-radius: 22px; background: #F1F2FF; display: flex; align-items: center; justify-content: center"><div style="width: 230px; background: #FFFFFF; border-radius: 14px; box-shadow: 0 12px 28px rgba(28,26,87,0.12); padding: 12px 14px">
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: #3730A3; background: #EEF0FF; padding: 3px 8px; border-radius: 9px">Mapped by AI</span>
+<sc-for list="{{maps}}" as="m" hint-placeholder-count="2"><div style="display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 13px"><span style="flex: 1 1 0; color: #5B6170">{{m.a}}</span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9AA0AD" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg><span style="flex: 1 1 0; color: #101426; font-weight: 600">{{m.b}}</span></div></sc-for>
+</div></div><div style="margin-top: 8px; font-size: 14px; font-weight: 600; color: #101426">Sheet mapping</div></div>
+
+<div><div style="height: 240px; border-radius: 22px; background: #F1F2FF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px">
+<sc-for list="{{crumbs}}" as="c" hint-placeholder-count="3"><span style="margin-left: {{c.indent}}; display: inline-flex; align-items: center; gap: 6px; background: {{c.bg}}; color: {{c.fg}}; border-radius: 10px; padding: 8px 12px; font-size: 12.5px; font-weight: 600; box-shadow: 0 8px 18px rgba(28,26,87,0.10)">{{c.label}}</span></sc-for>
+</div><div style="margin-top: 8px; font-size: 14px; font-weight: 600; color: #101426">Drill-down</div></div>
+
+<div><div style="height: 240px; border-radius: 22px; background: #F1F2FF; display: flex; align-items: center; justify-content: center"><div style="display: grid; grid-template-columns: repeat(3, 66px); gap: 10px">
+<sc-for list="{{widgets}}" as="w" hint-placeholder-count="6"><span style="height: 66px; border-radius: 14px; background: #FFFFFF; border: {{w.bd}}; box-shadow: 0 8px 18px rgba(28,26,87,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; font-weight: 600; color: {{w.fg}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{w.d}}"></path></svg>{{w.n}}</span></sc-for>
+</div></div><div style="margin-top: 8px; font-size: 14px; font-weight: 600; color: #101426">Widget library</div></div>
+
+<div><div style="height: 240px; border-radius: 22px; background: #F1F2FF; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0 16px">
+<div style="flex: 1 1 0; background: #FFFFFF; border-radius: 14px; padding: 14px; box-shadow: 0 10px 24px rgba(28,26,87,0.10)"><div style="font-size: 11px; color: #5B6170">CPA</div><div style="margin-top: 4px; font-size: 18px; font-weight: 600; color: #101426">650.58</div><span style="display: inline-block; margin-top: 6px; font-size: 10.5px; font-weight: 600; padding: 2px 6px; border-radius: 6px; background: #FEE2E2; color: #991B1B">Highest</span></div>
+<span style="font-size: 12px; font-weight: 600; color: #5B6170">vs</span>
+<div style="flex: 1 1 0; background: #FFFFFF; border-radius: 14px; padding: 14px; border: 1.5px solid #A5B4FC; box-shadow: 0 10px 24px rgba(79,70,229,0.16)"><div style="font-size: 11px; color: #4338CA">CPM</div><div style="margin-top: 4px; font-size: 18px; font-weight: 600; color: #101426">119.23</div><span style="display: inline-block; margin-top: 6px; font-size: 10.5px; font-weight: 600; padding: 2px 6px; border-radius: 6px; background: #DCFCE7; color: #166534">Lowest</span></div>
+</div><div style="margin-top: 8px; font-size: 14px; font-weight: 600; color: #101426">Objective verdict</div></div>
+
+<div><div style="height: 240px; border-radius: 22px; background: #F1F2FF; display: flex; align-items: center; justify-content: center"><div style="width: 230px; background: #FFFFFF; border-radius: 14px; box-shadow: 0 12px 28px rgba(28,26,87,0.12); padding: 6px 0">
+<sc-for list="{{checks}}" as="c" hint-placeholder-count="2"><div style="display: flex; align-items: center; gap: 10px; padding: 11px 14px"><span style="width: 22px; height: 22px; border-radius: 11px; background: {{c.bg}}; display: inline-flex; align-items: center; justify-content: center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="{{c.fg}}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{c.icon}}"></path></svg></span><span style="font-size: 13px; font-weight: 500; color: #101426">{{c.label}}</span></div></sc-for>
+</div></div><div style="margin-top: 8px; font-size: 14px; font-weight: 600; color: #101426">Data checks</div></div>
+
+</div>
+<p style="margin: 14px 0 0; font-size: 13.5px; color: #5B6170">Still to draw for later pages: report builder, roles, client switcher, currency.</p>
+</section>
+
+<section style="padding: 96px 0 0">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; color: #101426">Buttons and tiles</h2>
+<div style="margin-top: 24px; display: flex; gap: 40px; flex-wrap: wrap; align-items: center">
+<a href="#buttons" style="display: inline-flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 20px; background: #4F46E5; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600">Book a demo</a>
+<a href="#buttons" style="display: inline-flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 20px; background: #FFFFFF; border: 1px solid #D5D8E0; color: #101426; text-decoration: none; font-size: 14px; font-weight: 600">See how it works</a>
+<span style="display: inline-flex; gap: 12px; padding: 14px; border-radius: 26px; background: #1C1A57"><a href="#buttons" style="display: inline-flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 20px; background: #FFFFFF; color: #1C1A57; text-decoration: none; font-size: 14px; font-weight: 600">Book a demo</a><a href="#buttons" style="display: inline-flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.35); color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600">Talk to sales</a></span>
+<a href="#buttons" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #4F46E5; text-decoration: none">Learn more<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<p style="margin: 16px 0 0; font-size: 14px; line-height: 1.6; color: #5B6170">Pill buttons, 40px tall (44px touch area), one primary per screen. Art tiles: 24px corners, no border, no shadow on the tile itself; shadows only on the cards inside.</p>
+</section>
+
+<section style="padding: 96px 0 0">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; color: #101426">Section patterns</h2>
+<p style="margin: 10px 0 0; font-size: 16px; color: #5B6170">Eight patterns build every page. Each carries one idea.</p>
+<div style="margin-top: 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+
+<div><div style="height: 300px; border-radius: 22px; border: 1px solid #EEF0F3; background: #FFFFFF; display: flex; align-items: center; gap: 24px; padding: 28px; box-sizing: border-box">
+<div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 10px"><span style="height: 18px; width: 92%; border-radius: 6px; background: #101426"></span><span style="height: 18px; width: 70%; border-radius: 6px; background: #101426"></span><span style="height: 8px; width: 84%; border-radius: 4px; background: #E4E7EC; margin-top: 6px"></span><span style="display: flex; gap: 8px; margin-top: 10px"><span style="width: 74px; height: 22px; border-radius: 11px; background: #4F46E5"></span><span style="width: 74px; height: 22px; border-radius: 11px; border: 1px solid #D5D8E0"></span></span></div>
+<div style="flex: 1 1 0; height: 220px; border-radius: 18px; background: #141244; position: relative"><span style="position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 23px; background: #0070C2; box-shadow: 0 0 0 10px rgba(0,112,194,0.2)"></span></div>
+</div><div style="margin-top: 10px; font-size: 15px; font-weight: 600; color: #101426">P1 Split hero</div><div style="font-size: 13.5px; color: #5B6170">Heading, one line, two pills. Signature art on the right.</div></div>
+
+<div><div style="height: 300px; border-radius: 22px; border: 1px solid #EEF0F3; background: #FFFFFF; display: flex; align-items: center; padding: 0 28px; box-sizing: border-box"><div style="width: 100%; border-radius: 14px; background: #F7F8FA; padding: 26px 22px; display: flex; gap: 18px; align-items: center"><span style="height: 8px; width: 110px; border-radius: 4px; background: #C9CDD6"></span><sc-for list="{{logoBars}}" as="b" hint-placeholder-count="5"><span style="flex: 1 1 0; height: 16px; border-radius: 5px; background: #D5D8E0"></span></sc-for></div></div><div style="margin-top: 10px; font-size: 15px; font-weight: 600; color: #101426">P2 Logo band</div><div style="font-size: 13.5px; color: #5B6170">Grey band right under the hero. Approved logos only.</div></div>
+
+<div><div style="height: 300px; border-radius: 22px; border: 1px solid #EEF0F3; background: #FFFFFF; padding: 26px 28px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 18px"><span style="height: 16px; width: 46%; border-radius: 6px; background: #101426"></span><div style="width: 100%; display: flex; gap: 14px"><sc-for list="{{three}}" as="t" hint-placeholder-count="3"><div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 8px"><span style="height: 120px; border-radius: 14px; background: {{t}}"></span><span style="height: 9px; width: 70%; border-radius: 4px; background: #101426"></span><span style="height: 7px; width: 90%; border-radius: 4px; background: #E4E7EC"></span></div></sc-for></div></div><div style="margin-top: 10px; font-size: 15px; font-weight: 600; color: #101426">P3 Three ways</div><div style="font-size: 13.5px; color: #5B6170">Three art tiles, a title and one line each.</div></div>
+
+<div><div style="height: 300px; border-radius: 22px; background: #1C1A57; padding: 0 28px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 22px"><span style="align-self: center; height: 14px; width: 40%; border-radius: 6px; background: rgba(255,255,255,0.85)"></span><div style="display: flex; gap: 14px"><sc-for list="{{facts}}" as="f" hint-placeholder-count="4"><div style="flex: 1 1 0; border-left: 1px solid rgba(255,255,255,0.18); padding-left: 14px"><div style="font-family: Geist, Inter, sans-serif; font-size: 34px; font-weight: 600; color: #FFFFFF">{{f}}</div><span style="display: block; margin-top: 8px; height: 7px; width: 80%; border-radius: 4px; background: rgba(255,255,255,0.25)"></span></div></sc-for></div></div><div style="margin-top: 10px; font-size: 15px; font-weight: 600; color: #101426">P4 Facts band</div><div style="font-size: 13.5px; color: #5B6170">Navy. Four true facts, big figures, one short label each.</div></div>
+
+<div><div style="height: 300px; border-radius: 22px; border: 1px solid #EEF0F3; background: #FFFFFF; display: flex; align-items: center; gap: 24px; padding: 28px; box-sizing: border-box"><div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 10px"><span style="height: 16px; width: 80%; border-radius: 6px; background: #101426"></span><span style="height: 8px; width: 90%; border-radius: 4px; background: #E4E7EC"></span><span style="height: 8px; width: 60%; border-radius: 4px; background: #E4E7EC"></span><span style="margin-top: 6px; height: 9px; width: 30%; border-radius: 4px; background: #4F46E5"></span></div><div style="flex: 1.2 1 0; height: 220px; border-radius: 18px; background: #F1F2FF; display: flex; align-items: center; justify-content: center"><span style="width: 130px; height: 80px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 12px 26px rgba(28,26,87,0.12)"></span></div></div><div style="margin-top: 10px; font-size: 15px; font-weight: 600; color: #101426">P5 Feature row</div><div style="font-size: 13.5px; color: #5B6170">Text left, art right. Stack two or three, same side.</div></div>
+
+<div><div style="height: 300px; border-radius: 22px; background: #1C1A57; padding: 24px 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px"><div style="flex: 1 1 auto; border-radius: 16px; background: linear-gradient(180deg, #2E2A82 0, #1C1A57 100%); display: flex; align-items: center; justify-content: center"><span style="width: 52%; height: 70%; border-radius: 12px; background: #FFFFFF; opacity: 0.95"></span></div><div style="display: flex; gap: 14px"><sc-for list="{{tabs}}" as="t" hint-placeholder-count="4"><div style="flex: 1 1 0; border-top: 2px solid {{t.c}}; padding-top: 8px"><span style="display: block; height: 8px; width: 60%; border-radius: 4px; background: {{t.c}}"></span></div></sc-for></div></div><div style="margin-top: 10px; font-size: 15px; font-weight: 600; color: #101426">P6 Feature band with tabs</div><div style="font-size: 13.5px; color: #5B6170">One big image, four tabs underneath instead of paragraphs.</div></div>
+
+<div><div style="height: 300px; border-radius: 22px; background: #F7F8FA; display: flex; align-items: center; justify-content: center; padding: 28px; box-sizing: border-box"><div style="width: 80%; background: #FFFFFF; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; align-items: center; gap: 10px"><span style="height: 13px; width: 90%; border-radius: 6px; background: #101426"></span><span style="height: 13px; width: 75%; border-radius: 6px; background: #101426"></span><span style="height: 13px; width: 55%; border-radius: 6px; background: #101426"></span><span style="margin-top: 10px; display: inline-flex; align-items: center; gap: 8px"><span style="width: 26px; height: 26px; border-radius: 13px; background: #C9CDD6"></span><span style="height: 8px; width: 80px; border-radius: 4px; background: #C9CDD6"></span></span></div></div><div style="margin-top: 10px; font-size: 15px; font-weight: 600; color: #101426">P7 Quote</div><div style="font-size: 13.5px; color: #5B6170">One real, approved quote. Big type, a name and role.</div></div>
+
+<div><div style="height: 300px; border-radius: 22px; background: #1C1A57; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px"><div aria-hidden="true" style="position: absolute; left: 50%; bottom: -200px; width: 420px; height: 420px; margin-left: -210px; border-radius: 50%; background: radial-gradient(circle, rgba(165,180,252,0.4) 0, rgba(28,26,87,0) 60%)"></div><span style="position: relative; height: 18px; width: 50%; border-radius: 6px; background: #FFFFFF"></span><span style="position: relative; height: 8px; width: 34%; border-radius: 4px; background: rgba(255,255,255,0.4)"></span><span style="position: relative; display: flex; gap: 8px; margin-top: 6px"><span style="width: 74px; height: 22px; border-radius: 11px; background: #FFFFFF"></span><span style="width: 74px; height: 22px; border-radius: 11px; border: 1px solid rgba(255,255,255,0.4)"></span></span></div><div style="margin-top: 10px; font-size: 15px; font-weight: 600; color: #101426">P8 Final call to action</div><div style="font-size: 13.5px; color: #5B6170">Navy, one glow from below, two pills. Ends every page.</div></div>
+
+</div>
+</section>
+
+<section style="padding: 96px 0 96px">
+<h2 style="margin: 0; font-family: Geist, Inter, sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; color: #101426">The minimal homepage</h2>
+<p style="margin: 10px 0 0; font-size: 16px; color: #5B6170">Nine blocks instead of thirteen. The heavy demos move to their platform pages.</p>
+<div style="margin-top: 28px; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{home}}" as="h" hint-placeholder-count="9">
+<div style="display: flex; align-items: center; gap: 18px; border-radius: 16px; background: {{h.bg}}; padding: 18px 22px">
+<span style="flex: 0 0 auto; font-size: 13px; font-weight: 600; color: {{h.tag}}; width: 32px">{{h.n}}</span>
+<span style="flex: 0 0 220px; font-size: 15px; font-weight: 600; color: {{h.fg}}">{{h.name}}</span>
+<span style="flex: 0 0 60px; font-size: 12.5px; font-weight: 600; color: {{h.tag}}">{{h.p}}</span>
+<span style="flex: 1 1 auto; font-size: 14.5px; color: {{h.sub}}">{{h.what}}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var L = { bg: '#FFFFFF', fg: '#101426', sub: '#5B6170', tag: '#4F46E5' }, G = { bg: '#F7F8FA', fg: '#101426', sub: '#5B6170', tag: '#4F46E5' }, N = { bg: '#1C1A57', fg: '#FFFFFF', sub: '#CDD0F3', tag: '#A5B4FC' };
+    function h(n, name, p, what, t) { return Object.assign({ n: n, name: name, p: p, what: what }, t); }
+    return {
+      kpis: [{ l: 'Spend', v: 'PKR 5.8M', d: '↓ 5.2%', c: '#4B5160' }, { l: 'CTR', v: '1.08%', d: '↓ 9.0%', c: '#B91C1C' }, { l: 'CPM', v: 'PKR 147', d: '↓ 10.2%', c: '#15803D' }],
+      conns: [{ mark: 'M', color: '#1877F2', name: 'Meta Ads' }, { mark: 'G', color: '#15803D', name: 'Google Ads' }, { mark: 'T', color: '#111827', name: 'TikTok Ads' }],
+      maps: [{ a: 'Impr.', b: 'Impressions' }, { a: 'Link clicks', b: 'Clicks' }],
+      crumbs: [{ label: 'Meta Ads', indent: '-120px', bg: '#FFFFFF', fg: '#101426' }, { label: 'Winter Collection', indent: '0px', bg: '#FFFFFF', fg: '#101426' }, { label: 'Parents 28–45 | Feed', indent: '120px', bg: '#4F46E5', fg: '#FFFFFF' }],
+      widgets: [
+        { n: 'KPI', d: 'M4 4h16v16H4zM8 14l3-3 2 2 3-4', bd: '1.5px solid #4F46E5', fg: '#3730A3' }, { n: 'Trend', d: 'M3 17l6-6 4 4 8-8', bd: '1px solid transparent', fg: '#2B3040' }, { n: 'Donut', d: 'M12 3a9 9 0 1 0 9 9h-9z', bd: '1px solid transparent', fg: '#2B3040' },
+        { n: 'Table', d: 'M3 4h18v16H3zM3 10h18M9 4v16', bd: '1px solid transparent', fg: '#2B3040' }, { n: 'Funnel', d: 'M3 4h18l-7 8v6l-4 2v-8z', bd: '1px solid transparent', fg: '#2B3040' }, { n: 'Ranked', d: 'M8 6h13M8 12h10M8 18h7M3 6h.01M3 12h.01M3 18h.01', bd: '1px solid transparent', fg: '#2B3040' }
+      ],
+      checks: [{ label: 'Data up to date', bg: '#DCFCE7', fg: '#15803D', icon: 'M20 6 9 17l-5-5' }, { label: '2 rows to review', bg: '#FFF7ED', fg: '#C2410C', icon: 'M12 7v6M12 17h.01' }],
+      logoBars: [1, 2, 3, 4, 5],
+      three: ['#F1F2FF', '#141244', '#F1F2FF'],
+      facts: ['3', 'Any', '3', '5'],
+      tabs: [{ c: '#FFFFFF' }, { c: 'rgba(255,255,255,0.3)' }, { c: 'rgba(255,255,255,0.3)' }, { c: 'rgba(255,255,255,0.3)' }],
+      home: [
+        h('01', 'Hero', 'P1', 'Your AI analyst for every ad platform. Signature art with a small Ask bubble.', L),
+        h('02', 'Logo band', 'P2', 'Approved client logos, hidden until approval.', G),
+        h('03', 'Three ways in', 'P3', 'Native connectors, AI-built connectors, sheet upload. T1, T3, T2 art.', L),
+        h('04', 'Facts band', 'P4', '3 native sources, any platform, 3 file types, 5 AI steps.', N),
+        h('05', 'Ask Cerebro', 'P6', 'One big Ask moment, tabs underneath: why, who, what to change, what it can’t see.', N),
+        h('06', 'Feature rows', 'P5', 'Judge by objective, dashboards you build, drill down to one ad. One line each.', L),
+        h('07', 'Solutions', 'P3', 'Agencies, brands, industries as three tiles with brand objects.', G),
+        h('08', 'Quote', 'P7', 'One approved client quote. Hidden until approved.', G),
+        h('09', 'Final call to action', 'P8', 'Ask your own campaigns a question. Book a demo.', N)
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -31,7 +31,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         <h2
           key={`h2-${i}`}
           id={headingId}
-          className="scroll-mt-24 font-heading font-semibold text-[26px] sm:text-[28px] leading-[1.25] tracking-[-0.015em] text-[#101426] mt-10 mb-4"
+          className="scroll-mt-24 font-heading font-semibold text-[26px] sm:text-[28px] leading-[1.25] tracking-[-0.015em] text-[#000000] mt-10 mb-4"
         >
           {headingText}
         </h2>
@@ -48,7 +48,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
       blocks.push(
         <div
           key={`quote-${i}`}
-          className="my-6 rounded-2xl bg-[#F5F6FF] border border-[#E0E3FF] p-5 md:p-6 text-[16.5px] leading-[1.6] text-[#2E2A82]"
+          className="my-6 rounded-2xl bg-[#F3F8FE] border border-[#D6E8F8] p-5 md:p-6 text-[16.5px] leading-[1.6] text-[#022771]"
         >
           {parts.map((part, pIdx) => {
             if (part.startsWith("**") && part.endsWith("**")) {
@@ -86,7 +86,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         blocks.push(
           <div
             key={`table-${i}`}
-            className="my-6 border border-[#E4E7EC] rounded-2xl overflow-x-auto shadow-[0_2px_8px_rgba(16,20,38,0.02)]"
+            className="my-6 border border-[#E2E8F0] rounded-2xl overflow-x-auto shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
           >
             <table className="w-full min-w-[480px] border-collapse text-[15px] leading-[1.5]">
               <thead>
@@ -95,7 +95,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                     <th
                       key={hIdx}
                       scope="col"
-                      className="text-left py-3.5 px-4 sm:px-5 text-[13px] font-semibold text-[#6B7180]"
+                      className="text-left py-3.5 px-4 sm:px-5 text-[13px] font-semibold text-[#6B7685]"
                     >
                       {h}
                     </th>
@@ -105,8 +105,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               <tbody className="divide-y divide-[#EEF0F3]">
                 {bodyRows.map((row, rIdx) => (
                   <tr key={rIdx} className="hover:bg-[#FAFBFD] transition-colors">
-                    <td className="py-3.5 px-4 sm:px-5 text-[#101426] font-medium">{row[0]}</td>
-                    <td className="py-3.5 px-4 sm:px-5 text-[#2B3040]">{row[1]}</td>
+                    <td className="py-3.5 px-4 sm:px-5 text-[#000000] font-medium">{row[0]}</td>
+                    <td className="py-3.5 px-4 sm:px-5 text-[#1C2433]">{row[1]}</td>
                   </tr>
                 ))}
               </tbody>
@@ -125,7 +125,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         i++;
       }
       blocks.push(
-        <ol key={`ol-${i}`} className="my-4 pl-5 list-decimal space-y-2 text-[16px] text-[#2B3040]">
+        <ol key={`ol-${i}`} className="my-4 pl-5 list-decimal space-y-2 text-[16px] text-[#1C2433]">
           {listItems.map((item, idx) => (
             <li key={idx}>{item}</li>
           ))}
@@ -139,11 +139,11 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
     // Simple inline parser for bold
     const parts = pText.split(/(\*\*.*?\*\*)/g);
     blocks.push(
-      <p key={`p-${i}`} className="m-0 text-[17px] md:text-[18px] leading-[1.75] text-[#2B3040]">
+      <p key={`p-${i}`} className="m-0 text-[17px] md:text-[18px] leading-[1.75] text-[#1C2433]">
         {parts.map((part, pIdx) => {
           if (part.startsWith("**") && part.endsWith("**")) {
             return (
-              <strong key={pIdx} className="font-semibold text-[#101426]">
+              <strong key={pIdx} className="font-semibold text-[#000000]">
                 {part.slice(2, -2)}
               </strong>
             );

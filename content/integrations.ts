@@ -30,7 +30,7 @@ export interface IntegrationFaq {
 }
 
 export const integrationsData = {
-  seoTitle: "Integrations | Cerebro DNano",
+  seoTitle: "Integrations | Cerebro dNano",
   seoDesc: "Bring in data from any marketing platform. Native connectors for Meta, Google and TikTok, AI-built connectors for anything else, and sheet uploads.",
   ways: [
     {

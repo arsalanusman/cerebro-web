@@ -22,15 +22,15 @@ export default function HomePresentPage() {
       : 'Leads with Cerebro AI as the analyst, adds "AI at every step", AI-led headings and Ask Cerebro in the main menu.';
 
   return (
-    <div className="min-w-0 bg-white text-[#2B3040]">
+    <div className="min-w-0 bg-white text-[#1C2433]">
       {/* Presentation Controls Bar */}
       <div
         role="region"
         aria-label="Presentation controls"
-        className="sticky top-16 z-40 bg-[#101426] text-white shadow-[0_8px_24px_rgba(10,8,40,0.25)] border-b border-white/10"
+        className="sticky top-16 z-40 bg-[#000000] text-white shadow-[0_8px_24px_rgba(1,14,40,0.25)] border-b border-white/10"
       >
-        <div className="max-w-[1240px] mx-auto px-6 sm:px-10 py-2.5 box-border flex items-center gap-4 flex-wrap">
-          <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#A5B4FC]">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 py-2.5 box-border flex items-center gap-4 flex-wrap">
+          <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#8EC5F0]">
             <svg
               width="16"
               height="16"
@@ -59,7 +59,7 @@ export default function HomePresentPage() {
                 setOption(e.target.value as "1" | "2");
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="appearance-none min-h-[40px] min-w-[280px] sm:min-w-[320px] pl-3.5 pr-10 rounded-[9px] border border-white/25 bg-[#1C1A57] text-white font-sans text-[14.5px] font-semibold cursor-pointer outline-none focus:ring-2 focus:ring-[#4F46E5]"
+              className="appearance-none min-h-[40px] min-w-[280px] sm:min-w-[320px] pl-3.5 pr-10 rounded-[9px] border border-white/25 bg-[#022771] text-white font-sans text-[14.5px] font-semibold cursor-pointer outline-none focus:ring-2 focus:ring-[#0070C2]"
             >
               <option value="1">Option 1: Bring in any data, ask anything (Data-forward)</option>
               <option value="2">Option 2: Your AI analyst (AI-forward)</option>

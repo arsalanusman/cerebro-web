@@ -1,12 +1,12 @@
 import React from "react";
-import PricingClient from "@/components/pricing/PricingClient";
+import PricingV2 from "@/components/pricing/PricingV2";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
-import { pricingData } from "@/content/pricing";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: pricingData.seoTitle,
-  description: pricingData.seoDesc,
+  title: "Pricing - Plans that grow with your clients",
+  description:
+    "Every plan includes Cerebro AI. Book a demo for a plan built around your team, brands, and clients.",
   path: "/pricing",
 });
 
@@ -19,7 +19,7 @@ export default function PricingPage() {
           { name: "Pricing", path: "/pricing" },
         ]}
       />
-      <PricingClient />
+      <PricingV2 />
     </>
   );
 }

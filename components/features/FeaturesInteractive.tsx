@@ -23,7 +23,7 @@ const FEATURE_TABS: FeatureTab[] = [
   {
     id: "pipeline",
     label: "Data Pipeline",
-    color: "#4F46E5",
+    color: "#0070C2",
     icon: Database,
     heading: "Production-grade data infrastructure without the infrastructure overhead",
     subtext:
@@ -216,16 +216,16 @@ export default function FeaturesInteractive() {
     <div>
       {/* Interactive Tabs Showcase */}
       <section className="py-20 md:py-24 bg-[#0F1424] text-white">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-10 box-border">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 box-border">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-[#A5B4FC]">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-[#8EC5F0]">
               DEEP DIVE
             </span>
             <h2 className="mt-4 font-heading font-semibold text-[32px] sm:text-[42px] leading-tight text-white">
               Every capability your performance team needs
             </h2>
             <p className="mt-3 text-base sm:text-lg text-[#94A3B8]">
-              Explore the core architectural pillars powering Cerebro DNano.
+              Explore the core architectural pillars powering Cerebro dNano.
             </p>
           </div>
 
@@ -241,11 +241,11 @@ export default function FeaturesInteractive() {
                   onClick={() => setActiveTabIdx(idx)}
                   className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all cursor-pointer ${
                     isActive
-                      ? "bg-white text-[#101426] shadow-md"
+                      ? "bg-white text-[#000000] shadow-md"
                       : "text-[#94A3B8] hover:text-white hover:bg-white/5"
                   }`}
                 >
-                  <Icon size={16} className={isActive ? "text-[#4F46E5]" : ""} />
+                  <Icon size={16} className={isActive ? "text-[#0070C2]" : ""} />
                   <span>{tab.label}</span>
                 </button>
               );
@@ -267,7 +267,7 @@ export default function FeaturesInteractive() {
               {activeTab.items.map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-[#182035] border border-white/10 rounded-2xl p-5 hover:border-[#4F46E5] transition-colors"
+                  className="bg-[#182035] border border-white/10 rounded-2xl p-5 hover:border-[#0070C2] transition-colors"
                 >
                   <div className="flex items-center gap-2 mb-2.5">
                     <span
@@ -292,36 +292,36 @@ export default function FeaturesInteractive() {
       <section className="py-20 md:py-24 bg-white">
         <div className="max-w-[1020px] mx-auto px-6 md:px-10 box-border">
           <div className="text-center max-w-xl mx-auto mb-12">
-            <p className="m-0 mb-2 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#4F46E5]">
+            <p className="m-0 mb-2 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#0070C2]">
               BENCHMARK
             </p>
-            <h2 className="m-0 font-heading font-semibold text-[28px] sm:text-[36px] text-[#101426] leading-tight">
-              Cerebro DNano vs. The Spreadsheet Stack
+            <h2 className="m-0 font-heading font-semibold text-[28px] sm:text-[36px] text-[#000000] leading-tight">
+              Cerebro dNano vs. The Spreadsheet Stack
             </h2>
-            <p className="mt-3 m-0 text-base text-[#5B6170]">
+            <p className="mt-3 m-0 text-base text-[#5A6675]">
               See why high-growth agencies replace manual exports with automated intelligence.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-[#E4E7EC] overflow-hidden shadow-sm">
+          <div className="rounded-2xl border border-[#E2E8F0] overflow-hidden shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-[#F8FAFC] border-b border-[#E4E7EC] text-xs font-semibold uppercase tracking-wider text-[#6B7180]">
+                  <tr className="bg-[#F8FAFC] border-b border-[#E2E8F0] text-xs font-semibold uppercase tracking-wider text-[#6B7685]">
                     <th className="py-4 px-6">Capability</th>
                     <th className="py-4 px-6 text-center">Manual Spreadsheet Stack</th>
-                    <th className="py-4 px-6 text-center text-[#4F46E5] bg-[#EEF2FF]">
-                      Cerebro DNano
+                    <th className="py-4 px-6 text-center text-[#0070C2] bg-[#EEF2FF]">
+                      Cerebro dNano
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#EEF0F3] text-sm text-[#2B3040]">
+                <tbody className="divide-y divide-[#EEF0F3] text-sm text-[#1C2433]">
                   {comparisonRows.map((row, idx) => (
                     <tr
                       key={idx}
                       className="hover:bg-[#F8FAFC] transition-colors"
                     >
-                      <td className="py-4 px-6 font-medium text-[#101426]">
+                      <td className="py-4 px-6 font-medium text-[#000000]">
                         {row.cap}
                       </td>
                       <td className="py-4 px-6 text-center">
@@ -350,7 +350,7 @@ export default function FeaturesInteractive() {
           <div className="mt-12 text-center">
             <Link
               href="/demo"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#4F46E5] hover:bg-[#4338CA] text-white font-semibold text-sm transition-all shadow-md hover:scale-105"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0070C2] hover:bg-[#005DA3] text-white font-semibold text-sm transition-all shadow-md hover:scale-105"
             >
               Book a live product tour &rarr;
             </Link>

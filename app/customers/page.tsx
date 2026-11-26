@@ -8,7 +8,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Customer stories and case studies",
   description:
-    "See how agencies and marketing brands use Cerebro DNano to unify cross-channel reporting.",
+    "See how agencies and marketing brands use Cerebro dNano to unify cross-channel reporting.",
   path: "/customers",
 });
 
@@ -26,7 +26,7 @@ export default function CustomersPage() {
         breadcrumbs={[{ label: "Customers", href: "/customers" }]}
         eyebrow="Case Studies"
         title="Verified customer results."
-        lead="Discover how marketing teams achieve clarity with Cerebro DNano."
+        lead="Discover how marketing teams achieve clarity with Cerebro dNano."
       />
       <div className="py-20 bg-white">
         <Container>

@@ -1,25 +1,21 @@
 import React from "react";
-import DemoClient from "@/components/demo/DemoClient";
+import PgDemoV2 from "@/components/demo/PgDemoV2";
 import { BreadcrumbListJsonLd } from "@/components/seo/BreadcrumbListJsonLd";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Book a personalized demo | Cerebro DNano",
-  description:
-    "See Cerebro AI on your own campaigns. Connect your platforms or load your sheets and ask questions in plain language.",
+  title: "Book a demo - See Cerebro on your own campaigns",
+  description: "A personal walkthrough with your platforms, your data, and your questions.",
   path: "/demo",
 });
 
-export default function DemoPage() {
+export default function Page() {
   return (
     <>
       <BreadcrumbListJsonLd
-        items={[
-          { name: "Home", path: "/" },
-          { name: "Book a demo", path: "/demo" },
-        ]}
+        items={[{"name":"Home","path":"/"},{"name":"Book a demo","path":"/demo"}]}
       />
-      <DemoClient />
+      <PgDemoV2 />
     </>
   );
 }
